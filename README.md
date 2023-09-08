@@ -5,6 +5,7 @@ Use `./build.sh` to run in your localhost then you don't need to type the below 
 $ hexo clean
 $ hexo generate
 $ hexo server
+$ hexo deploy
 ```
 
 Reference

@@ -11,6 +11,14 @@
   title: Mac Background
   description: 
 
+- image: ../images/pega_23_intern_close.jpg
+  title: Pegatron Intern Close
+  description: 
+
+- image: ../images/pega_23_intern_obboard.jpg
+  title: Pegatron Intern Onboard
+  description: 
+
 - image: ../images/cover/git_tips_cover.png
   title: Git Tips Cover
   description: 
@@ -22,3 +30,22 @@
 - image: ../images/itachi.jpg
   title: Itachi
   description: 
+
+
+- image: ../images/post/DEV/git_ssh/01.png
+  title: Git SSH 01
+  description: 
+
+- image: ../images/post/DEV/git_ssh/02.png
+  title: Git SSH 02
+  description: 
+- image: ../images/post/DEV/git_ssh/03.png
+  title: Git SSH 03
+  description: 
+- image: ../images/post/DEV/git_ssh/04.png
+  title: Git SSH 04
+  description: 
+- image: ../images/post/DEV/git_ssh/05.png
+  title: Git SSH 05
+  description: 
+
