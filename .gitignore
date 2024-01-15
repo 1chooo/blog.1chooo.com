@@ -7,7 +7,7 @@ public/
 .deploy*/
 _multiconfig.yml
 
-_config.redefine.yml
-_config.yml
+# _config.redefine.yml
+# _config.yml
 
 themes/redefine/
