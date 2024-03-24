@@ -78,7 +78,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#117;&#103;&#111;&#57;&#55;&#x30;&#50;&#x31;&#x37;&#x40;&#103;&#109;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#109;" >&#x68;&#117;&#103;&#111;&#57;&#55;&#x30;&#50;&#x31;&#x37;&#x40;&#103;&#109;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#x67;&#111;&#57;&#55;&#48;&#x32;&#x31;&#55;&#x40;&#103;&#109;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#x6d;" >&#104;&#x75;&#x67;&#111;&#57;&#55;&#48;&#x32;&#x31;&#55;&#x40;&#103;&#109;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -123,7 +123,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#x67;&#111;&#57;&#55;&#x30;&#50;&#x31;&#x37;&#64;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;" >&#104;&#x75;&#x67;&#111;&#57;&#55;&#x30;&#50;&#x31;&#x37;&#64;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#103;&#111;&#x39;&#x37;&#48;&#x32;&#49;&#x37;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#111;&#x6d;" >&#x68;&#x75;&#103;&#111;&#x39;&#x37;&#48;&#x32;&#49;&#x37;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -133,6 +133,91 @@
         <tag>ipad</tag>
         <tag>Apple</tag>
         <tag>Freshman</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我在 Conda 常用的指令</title>
+    <url>/blog.1chooo.com/2023/07/30/DEV_tips/conda_tips/</url>
+    <content><![CDATA[<blockquote>
+<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
+</blockquote>
+<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
+<p><strong>本文綱要</strong></p>
+<ul>
+<li><a href="#%E5%BB%BA%E7%AB%8B%E5%88%AA%E9%99%A4%E5%92%8C%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">建立、刪除和複製虛擬環境</a><ul>
+<li><a href="#%E5%BB%BA%E7%AB%8B%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">建立虛擬環境</a></li>
+<li><a href="#%E5%88%AA%E9%99%A4%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">刪除虛擬環境</a></li>
+<li><a href="#%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">複製虛擬環境</a></li>
+</ul>
+</li>
+<li><a href="#%E6%BF%80%E6%B4%BB%E8%88%87%E9%80%80%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">激活與退出虛擬環境</a></li>
+<li><a href="#%E5%AE%89%E8%A3%9D%E5%8F%8A%E5%88%AA%E9%99%A4%E9%9C%80%E8%A6%81%E7%9A%84-package-%E8%87%B3%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">安裝及刪除需要的 package 至虛擬環境</a></li>
+<li><a href="#%E6%9F%A5%E8%A9%A2%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83%E8%B3%87%E8%A8%8A">查詢虛擬環境資訊</a></li>
+<li><a href="#%E5%B0%8E%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">導出虛擬環境</a></li>
+<li><a href="#%E6%96%87%E6%9C%AB%E5%B0%8F%E7%B5%90">文末小結</a></li>
+<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
+</ul>
+<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
+<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
+
+<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/blog.1chooo.com/../assets/imgs/conda_command.png"
+                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
+                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
+<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
+<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
+<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
+<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
+<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#x68;&#117;&#103;&#x6f;&#57;&#x37;&#48;&#x32;&#49;&#55;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d;" >&#x68;&#117;&#103;&#x6f;&#57;&#x37;&#48;&#x32;&#49;&#55;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DEV</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>venv</tag>
+        <tag>conda</tag>
+        <tag>tips</tag>
       </tags>
   </entry>
   <entry>
@@ -211,7 +296,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>My Linktree: <a href="https://1chooo.github.io/linktree/">1chooo’s Linktree</a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#117;&#103;&#111;&#x39;&#x37;&#x30;&#x32;&#x31;&#x37;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#x6d;" >&#x68;&#117;&#103;&#111;&#x39;&#x37;&#x30;&#x32;&#x31;&#x37;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#x67;&#111;&#57;&#x37;&#x30;&#x32;&#49;&#x37;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#109;" >&#104;&#x75;&#x67;&#111;&#57;&#x37;&#x30;&#x32;&#49;&#x37;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -221,91 +306,6 @@
         <tag>Git</tag>
         <tag>GitHub</tag>
         <tag>SSH Key</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我在 Conda 常用的指令</title>
-    <url>/blog.1chooo.com/2023/07/30/DEV_tips/conda_tips/</url>
-    <content><![CDATA[<blockquote>
-<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
-</blockquote>
-<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
-<p><strong>本文綱要</strong></p>
-<ul>
-<li><a href="#%E5%BB%BA%E7%AB%8B%E5%88%AA%E9%99%A4%E5%92%8C%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">建立、刪除和複製虛擬環境</a><ul>
-<li><a href="#%E5%BB%BA%E7%AB%8B%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">建立虛擬環境</a></li>
-<li><a href="#%E5%88%AA%E9%99%A4%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">刪除虛擬環境</a></li>
-<li><a href="#%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">複製虛擬環境</a></li>
-</ul>
-</li>
-<li><a href="#%E6%BF%80%E6%B4%BB%E8%88%87%E9%80%80%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">激活與退出虛擬環境</a></li>
-<li><a href="#%E5%AE%89%E8%A3%9D%E5%8F%8A%E5%88%AA%E9%99%A4%E9%9C%80%E8%A6%81%E7%9A%84-package-%E8%87%B3%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">安裝及刪除需要的 package 至虛擬環境</a></li>
-<li><a href="#%E6%9F%A5%E8%A9%A2%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83%E8%B3%87%E8%A8%8A">查詢虛擬環境資訊</a></li>
-<li><a href="#%E5%B0%8E%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">導出虛擬環境</a></li>
-<li><a href="#%E6%96%87%E6%9C%AB%E5%B0%8F%E7%B5%90">文末小結</a></li>
-<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
-</ul>
-<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
-<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
-
-<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/blog.1chooo.com/../assets/imgs/conda_command.png"
-                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
-                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
-<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
-<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
-<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
-<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
-<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#x67;&#111;&#57;&#x37;&#x30;&#50;&#x31;&#55;&#64;&#x67;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#109;" >&#104;&#x75;&#x67;&#111;&#57;&#x37;&#x30;&#50;&#x31;&#55;&#64;&#x67;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DEV</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>venv</tag>
-        <tag>conda</tag>
-        <tag>tips</tag>
       </tags>
   </entry>
   <entry>
@@ -389,7 +389,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#x67;&#111;&#57;&#55;&#48;&#x32;&#49;&#x37;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;" >&#104;&#x75;&#x67;&#111;&#57;&#55;&#48;&#x32;&#49;&#x37;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#x67;&#x6f;&#x39;&#x37;&#x30;&#50;&#x31;&#55;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#111;&#109;" >&#104;&#x75;&#x67;&#x6f;&#x39;&#x37;&#x30;&#50;&#x31;&#55;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -453,7 +453,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#117;&#103;&#111;&#57;&#55;&#x30;&#50;&#49;&#x37;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#109;" >&#x68;&#117;&#103;&#111;&#57;&#55;&#x30;&#50;&#49;&#x37;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#117;&#x67;&#111;&#57;&#x37;&#48;&#50;&#x31;&#55;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#109;" >&#104;&#117;&#x67;&#111;&#57;&#x37;&#48;&#50;&#x31;&#55;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
