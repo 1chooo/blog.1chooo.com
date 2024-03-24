@@ -13,22 +13,31 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://blog.1chooo.com/categories/dev/"/>
+    <link rel="canonical" href="https://blog.1chooo.com/2023/09/08/dev_tips/git-test-post/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="The student who eager to CS">
-<meta property="og:type" content="website">
-<meta property="og:title" content="1chooo&#39;s Blog">
-<meta property="og:url" content="https://blog.1chooo.com/categories/DEV/index.html">
+        <meta name="description" content="本文綱要  前言 1. 產生 ssh key 2. 取得 public ssh key 3. 把 public key 設定到 GitHub A. 前往 GitHub 設定 B. 點擊 “SSH and GPG keys” C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key” D. 貼上 public key 最後送出   How to reach out to">
+<meta property="og:type" content="article">
+<meta property="og:title" content="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻">
+<meta property="og:url" content="https://blog.1chooo.com/2023/09/08/DEV_tips/git-test-post/index.html">
 <meta property="og:site_name" content="1chooo&#39;s Blog">
-<meta property="og:description" content="The student who eager to CS">
+<meta property="og:description" content="本文綱要  前言 1. 產生 ssh key 2. 取得 public ssh key 3. 把 public key 設定到 GitHub A. 前往 GitHub 設定 B. 點擊 “SSH and GPG keys” C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key” D. 貼上 public key 最後送出   How to reach out to">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/01.png">
+<meta property="og:image" content="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/02.png">
+<meta property="og:image" content="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/03.png">
+<meta property="og:image" content="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/04.png">
+<meta property="og:image" content="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/05.png">
+<meta property="article:published_time" content="2023-09-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-03-24T14:58:44.014Z">
 <meta property="article:author" content="Hugo ChunHo Lin">
-<meta property="article:tag" content="1chooo">
-<meta property="article:tag" content="林群賀">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="GitHub">
+<meta property="article:tag" content="SSH Key">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/01.png">
     
     
     <!--- Icon Part-->
@@ -40,7 +49,7 @@
     
     <title>
         
-            Category: DEV -
+            踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻 -
         
         1chooo&#39;s Blog
     </title>
@@ -315,7 +324,7 @@
 
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class="active"
+                                <a class=""
                                    href="/categories/"
                                         >
                                     <i class="fa-solid fa-folder fa-fw"></i>
@@ -438,7 +447,7 @@
 
                     <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
                         
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
                            href="/categories/"
                         >
                             <span>
@@ -549,61 +558,340 @@
             <div class="main-content">
 
                 
-                    <div class="category-container">
-    <div class="category-name">
-        <i class="fa-solid fa-folder"></i>&nbsp;DEV
-    </div>
-    <div class="category-post-list">
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                
+                
+                <img src="/images/cover/git_tips_cover.png" alt="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/itachi.jpg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Hugo ChunHo Lin</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">he/him</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2023-09-08</span>
+        <span class="mobile">2023-09-08</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-03-24 22:58:44</span>
+            <span class="mobile">2024-03-24 22:58:44</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/DEV/">DEV</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Git/">Git</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/GitHub/">GitHub</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/SSH-Key/">SSH Key</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>934 Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>3 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
         
 
-<div class="archive-list-container">
-    
-        <section class="archive-item">
-            <div class="archive-item-header flex flex-row items-center mb-2">
-                <span class="archive-year font-semibold text-3xl mr-2">2023</span>
-                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">3</span>
-            </div>
-            <ul class="article-list pl-8 text-lg leading-[1.5]">
-              
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <p><strong>本文綱要</strong></p>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#1-%E7%94%A2%E7%94%9F-ssh-key">1. 產生 ssh key</a></li>
+<li><a href="#2-%E5%8F%96%E5%BE%97-public-ssh-key">2. 取得 public ssh key</a></li>
+<li><a href="#3-%E6%8A%8A-public-key-%E8%A8%AD%E5%AE%9A%E5%88%B0-github">3. 把 public key 設定到 GitHub</a><ul>
+<li><a href="#a-%E5%89%8D%E5%BE%80-github-%E8%A8%AD%E5%AE%9A">A. 前往 GitHub 設定</a></li>
+<li><a href="#b-%E9%BB%9E%E6%93%8A-ssh-and-gpg-keys">B. 點擊 “SSH and GPG keys”</a></li>
+<li><a href="#c-%E9%80%B2%E5%85%A5-ssh-and-gpg-keys-%E9%A0%81%E9%9D%A2%E5%BE%8C%E9%BB%9E%E6%93%8A-new-ssh-key">C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”</a></li>
+<li><a href="#d-%E8%B2%BC%E4%B8%8A-public-key-%E6%9C%80%E5%BE%8C%E9%80%81%E5%87%BA">D. 貼上 public key 最後送出</a></li>
+</ul>
+</li>
+<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
+</ul>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Git 是每位軟體工程師日常工作不可或缺的工具之一，畢竟軟體開發常常需要跟他人合作，甚至是維護、更新等⋯⋯可能都需要參照過去的成果，甚至需要快速與團隊同步，因此 Git 對大家而言都不陌生吧！<br>但是，有時候我們會遇到一些問題，例如：每次 push 都需要輸入帳號密碼，或是每次 push 都需要輸入密碼，這些都是可以透過 ssh 來解決的，接下來就讓我們一起來看看如何使用 ssh 與 GitHub 連線吧！</p>
+<h3 id="1-產生-ssh-key"><a href="#1-產生-ssh-key" class="headerlink" title="1. 產生 ssh key"></a>1. 產生 ssh key</h3><p>首先，我們需要先產生 ssh key，這個 key 會被存在 <code>~/.ssh</code> 資料夾中，如果沒有的話，可以使用以下指令建立（記得要把 email 改成你自己的 email，否則永遠不會成功哦！）：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>上述操作 <code>ed25519</code> 其實是較新的演算法，如果電腦不支援的話也可以使用以下另一種演算法生成（同樣也要記得把 email 改成你自己的 email）：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>以下將使用 <code>id_rsa</code> 做示範，接下來將出現以下畫面，直接按 <strong>Enter</strong> 就會幫你把產生的 key 放在預設的地方 <code>~/.ssh/id_rsa</code> ，也就是下方括號內的位址。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ Enter a file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/you/.ssh/id_rsa):</span><br></pre></td></tr></table></figure></div>
+
+<p>接下來會出現以下畫面，若不想以後 push 都要輸入 <code>passphrase</code> 的話，就連續點擊兩次 <strong>Enter</strong> 這樣 <code>passphrase</code> 就會是空的，以後 push 就不用輸入了！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Click Enter Twice</span></span><br><span class="line">$ Enter passphrase (empty <span class="keyword">for</span> no passphrase): [Type a passphrase]</span><br><span class="line">$ Enter same passphrase again: [Type passphrase again]</span><br></pre></td></tr></table></figure></div>
+
+<p>這樣做 ssh key 就已經生成好了！</p>
+<p>總共會生成兩個 key，private and public key，接下來會帶大家如何找到這兩個 key。</p>
+<h3 id="2-取得-public-ssh-key"><a href="#2-取得-public-ssh-key" class="headerlink" title="2. 取得 public ssh key"></a>2. 取得 public ssh key</h3><p>接著我們要進到剛剛放置 key 的位置，因此我們照著以下流程，把 public 的 key 拿出（副檔名為 <code>.pub</code>），要特別注意 GitHub 只需要 public 的 key，private 要自己留好！千萬不要給任何人！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> .ssh</span><br><span class="line">$ <span class="built_in">ls</span></span><br><span class="line">id_rsa          id_rsa.pub</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cat</span> id_rsa.pub</span><br></pre></td></tr></table></figure></div>
+
+<p>接下來就把 <code>cat id_rsa.pub</code> 的內容複製下來，我們就可以回 GitHub 做最後一步設定了！</p>
+<h3 id="3-把-public-key-設定到-GitHub"><a href="#3-把-public-key-設定到-GitHub" class="headerlink" title="3. 把 public key 設定到 GitHub"></a>3. 把 public key 設定到 GitHub</h3><p>接下來我們要把 public key 設定到 GitHub，這樣 GitHub 才能辨識你的電腦，讓你可以透過 ssh 連線到 GitHub，這樣就可以真的達到不用每次 push 都要輸入帳號密碼了！接下來將用截圖畫面的方式展示步驟！</p>
+<h4 id="A-前往-GitHub-設定"><a href="#A-前往-GitHub-設定" class="headerlink" title="A. 前往 GitHub 設定"></a>A. 前往 GitHub 設定</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/01.png"
+                     
+                ></p>
+<h4 id="B-點擊-“SSH-and-GPG-keys”"><a href="#B-點擊-“SSH-and-GPG-keys”" class="headerlink" title="B. 點擊 “SSH and GPG keys”"></a>B. 點擊 “SSH and GPG keys”</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/02.png"
+                     
+                ></p>
+<h4 id="C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”"><a href="#C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”" class="headerlink" title="C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”"></a>C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/03.png"
+                     
+                ></p>
+<h4 id="D-貼上-public-key-最後送出"><a href="#D-貼上-public-key-最後送出" class="headerlink" title="D. 貼上 public key 最後送出"></a>D. 貼上 public key 最後送出</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/04.png"
+                     
+                ></p>
+<p>照著上述步驟就一切沒問題了，以後把專案 clone 到本地就選擇 ssh 的方式就搞定啦！<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/05.png"
+                     
+                ></p>
+<p>如果原先專案是走 <code>http</code> 的方式 <code>clone</code> 下來的話只要做以下更改就可以換成 <code>ssh</code> 啦！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote set-url origin &lt;your_project_ssh_url&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>如此以後專案 push 到 GitHub 就都會走 ssh 了也不需要每次都輸入帳號密碼了！最後祝大家以後都開發順利！可以開始進行更多遠端的 Git 操作了！</p>
+<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
+<li>Ins: <a class="link"   target="_blank" rel="noopener" href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Linkedin: <a class="link"   target="_blank" rel="noopener" href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>GitHub: <a class="link"   target="_blank" rel="noopener" href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>My Linktree: <a class="link"   target="_blank" rel="noopener" href="https://1chooo.github.io/linktree/" >1chooo’s Linktree <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#x67;&#111;&#x39;&#x37;&#x30;&#x32;&#49;&#55;&#64;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;" >&#x68;&#x75;&#x67;&#111;&#x39;&#x37;&#x30;&#x32;&#49;&#55;&#64;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
                 
-                    
-                    <li class="article-item" date-is='09-08'>
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Git/">#Git</a>&nbsp;
+                    </li>
                 
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/GitHub/">#GitHub</a>&nbsp;
+                    </li>
                 
-                    <a href="/2023/09/08/DEV_tips/git-test-post/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</span>
-                    </a>
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/SSH-Key/">#SSH Key</a>&nbsp;
+                    </li>
                 
-              
-                
-                
-                    <a href="/2023/09/08/DEV_tips/git_ssh/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</span>
-                    </a>
-                
-              
-                
-                    
-                    <li class="article-item" date-is='07-30'>
-                
-                
-                    <a href="/2023/07/30/DEV_tips/conda_tips/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">我在 Conda 常用的指令</span>
-                    </a>
-                
-              
             </ul>
-        </section>
+        
+
+        
+  <div class="recommended-article px-2 sm:px-6 md:px-8">
+   <div class="recommended-desktop">
+    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
+     <i aria-hidden="true"></i><span>Recommendation</span>
+    </div>
+    <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/09/08/DEV_tips/git_ssh/" title="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻" rel="bookmark">
+  <img src="/images/cover/git_tips_cover.png" alt="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻" class="!max-w-none">
+  <span class="title">踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</span>
+</a><a class="recommended-article-item" href="/2023/07/30/pick_ipad/" title="剛上大學的我如何挑到適合我的平板！？" rel="bookmark">
+  <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*f2BkDSANBT2XUGEzR-1_gw.jpeg" alt="剛上大學的我如何挑到適合我的平板！？" class="!max-w-none">
+  <span class="title">剛上大學的我如何挑到適合我的平板！？</span>
+</a><a class="recommended-article-item" href="/2023/07/30/ds_and_alg/alg/euclid/" title="演算法第一講——Euclid Algorithm 歐幾里得演算法" rel="bookmark">
+  <img src="https://miro.medium.com/v2/resize:fit:1340/format:webp/1*xS3rVXn57DTerPNCZuOJ_g.jpeg" alt="演算法第一講——Euclid Algorithm 歐幾里得演算法" class="!max-w-none">
+  <span class="title">演算法第一講——Euclid Algorithm 歐幾里得演算法</span>
+</a></div>
+   </div>
+   <div class="recommended-mobile">
+   <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
+     <i aria-hidden="true"></i><span>Recommendation</span>
+   </div>
+   <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/09/08/DEV_tips/git_ssh/" title="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻" rel="bookmark">
+  <img src="/images/cover/git_tips_cover.png" alt="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻" class="!max-w-none">
+  <span class="title">踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</span>
+</a><a class="recommended-article-item" href="/2023/07/30/pick_ipad/" title="剛上大學的我如何挑到適合我的平板！？" rel="bookmark">
+  <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*f2BkDSANBT2XUGEzR-1_gw.jpeg" alt="剛上大學的我如何挑到適合我的平板！？" class="!max-w-none">
+  <span class="title">剛上大學的我如何挑到適合我的平板！？</span>
+</a></div>
+   </div>
+  </div>
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2023/09/08/DEV_tips/git_ssh/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="gitalk-container"></div>
+    <script data-swup-reload-script
+            src="//cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+    <script data-swup-reload-script>
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: 'acaa0c618d0dc3ce3aa4',
+                    clientSecret: '365588687d838001351756d3f641ec3d6ef4314e',
+                    repo: 'blog.1chooo.com',
+                    owner: '1chooo',
+                    admin: ['1chooo'],
+                    id: __gitalk__pathname,
+                    language: 'en',
+                    proxy: 'https://github.com/login/oauth/access_token'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('true') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+
+        
     
 </div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%94%A2%E7%94%9F-ssh-key"><span class="nav-text">1. 產生 ssh key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%8F%96%E5%BE%97-public-ssh-key"><span class="nav-text">2. 取得 public ssh key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%8A%8A-public-key-%E8%A8%AD%E5%AE%9A%E5%88%B0-GitHub"><span class="nav-text">3. 把 public key 設定到 GitHub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-reach-out-to-me"><span class="nav-text">How to reach out to me</span></a></li></ol>
 
     </div>
 </div>
-<div class="category-paginator">
-    <div class="paginator">
-    <span class="page-number current">1</span>
-</div>
-
+        </div>
+    
 </div>
 
 
@@ -679,6 +967,27 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-side-tools-container">
