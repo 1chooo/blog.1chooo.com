@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>平板能輔助大學生上課嗎？</title>
-    <url>/blog.1chooo.com/2023/07/30/no_book/</url>
+    <url>/2023/07/30/no_book/</url>
     <content><![CDATA[<blockquote>
 <p>誒～怎麼身邊上課的人開始都不帶書了！？</p>
 </blockquote>
@@ -78,7 +78,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#x67;&#111;&#57;&#55;&#48;&#x32;&#x31;&#55;&#x40;&#103;&#109;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#x6d;" >&#104;&#x75;&#x67;&#111;&#57;&#55;&#48;&#x32;&#x31;&#55;&#x40;&#103;&#109;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#117;&#103;&#x6f;&#57;&#55;&#x30;&#50;&#49;&#55;&#64;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#x6d;" >&#104;&#117;&#103;&#x6f;&#57;&#55;&#x30;&#50;&#49;&#55;&#64;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -92,7 +92,7 @@
   </entry>
   <entry>
     <title>剛上大學的我如何挑到適合我的平板！？</title>
-    <url>/blog.1chooo.com/2023/07/30/pick_ipad/</url>
+    <url>/2023/07/30/pick_ipad/</url>
     <content><![CDATA[<p>疫情嚴峻的 2021 年中，所有戶外活動皆需要暫停，身為大一生，參與的校園活動被迫中止，連課程都改為遠距教學，學習方法勢必有所改變</p>
 <p><figure class="image-caption"><img  
                      lazyload
@@ -123,7 +123,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#103;&#111;&#x39;&#x37;&#48;&#x32;&#49;&#x37;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#111;&#x6d;" >&#x68;&#x75;&#103;&#111;&#x39;&#x37;&#48;&#x32;&#49;&#x37;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#103;&#111;&#57;&#x37;&#x30;&#50;&#x31;&#55;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#111;&#109;" >&#x68;&#x75;&#103;&#111;&#57;&#x37;&#x30;&#50;&#x31;&#55;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -137,7 +137,7 @@
   </entry>
   <entry>
     <title>我在 Conda 常用的指令</title>
-    <url>/blog.1chooo.com/2023/07/30/DEV_tips/conda_tips/</url>
+    <url>/2023/07/30/DEV_tips/conda_tips/</url>
     <content><![CDATA[<blockquote>
 <p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
 </blockquote>
@@ -195,7 +195,7 @@
 <p><figure class="image-caption"><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/blog.1chooo.com/../assets/imgs/conda_command.png"
+                     data-src="/../assets/imgs/conda_command.png"
                       alt="每次激活環境時的操作" title="每次激活環境時的操作"
                 ><figcaption>每次激活環境時的操作</figcaption></figure></p>
 <p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
@@ -207,7 +207,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#117;&#103;&#x6f;&#57;&#x37;&#48;&#x32;&#49;&#55;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d;" >&#x68;&#117;&#103;&#x6f;&#57;&#x37;&#48;&#x32;&#49;&#55;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#103;&#x6f;&#57;&#x37;&#48;&#50;&#x31;&#x37;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;" >&#104;&#x75;&#103;&#x6f;&#57;&#x37;&#48;&#50;&#x31;&#x37;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -222,7 +222,7 @@
   </entry>
   <entry>
     <title>踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</title>
-    <url>/blog.1chooo.com/2023/09/08/DEV_tips/git_ssh/</url>
+    <url>/2023/09/08/DEV_tips/git_ssh/</url>
     <content><![CDATA[<p><strong>本文綱要</strong></p>
 <ul>
 <li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
@@ -295,8 +295,8 @@
 <li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>My Linktree: <a href="https://1chooo.github.io/linktree/">1chooo’s Linktree</a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#x67;&#111;&#57;&#x37;&#x30;&#x32;&#49;&#x37;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#109;" >&#104;&#x75;&#x67;&#111;&#57;&#x37;&#x30;&#x32;&#49;&#x37;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>My Linktree: <a class="link"   href="https://1chooo.github.io/linktree/" >1chooo’s Linktree <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#117;&#x67;&#x6f;&#57;&#x37;&#48;&#50;&#x31;&#x37;&#x40;&#103;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d;" >&#104;&#117;&#x67;&#x6f;&#57;&#x37;&#48;&#50;&#x31;&#x37;&#x40;&#103;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -310,7 +310,7 @@
   </entry>
   <entry>
     <title>做個小貪吃蛇來玩吧！</title>
-    <url>/blog.1chooo.com/2023/07/30/projects_intro/snake_game/</url>
+    <url>/2023/07/30/projects_intro/snake_game/</url>
     <content><![CDATA[<p>還記得當時剛學習程式語言的時候，對於什麼知識都不懂，連搜尋能力也沒有，常常搜不到關鍵字，問題也解決不了，不過當時懵懂無知的狀態，完成了基礎貪吃蛇的小遊戲，所以決定撰寫一篇文章來記錄當時的過程。</p>
 <p><strong>本文綱要</strong></p>
 <ul>
@@ -389,7 +389,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#x67;&#x6f;&#x39;&#x37;&#x30;&#50;&#x31;&#55;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#111;&#109;" >&#104;&#x75;&#x67;&#x6f;&#x39;&#x37;&#x30;&#50;&#x31;&#55;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#103;&#111;&#x39;&#55;&#48;&#50;&#49;&#55;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#109;" >&#x68;&#x75;&#103;&#111;&#x39;&#55;&#48;&#50;&#49;&#55;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -402,7 +402,7 @@
   </entry>
   <entry>
     <title>演算法第一講——Euclid Algorithm 歐幾里得演算法</title>
-    <url>/blog.1chooo.com/2023/07/30/ds_and_alg/alg/euclid/</url>
+    <url>/2023/07/30/ds_and_alg/alg/euclid/</url>
     <content><![CDATA[<p>大家在過往學習的經驗中，可能都有聽過歐幾里德這名鼎鼎大名的人物，是位在希臘化時期的數學家，有著著名著作「幾何原本」，在數學領域中有著極大化的貢獻，為現今眾多數學家所認同。</p>
 <p><figure class="image-caption"><img  
                      lazyload
@@ -453,7 +453,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#117;&#x67;&#111;&#57;&#x37;&#48;&#50;&#x31;&#55;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#109;" >&#104;&#117;&#x67;&#111;&#57;&#x37;&#48;&#50;&#x31;&#55;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#117;&#103;&#111;&#57;&#x37;&#x30;&#x32;&#x31;&#55;&#64;&#103;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;" >&#104;&#117;&#103;&#111;&#57;&#x37;&#x30;&#x32;&#x31;&#55;&#64;&#103;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
