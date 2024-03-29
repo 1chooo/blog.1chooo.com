@@ -78,7 +78,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#117;&#x67;&#x6f;&#57;&#x37;&#x30;&#x32;&#x31;&#55;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;" >&#x68;&#117;&#x67;&#x6f;&#57;&#x37;&#x30;&#x32;&#x31;&#55;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#117;&#x67;&#x6f;&#x39;&#55;&#48;&#x32;&#49;&#x37;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;" >&#104;&#117;&#x67;&#x6f;&#x39;&#55;&#48;&#x32;&#49;&#x37;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -123,7 +123,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#x67;&#111;&#x39;&#x37;&#x30;&#50;&#49;&#55;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#111;&#x6d;" >&#x68;&#x75;&#x67;&#111;&#x39;&#x37;&#x30;&#50;&#49;&#55;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#117;&#x67;&#111;&#x39;&#55;&#48;&#x32;&#49;&#x37;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;" >&#104;&#117;&#x67;&#111;&#x39;&#55;&#48;&#x32;&#49;&#x37;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -133,6 +133,179 @@
         <tag>ipad</tag>
         <tag>Apple</tag>
         <tag>Freshman</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我在 Conda 常用的指令</title>
+    <url>/2023/07/30/DEV_tips/conda_tips/</url>
+    <content><![CDATA[<blockquote>
+<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
+</blockquote>
+<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
+<p><strong>本文綱要</strong></p>
+<ul>
+<li><a href="#%E5%BB%BA%E7%AB%8B%E5%88%AA%E9%99%A4%E5%92%8C%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">建立、刪除和複製虛擬環境</a><ul>
+<li><a href="#%E5%BB%BA%E7%AB%8B%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">建立虛擬環境</a></li>
+<li><a href="#%E5%88%AA%E9%99%A4%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">刪除虛擬環境</a></li>
+<li><a href="#%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">複製虛擬環境</a></li>
+</ul>
+</li>
+<li><a href="#%E6%BF%80%E6%B4%BB%E8%88%87%E9%80%80%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">激活與退出虛擬環境</a></li>
+<li><a href="#%E5%AE%89%E8%A3%9D%E5%8F%8A%E5%88%AA%E9%99%A4%E9%9C%80%E8%A6%81%E7%9A%84-package-%E8%87%B3%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">安裝及刪除需要的 package 至虛擬環境</a></li>
+<li><a href="#%E6%9F%A5%E8%A9%A2%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83%E8%B3%87%E8%A8%8A">查詢虛擬環境資訊</a></li>
+<li><a href="#%E5%B0%8E%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">導出虛擬環境</a></li>
+<li><a href="#%E6%96%87%E6%9C%AB%E5%B0%8F%E7%B5%90">文末小結</a></li>
+<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
+</ul>
+<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
+<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
+
+<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/../assets/imgs/conda_command.png"
+                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
+                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
+<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
+<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
+<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
+<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
+<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#x67;&#111;&#x39;&#55;&#48;&#x32;&#x31;&#x37;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;" >&#x68;&#x75;&#x67;&#111;&#x39;&#55;&#48;&#x32;&#x31;&#x37;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DEV</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>venv</tag>
+        <tag>conda</tag>
+        <tag>tips</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</title>
+    <url>/2023/09/08/DEV_tips/git_ssh/</url>
+    <content><![CDATA[<p><strong>本文綱要</strong></p>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#1-%E7%94%A2%E7%94%9F-ssh-key">1. 產生 ssh key</a></li>
+<li><a href="#2-%E5%8F%96%E5%BE%97-public-ssh-key">2. 取得 public ssh key</a></li>
+<li><a href="#3-%E6%8A%8A-public-key-%E8%A8%AD%E5%AE%9A%E5%88%B0-github">3. 把 public key 設定到 GitHub</a><ul>
+<li><a href="#a-%E5%89%8D%E5%BE%80-github-%E8%A8%AD%E5%AE%9A">A. 前往 GitHub 設定</a></li>
+<li><a href="#b-%E9%BB%9E%E6%93%8A-ssh-and-gpg-keys">B. 點擊 “SSH and GPG keys”</a></li>
+<li><a href="#c-%E9%80%B2%E5%85%A5-ssh-and-gpg-keys-%E9%A0%81%E9%9D%A2%E5%BE%8C%E9%BB%9E%E6%93%8A-new-ssh-key">C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”</a></li>
+<li><a href="#d-%E8%B2%BC%E4%B8%8A-public-key-%E6%9C%80%E5%BE%8C%E9%80%81%E5%87%BA">D. 貼上 public key 最後送出</a></li>
+</ul>
+</li>
+<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
+</ul>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Git 是每位軟體工程師日常工作不可或缺的工具之一，畢竟軟體開發常常需要跟他人合作，甚至是維護、更新等⋯⋯可能都需要參照過去的成果，甚至需要快速與團隊同步，因此 Git 對大家而言都不陌生吧！<br>但是，有時候我們會遇到一些問題，例如：每次 push 都需要輸入帳號密碼，或是每次 push 都需要輸入密碼，這些都是可以透過 ssh 來解決的，接下來就讓我們一起來看看如何使用 ssh 與 GitHub 連線吧！</p>
+<h3 id="1-產生-ssh-key"><a href="#1-產生-ssh-key" class="headerlink" title="1. 產生 ssh key"></a>1. 產生 ssh key</h3><p>首先，我們需要先產生 ssh key，這個 key 會被存在 <code>~/.ssh</code> 資料夾中，如果沒有的話，可以使用以下指令建立（記得要把 email 改成你自己的 email，否則永遠不會成功哦！）：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>上述操作 <code>ed25519</code> 其實是較新的演算法，如果電腦不支援的話也可以使用以下另一種演算法生成（同樣也要記得把 email 改成你自己的 email）：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>以下將使用 <code>id_rsa</code> 做示範，接下來將出現以下畫面，直接按 <strong>Enter</strong> 就會幫你把產生的 key 放在預設的地方 <code>~/.ssh/id_rsa</code> ，也就是下方括號內的位址。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ Enter a file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/you/.ssh/id_rsa):</span><br></pre></td></tr></table></figure></div>
+
+<p>接下來會出現以下畫面，若不想以後 push 都要輸入 <code>passphrase</code> 的話，就連續點擊兩次 <strong>Enter</strong> 這樣 <code>passphrase</code> 就會是空的，以後 push 就不用輸入了！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Click Enter Twice</span></span><br><span class="line">$ Enter passphrase (empty <span class="keyword">for</span> no passphrase): [Type a passphrase]</span><br><span class="line">$ Enter same passphrase again: [Type passphrase again]</span><br></pre></td></tr></table></figure></div>
+
+<p>這樣做 ssh key 就已經生成好了！</p>
+<p>總共會生成兩個 key，private and public key，接下來會帶大家如何找到這兩個 key。</p>
+<h3 id="2-取得-public-ssh-key"><a href="#2-取得-public-ssh-key" class="headerlink" title="2. 取得 public ssh key"></a>2. 取得 public ssh key</h3><p>接著我們要進到剛剛放置 key 的位置，因此我們照著以下流程，把 public 的 key 拿出（副檔名為 <code>.pub</code>），要特別注意 GitHub 只需要 public 的 key，private 要自己留好！千萬不要給任何人！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> .ssh</span><br><span class="line">$ <span class="built_in">ls</span></span><br><span class="line">id_rsa          id_rsa.pub</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cat</span> id_rsa.pub</span><br></pre></td></tr></table></figure></div>
+
+<p>接下來就把 <code>cat id_rsa.pub</code> 的內容複製下來，我們就可以回 GitHub 做最後一步設定了！</p>
+<h3 id="3-把-public-key-設定到-GitHub"><a href="#3-把-public-key-設定到-GitHub" class="headerlink" title="3. 把 public key 設定到 GitHub"></a>3. 把 public key 設定到 GitHub</h3><p>接下來我們要把 public key 設定到 GitHub，這樣 GitHub 才能辨識你的電腦，讓你可以透過 ssh 連線到 GitHub，這樣就可以真的達到不用每次 push 都要輸入帳號密碼了！接下來將用截圖畫面的方式展示步驟！</p>
+<h4 id="A-前往-GitHub-設定"><a href="#A-前往-GitHub-設定" class="headerlink" title="A. 前往 GitHub 設定"></a>A. 前往 GitHub 設定</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/01.png"
+                     
+                ></p>
+<h4 id="B-點擊-“SSH-and-GPG-keys”"><a href="#B-點擊-“SSH-and-GPG-keys”" class="headerlink" title="B. 點擊 “SSH and GPG keys”"></a>B. 點擊 “SSH and GPG keys”</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/02.png"
+                     
+                ></p>
+<h4 id="C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”"><a href="#C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”" class="headerlink" title="C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”"></a>C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/03.png"
+                     
+                ></p>
+<h4 id="D-貼上-public-key-最後送出"><a href="#D-貼上-public-key-最後送出" class="headerlink" title="D. 貼上 public key 最後送出"></a>D. 貼上 public key 最後送出</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/04.png"
+                     
+                ></p>
+<p>照著上述步驟就一切沒問題了，以後把專案 clone 到本地就選擇 ssh 的方式就搞定啦！<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/05.png"
+                     
+                ></p>
+<p>如果原先專案是走 <code>http</code> 的方式 <code>clone</code> 下來的話只要做以下更改就可以換成 <code>ssh</code> 啦！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote set-url origin &lt;your_project_ssh_url&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>如此以後專案 push 到 GitHub 就都會走 ssh 了也不需要每次都輸入帳號密碼了！最後祝大家以後都開發順利！可以開始進行更多遠端的 Git 操作了！</p>
+<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
+<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>My Linktree: <a class="link"   href="https://1chooo.github.io/linktree/" >1chooo’s Linktree <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#117;&#x67;&#x6f;&#x39;&#x37;&#48;&#x32;&#49;&#x37;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#109;" >&#104;&#117;&#x67;&#x6f;&#x39;&#x37;&#48;&#x32;&#49;&#x37;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DEV</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>GitHub</tag>
+        <tag>SSH Key</tag>
       </tags>
   </entry>
   <entry>
@@ -216,7 +389,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#x67;&#111;&#57;&#x37;&#x30;&#x32;&#x31;&#55;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d;" >&#x68;&#x75;&#x67;&#111;&#57;&#x37;&#x30;&#x32;&#x31;&#55;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#103;&#111;&#57;&#x37;&#48;&#50;&#x31;&#55;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;" >&#104;&#x75;&#103;&#111;&#57;&#x37;&#48;&#50;&#x31;&#55;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -225,179 +398,6 @@
       <tags>
         <tag>python</tag>
         <tag>pygame</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</title>
-    <url>/2023/09/08/DEV_tips/git_ssh/</url>
-    <content><![CDATA[<p><strong>本文綱要</strong></p>
-<ul>
-<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
-<li><a href="#1-%E7%94%A2%E7%94%9F-ssh-key">1. 產生 ssh key</a></li>
-<li><a href="#2-%E5%8F%96%E5%BE%97-public-ssh-key">2. 取得 public ssh key</a></li>
-<li><a href="#3-%E6%8A%8A-public-key-%E8%A8%AD%E5%AE%9A%E5%88%B0-github">3. 把 public key 設定到 GitHub</a><ul>
-<li><a href="#a-%E5%89%8D%E5%BE%80-github-%E8%A8%AD%E5%AE%9A">A. 前往 GitHub 設定</a></li>
-<li><a href="#b-%E9%BB%9E%E6%93%8A-ssh-and-gpg-keys">B. 點擊 “SSH and GPG keys”</a></li>
-<li><a href="#c-%E9%80%B2%E5%85%A5-ssh-and-gpg-keys-%E9%A0%81%E9%9D%A2%E5%BE%8C%E9%BB%9E%E6%93%8A-new-ssh-key">C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”</a></li>
-<li><a href="#d-%E8%B2%BC%E4%B8%8A-public-key-%E6%9C%80%E5%BE%8C%E9%80%81%E5%87%BA">D. 貼上 public key 最後送出</a></li>
-</ul>
-</li>
-<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
-</ul>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Git 是每位軟體工程師日常工作不可或缺的工具之一，畢竟軟體開發常常需要跟他人合作，甚至是維護、更新等⋯⋯可能都需要參照過去的成果，甚至需要快速與團隊同步，因此 Git 對大家而言都不陌生吧！<br>但是，有時候我們會遇到一些問題，例如：每次 push 都需要輸入帳號密碼，或是每次 push 都需要輸入密碼，這些都是可以透過 ssh 來解決的，接下來就讓我們一起來看看如何使用 ssh 與 GitHub 連線吧！</p>
-<h3 id="1-產生-ssh-key"><a href="#1-產生-ssh-key" class="headerlink" title="1. 產生 ssh key"></a>1. 產生 ssh key</h3><p>首先，我們需要先產生 ssh key，這個 key 會被存在 <code>~/.ssh</code> 資料夾中，如果沒有的話，可以使用以下指令建立（記得要把 email 改成你自己的 email，否則永遠不會成功哦！）：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>上述操作 <code>ed25519</code> 其實是較新的演算法，如果電腦不支援的話也可以使用以下另一種演算法生成（同樣也要記得把 email 改成你自己的 email）：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>以下將使用 <code>id_rsa</code> 做示範，接下來將出現以下畫面，直接按 <strong>Enter</strong> 就會幫你把產生的 key 放在預設的地方 <code>~/.ssh/id_rsa</code> ，也就是下方括號內的位址。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ Enter a file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/you/.ssh/id_rsa):</span><br></pre></td></tr></table></figure></div>
-
-<p>接下來會出現以下畫面，若不想以後 push 都要輸入 <code>passphrase</code> 的話，就連續點擊兩次 <strong>Enter</strong> 這樣 <code>passphrase</code> 就會是空的，以後 push 就不用輸入了！</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Click Enter Twice</span></span><br><span class="line">$ Enter passphrase (empty <span class="keyword">for</span> no passphrase): [Type a passphrase]</span><br><span class="line">$ Enter same passphrase again: [Type passphrase again]</span><br></pre></td></tr></table></figure></div>
-
-<p>這樣做 ssh key 就已經生成好了！</p>
-<p>總共會生成兩個 key，private and public key，接下來會帶大家如何找到這兩個 key。</p>
-<h3 id="2-取得-public-ssh-key"><a href="#2-取得-public-ssh-key" class="headerlink" title="2. 取得 public ssh key"></a>2. 取得 public ssh key</h3><p>接著我們要進到剛剛放置 key 的位置，因此我們照著以下流程，把 public 的 key 拿出（副檔名為 <code>.pub</code>），要特別注意 GitHub 只需要 public 的 key，private 要自己留好！千萬不要給任何人！</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> .ssh</span><br><span class="line">$ <span class="built_in">ls</span></span><br><span class="line">id_rsa          id_rsa.pub</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cat</span> id_rsa.pub</span><br></pre></td></tr></table></figure></div>
-
-<p>接下來就把 <code>cat id_rsa.pub</code> 的內容複製下來，我們就可以回 GitHub 做最後一步設定了！</p>
-<h3 id="3-把-public-key-設定到-GitHub"><a href="#3-把-public-key-設定到-GitHub" class="headerlink" title="3. 把 public key 設定到 GitHub"></a>3. 把 public key 設定到 GitHub</h3><p>接下來我們要把 public key 設定到 GitHub，這樣 GitHub 才能辨識你的電腦，讓你可以透過 ssh 連線到 GitHub，這樣就可以真的達到不用每次 push 都要輸入帳號密碼了！接下來將用截圖畫面的方式展示步驟！</p>
-<h4 id="A-前往-GitHub-設定"><a href="#A-前往-GitHub-設定" class="headerlink" title="A. 前往 GitHub 設定"></a>A. 前往 GitHub 設定</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/01.png"
-                     
-                ></p>
-<h4 id="B-點擊-“SSH-and-GPG-keys”"><a href="#B-點擊-“SSH-and-GPG-keys”" class="headerlink" title="B. 點擊 “SSH and GPG keys”"></a>B. 點擊 “SSH and GPG keys”</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/02.png"
-                     
-                ></p>
-<h4 id="C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”"><a href="#C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”" class="headerlink" title="C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”"></a>C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/03.png"
-                     
-                ></p>
-<h4 id="D-貼上-public-key-最後送出"><a href="#D-貼上-public-key-最後送出" class="headerlink" title="D. 貼上 public key 最後送出"></a>D. 貼上 public key 最後送出</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/04.png"
-                     
-                ></p>
-<p>照著上述步驟就一切沒問題了，以後把專案 clone 到本地就選擇 ssh 的方式就搞定啦！<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/05.png"
-                     
-                ></p>
-<p>如果原先專案是走 <code>http</code> 的方式 <code>clone</code> 下來的話只要做以下更改就可以換成 <code>ssh</code> 啦！</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote set-url origin &lt;your_project_ssh_url&gt;</span><br></pre></td></tr></table></figure></div>
-
-<p>如此以後專案 push 到 GitHub 就都會走 ssh 了也不需要每次都輸入帳號密碼了！最後祝大家以後都開發順利！可以開始進行更多遠端的 Git 操作了！</p>
-<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
-<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>My Linktree: <a class="link"   href="https://1chooo.github.io/linktree/" >1chooo’s Linktree <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#x67;&#x6f;&#57;&#55;&#48;&#50;&#49;&#55;&#64;&#103;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;" >&#x68;&#x75;&#x67;&#x6f;&#57;&#55;&#48;&#50;&#49;&#55;&#64;&#103;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DEV</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>GitHub</tag>
-        <tag>SSH Key</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我在 Conda 常用的指令</title>
-    <url>/2023/07/30/DEV_tips/conda_tips/</url>
-    <content><![CDATA[<blockquote>
-<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
-</blockquote>
-<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
-<p><strong>本文綱要</strong></p>
-<ul>
-<li><a href="#%E5%BB%BA%E7%AB%8B%E5%88%AA%E9%99%A4%E5%92%8C%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">建立、刪除和複製虛擬環境</a><ul>
-<li><a href="#%E5%BB%BA%E7%AB%8B%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">建立虛擬環境</a></li>
-<li><a href="#%E5%88%AA%E9%99%A4%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">刪除虛擬環境</a></li>
-<li><a href="#%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">複製虛擬環境</a></li>
-</ul>
-</li>
-<li><a href="#%E6%BF%80%E6%B4%BB%E8%88%87%E9%80%80%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">激活與退出虛擬環境</a></li>
-<li><a href="#%E5%AE%89%E8%A3%9D%E5%8F%8A%E5%88%AA%E9%99%A4%E9%9C%80%E8%A6%81%E7%9A%84-package-%E8%87%B3%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">安裝及刪除需要的 package 至虛擬環境</a></li>
-<li><a href="#%E6%9F%A5%E8%A9%A2%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83%E8%B3%87%E8%A8%8A">查詢虛擬環境資訊</a></li>
-<li><a href="#%E5%B0%8E%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">導出虛擬環境</a></li>
-<li><a href="#%E6%96%87%E6%9C%AB%E5%B0%8F%E7%B5%90">文末小結</a></li>
-<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
-</ul>
-<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
-<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
-
-<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../assets/imgs/conda_command.png"
-                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
-                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
-<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
-<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
-<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
-<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
-<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#117;&#x67;&#111;&#57;&#x37;&#x30;&#50;&#49;&#55;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#109;" >&#x68;&#117;&#x67;&#111;&#57;&#x37;&#x30;&#50;&#49;&#55;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DEV</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>venv</tag>
-        <tag>conda</tag>
-        <tag>tips</tag>
       </tags>
   </entry>
   <entry>
@@ -453,7 +453,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#x67;&#111;&#57;&#x37;&#48;&#x32;&#49;&#55;&#64;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#109;" >&#x68;&#x75;&#x67;&#111;&#57;&#x37;&#48;&#x32;&#49;&#55;&#64;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#x67;&#111;&#57;&#55;&#x30;&#50;&#x31;&#x37;&#x40;&#103;&#109;&#97;&#x69;&#108;&#46;&#99;&#111;&#109;" >&#x68;&#x75;&#x67;&#111;&#57;&#55;&#x30;&#50;&#x31;&#x37;&#x40;&#103;&#109;&#97;&#x69;&#108;&#46;&#99;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
