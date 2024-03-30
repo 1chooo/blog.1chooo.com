@@ -6,7 +6,7 @@ tags:
 - Git 
 - GitHub
 - SSH Key
-cover: https://1chooo.github.io/1chooo-blog/images/cover/git_tips_cover.png
+cover: /images/cover/git_tips_cover.png
 ---
 
 **本文綱要**

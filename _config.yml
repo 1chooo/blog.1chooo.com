@@ -3,19 +3,22 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 1chooo's Blog
-subtitle: 'The student who eager to CS'
-description: 'The student who eager to CS'
+title: Hugo's Blog
+subtitle: 'I am Hugo ChunHo Lin (1chooo), a 4th-year student at National Central University (NCU), driven by a genuine passion for the field of Software Engineering 💻.'
+description: 'I am Hugo ChunHo Lin (1chooo), a 4th-year student at National Central University (NCU), driven by a genuine passion for the field of Software Engineering 💻.'
 keywords:
+  - Hugo
+  - Hugo ChunHo Lin
+  - Hugo Lin
   - 1chooo
   - 林群賀
-author: Hugo ChunHo Lin
+author: Hugo ChunHo Lin (1chooo)
 language: en
 timezone: 'Asia/Taipei'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://1chooo.github.io/blog.1chooo.com
+url: https://blog.1chooo.com
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -107,3 +110,5 @@ deploy:
   type: git
   repo: git@github.com:1chooo/blog.1chooo.com.git
   branch: gh-page
+  ignore:
+      - CNAME

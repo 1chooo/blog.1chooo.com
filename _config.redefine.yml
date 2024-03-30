@@ -17,11 +17,11 @@
 #   logo_img: /images/favicon.ico
 info:
   # Site title
-  title: 1chooo's Blog
+  title: Hugo's Blog
   # Author name
-  author: Hugo ChunHo Lin
+  author: Hugo ChunHo Lin (1chooo)
   # Site URL
-  url: https://1chooo.github.io/blog.1chooo.com
+  url: https://blog.1chooo.com
 # BASIC INFORMATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
@@ -32,7 +32,7 @@ defaults:
   # Site logo
   logo: /images/favicon.ico
   # Site avatar
-  avatar: https://github.com/1chooo/blog.1chooo.com/blob/gh-page/images/itachi.jpg?raw=true
+  avatar: /images/profile.jpg
 # IMAGE CONFIGURATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
@@ -109,13 +109,13 @@ home_banner:
   style: fixed # static or fixed
   # Home banner image
   image: 
-    light: https://1chooo.github.io/blog.1chooo.com/images/campus_girl.jpg
-    dark: https://1chooo.github.io/blog.1chooo.com/images/dark_mac.jpg
+    light: /images/campus_girl.jpg
+    dark: /images/dark_mac.jpg
   # Home banner title
-  title: 1chooo's Blog
+  title: Hugo's Blog
   # Home banner subtitle
   subtitle:
-    text: ["This is Hugo ChunHo Lin", "The one who eagers to CS Field"] # subtitle text, array
+    text: ["This is Hugo ChunHo Lin (1chooo)", "The one who eagers to CS Field"] # subtitle text, array
     hitokoto:  # 一言配置
       enable: false # Whether to enable hitokoto
       api: https://v1.hitokoto.cn # API URL, can add types, see https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
@@ -189,20 +189,7 @@ navbar:
         Personal/CV: /about
         GitHub: https://github.com/1chooo
         Linkedin: https://www.linkedin.com/in/1chooo/
-        Portfolio: https://sites.google.com/g.ncu.edu.tw/1chooo
-    # Archives: 
-    #   path: /archives 
-    #   icon: fa-regular fa-archive # can be empty
-    # Status: 
-    #   path: https://status.evanluo.top/
-    #   icon: fa-regular fa-chart-bar
-    # About: 
-    #   icon: fa-regular fa-user
-    #   submenus:
-    #     Me: /about
-    #     Github: https://github.com/EvanNotFound/hexo-theme-redefine
-    #     Blog: https://ohevan.com
-    #     Friends: /friends
+        Portfolio: https://1chooo.com
     # Links: 
     #   icon: fa-regular fa-link
     #   submenus:
@@ -226,12 +213,12 @@ home:
     enable: true # Whether to enable sidebar
     position: left # Sidebar position. left, right
     first_item: menu # First item in sidebar. menu, info
-    announcement: 23" SWE Internship @PEGATRON, 5th Student Ambassador @AWS
+    announcement: eCloudValley - Cloud Developer Intern | Ex AWS Educate, PEGATRON | ATM, CS at NCU
     links:
       # Archives: 
       #   path: /archives 
       #   icon: fa-regular fa-archive # can be empty
-      Resume/CV:
+      About:
         path: /about
         icon: fa-regular fa-user
       Github: 
@@ -240,12 +227,6 @@ home:
       Linkedin: 
         path: https://www.linkedin.com/in/1chooo/
         icon: fa-brands fa-linkedin
-      # Tags: 
-      #   path: /tags 
-      #   icon: fa-regular fa-tags # can be empty
-      # Categories: 
-      #   path: /categories 
-      #   icon: fa-regular fa-folder # can be empty
       # ...... # you can add more
   # Article date format
   article_date_format: MMM D, YYYY # auto, relative, YYYY-MM-DD, YYYY-MM-DD HH:mm:ss etc.

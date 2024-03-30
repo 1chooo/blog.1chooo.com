@@ -6,7 +6,7 @@ tags:
 - ipad
 - Apple
 - Freshman
-cover: https://1chooo.github.io/1chooo-blog/images/cover/no_book_cover.jpg
+cover: https://blog.1chooo.com/images/cover/no_book_cover.jpg
 ---
 
 > 誒～怎麼身邊上課的人開始都不帶書了！？
