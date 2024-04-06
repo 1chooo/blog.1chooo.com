@@ -33,7 +33,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#117;&#103;&#x6f;&#57;&#x37;&#48;&#50;&#x31;&#55;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;" >&#104;&#117;&#103;&#x6f;&#57;&#x37;&#48;&#50;&#x31;&#55;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#117;&#103;&#x6f;&#57;&#x37;&#x30;&#x32;&#x31;&#55;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;" >&#104;&#117;&#103;&#x6f;&#57;&#x37;&#x30;&#x32;&#x31;&#55;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -123,7 +123,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#x67;&#x6f;&#x39;&#55;&#48;&#50;&#49;&#55;&#x40;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;" >&#104;&#x75;&#x67;&#x6f;&#x39;&#55;&#48;&#50;&#49;&#55;&#x40;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#103;&#111;&#x39;&#55;&#48;&#x32;&#x31;&#x37;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;" >&#x68;&#x75;&#103;&#111;&#x39;&#55;&#48;&#x32;&#x31;&#x37;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -133,98 +133,6 @@
         <tag>ipad</tag>
         <tag>Apple</tag>
         <tag>Freshman</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>做個小貪吃蛇來玩吧！</title>
-    <url>/2023/07/30/projects_intro/snake_game/</url>
-    <content><![CDATA[<p>還記得當時剛學習程式語言的時候，對於什麼知識都不懂，連搜尋能力也沒有，常常搜不到關鍵字，問題也解決不了，不過當時懵懂無知的狀態，完成了基礎貪吃蛇的小遊戲，所以決定撰寫一篇文章來記錄當時的過程。</p>
-<p><strong>本文綱要</strong></p>
-<ul>
-<li><a href="#%E7%92%B0%E5%A2%83%E5%BB%BA%E7%BD%AE">環境建置</a><ul>
-<li><a href="#%E5%AE%98%E7%B6%B2%E9%80%A3%E7%B5%90">官網連結：</a></li>
-</ul>
-</li>
-<li><a href="#%E6%8E%A5%E8%91%97%E5%B0%B1%E9%96%8B%E5%A7%8B%E5%BB%BA%E7%AB%8B%E7%92%B0%E5%A2%83%E5%90%A7">接著就開始建立環境吧！</a></li>
-<li><a href="#%E5%AF%A6%E4%BD%9C%E8%AA%AA%E6%98%8E">實作說明</a></li>
-<li><a href="#%E5%AF%A6%E4%BD%9C%E6%84%9F%E6%83%B3">實作感想</a></li>
-<li><a href="#%E6%9B%B4%E6%96%B0%E5%B0%88%E6%A1%88%E5%BE%8C%E7%BA%8C%E7%99%BC%E5%B1%95">（更新）專案後續發展</a></li>
-<li><a href="#%E9%87%8D%E6%A7%8B%E5%BF%83%E5%BE%97">重構心得</a><ul>
-<li><a href="#source-code-in-github-python_snake_game">Source Code in GitHub: python_snake_game</a></li>
-<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="環境建置"><a href="#環境建置" class="headerlink" title="環境建置"></a>環境建置</h2><p>實作這次的小遊戲是透過 Python 語言的套件：Pygame 來實現的，不過途中會遇到很多的版本問題，起源於 Pygame 本身版本相容性，因此我們要測試出能夠正常執行的版本，過程中不斷地嘗試，也不斷地失敗，最後才找出了解決方案，那就是透過 Conda 的環境來建置。</p>
-<p>選擇安裝 Conda 版本，這邊選擇的是 MiniConda，因為本身不太需要原本 Conda 如此龐大的功能，因此選擇瘦身版的，再加上 Mac 的儲存空間著實珍貴啊！選用的版本為 <code>conda 4.12.0</code>，直接前往官網安裝相對應作業系統版本即可。</p>
-<h4 id="官網連結："><a href="#官網連結：" class="headerlink" title="官網連結："></a>官網連結：</h4><p><a class="link"   href="https://docs.conda.io/en/latest/miniconda.html" >Miniconda Docs <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h2 id="接著就開始建立環境吧！"><a href="#接著就開始建立環境吧！" class="headerlink" title="接著就開始建立環境吧！"></a>接著就開始建立環境吧！</h2><p>我們先確認 Conda 版本，在終端機輸入 <code>conda --version</code>。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/max/1400/1*1uDdGsxFlihzmPfLP6Mo4A.webp"
-                     
-                ></p>
-<p>接著透過 Conda 建立名為 pygame 的虛擬環境，Python 的版本選用 <code>3.16.13</code> 並且激活執行該環境。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create --name pygame python=3.6.13</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate pygame</span></span><br></pre></td></tr></table></figure></div>
-
-<p>確認 Python 版本，並且開始安裝我們需要的套件，如果把–user 省略，會直接安裝至 Conda 的環境。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python --version</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 -m pip install -U pygame --user</span></span><br></pre></td></tr></table></figure></div>
-
-<p>最後已經到了最後一步了，我們只要測試 pygame 能否正常運作便大功告成了，所以我們要執行 pygame 可以直接呼叫的小遊戲。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 -m pygame.examples.aliens</span></span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/max/1400/1*xRYWm3kCCimYkrsHfh88KA.webp"
-                     
-                ></p>
-<h2 id="實作說明"><a href="#實作說明" class="headerlink" title="實作說明"></a>實作說明</h2><p>前面做了這麼多的前置作業，那我們就開始進行實作吧！我們的順序會先引入套件，設定鍵盤方向鍵的接收，最後進行一連串的遊戲玩法設定，就大功告成啦！完整程式碼都放在 GitHub 給大家參考啦！畢竟全部放進文章，會變成流水帳，最後只要在終端機輸入 python main.py ，就可以正常執行貪吃蛇小遊戲囉！</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/max/1400/1*okV2P3qTibFMO1NWbaRBJQ.webp"
-                     
-                ></p>
-<h2 id="實作感想"><a href="#實作感想" class="headerlink" title="實作感想"></a>實作感想</h2><p>當下實作程式碼，說真的也不完全是自己的東西，大多數的東西都要透過參考他人的實作來完成，不過在程式碼實作初期，環境崩掉的時候真的很讓人崩潰，只能不斷 conda remove -n env_name -all ，一直 rebuild，不過這過程中真的可以學到很多內容，可以更了解 python 語言的版本相應關係，以及要如何管理自己電腦環境（雖然現在環境依舊混亂～嘿嘿～）。</p>
-<p>那在程式語言方面，練習到了物件導向的概念，可以把很多東西看成是一個個的物件，並且有分類的關係，即便當時看不太懂，但還是很有成就感，畢竟這是第一個小專案，能夠感受到不斷學習的狀態，這已經夠讓我珍惜了！未來也還會繼續分享專案實作，並且做更多深入地探究，繼續在電腦科學的道路上前行、突破！</p>
-<hr>
-<h2 id="（更新）專案後續發展"><a href="#（更新）專案後續發展" class="headerlink" title="（更新）專案後續發展"></a>（更新）專案後續發展</h2><p>現在時間是 2023 年初，過新年便有項恆年不變的傳統，那就是要「除舊佈新」，想當然爾過往的專案在此刻便會重出江湖，況且現在距離上次改動專案也隔了半年以上，寫程式碼的習慣也會因為參考了更多人的寫法而有所改動，因此在原有程式架構不變的情景下，將原本的程式碼重構，寫成呼叫物件的形式，以下便會直接透過程式碼說明，另外撰寫這段文字的時候也發現 Medium 改動了嵌入程式碼的方式，現在無需上傳到 GitHub Gist 也可以將程式碼顯示有 Syntax 的樣貌了，那我們就開始展開說明吧！</p>
-<ul>
-<li><p>將貪吃蛇的移動獨立成 <code>Direction.py</code></p>
-  <div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Direction</span>(<span class="title class_ inherited__">Enum</span>):</span><br><span class="line"></span><br><span class="line">    RIGHT = <span class="number">1</span></span><br><span class="line">    LEFT = <span class="number">2</span></span><br><span class="line">    UP = <span class="number">3</span></span><br><span class="line">    DOWN = <span class="number">4</span></span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>將遊戲的主要規則程式寫入 <code>SnakeGame.py</code></p>
-  <div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> Direction <span class="keyword">import</span> Direction</span><br><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line">font = pygame.font.Font(<span class="string">&#x27;../src/arial.ttf&#x27;</span>, <span class="number">25</span>)</span><br><span class="line">Point = namedtuple(<span class="string">&#x27;Point&#x27;</span>, <span class="string">&#x27;x, y&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># rgb colors</span></span><br><span class="line">WHITE = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line">RED = (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">BLUE1 = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>)</span><br><span class="line">BLUE2 = (<span class="number">0</span>, <span class="number">100</span>, <span class="number">255</span>)</span><br><span class="line">BLACK = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">BLOCK_SIZE = <span class="number">20</span></span><br><span class="line">SPEED = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SnakeGame</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, w=<span class="number">640</span>, h=<span class="number">480</span></span>):</span><br><span class="line">        self.w = w</span><br><span class="line">        self.h = h</span><br><span class="line">        <span class="comment"># init display</span></span><br><span class="line">        self.display = pygame.display.set_mode((self.w, self.h))</span><br><span class="line">        pygame.display.set_caption(<span class="string">&#x27;Snake&#x27;</span>)</span><br><span class="line">        self.clock = pygame.time.Clock()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># init game state</span></span><br><span class="line">        self.direction = Direction.RIGHT</span><br><span class="line"></span><br><span class="line">        self.head = Point(self.w / <span class="number">2</span>, self.h / <span class="number">2</span>)</span><br><span class="line">        self.snake = [self.head, Point(self.head.x - BLOCK_SIZE, self.head.y),</span><br><span class="line">                    Point(self.head.x - (<span class="number">2</span> * BLOCK_SIZE), self.head.y)]</span><br><span class="line"></span><br><span class="line">        self.score = <span class="number">0</span></span><br><span class="line">        self.food = <span class="literal">None</span></span><br><span class="line">        self._place_food()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_place_food</span>(<span class="params">self</span>):</span><br><span class="line">        x = random.randint(<span class="number">0</span>, (self.w - BLOCK_SIZE) // BLOCK_SIZE) * BLOCK_SIZE</span><br><span class="line">        y = random.randint(<span class="number">0</span>, (self.h - BLOCK_SIZE) // BLOCK_SIZE) * BLOCK_SIZE</span><br><span class="line"></span><br><span class="line">        self.food = Point(x, y)</span><br><span class="line">        <span class="keyword">if</span> self.food <span class="keyword">in</span> self.snake:</span><br><span class="line">            self._place_food()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">play_step</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 1. collect user input</span></span><br><span class="line">        <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">            <span class="keyword">if</span> event.<span class="built_in">type</span> == pygame.QUIT:</span><br><span class="line">                pygame.quit()</span><br><span class="line">                quit()</span><br><span class="line">            <span class="keyword">if</span> event.<span class="built_in">type</span> == pygame.KEYDOWN:</span><br><span class="line">                <span class="keyword">if</span> event.key == pygame.K_LEFT:</span><br><span class="line">                    self.direction = Direction.LEFT</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_RIGHT:</span><br><span class="line">                    self.direction = Direction.RIGHT</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_UP:</span><br><span class="line">                    self.direction = Direction.UP</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_DOWN:</span><br><span class="line">                    self.direction = Direction.DOWN</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 2. move</span></span><br><span class="line">        self._move(self.direction)  <span class="comment"># update the head</span></span><br><span class="line">        self.snake.insert(<span class="number">0</span>, self.head)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 3. check if game over</span></span><br><span class="line">        gameOver = <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> self._is_collision():</span><br><span class="line">            gameOver = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">return</span> gameOver, self.score</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 4. pace new food or just move</span></span><br><span class="line">        <span class="keyword">if</span> self.head == self.food:</span><br><span class="line">            self.score += <span class="number">1</span></span><br><span class="line">            self._place_food()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.snake.pop()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 5. update ui and clock</span></span><br><span class="line">        self._update_ui()</span><br><span class="line">        self.clock.tick(SPEED)</span><br><span class="line">        <span class="comment"># 6. return gameOver and score</span></span><br><span class="line">        <span class="keyword">return</span> gameOver, self.score</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_is_collision</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># hits boundary</span></span><br><span class="line">        <span class="keyword">if</span> self.head.x &gt; self.w - BLOCK_SIZE <span class="keyword">or</span> self.head.x &lt; <span class="number">0</span> <span class="keyword">or</span> self.head.y &gt; self.h - BLOCK_SIZE <span class="keyword">or</span> self.head.y &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="comment"># hits itself</span></span><br><span class="line">        <span class="keyword">if</span> self.head <span class="keyword">in</span> self.snake[<span class="number">1</span>:]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_update_ui</span>(<span class="params">self</span>):</span><br><span class="line">        self.display.fill(BLACK)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> pt <span class="keyword">in</span> self.snake:</span><br><span class="line">            pygame.draw.rect(self.display, BLUE1, pygame.Rect(pt.x, pt.y, BLOCK_SIZE, BLOCK_SIZE))  <span class="comment"># 東西南北</span></span><br><span class="line">            pygame.draw.rect(self.display, BLUE2, pygame.Rect(pt.x + <span class="number">4</span>, pt.y + <span class="number">4</span>, <span class="number">12</span>, <span class="number">12</span>))</span><br><span class="line"></span><br><span class="line">        pygame.draw.rect(self.display, RED, pygame.Rect(self.food.x, self.food.y, BLOCK_SIZE, BLOCK_SIZE))</span><br><span class="line"></span><br><span class="line">        text = font.render(<span class="string">&quot;Score: &quot;</span> + <span class="built_in">str</span>(self.score), <span class="literal">True</span>, WHITE)</span><br><span class="line">        self.display.blit(text, (<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">        pygame.display.flip()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_move</span>(<span class="params">self, direction</span>):</span><br><span class="line">        x = self.head.x</span><br><span class="line">        y = self.head.y</span><br><span class="line">        <span class="keyword">if</span> direction == Direction.RIGHT:</span><br><span class="line">            x += BLOCK_SIZE</span><br><span class="line">        <span class="keyword">elif</span> direction == Direction.LEFT:</span><br><span class="line">            x -= BLOCK_SIZE</span><br><span class="line">        <span class="keyword">elif</span> direction == Direction.DOWN:</span><br><span class="line">            y += BLOCK_SIZE</span><br><span class="line">        <span class="keyword">elif</span> direction == Direction.UP:</span><br><span class="line">            y -= BLOCK_SIZE</span><br><span class="line"></span><br><span class="line">        self.head = Point(x, y)</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>最後創建 <code>main.py</code> 呼叫所有內容，便可向原先依樣正常執行啦！</p>
-  <div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> SnakeGame <span class="keyword">import</span> SnakeGame</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    game = SnakeGame()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># game loop</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        gameOver, score = game.play_step()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> gameOver == <span class="literal">True</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Final Score&#x27;</span>, score)</span><br><span class="line"></span><br><span class="line">    pygame.quit()</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>此時在終端機執行 <code>python3 main.py</code> 也會出現相同的畫面呢！</p>
-</li>
-</ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/max/1400/1*okV2P3qTibFMO1NWbaRBJQ.webp"
-                     
-                ></p>
-<h2 id="重構心得"><a href="#重構心得" class="headerlink" title="重構心得"></a>重構心得</h2><p>這次會想要重構程式碼，便是因為 2022 後半年使用 python3 完成了一個新的專案，也在過程中才更認識 python3 類別的應用以及開發所需注意的小細節，所以才回想起曾經做過的小專案，嘗試將後續所學到的內容更應用在程式碼撰寫上，也增加自己多一次的經驗累積。</p>
-<h3 id="Source-Code-in-GitHub-python-snake-game"><a href="#Source-Code-in-GitHub-python-snake-game" class="headerlink" title="Source Code in GitHub: python_snake_game"></a>Source Code in GitHub: <a class="link"   href="https://github.com/1chooo/junk-project/tree/main/python_snake_game" >python_snake_game <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h3><h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
-<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#117;&#103;&#111;&#x39;&#55;&#48;&#x32;&#x31;&#55;&#64;&#103;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#x6d;" >&#104;&#117;&#103;&#111;&#x39;&#55;&#48;&#x32;&#x31;&#55;&#64;&#103;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Project</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>pygame</tag>
       </tags>
   </entry>
   <entry>
@@ -299,7 +207,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#117;&#x67;&#111;&#57;&#x37;&#x30;&#50;&#x31;&#55;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;" >&#x68;&#117;&#x67;&#111;&#57;&#x37;&#x30;&#50;&#x31;&#55;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#117;&#x67;&#111;&#x39;&#x37;&#x30;&#x32;&#x31;&#55;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#99;&#111;&#x6d;" >&#104;&#117;&#x67;&#111;&#x39;&#x37;&#x30;&#x32;&#x31;&#55;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -313,7 +221,7 @@
       </tags>
   </entry>
   <entry>
-    <title>如何編輯 `/var/www/html` 中的檔案</title>
+    <title>如何編輯 /var/www/html 中的檔案</title>
     <url>/2024/03/18/DEV_tips/edit-server-html/</url>
     <content><![CDATA[<p>首先為甚麼我們會需要編輯 <code>/var/www/html</code> 中的檔案呢？這是因為我們如果要在 Linux 中架設屬於我們的伺服器，像是 Apache 或是 Nginx，我們需要將我們的網頁檔案放在 <code>/var/www/html</code> 中。因此，如果我們要修改我們的網頁檔案，我們就需要進入這個資料夾中進行修改。</p>
 <p>但是在 Linux 中的 <code>/</code> 之下的檔案都是屬於 root 的，因此我們需要使用 <code>sudo</code> 來進行修改。因此之前在要編輯 <code>/var/www/html</code> 中的檔案時候，看到很多人的做法是直接修改權限，因為 Linux 每個檔案都可以設定不同的權限，但其實如果 user 本身權限不同，會導致一些問題。</p>
@@ -405,7 +313,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>My Linktree: <a class="link"   href="https://1chooo.github.io/linktree/" >1chooo’s Linktree <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#103;&#111;&#57;&#x37;&#x30;&#x32;&#x31;&#55;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;" >&#x68;&#x75;&#103;&#111;&#57;&#x37;&#x30;&#x32;&#x31;&#55;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#117;&#x67;&#x6f;&#57;&#55;&#48;&#x32;&#x31;&#x37;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#x6d;" >&#104;&#117;&#x67;&#x6f;&#57;&#55;&#48;&#x32;&#x31;&#x37;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -415,6 +323,98 @@
         <tag>Git</tag>
         <tag>GitHub</tag>
         <tag>SSH Key</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>做個小貪吃蛇來玩吧！</title>
+    <url>/2023/07/30/projects_intro/snake_game/</url>
+    <content><![CDATA[<p>還記得當時剛學習程式語言的時候，對於什麼知識都不懂，連搜尋能力也沒有，常常搜不到關鍵字，問題也解決不了，不過當時懵懂無知的狀態，完成了基礎貪吃蛇的小遊戲，所以決定撰寫一篇文章來記錄當時的過程。</p>
+<p><strong>本文綱要</strong></p>
+<ul>
+<li><a href="#%E7%92%B0%E5%A2%83%E5%BB%BA%E7%BD%AE">環境建置</a><ul>
+<li><a href="#%E5%AE%98%E7%B6%B2%E9%80%A3%E7%B5%90">官網連結：</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8E%A5%E8%91%97%E5%B0%B1%E9%96%8B%E5%A7%8B%E5%BB%BA%E7%AB%8B%E7%92%B0%E5%A2%83%E5%90%A7">接著就開始建立環境吧！</a></li>
+<li><a href="#%E5%AF%A6%E4%BD%9C%E8%AA%AA%E6%98%8E">實作說明</a></li>
+<li><a href="#%E5%AF%A6%E4%BD%9C%E6%84%9F%E6%83%B3">實作感想</a></li>
+<li><a href="#%E6%9B%B4%E6%96%B0%E5%B0%88%E6%A1%88%E5%BE%8C%E7%BA%8C%E7%99%BC%E5%B1%95">（更新）專案後續發展</a></li>
+<li><a href="#%E9%87%8D%E6%A7%8B%E5%BF%83%E5%BE%97">重構心得</a><ul>
+<li><a href="#source-code-in-github-python_snake_game">Source Code in GitHub: python_snake_game</a></li>
+<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="環境建置"><a href="#環境建置" class="headerlink" title="環境建置"></a>環境建置</h2><p>實作這次的小遊戲是透過 Python 語言的套件：Pygame 來實現的，不過途中會遇到很多的版本問題，起源於 Pygame 本身版本相容性，因此我們要測試出能夠正常執行的版本，過程中不斷地嘗試，也不斷地失敗，最後才找出了解決方案，那就是透過 Conda 的環境來建置。</p>
+<p>選擇安裝 Conda 版本，這邊選擇的是 MiniConda，因為本身不太需要原本 Conda 如此龐大的功能，因此選擇瘦身版的，再加上 Mac 的儲存空間著實珍貴啊！選用的版本為 <code>conda 4.12.0</code>，直接前往官網安裝相對應作業系統版本即可。</p>
+<h4 id="官網連結："><a href="#官網連結：" class="headerlink" title="官網連結："></a>官網連結：</h4><p><a class="link"   href="https://docs.conda.io/en/latest/miniconda.html" >Miniconda Docs <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h2 id="接著就開始建立環境吧！"><a href="#接著就開始建立環境吧！" class="headerlink" title="接著就開始建立環境吧！"></a>接著就開始建立環境吧！</h2><p>我們先確認 Conda 版本，在終端機輸入 <code>conda --version</code>。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/max/1400/1*1uDdGsxFlihzmPfLP6Mo4A.webp"
+                     
+                ></p>
+<p>接著透過 Conda 建立名為 pygame 的虛擬環境，Python 的版本選用 <code>3.16.13</code> 並且激活執行該環境。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create --name pygame python=3.6.13</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate pygame</span></span><br></pre></td></tr></table></figure></div>
+
+<p>確認 Python 版本，並且開始安裝我們需要的套件，如果把–user 省略，會直接安裝至 Conda 的環境。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python --version</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 -m pip install -U pygame --user</span></span><br></pre></td></tr></table></figure></div>
+
+<p>最後已經到了最後一步了，我們只要測試 pygame 能否正常運作便大功告成了，所以我們要執行 pygame 可以直接呼叫的小遊戲。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 -m pygame.examples.aliens</span></span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/max/1400/1*xRYWm3kCCimYkrsHfh88KA.webp"
+                     
+                ></p>
+<h2 id="實作說明"><a href="#實作說明" class="headerlink" title="實作說明"></a>實作說明</h2><p>前面做了這麼多的前置作業，那我們就開始進行實作吧！我們的順序會先引入套件，設定鍵盤方向鍵的接收，最後進行一連串的遊戲玩法設定，就大功告成啦！完整程式碼都放在 GitHub 給大家參考啦！畢竟全部放進文章，會變成流水帳，最後只要在終端機輸入 python main.py ，就可以正常執行貪吃蛇小遊戲囉！</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/max/1400/1*okV2P3qTibFMO1NWbaRBJQ.webp"
+                     
+                ></p>
+<h2 id="實作感想"><a href="#實作感想" class="headerlink" title="實作感想"></a>實作感想</h2><p>當下實作程式碼，說真的也不完全是自己的東西，大多數的東西都要透過參考他人的實作來完成，不過在程式碼實作初期，環境崩掉的時候真的很讓人崩潰，只能不斷 conda remove -n env_name -all ，一直 rebuild，不過這過程中真的可以學到很多內容，可以更了解 python 語言的版本相應關係，以及要如何管理自己電腦環境（雖然現在環境依舊混亂～嘿嘿～）。</p>
+<p>那在程式語言方面，練習到了物件導向的概念，可以把很多東西看成是一個個的物件，並且有分類的關係，即便當時看不太懂，但還是很有成就感，畢竟這是第一個小專案，能夠感受到不斷學習的狀態，這已經夠讓我珍惜了！未來也還會繼續分享專案實作，並且做更多深入地探究，繼續在電腦科學的道路上前行、突破！</p>
+<hr>
+<h2 id="（更新）專案後續發展"><a href="#（更新）專案後續發展" class="headerlink" title="（更新）專案後續發展"></a>（更新）專案後續發展</h2><p>現在時間是 2023 年初，過新年便有項恆年不變的傳統，那就是要「除舊佈新」，想當然爾過往的專案在此刻便會重出江湖，況且現在距離上次改動專案也隔了半年以上，寫程式碼的習慣也會因為參考了更多人的寫法而有所改動，因此在原有程式架構不變的情景下，將原本的程式碼重構，寫成呼叫物件的形式，以下便會直接透過程式碼說明，另外撰寫這段文字的時候也發現 Medium 改動了嵌入程式碼的方式，現在無需上傳到 GitHub Gist 也可以將程式碼顯示有 Syntax 的樣貌了，那我們就開始展開說明吧！</p>
+<ul>
+<li><p>將貪吃蛇的移動獨立成 <code>Direction.py</code></p>
+  <div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Direction</span>(<span class="title class_ inherited__">Enum</span>):</span><br><span class="line"></span><br><span class="line">    RIGHT = <span class="number">1</span></span><br><span class="line">    LEFT = <span class="number">2</span></span><br><span class="line">    UP = <span class="number">3</span></span><br><span class="line">    DOWN = <span class="number">4</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>將遊戲的主要規則程式寫入 <code>SnakeGame.py</code></p>
+  <div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> Direction <span class="keyword">import</span> Direction</span><br><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line">font = pygame.font.Font(<span class="string">&#x27;../src/arial.ttf&#x27;</span>, <span class="number">25</span>)</span><br><span class="line">Point = namedtuple(<span class="string">&#x27;Point&#x27;</span>, <span class="string">&#x27;x, y&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># rgb colors</span></span><br><span class="line">WHITE = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line">RED = (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">BLUE1 = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>)</span><br><span class="line">BLUE2 = (<span class="number">0</span>, <span class="number">100</span>, <span class="number">255</span>)</span><br><span class="line">BLACK = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">BLOCK_SIZE = <span class="number">20</span></span><br><span class="line">SPEED = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SnakeGame</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, w=<span class="number">640</span>, h=<span class="number">480</span></span>):</span><br><span class="line">        self.w = w</span><br><span class="line">        self.h = h</span><br><span class="line">        <span class="comment"># init display</span></span><br><span class="line">        self.display = pygame.display.set_mode((self.w, self.h))</span><br><span class="line">        pygame.display.set_caption(<span class="string">&#x27;Snake&#x27;</span>)</span><br><span class="line">        self.clock = pygame.time.Clock()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># init game state</span></span><br><span class="line">        self.direction = Direction.RIGHT</span><br><span class="line"></span><br><span class="line">        self.head = Point(self.w / <span class="number">2</span>, self.h / <span class="number">2</span>)</span><br><span class="line">        self.snake = [self.head, Point(self.head.x - BLOCK_SIZE, self.head.y),</span><br><span class="line">                    Point(self.head.x - (<span class="number">2</span> * BLOCK_SIZE), self.head.y)]</span><br><span class="line"></span><br><span class="line">        self.score = <span class="number">0</span></span><br><span class="line">        self.food = <span class="literal">None</span></span><br><span class="line">        self._place_food()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_place_food</span>(<span class="params">self</span>):</span><br><span class="line">        x = random.randint(<span class="number">0</span>, (self.w - BLOCK_SIZE) // BLOCK_SIZE) * BLOCK_SIZE</span><br><span class="line">        y = random.randint(<span class="number">0</span>, (self.h - BLOCK_SIZE) // BLOCK_SIZE) * BLOCK_SIZE</span><br><span class="line"></span><br><span class="line">        self.food = Point(x, y)</span><br><span class="line">        <span class="keyword">if</span> self.food <span class="keyword">in</span> self.snake:</span><br><span class="line">            self._place_food()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">play_step</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 1. collect user input</span></span><br><span class="line">        <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">            <span class="keyword">if</span> event.<span class="built_in">type</span> == pygame.QUIT:</span><br><span class="line">                pygame.quit()</span><br><span class="line">                quit()</span><br><span class="line">            <span class="keyword">if</span> event.<span class="built_in">type</span> == pygame.KEYDOWN:</span><br><span class="line">                <span class="keyword">if</span> event.key == pygame.K_LEFT:</span><br><span class="line">                    self.direction = Direction.LEFT</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_RIGHT:</span><br><span class="line">                    self.direction = Direction.RIGHT</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_UP:</span><br><span class="line">                    self.direction = Direction.UP</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_DOWN:</span><br><span class="line">                    self.direction = Direction.DOWN</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 2. move</span></span><br><span class="line">        self._move(self.direction)  <span class="comment"># update the head</span></span><br><span class="line">        self.snake.insert(<span class="number">0</span>, self.head)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 3. check if game over</span></span><br><span class="line">        gameOver = <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> self._is_collision():</span><br><span class="line">            gameOver = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">return</span> gameOver, self.score</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 4. pace new food or just move</span></span><br><span class="line">        <span class="keyword">if</span> self.head == self.food:</span><br><span class="line">            self.score += <span class="number">1</span></span><br><span class="line">            self._place_food()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.snake.pop()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 5. update ui and clock</span></span><br><span class="line">        self._update_ui()</span><br><span class="line">        self.clock.tick(SPEED)</span><br><span class="line">        <span class="comment"># 6. return gameOver and score</span></span><br><span class="line">        <span class="keyword">return</span> gameOver, self.score</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_is_collision</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># hits boundary</span></span><br><span class="line">        <span class="keyword">if</span> self.head.x &gt; self.w - BLOCK_SIZE <span class="keyword">or</span> self.head.x &lt; <span class="number">0</span> <span class="keyword">or</span> self.head.y &gt; self.h - BLOCK_SIZE <span class="keyword">or</span> self.head.y &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="comment"># hits itself</span></span><br><span class="line">        <span class="keyword">if</span> self.head <span class="keyword">in</span> self.snake[<span class="number">1</span>:]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_update_ui</span>(<span class="params">self</span>):</span><br><span class="line">        self.display.fill(BLACK)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> pt <span class="keyword">in</span> self.snake:</span><br><span class="line">            pygame.draw.rect(self.display, BLUE1, pygame.Rect(pt.x, pt.y, BLOCK_SIZE, BLOCK_SIZE))  <span class="comment"># 東西南北</span></span><br><span class="line">            pygame.draw.rect(self.display, BLUE2, pygame.Rect(pt.x + <span class="number">4</span>, pt.y + <span class="number">4</span>, <span class="number">12</span>, <span class="number">12</span>))</span><br><span class="line"></span><br><span class="line">        pygame.draw.rect(self.display, RED, pygame.Rect(self.food.x, self.food.y, BLOCK_SIZE, BLOCK_SIZE))</span><br><span class="line"></span><br><span class="line">        text = font.render(<span class="string">&quot;Score: &quot;</span> + <span class="built_in">str</span>(self.score), <span class="literal">True</span>, WHITE)</span><br><span class="line">        self.display.blit(text, (<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">        pygame.display.flip()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_move</span>(<span class="params">self, direction</span>):</span><br><span class="line">        x = self.head.x</span><br><span class="line">        y = self.head.y</span><br><span class="line">        <span class="keyword">if</span> direction == Direction.RIGHT:</span><br><span class="line">            x += BLOCK_SIZE</span><br><span class="line">        <span class="keyword">elif</span> direction == Direction.LEFT:</span><br><span class="line">            x -= BLOCK_SIZE</span><br><span class="line">        <span class="keyword">elif</span> direction == Direction.DOWN:</span><br><span class="line">            y += BLOCK_SIZE</span><br><span class="line">        <span class="keyword">elif</span> direction == Direction.UP:</span><br><span class="line">            y -= BLOCK_SIZE</span><br><span class="line"></span><br><span class="line">        self.head = Point(x, y)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>最後創建 <code>main.py</code> 呼叫所有內容，便可向原先依樣正常執行啦！</p>
+  <div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> SnakeGame <span class="keyword">import</span> SnakeGame</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    game = SnakeGame()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># game loop</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        gameOver, score = game.play_step()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> gameOver == <span class="literal">True</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Final Score&#x27;</span>, score)</span><br><span class="line"></span><br><span class="line">    pygame.quit()</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>此時在終端機執行 <code>python3 main.py</code> 也會出現相同的畫面呢！</p>
+</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/max/1400/1*okV2P3qTibFMO1NWbaRBJQ.webp"
+                     
+                ></p>
+<h2 id="重構心得"><a href="#重構心得" class="headerlink" title="重構心得"></a>重構心得</h2><p>這次會想要重構程式碼，便是因為 2022 後半年使用 python3 完成了一個新的專案，也在過程中才更認識 python3 類別的應用以及開發所需注意的小細節，所以才回想起曾經做過的小專案，嘗試將後續所學到的內容更應用在程式碼撰寫上，也增加自己多一次的經驗累積。</p>
+<h3 id="Source-Code-in-GitHub-python-snake-game"><a href="#Source-Code-in-GitHub-python-snake-game" class="headerlink" title="Source Code in GitHub: python_snake_game"></a>Source Code in GitHub: <a class="link"   href="https://github.com/1chooo/junk-project/tree/main/python_snake_game" >python_snake_game <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h3><h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
+<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#117;&#x67;&#x6f;&#57;&#55;&#48;&#x32;&#x31;&#x37;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;" >&#104;&#117;&#x67;&#x6f;&#57;&#55;&#48;&#x32;&#x31;&#x37;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Project</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>pygame</tag>
       </tags>
   </entry>
   <entry>
@@ -470,7 +470,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#117;&#x67;&#x6f;&#x39;&#x37;&#x30;&#50;&#x31;&#x37;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;" >&#x68;&#117;&#x67;&#x6f;&#x39;&#x37;&#x30;&#50;&#x31;&#x37;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#103;&#111;&#57;&#x37;&#x30;&#50;&#49;&#x37;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;" >&#104;&#x75;&#103;&#111;&#57;&#x37;&#x30;&#50;&#49;&#x37;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
