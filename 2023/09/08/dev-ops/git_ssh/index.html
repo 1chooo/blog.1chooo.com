@@ -13,23 +13,31 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://blog.1chooo.com/2024/03/18/dev_tips/edit-server-html/"/>
+    <link rel="canonical" href="https://blog.1chooo.com/2023/09/08/dev-ops/git_ssh/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="首先為甚麼我們會需要編輯 &#x2F;var&#x2F;www&#x2F;html 中的檔案呢？這是因為我們如果要在 Linux 中架設屬於我們的伺服器，像是 Apache 或是 Nginx，我們需要將我們的網頁檔案放在 &#x2F;var&#x2F;www&#x2F;html 中。因此，如果我們要修改我們的網頁檔案，我們就需要進入這個資料夾中進行修改。 但是在 Linux 中的 &#x2F; 之下的檔案都是屬於 root 的，因此我們需要使用 sudo 來進行修改">
+        <meta name="description" content="本文綱要  前言 1. 產生 ssh key 2. 取得 public ssh key 3. 把 public key 設定到 GitHub A. 前往 GitHub 設定 B. 點擊 “SSH and GPG keys” C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key” D. 貼上 public key 最後送出   How to reach out to">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何編輯 &#x2F;var&#x2F;www&#x2F;html 中的檔案">
-<meta property="og:url" content="https://blog.1chooo.com/2024/03/18/DEV_tips/edit-server-html/index.html">
+<meta property="og:title" content="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻">
+<meta property="og:url" content="https://blog.1chooo.com/2023/09/08/dev-ops/git_ssh/index.html">
 <meta property="og:site_name" content="Hugo&#39;s Blog">
-<meta property="og:description" content="首先為甚麼我們會需要編輯 &#x2F;var&#x2F;www&#x2F;html 中的檔案呢？這是因為我們如果要在 Linux 中架設屬於我們的伺服器，像是 Apache 或是 Nginx，我們需要將我們的網頁檔案放在 &#x2F;var&#x2F;www&#x2F;html 中。因此，如果我們要修改我們的網頁檔案，我們就需要進入這個資料夾中進行修改。 但是在 Linux 中的 &#x2F; 之下的檔案都是屬於 root 的，因此我們需要使用 sudo 來進行修改">
+<meta property="og:description" content="本文綱要  前言 1. 產生 ssh key 2. 取得 public ssh key 3. 把 public key 設定到 GitHub A. 前往 GitHub 設定 B. 點擊 “SSH and GPG keys” C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key” D. 貼上 public key 最後送出   How to reach out to">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-03-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-04-06T09:17:07.246Z">
+<meta property="og:image" content="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/01.png">
+<meta property="og:image" content="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/02.png">
+<meta property="og:image" content="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/03.png">
+<meta property="og:image" content="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/04.png">
+<meta property="og:image" content="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/05.png">
+<meta property="article:published_time" content="2023-09-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-03-24T14:47:15.242Z">
 <meta property="article:author" content="Hugo ChunHo Lin (1chooo)">
-<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="GitHub">
+<meta property="article:tag" content="SSH Key">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/01.png">
     
     
     <!--- Icon Part-->
@@ -41,7 +49,7 @@
     
     <title>
         
-            如何編輯 /var/www/html 中的檔案 -
+            踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻 -
         
         Hugo&#39;s Blog
     </title>
@@ -557,10 +565,10 @@
             
                 
                 
-                <img src="/images/cover/git_tips_cover.png" alt="如何編輯 /var/www/html 中的檔案" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                <img src="/images/cover/git_tips_cover.png" alt="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
                 
                 <div class="w-full flex items-center absolute bottom-0 justify-start">
-                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">如何編輯 /var/www/html 中的檔案</h1>
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</h1>
                 </div>
             
             </div>
@@ -581,15 +589,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-03-18</span>
-        <span class="mobile">2024-03-18</span>
+        <span class="desktop">2023-09-08</span>
+        <span class="mobile">2023-09-08</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-04-06 17:17:07</span>
-            <span class="mobile">2024-04-06 17:17:07</span>
+            <span class="desktop">2024-03-24 22:47:15</span>
+            <span class="mobile">2024-03-24 22:47:15</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -617,7 +625,15 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/Linux/">Linux</a>&nbsp;
+                        <a href="/tags/Git/">Git</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/GitHub/">GitHub</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/SSH-Key/">SSH Key</a>&nbsp;
                     </li>
                 
             </ul>
@@ -627,12 +643,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>264 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>934 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>3 Mins</span>
         </span>
     
     
@@ -651,12 +667,81 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <p>首先為甚麼我們會需要編輯 <code>/var/www/html</code> 中的檔案呢？這是因為我們如果要在 Linux 中架設屬於我們的伺服器，像是 Apache 或是 Nginx，我們需要將我們的網頁檔案放在 <code>/var/www/html</code> 中。因此，如果我們要修改我們的網頁檔案，我們就需要進入這個資料夾中進行修改。</p>
-<p>但是在 Linux 中的 <code>/</code> 之下的檔案都是屬於 root 的，因此我們需要使用 <code>sudo</code> 來進行修改。因此之前在要編輯 <code>/var/www/html</code> 中的檔案時候，看到很多人的做法是直接修改權限，因為 Linux 每個檔案都可以設定不同的權限，但其實如果 user 本身權限不同，會導致一些問題。</p>
-<p>因此我想提供一個當直接擁有 root user 權限時，最快能成功修改的方法，那就是直接加上 sudo 來進行修改即可！</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi /var/www/html/index.php</span><br></pre></td></tr></table></figure></div>
+            <p><strong>本文綱要</strong></p>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#1-%E7%94%A2%E7%94%9F-ssh-key">1. 產生 ssh key</a></li>
+<li><a href="#2-%E5%8F%96%E5%BE%97-public-ssh-key">2. 取得 public ssh key</a></li>
+<li><a href="#3-%E6%8A%8A-public-key-%E8%A8%AD%E5%AE%9A%E5%88%B0-github">3. 把 public key 設定到 GitHub</a><ul>
+<li><a href="#a-%E5%89%8D%E5%BE%80-github-%E8%A8%AD%E5%AE%9A">A. 前往 GitHub 設定</a></li>
+<li><a href="#b-%E9%BB%9E%E6%93%8A-ssh-and-gpg-keys">B. 點擊 “SSH and GPG keys”</a></li>
+<li><a href="#c-%E9%80%B2%E5%85%A5-ssh-and-gpg-keys-%E9%A0%81%E9%9D%A2%E5%BE%8C%E9%BB%9E%E6%93%8A-new-ssh-key">C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”</a></li>
+<li><a href="#d-%E8%B2%BC%E4%B8%8A-public-key-%E6%9C%80%E5%BE%8C%E9%80%81%E5%87%BA">D. 貼上 public key 最後送出</a></li>
+</ul>
+</li>
+<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
+</ul>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Git 是每位軟體工程師日常工作不可或缺的工具之一，畢竟軟體開發常常需要跟他人合作，甚至是維護、更新等⋯⋯可能都需要參照過去的成果，甚至需要快速與團隊同步，因此 Git 對大家而言都不陌生吧！<br>但是，有時候我們會遇到一些問題，例如：每次 push 都需要輸入帳號密碼，或是每次 push 都需要輸入密碼，這些都是可以透過 ssh 來解決的，接下來就讓我們一起來看看如何使用 ssh 與 GitHub 連線吧！</p>
+<h3 id="1-產生-ssh-key"><a href="#1-產生-ssh-key" class="headerlink" title="1. 產生 ssh key"></a>1. 產生 ssh key</h3><p>首先，我們需要先產生 ssh key，這個 key 會被存在 <code>~/.ssh</code> 資料夾中，如果沒有的話，可以使用以下指令建立（記得要把 email 改成你自己的 email，否則永遠不會成功哦！）：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
 
-<p>這樣就可以更改 <code>/var/www/html</code> 中的檔案了！</p>
+<p>上述操作 <code>ed25519</code> 其實是較新的演算法，如果電腦不支援的話也可以使用以下另一種演算法生成（同樣也要記得把 email 改成你自己的 email）：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>以下將使用 <code>id_rsa</code> 做示範，接下來將出現以下畫面，直接按 <strong>Enter</strong> 就會幫你把產生的 key 放在預設的地方 <code>~/.ssh/id_rsa</code> ，也就是下方括號內的位址。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ Enter a file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/you/.ssh/id_rsa):</span><br></pre></td></tr></table></figure></div>
+
+<p>接下來會出現以下畫面，若不想以後 push 都要輸入 <code>passphrase</code> 的話，就連續點擊兩次 <strong>Enter</strong> 這樣 <code>passphrase</code> 就會是空的，以後 push 就不用輸入了！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Click Enter Twice</span></span><br><span class="line">$ Enter passphrase (empty <span class="keyword">for</span> no passphrase): [Type a passphrase]</span><br><span class="line">$ Enter same passphrase again: [Type passphrase again]</span><br></pre></td></tr></table></figure></div>
+
+<p>這樣做 ssh key 就已經生成好了！</p>
+<p>總共會生成兩個 key，private and public key，接下來會帶大家如何找到這兩個 key。</p>
+<h3 id="2-取得-public-ssh-key"><a href="#2-取得-public-ssh-key" class="headerlink" title="2. 取得 public ssh key"></a>2. 取得 public ssh key</h3><p>接著我們要進到剛剛放置 key 的位置，因此我們照著以下流程，把 public 的 key 拿出（副檔名為 <code>.pub</code>），要特別注意 GitHub 只需要 public 的 key，private 要自己留好！千萬不要給任何人！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> .ssh</span><br><span class="line">$ <span class="built_in">ls</span></span><br><span class="line">id_rsa          id_rsa.pub</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cat</span> id_rsa.pub</span><br></pre></td></tr></table></figure></div>
+
+<p>接下來就把 <code>cat id_rsa.pub</code> 的內容複製下來，我們就可以回 GitHub 做最後一步設定了！</p>
+<h3 id="3-把-public-key-設定到-GitHub"><a href="#3-把-public-key-設定到-GitHub" class="headerlink" title="3. 把 public key 設定到 GitHub"></a>3. 把 public key 設定到 GitHub</h3><p>接下來我們要把 public key 設定到 GitHub，這樣 GitHub 才能辨識你的電腦，讓你可以透過 ssh 連線到 GitHub，這樣就可以真的達到不用每次 push 都要輸入帳號密碼了！接下來將用截圖畫面的方式展示步驟！</p>
+<h4 id="A-前往-GitHub-設定"><a href="#A-前往-GitHub-設定" class="headerlink" title="A. 前往 GitHub 設定"></a>A. 前往 GitHub 設定</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/01.png"
+                     
+                ></p>
+<h4 id="B-點擊-“SSH-and-GPG-keys”"><a href="#B-點擊-“SSH-and-GPG-keys”" class="headerlink" title="B. 點擊 “SSH and GPG keys”"></a>B. 點擊 “SSH and GPG keys”</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/02.png"
+                     
+                ></p>
+<h4 id="C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”"><a href="#C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”" class="headerlink" title="C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”"></a>C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/03.png"
+                     
+                ></p>
+<h4 id="D-貼上-public-key-最後送出"><a href="#D-貼上-public-key-最後送出" class="headerlink" title="D. 貼上 public key 最後送出"></a>D. 貼上 public key 最後送出</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/04.png"
+                     
+                ></p>
+<p>照著上述步驟就一切沒問題了，以後把專案 clone 到本地就選擇 ssh 的方式就搞定啦！<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/05.png"
+                     
+                ></p>
+<p>如果原先專案是走 <code>http</code> 的方式 <code>clone</code> 下來的話只要做以下更改就可以換成 <code>ssh</code> 啦！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote set-url origin &lt;your_project_ssh_url&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>如此以後專案 push 到 GitHub 就都會走 ssh 了也不需要每次都輸入帳號密碼了！最後祝大家以後都開發順利！可以開始進行更多遠端的 Git 操作了！</p>
+<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
+<li>Ins: <a class="link"   target="_blank" rel="noopener" href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Linkedin: <a class="link"   target="_blank" rel="noopener" href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>GitHub: <a class="link"   target="_blank" rel="noopener" href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>My Linktree: <a class="link"   target="_blank" rel="noopener" href="https://1chooo.github.io/linktree/" >1chooo’s Linktree <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#117;&#x67;&#x6f;&#x39;&#x37;&#48;&#50;&#x31;&#x37;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;" >&#104;&#117;&#x67;&#x6f;&#x39;&#x37;&#48;&#50;&#x31;&#x37;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
 
         </div>
 
@@ -666,7 +751,15 @@
             <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/Linux/">#Linux</a>&nbsp;
+                        <a href="/tags/Git/">#Git</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/GitHub/">#GitHub</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/SSH-Key/">#SSH Key</a>&nbsp;
                     </li>
                 
             </ul>
@@ -678,27 +771,27 @@
     <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>Recommendation</span>
     </div>
-    <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/04/11/DEV_tips/amazon-linux-2-install-docker/" title="如何在 AWS EC2 Amazon Linux 2 上安裝 Docker" rel="bookmark">
+    <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/07/30/euclid/" title="演算法第一講——Euclid Algorithm 歐幾里得演算法" rel="bookmark">
+  <img src="https://miro.medium.com/v2/resize:fit:1340/format:webp/1*xS3rVXn57DTerPNCZuOJ_g.jpeg" alt="演算法第一講——Euclid Algorithm 歐幾里得演算法" class="!max-w-none">
+  <span class="title">演算法第一講——Euclid Algorithm 歐幾里得演算法</span>
+</a><a class="recommended-article-item" href="/2024/04/11/dev-ops/amazon-linux-2-install-docker/" title="如何在 AWS EC2 Amazon Linux 2 上安裝 Docker" rel="bookmark">
   <img src="/images/cover/amazon-linux-2-install-docker.png" alt="如何在 AWS EC2 Amazon Linux 2 上安裝 Docker" class="!max-w-none">
   <span class="title">如何在 AWS EC2 Amazon Linux 2 上安裝 Docker</span>
-</a><a class="recommended-article-item" href="/2023/07/30/no_book/" title="平板能輔助大學生上課嗎？" rel="bookmark">
+</a><a class="recommended-article-item" href="/2023/07/30/life/no_book/" title="平板能輔助大學生上課嗎？" rel="bookmark">
   <img src="https://blog.1chooo.com/images/cover/no_book_cover.jpg" alt="平板能輔助大學生上課嗎？" class="!max-w-none">
   <span class="title">平板能輔助大學生上課嗎？</span>
-</a><a class="recommended-article-item" href="/2023/07/30/pick_ipad/" title="剛上大學的我如何挑到適合我的平板！？" rel="bookmark">
-  <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*f2BkDSANBT2XUGEzR-1_gw.jpeg" alt="剛上大學的我如何挑到適合我的平板！？" class="!max-w-none">
-  <span class="title">剛上大學的我如何挑到適合我的平板！？</span>
 </a></div>
    </div>
    <div class="recommended-mobile">
    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>Recommendation</span>
    </div>
-   <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/04/11/DEV_tips/amazon-linux-2-install-docker/" title="如何在 AWS EC2 Amazon Linux 2 上安裝 Docker" rel="bookmark">
+   <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/07/30/euclid/" title="演算法第一講——Euclid Algorithm 歐幾里得演算法" rel="bookmark">
+  <img src="https://miro.medium.com/v2/resize:fit:1340/format:webp/1*xS3rVXn57DTerPNCZuOJ_g.jpeg" alt="演算法第一講——Euclid Algorithm 歐幾里得演算法" class="!max-w-none">
+  <span class="title">演算法第一講——Euclid Algorithm 歐幾里得演算法</span>
+</a><a class="recommended-article-item" href="/2024/04/11/dev-ops/amazon-linux-2-install-docker/" title="如何在 AWS EC2 Amazon Linux 2 上安裝 Docker" rel="bookmark">
   <img src="/images/cover/amazon-linux-2-install-docker.png" alt="如何在 AWS EC2 Amazon Linux 2 上安裝 Docker" class="!max-w-none">
   <span class="title">如何在 AWS EC2 Amazon Linux 2 上安裝 Docker</span>
-</a><a class="recommended-article-item" href="/2023/07/30/no_book/" title="平板能輔助大學生上課嗎？" rel="bookmark">
-  <img src="https://blog.1chooo.com/images/cover/no_book_cover.jpg" alt="平板能輔助大學生上課嗎？" class="!max-w-none">
-  <span class="title">平板能輔助大學生上課嗎？</span>
 </a></div>
    </div>
   </div>
@@ -709,13 +802,13 @@
                     <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="prev"
                         rel="prev"
-                        href="/2024/04/11/DEV_tips/amazon-linux-2-install-docker/"
+                        href="/2024/03/18/dev-ops/edit-server-html/"
                         >
                             <span class="left arrow-icon flex justify-center items-center">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </span>
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">如何在 AWS EC2 Amazon Linux 2 上安裝 Docker</span>
+                                <span class="post-nav-title-item">如何編輯 /var/www/html 中的檔案</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -725,10 +818,10 @@
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2023/09/08/DEV_tips/git_ssh/"
+                        href="/2023/07/30/euclid/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</span>
+                                <span class="post-nav-title-item">演算法第一講——Euclid Algorithm 歐幾里得演算法</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -807,8 +900,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">如何編輯 /var/www/html 中的檔案</div>
-        
+        <div class="page-title">踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%94%A2%E7%94%9F-ssh-key"><span class="nav-text">1. 產生 ssh key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%8F%96%E5%BE%97-public-ssh-key"><span class="nav-text">2. 取得 public ssh key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%8A%8A-public-key-%E8%A8%AD%E5%AE%9A%E5%88%B0-GitHub"><span class="nav-text">3. 把 public key 設定到 GitHub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-reach-out-to-me"><span class="nav-text">How to reach out to me</span></a></li></ol>
 
     </div>
 </div>

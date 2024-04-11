@@ -1,8 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>演算法第一講——Euclid Algorithm 歐幾里得演算法</title>
+    <url>/2023/07/30/euclid/</url>
+    <content><![CDATA[<p>大家在過往學習的經驗中，可能都有聽過歐幾里德這名鼎鼎大名的人物，是位在希臘化時期的數學家，有著著名著作「幾何原本」，在數學領域中有著極大化的貢獻，為現今眾多數學家所認同。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1340/format:webp/1*xS3rVXn57DTerPNCZuOJ_g.jpeg"
+                      alt="Euclid and Geometry"
+                ><figcaption>Euclid and Geometry</figcaption></figure></p>
+<p>然而在古希臘的時代的數學家竟然能跟演算法畫上關係，畢竟演算法便是透過有限的步驟中，將給定的輸入做出最有效的解決，並且在執行玩這些有效的步驟中會有正當的終止，產生最後輸出結果，而歐幾里德演算法得以詮釋這些過程，歐幾里德演算法的問題是要在給定的兩個正整數 m 和 n 中找出兩束的最大公因數，因此我們可以列出以下解題步驟：</p>
+<ol>
+<li>找出餘數 (m % n)</li>
+<li>判斷餘數是否為零 (if (r &#x3D; 0) return n)</li>
+<li>被除數與餘數互換 (swap(m, n))</li>
+</ol>
+<p>那看到這邊可能人會有很多有很熟悉的感覺，畢竟我們曾經學習過求公因數的方法有：列舉法、質因數分解、短除法等⋯⋯那其中還有一個有趣的方法便是「輾轉相除法」，也就是我們今天要討論到的歐幾里德演算法，然而所謂的「輾轉」是什麼呢？可能是 Debug 睡不著的時候吧！哈！不過這樣也說得通，輾轉就是曲折的、不斷的過程，而我們正是透過這樣的特性來達成我們的演算法。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ZtKWx4DZ0FY6SBSctDWtUQ.png"
+                      alt="輾轉相除法直式"
+                ><figcaption>輾轉相除法直式</figcaption></figure></p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png"
+                      alt="輾轉過程"
+                ><figcaption>輾轉過程</figcaption></figure></p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png"
+                      alt="過程以長方形圖是呈現"
+                ><figcaption>過程以長方形圖是呈現</figcaption></figure></p>
+<p>透過上方圖示我們便可看出輾轉的真正特性，透過互換且不斷地進行運算，已達到我們期望的結果，也可以從上圖中透過切割長方形的模式，在長方形中找出能切割的最大面積正方形，以此將整個長方形變成有正方形所組成的型態，這又可以回歸到上述所歸納的兩個解：</p>
+<ol>
+<li>餘數為 0 -&gt; 完整地切割</li>
+<li>餘數為 1 -&gt; 無法完整地切割</li>
+</ol>
+<p>想必讀到這裡一定更能理解輾轉相除法，接下來我們進行實作吧！</p>
+<h3 id="以下我們展示虛擬碼-Pseudocode"><a href="#以下我們展示虛擬碼-Pseudocode" class="headerlink" title="以下我們展示虛擬碼 (Pseudocode)"></a>以下我們展示虛擬碼 (Pseudocode)</h3><div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line">Algorithm: <span class="built_in">EuclidGCD</span>(m, n)</span><br><span class="line">Input: Two integer m <span class="keyword">and</span> n.</span><br><span class="line">Output: The greatest common factor of m <span class="keyword">and</span> n.</span><br><span class="line">r &lt;- m % n</span><br><span class="line"><span class="keyword">while</span> r != <span class="number">0</span> <span class="keyword">do</span></span><br><span class="line">    m &lt;- n</span><br><span class="line">    n &lt;- r</span><br><span class="line">    r &lt;- m % n</span><br><span class="line"><span class="keyword">return</span> n</span><br><span class="line">以下我們使用 cpp 實作</span><br><span class="line"><span class="type">int</span> <span class="built_in">EuclidGCD</span>(<span class="type">int</span> m, <span class="type">int</span> n) &#123;</span><br><span class="line">    <span class="type">int</span> r = m % n;</span><br><span class="line">    <span class="keyword">while</span> (r != <span class="number">0</span>) &#123;</span><br><span class="line">        m = n;</span><br><span class="line">        n = r;</span><br><span class="line">        r = m % n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>那上面我們討論到歐幾里德演算法的範疇實屬理論，那實際用途到底可以實現什麼情形呢？在分析這道問號題之前，我們可以再回想一下此演算法，最核心的就是要找出最大公因數，並且在由大化小的過程中，可以達成更有效率地轉換，畢竟是透過一系列輾轉的過程，所以其實輾轉相除法的應用層面非常廣，可以在密碼學、數學、計算機科學等⋯⋯領域做使用，甚至在音樂方面都能有實際上的應用，若想知道更多，網路上其實還有更多有趣的範例等著你們去挖掘呢！（維基百科下方的參考連結有超多有趣的例子！）</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a class="link"   href="https://zhuanlan.zhihu.com/p/56528787" >欧几里得与《几何原本》(上篇） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://jason-chen-1992.weebly.com/home/-euclidean-algorithm" >【演算法】歐幾里得算法 Euclidean Algorithm <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
+<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#117;&#103;&#x6f;&#57;&#x37;&#48;&#x32;&#x31;&#55;&#64;&#103;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109;" >&#104;&#117;&#103;&#x6f;&#57;&#x37;&#48;&#x32;&#x31;&#55;&#64;&#103;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>algorithm</tag>
+        <tag>note</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>平板能輔助大學生上課嗎？</title>
-    <url>/2023/07/30/no_book/</url>
+    <url>/2023/07/30/life/no_book/</url>
     <content><![CDATA[<blockquote>
 <p>誒～怎麼身邊上課的人開始都不帶書了！？</p>
 </blockquote>
@@ -78,7 +142,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#117;&#x67;&#111;&#x39;&#55;&#x30;&#50;&#49;&#x37;&#64;&#x67;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;" >&#x68;&#117;&#x67;&#111;&#x39;&#55;&#x30;&#50;&#49;&#x37;&#64;&#x67;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#x67;&#111;&#57;&#55;&#x30;&#50;&#x31;&#x37;&#64;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;" >&#x68;&#x75;&#x67;&#111;&#57;&#55;&#x30;&#50;&#x31;&#x37;&#64;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -92,7 +156,7 @@
   </entry>
   <entry>
     <title>剛上大學的我如何挑到適合我的平板！？</title>
-    <url>/2023/07/30/pick_ipad/</url>
+    <url>/2023/07/30/life/pick_ipad/</url>
     <content><![CDATA[<p>疫情嚴峻的 2021 年中，所有戶外活動皆需要暫停，身為大一生，參與的校園活動被迫中止，連課程都改為遠距教學，學習方法勢必有所改變</p>
 <p><figure class="image-caption"><img  
                      lazyload
@@ -123,7 +187,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#103;&#x6f;&#x39;&#55;&#x30;&#50;&#49;&#55;&#64;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#109;" >&#104;&#x75;&#103;&#x6f;&#x39;&#55;&#x30;&#50;&#49;&#55;&#64;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#x67;&#111;&#57;&#x37;&#x30;&#50;&#x31;&#55;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109;" >&#x68;&#x75;&#x67;&#111;&#57;&#x37;&#x30;&#50;&#x31;&#55;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -136,272 +200,8 @@
       </tags>
   </entry>
   <entry>
-    <title>我在 Conda 常用的指令</title>
-    <url>/2023/07/30/DEV_tips/conda_tips/</url>
-    <content><![CDATA[<blockquote>
-<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
-</blockquote>
-<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
-<p><strong>本文綱要</strong></p>
-<ul>
-<li><a href="#%E5%BB%BA%E7%AB%8B%E5%88%AA%E9%99%A4%E5%92%8C%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">建立、刪除和複製虛擬環境</a><ul>
-<li><a href="#%E5%BB%BA%E7%AB%8B%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">建立虛擬環境</a></li>
-<li><a href="#%E5%88%AA%E9%99%A4%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">刪除虛擬環境</a></li>
-<li><a href="#%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">複製虛擬環境</a></li>
-</ul>
-</li>
-<li><a href="#%E6%BF%80%E6%B4%BB%E8%88%87%E9%80%80%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">激活與退出虛擬環境</a></li>
-<li><a href="#%E5%AE%89%E8%A3%9D%E5%8F%8A%E5%88%AA%E9%99%A4%E9%9C%80%E8%A6%81%E7%9A%84-package-%E8%87%B3%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">安裝及刪除需要的 package 至虛擬環境</a></li>
-<li><a href="#%E6%9F%A5%E8%A9%A2%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83%E8%B3%87%E8%A8%8A">查詢虛擬環境資訊</a></li>
-<li><a href="#%E5%B0%8E%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">導出虛擬環境</a></li>
-<li><a href="#%E6%96%87%E6%9C%AB%E5%B0%8F%E7%B5%90">文末小結</a></li>
-<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
-</ul>
-<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
-<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
-
-<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../assets/imgs/conda_command.png"
-                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
-                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
-<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
-<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
-<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
-<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
-<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#x67;&#111;&#x39;&#55;&#x30;&#50;&#x31;&#x37;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#109;" >&#x68;&#x75;&#x67;&#111;&#x39;&#55;&#x30;&#50;&#x31;&#x37;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DEV</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>venv</tag>
-        <tag>conda</tag>
-        <tag>tips</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何在 AWS EC2 Amazon Linux 2 上安裝 Docker</title>
-    <url>/2024/04/11/DEV_tips/amazon-linux-2-install-docker/</url>
-    <content><![CDATA[<p>在我們需要做 DevOps 時，我們常常會需要用到 Containerization 技術，而 Docker 是目前最為廣泛使用的 Containerization 技術之一。同時我們也可能會用到雲端的算力來幫助我們完成這些工作，因此我們今天將會介紹如何在 Amazon Linux 2 上安裝 Docker。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/cover/amazon-linux-2-install-docker.png"
-                     
-                ></p>
-<h2 id="連線到-EC2"><a href="#連線到-EC2" class="headerlink" title="連線到 EC2"></a>連線到 EC2</h2><p>我們會需要透過 SSH 連線到 EC2，當然我們也可以直接透過 Console 連線到 Shell 來操作，我們將會以 SSH 的方式連線到 EC2 來操作，畢竟可以本地連上去操作會更加順手。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 把 &lt;ec2-public-ip&gt; 換成你的 EC2 的 Public IP</span></span><br><span class="line">$ ssh -i <span class="string">&quot;your.pem&quot;</span> ec2-user@&lt;ec2-public-ip&gt;.compute-1.amazonaws.com</span><br><span class="line">   ,     <span class="comment">#_</span></span><br><span class="line">   ~\_  <span class="comment">####_        Amazon Linux 2</span></span><br><span class="line">  ~~  \_<span class="comment">#####\</span></span><br><span class="line">  ~~     \<span class="comment">###|       AL2 End of Life is 2025-06-30.</span></span><br><span class="line">  ~~       \<span class="comment">#/ ___</span></span><br><span class="line">   ~~       V~<span class="string">&#x27; &#x27;</span>-&gt;</span><br><span class="line">    ~~~         /    A newer version of Amazon Linux is available!</span><br><span class="line">      ~~._.   _/</span><br><span class="line">         _/ _/       Amazon Linux 2023, GA and supported <span class="keyword">until</span> 2028-03-15.</span><br><span class="line">       _/m/<span class="string">&#x27;           https://aws.amazon.com/linux/amazon-linux-2023/</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[ec2-user]@your-ip ~ $</span></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="檢查安裝所需的-yum"><a href="#檢查安裝所需的-yum" class="headerlink" title="檢查安裝所需的 yum"></a>檢查安裝所需的 <a class="link"   href="https://en.wikipedia.org/wiki/Yum_(software)" >yum <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h2><p>透過 <a class="link"   href="https://en.wikipedia.org/wiki/Yum_(software)" >yum <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來檢查我們的版本，並且我們也會用作安裝 Docker 的套件。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 檢查 yum 的版本</span></span><br><span class="line">$ sudo yum update</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">No packages marked <span class="keyword">for</span> update</span><br></pre></td></tr></table></figure></div>
-
-
-<p>透過 yum 來搜尋 Docker 的套件，並且查看 Docker 的資訊。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 搜尋 Docker 的套件</span></span><br><span class="line">$ sudo yum search docker</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">===================================================== N/S matched: docker =====================================================</span><br><span class="line">pcp-pmda-docker.x86_64 : Performance Co-Pilot (PCP) metrics from the Docker daemon</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
-
-<p>使用 <code>yum info docker</code> 來查看 Docker 的資訊。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum info docker</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">Available Packages</span><br><span class="line">Name        : docker</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
-
-
-<h2 id="安裝-Docker-以及啟動-Docker-服務"><a href="#安裝-Docker-以及啟動-Docker-服務" class="headerlink" title="安裝 Docker 以及啟動 Docker 服務"></a>安裝 Docker 以及啟動 Docker 服務</h2><p>在查看完 Docker 的資訊後，我們可以透過 yum 來安裝 Docker。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum install docker</span><br><span class="line">...</span><br><span class="line">Installed:</span><br><span class="line">  docker.x86_64 0:20.10.25-1.amzn2.0.4</span><br><span class="line"></span><br><span class="line">Dependency Installed:</span><br><span class="line">  containerd.x86_64 0:1.7.11-1.amzn2.0.1        libcgroup.x86_64 0:0.41-21.amzn2        pigz.x86_64 0:2.3.4-1.amzn2.0.1</span><br><span class="line">  runc.x86_64 0:1.1.11-1.amzn2</span><br><span class="line"></span><br><span class="line">Complete!</span><br></pre></td></tr></table></figure></div>
-
-<p>檢查一下我們的 Docker 是否有安裝成功吧！</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo docker version</span><br><span class="line">Client:</span><br><span class="line"> Version:           20.10.25</span><br><span class="line"> ...</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Engine:</span><br><span class="line">  Version:          20.10.25</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure></div>
-
-
-<p>啟動我們的 Docker 服務。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo service docker start</span><br><span class="line">Redirecting to /bin/systemctl start docker.service</span><br><span class="line"></span><br><span class="line">$ sudo systemctl <span class="built_in">enable</span> docker.service</span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.</span><br></pre></td></tr></table></figure></div>
-
-<p>我們可以透過 systemctl 來檢查 Docker 服務的狀態，當我們看到 <code>Active: active (running)</code> 時，就代表我們的 Docker 服務已經成功啟動。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo systemctl status docker.service</span><br><span class="line">● docker.service - Docker Application Container Engine</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; vendor preset: disabled)</span><br><span class="line">   Active: active (running) since Wed 2024-04-10 02:29:53 UTC; 1min 13s ago</span><br><span class="line">     Docs: https://docs.docker.com</span><br><span class="line"> Main PID: 3529 (dockerd)</span><br><span class="line">   CGroup: /system.slice/docker.service</span><br><span class="line">           └─3529 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --default-ulimit nofile=32768:65536...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
-
-<p>我們可以把 ec2-user 加入到 docker 群組中，這樣我們就不需要每次都要用 sudo 來執行 Docker 的指令。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo usermod -a -G docker ec2-user</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">id</span> ec2-user</span><br><span class="line">uid=1000(ec2-user) gid=1000(ec2-user) <span class="built_in">groups</span>=1000(ec2-user),4(adm),10(wheel),190(systemd-journal),992(docker)</span><br><span class="line"></span><br><span class="line">$ newgrp docker</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="安裝-docker-compose"><a href="#安裝-docker-compose" class="headerlink" title="安裝 docker-compose"></a>安裝 <code>docker-compose</code></h2><p>我們需要安裝 <code>docker-compose</code> 來幫助我們管理 Docker 的 Container，我們可以透過 pip3 來安裝 <code>docker-compose</code>。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. Get pip3</span></span><br><span class="line">$ sudo yum install python3-pip</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">amzn2-core                                                                                              | 3.6 kB  00:00:00</span><br><span class="line">Package python3-pip-20.2.2-1.amzn2.0.5.noarch already installed and latest version</span><br><span class="line">Nothing to <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. Then run any one of the following</span></span><br><span class="line">$ pip3 install --user docker-compose</span><br><span class="line">Collecting docker-compose</span><br><span class="line">  Downloading docker_compose-1.29.2-py2.py3-none-any.whl (114 kB)</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">Successfully installed ... docker-compose-1.29.2 ...</span><br></pre></td></tr></table></figure></div>
-
-<blockquote>
-<p>[!WARNING]<br>如果在安裝 <code>docker-compose</code> 時出現錯誤，可能是因為 <code>urllib3</code> 的版本支援問題，我們可以透過 <code>pip3 install urllib3==1.26.15</code> 來安裝特定版本的 <code>urllib3</code>。</p>
-<p>可以參考 <a class="link"   href="https://github.com/explosion/spaCy/discussions/12750" >Persisting spaCy import error: NotOpenSSLWarning: urllib3 v2.0 only supports OpenSSL 1.1.1+ #12750 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來排除</p>
-</blockquote>
-<p>我們也可以使用 <code>wget</code> 來下載 <code>docker-compose</code> 並且安裝。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ wget https://github.com/docker/compose/releases/latest/download/docker-compose-$(<span class="built_in">uname</span> -s)-$(<span class="built_in">uname</span> -m) </span><br><span class="line">$ sudo <span class="built_in">mv</span> docker-compose-$(<span class="built_in">uname</span> -s)-$(<span class="built_in">uname</span> -m) /usr/local/bin/docker-compose</span><br><span class="line">$ sudo <span class="built_in">chmod</span> -v +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure></div>
-
-<p>我們可以透過 <code>docker-compose --version</code> 來檢查 <code>docker-compose</code> 是否有安裝成功。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker-compose version</span><br><span class="line">docker-compose version 1.29.2, build unknown</span><br><span class="line">docker-py version: &lt;module <span class="string">&#x27;docker.version&#x27;</span> from <span class="string">&#x27;/home/ec2-user/.local/lib/python3.7/site-packages/docker/version.py&#x27;</span>&gt;</span><br><span class="line">CPython version: 3.7.16</span><br><span class="line">OpenSSL version: OpenSSL 1.0.2k-fips  26 Jan 2017</span><br></pre></td></tr></table></figure></div>
-
-
-<p>這時我們就可以開始使用 Docker 來做 Containerization 的工作了。</p>
-<p>最後附上一些在使用 Docker 時可能會用到的指令。祝福大家都能順利使用 Docker 來完成自己的工作。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># start the service</span></span><br><span class="line">$ sudo systemctl start docker.service</span><br><span class="line"><span class="comment"># stop the service</span></span><br><span class="line">$ sudo systemctl stop docker.service</span><br><span class="line"><span class="comment"># restart the service</span></span><br><span class="line">$ sudo systemctl restart docker.service</span><br><span class="line"><span class="comment"># get the service status</span></span><br><span class="line">$ sudo systemctl status docker.service</span><br></pre></td></tr></table></figure></div>
-
-
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a class="link"   href="https://www.cyberciti.biz/faq/how-to-install-docker-on-amazon-linux-2/" >How to install Docker on Amazon Linux 2 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://swapnasagarpradhan.medium.com/how-to-install-docker-on-amazon-linux-2-8e5161ac5464" >How to install Docker on Amazon Linux 2 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DEV</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>AWS</tag>
-        <tag>EC2</tag>
-        <tag>Amazon Linux 2</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</title>
-    <url>/2023/09/08/DEV_tips/git_ssh/</url>
-    <content><![CDATA[<p><strong>本文綱要</strong></p>
-<ul>
-<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
-<li><a href="#1-%E7%94%A2%E7%94%9F-ssh-key">1. 產生 ssh key</a></li>
-<li><a href="#2-%E5%8F%96%E5%BE%97-public-ssh-key">2. 取得 public ssh key</a></li>
-<li><a href="#3-%E6%8A%8A-public-key-%E8%A8%AD%E5%AE%9A%E5%88%B0-github">3. 把 public key 設定到 GitHub</a><ul>
-<li><a href="#a-%E5%89%8D%E5%BE%80-github-%E8%A8%AD%E5%AE%9A">A. 前往 GitHub 設定</a></li>
-<li><a href="#b-%E9%BB%9E%E6%93%8A-ssh-and-gpg-keys">B. 點擊 “SSH and GPG keys”</a></li>
-<li><a href="#c-%E9%80%B2%E5%85%A5-ssh-and-gpg-keys-%E9%A0%81%E9%9D%A2%E5%BE%8C%E9%BB%9E%E6%93%8A-new-ssh-key">C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”</a></li>
-<li><a href="#d-%E8%B2%BC%E4%B8%8A-public-key-%E6%9C%80%E5%BE%8C%E9%80%81%E5%87%BA">D. 貼上 public key 最後送出</a></li>
-</ul>
-</li>
-<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
-</ul>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Git 是每位軟體工程師日常工作不可或缺的工具之一，畢竟軟體開發常常需要跟他人合作，甚至是維護、更新等⋯⋯可能都需要參照過去的成果，甚至需要快速與團隊同步，因此 Git 對大家而言都不陌生吧！<br>但是，有時候我們會遇到一些問題，例如：每次 push 都需要輸入帳號密碼，或是每次 push 都需要輸入密碼，這些都是可以透過 ssh 來解決的，接下來就讓我們一起來看看如何使用 ssh 與 GitHub 連線吧！</p>
-<h3 id="1-產生-ssh-key"><a href="#1-產生-ssh-key" class="headerlink" title="1. 產生 ssh key"></a>1. 產生 ssh key</h3><p>首先，我們需要先產生 ssh key，這個 key 會被存在 <code>~/.ssh</code> 資料夾中，如果沒有的話，可以使用以下指令建立（記得要把 email 改成你自己的 email，否則永遠不會成功哦！）：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>上述操作 <code>ed25519</code> 其實是較新的演算法，如果電腦不支援的話也可以使用以下另一種演算法生成（同樣也要記得把 email 改成你自己的 email）：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>以下將使用 <code>id_rsa</code> 做示範，接下來將出現以下畫面，直接按 <strong>Enter</strong> 就會幫你把產生的 key 放在預設的地方 <code>~/.ssh/id_rsa</code> ，也就是下方括號內的位址。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ Enter a file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/you/.ssh/id_rsa):</span><br></pre></td></tr></table></figure></div>
-
-<p>接下來會出現以下畫面，若不想以後 push 都要輸入 <code>passphrase</code> 的話，就連續點擊兩次 <strong>Enter</strong> 這樣 <code>passphrase</code> 就會是空的，以後 push 就不用輸入了！</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Click Enter Twice</span></span><br><span class="line">$ Enter passphrase (empty <span class="keyword">for</span> no passphrase): [Type a passphrase]</span><br><span class="line">$ Enter same passphrase again: [Type passphrase again]</span><br></pre></td></tr></table></figure></div>
-
-<p>這樣做 ssh key 就已經生成好了！</p>
-<p>總共會生成兩個 key，private and public key，接下來會帶大家如何找到這兩個 key。</p>
-<h3 id="2-取得-public-ssh-key"><a href="#2-取得-public-ssh-key" class="headerlink" title="2. 取得 public ssh key"></a>2. 取得 public ssh key</h3><p>接著我們要進到剛剛放置 key 的位置，因此我們照著以下流程，把 public 的 key 拿出（副檔名為 <code>.pub</code>），要特別注意 GitHub 只需要 public 的 key，private 要自己留好！千萬不要給任何人！</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> .ssh</span><br><span class="line">$ <span class="built_in">ls</span></span><br><span class="line">id_rsa          id_rsa.pub</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cat</span> id_rsa.pub</span><br></pre></td></tr></table></figure></div>
-
-<p>接下來就把 <code>cat id_rsa.pub</code> 的內容複製下來，我們就可以回 GitHub 做最後一步設定了！</p>
-<h3 id="3-把-public-key-設定到-GitHub"><a href="#3-把-public-key-設定到-GitHub" class="headerlink" title="3. 把 public key 設定到 GitHub"></a>3. 把 public key 設定到 GitHub</h3><p>接下來我們要把 public key 設定到 GitHub，這樣 GitHub 才能辨識你的電腦，讓你可以透過 ssh 連線到 GitHub，這樣就可以真的達到不用每次 push 都要輸入帳號密碼了！接下來將用截圖畫面的方式展示步驟！</p>
-<h4 id="A-前往-GitHub-設定"><a href="#A-前往-GitHub-設定" class="headerlink" title="A. 前往 GitHub 設定"></a>A. 前往 GitHub 設定</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/01.png"
-                     
-                ></p>
-<h4 id="B-點擊-“SSH-and-GPG-keys”"><a href="#B-點擊-“SSH-and-GPG-keys”" class="headerlink" title="B. 點擊 “SSH and GPG keys”"></a>B. 點擊 “SSH and GPG keys”</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/02.png"
-                     
-                ></p>
-<h4 id="C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”"><a href="#C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”" class="headerlink" title="C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”"></a>C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/03.png"
-                     
-                ></p>
-<h4 id="D-貼上-public-key-最後送出"><a href="#D-貼上-public-key-最後送出" class="headerlink" title="D. 貼上 public key 最後送出"></a>D. 貼上 public key 最後送出</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/04.png"
-                     
-                ></p>
-<p>照著上述步驟就一切沒問題了，以後把專案 clone 到本地就選擇 ssh 的方式就搞定啦！<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/05.png"
-                     
-                ></p>
-<p>如果原先專案是走 <code>http</code> 的方式 <code>clone</code> 下來的話只要做以下更改就可以換成 <code>ssh</code> 啦！</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote set-url origin &lt;your_project_ssh_url&gt;</span><br></pre></td></tr></table></figure></div>
-
-<p>如此以後專案 push 到 GitHub 就都會走 ssh 了也不需要每次都輸入帳號密碼了！最後祝大家以後都開發順利！可以開始進行更多遠端的 Git 操作了！</p>
-<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
-<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>My Linktree: <a class="link"   href="https://1chooo.github.io/linktree/" >1chooo’s Linktree <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#117;&#103;&#x6f;&#x39;&#x37;&#48;&#50;&#x31;&#55;&#64;&#103;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#x6d;" >&#104;&#117;&#103;&#x6f;&#x39;&#x37;&#48;&#50;&#x31;&#55;&#64;&#103;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DEV</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>GitHub</tag>
-        <tag>SSH Key</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何編輯 /var/www/html 中的檔案</title>
-    <url>/2024/03/18/DEV_tips/edit-server-html/</url>
-    <content><![CDATA[<p>首先為甚麼我們會需要編輯 <code>/var/www/html</code> 中的檔案呢？這是因為我們如果要在 Linux 中架設屬於我們的伺服器，像是 Apache 或是 Nginx，我們需要將我們的網頁檔案放在 <code>/var/www/html</code> 中。因此，如果我們要修改我們的網頁檔案，我們就需要進入這個資料夾中進行修改。</p>
-<p>但是在 Linux 中的 <code>/</code> 之下的檔案都是屬於 root 的，因此我們需要使用 <code>sudo</code> 來進行修改。因此之前在要編輯 <code>/var/www/html</code> 中的檔案時候，看到很多人的做法是直接修改權限，因為 Linux 每個檔案都可以設定不同的權限，但其實如果 user 本身權限不同，會導致一些問題。</p>
-<p>因此我想提供一個當直接擁有 root user 權限時，最快能成功修改的方法，那就是直接加上 sudo 來進行修改即可！</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo vi /var/www/html/index.php</span><br></pre></td></tr></table></figure></div>
-
-<p>這樣就可以更改 <code>/var/www/html</code> 中的檔案了！</p>
-]]></content>
-      <categories>
-        <category>DEV</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>做個小貪吃蛇來玩吧！</title>
-    <url>/2023/07/30/projects_intro/snake_game/</url>
+    <url>/2023/07/30/projects/snake-game/</url>
     <content><![CDATA[<p>還記得當時剛學習程式語言的時候，對於什麼知識都不懂，連搜尋能力也沒有，常常搜不到關鍵字，問題也解決不了，不過當時懵懂無知的狀態，完成了基礎貪吃蛇的小遊戲，所以決定撰寫一篇文章來記錄當時的過程。</p>
 <p><strong>本文綱要</strong></p>
 <ul>
@@ -480,7 +280,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#117;&#x67;&#111;&#57;&#55;&#48;&#x32;&#49;&#55;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;" >&#x68;&#117;&#x67;&#111;&#57;&#55;&#48;&#x32;&#49;&#55;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#103;&#111;&#57;&#x37;&#48;&#x32;&#49;&#x37;&#x40;&#x67;&#109;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#109;" >&#104;&#x75;&#103;&#111;&#57;&#x37;&#48;&#x32;&#49;&#x37;&#x40;&#x67;&#109;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -492,67 +292,267 @@
       </tags>
   </entry>
   <entry>
-    <title>演算法第一講——Euclid Algorithm 歐幾里得演算法</title>
-    <url>/2023/07/30/ds_and_alg/alg/euclid/</url>
-    <content><![CDATA[<p>大家在過往學習的經驗中，可能都有聽過歐幾里德這名鼎鼎大名的人物，是位在希臘化時期的數學家，有著著名著作「幾何原本」，在數學領域中有著極大化的貢獻，為現今眾多數學家所認同。</p>
-<p><figure class="image-caption"><img  
+    <title>如何在 AWS EC2 Amazon Linux 2 上安裝 Docker</title>
+    <url>/2024/04/11/dev-ops/amazon-linux-2-install-docker/</url>
+    <content><![CDATA[<p>在我們需要做 DevOps 時，我們常常會需要用到 Containerization 技術，而 Docker 是目前最為廣泛使用的 Containerization 技術之一。同時我們也可能會用到雲端的算力來幫助我們完成這些工作，因此我們今天將會介紹如何在 Amazon Linux 2 上安裝 Docker。</p>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1340/format:webp/1*xS3rVXn57DTerPNCZuOJ_g.jpeg"
-                      alt="Euclid and Geometry"
-                ><figcaption>Euclid and Geometry</figcaption></figure></p>
-<p>然而在古希臘的時代的數學家竟然能跟演算法畫上關係，畢竟演算法便是透過有限的步驟中，將給定的輸入做出最有效的解決，並且在執行玩這些有效的步驟中會有正當的終止，產生最後輸出結果，而歐幾里德演算法得以詮釋這些過程，歐幾里德演算法的問題是要在給定的兩個正整數 m 和 n 中找出兩束的最大公因數，因此我們可以列出以下解題步驟：</p>
-<ol>
-<li>找出餘數 (m % n)</li>
-<li>判斷餘數是否為零 (if (r &#x3D; 0) return n)</li>
-<li>被除數與餘數互換 (swap(m, n))</li>
-</ol>
-<p>那看到這邊可能人會有很多有很熟悉的感覺，畢竟我們曾經學習過求公因數的方法有：列舉法、質因數分解、短除法等⋯⋯那其中還有一個有趣的方法便是「輾轉相除法」，也就是我們今天要討論到的歐幾里德演算法，然而所謂的「輾轉」是什麼呢？可能是 Debug 睡不著的時候吧！哈！不過這樣也說得通，輾轉就是曲折的、不斷的過程，而我們正是透過這樣的特性來達成我們的演算法。</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ZtKWx4DZ0FY6SBSctDWtUQ.png"
-                      alt="輾轉相除法直式"
-                ><figcaption>輾轉相除法直式</figcaption></figure></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png"
-                      alt="輾轉過程"
-                ><figcaption>輾轉過程</figcaption></figure></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png"
-                      alt="過程以長方形圖是呈現"
-                ><figcaption>過程以長方形圖是呈現</figcaption></figure></p>
-<p>透過上方圖示我們便可看出輾轉的真正特性，透過互換且不斷地進行運算，已達到我們期望的結果，也可以從上圖中透過切割長方形的模式，在長方形中找出能切割的最大面積正方形，以此將整個長方形變成有正方形所組成的型態，這又可以回歸到上述所歸納的兩個解：</p>
-<ol>
-<li>餘數為 0 -&gt; 完整地切割</li>
-<li>餘數為 1 -&gt; 無法完整地切割</li>
-</ol>
-<p>想必讀到這裡一定更能理解輾轉相除法，接下來我們進行實作吧！</p>
-<h3 id="以下我們展示虛擬碼-Pseudocode"><a href="#以下我們展示虛擬碼-Pseudocode" class="headerlink" title="以下我們展示虛擬碼 (Pseudocode)"></a>以下我們展示虛擬碼 (Pseudocode)</h3><div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line">Algorithm: <span class="built_in">EuclidGCD</span>(m, n)</span><br><span class="line">Input: Two integer m <span class="keyword">and</span> n.</span><br><span class="line">Output: The greatest common factor of m <span class="keyword">and</span> n.</span><br><span class="line">r &lt;- m % n</span><br><span class="line"><span class="keyword">while</span> r != <span class="number">0</span> <span class="keyword">do</span></span><br><span class="line">    m &lt;- n</span><br><span class="line">    n &lt;- r</span><br><span class="line">    r &lt;- m % n</span><br><span class="line"><span class="keyword">return</span> n</span><br><span class="line">以下我們使用 cpp 實作</span><br><span class="line"><span class="type">int</span> <span class="built_in">EuclidGCD</span>(<span class="type">int</span> m, <span class="type">int</span> n) &#123;</span><br><span class="line">    <span class="type">int</span> r = m % n;</span><br><span class="line">    <span class="keyword">while</span> (r != <span class="number">0</span>) &#123;</span><br><span class="line">        m = n;</span><br><span class="line">        n = r;</span><br><span class="line">        r = m % n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+                     data-src="/images/cover/amazon-linux-2-install-docker.png"
+                     
+                ></p>
+<h2 id="連線到-EC2"><a href="#連線到-EC2" class="headerlink" title="連線到 EC2"></a>連線到 EC2</h2><p>我們會需要透過 SSH 連線到 EC2，當然我們也可以直接透過 Console 連線到 Shell 來操作，我們將會以 SSH 的方式連線到 EC2 來操作，畢竟可以本地連上去操作會更加順手。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 把 &lt;ec2-public-ip&gt; 換成你的 EC2 的 Public IP</span></span><br><span class="line">$ ssh -i <span class="string">&quot;your.pem&quot;</span> ec2-user@&lt;ec2-public-ip&gt;.compute-1.amazonaws.com</span><br><span class="line">   ,     <span class="comment">#_</span></span><br><span class="line">   ~\_  <span class="comment">####_        Amazon Linux 2</span></span><br><span class="line">  ~~  \_<span class="comment">#####\</span></span><br><span class="line">  ~~     \<span class="comment">###|       AL2 End of Life is 2025-06-30.</span></span><br><span class="line">  ~~       \<span class="comment">#/ ___</span></span><br><span class="line">   ~~       V~<span class="string">&#x27; &#x27;</span>-&gt;</span><br><span class="line">    ~~~         /    A newer version of Amazon Linux is available!</span><br><span class="line">      ~~._.   _/</span><br><span class="line">         _/ _/       Amazon Linux 2023, GA and supported <span class="keyword">until</span> 2028-03-15.</span><br><span class="line">       _/m/<span class="string">&#x27;           https://aws.amazon.com/linux/amazon-linux-2023/</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[ec2-user]@your-ip ~ $</span></span><br></pre></td></tr></table></figure></div>
 
-<p>那上面我們討論到歐幾里德演算法的範疇實屬理論，那實際用途到底可以實現什麼情形呢？在分析這道問號題之前，我們可以再回想一下此演算法，最核心的就是要找出最大公因數，並且在由大化小的過程中，可以達成更有效率地轉換，畢竟是透過一系列輾轉的過程，所以其實輾轉相除法的應用層面非常廣，可以在密碼學、數學、計算機科學等⋯⋯領域做使用，甚至在音樂方面都能有實際上的應用，若想知道更多，網路上其實還有更多有趣的範例等著你們去挖掘呢！（維基百科下方的參考連結有超多有趣的例子！）</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a class="link"   href="https://zhuanlan.zhihu.com/p/56528787" >欧几里得与《几何原本》(上篇） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://jason-chen-1992.weebly.com/home/-euclidean-algorithm" >【演算法】歐幾里得算法 Euclidean Algorithm <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<h2 id="檢查安裝所需的-yum"><a href="#檢查安裝所需的-yum" class="headerlink" title="檢查安裝所需的 yum"></a>檢查安裝所需的 <a class="link"   href="https://en.wikipedia.org/wiki/Yum_(software)" >yum <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h2><p>透過 <a class="link"   href="https://en.wikipedia.org/wiki/Yum_(software)" >yum <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來檢查我們的版本，並且我們也會用作安裝 Docker 的套件。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 檢查 yum 的版本</span></span><br><span class="line">$ sudo yum update</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">No packages marked <span class="keyword">for</span> update</span><br></pre></td></tr></table></figure></div>
+
+
+<p>透過 yum 來搜尋 Docker 的套件，並且查看 Docker 的資訊。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 搜尋 Docker 的套件</span></span><br><span class="line">$ sudo yum search docker</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">===================================================== N/S matched: docker =====================================================</span><br><span class="line">pcp-pmda-docker.x86_64 : Performance Co-Pilot (PCP) metrics from the Docker daemon</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
+
+<p>使用 <code>yum info docker</code> 來查看 Docker 的資訊。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum info docker</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">Available Packages</span><br><span class="line">Name        : docker</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
+
+
+<h2 id="安裝-Docker-以及啟動-Docker-服務"><a href="#安裝-Docker-以及啟動-Docker-服務" class="headerlink" title="安裝 Docker 以及啟動 Docker 服務"></a>安裝 Docker 以及啟動 Docker 服務</h2><p>在查看完 Docker 的資訊後，我們可以透過 yum 來安裝 Docker。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum install docker</span><br><span class="line">...</span><br><span class="line">Installed:</span><br><span class="line">  docker.x86_64 0:20.10.25-1.amzn2.0.4</span><br><span class="line"></span><br><span class="line">Dependency Installed:</span><br><span class="line">  containerd.x86_64 0:1.7.11-1.amzn2.0.1        libcgroup.x86_64 0:0.41-21.amzn2        pigz.x86_64 0:2.3.4-1.amzn2.0.1</span><br><span class="line">  runc.x86_64 0:1.1.11-1.amzn2</span><br><span class="line"></span><br><span class="line">Complete!</span><br></pre></td></tr></table></figure></div>
+
+<p>檢查一下我們的 Docker 是否有安裝成功吧！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo docker version</span><br><span class="line">Client:</span><br><span class="line"> Version:           20.10.25</span><br><span class="line"> ...</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Engine:</span><br><span class="line">  Version:          20.10.25</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure></div>
+
+
+<p>啟動我們的 Docker 服務。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo service docker start</span><br><span class="line">Redirecting to /bin/systemctl start docker.service</span><br><span class="line"></span><br><span class="line">$ sudo systemctl <span class="built_in">enable</span> docker.service</span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.</span><br></pre></td></tr></table></figure></div>
+
+<p>我們可以透過 systemctl 來檢查 Docker 服務的狀態，當我們看到 <code>Active: active (running)</code> 時，就代表我們的 Docker 服務已經成功啟動。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo systemctl status docker.service</span><br><span class="line">● docker.service - Docker Application Container Engine</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; vendor preset: disabled)</span><br><span class="line">   Active: active (running) since Wed 2024-04-10 02:29:53 UTC; 1min 13s ago</span><br><span class="line">     Docs: https://docs.docker.com</span><br><span class="line"> Main PID: 3529 (dockerd)</span><br><span class="line">   CGroup: /system.slice/docker.service</span><br><span class="line">           └─3529 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --default-ulimit nofile=32768:65536...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
+
+<p>我們可以把 ec2-user 加入到 docker 群組中，這樣我們就不需要每次都要用 sudo 來執行 Docker 的指令。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo usermod -a -G docker ec2-user</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">id</span> ec2-user</span><br><span class="line">uid=1000(ec2-user) gid=1000(ec2-user) <span class="built_in">groups</span>=1000(ec2-user),4(adm),10(wheel),190(systemd-journal),992(docker)</span><br><span class="line"></span><br><span class="line">$ newgrp docker</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="安裝-docker-compose"><a href="#安裝-docker-compose" class="headerlink" title="安裝 docker-compose"></a>安裝 <code>docker-compose</code></h2><p>我們需要安裝 <code>docker-compose</code> 來幫助我們管理 Docker 的 Container，我們可以透過 pip3 來安裝 <code>docker-compose</code>。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. Get pip3</span></span><br><span class="line">$ sudo yum install python3-pip</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">amzn2-core                                                                                              | 3.6 kB  00:00:00</span><br><span class="line">Package python3-pip-20.2.2-1.amzn2.0.5.noarch already installed and latest version</span><br><span class="line">Nothing to <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. Then run any one of the following</span></span><br><span class="line">$ pip3 install --user docker-compose</span><br><span class="line">Collecting docker-compose</span><br><span class="line">  Downloading docker_compose-1.29.2-py2.py3-none-any.whl (114 kB)</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">Successfully installed ... docker-compose-1.29.2 ...</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>[!WARNING]<br>如果在安裝 <code>docker-compose</code> 時出現錯誤，可能是因為 <code>urllib3</code> 的版本支援問題，我們可以透過 <code>pip3 install urllib3==1.26.15</code> 來安裝特定版本的 <code>urllib3</code>。</p>
+<p>可以參考 <a class="link"   href="https://github.com/explosion/spaCy/discussions/12750" >Persisting spaCy import error: NotOpenSSLWarning: urllib3 v2.0 only supports OpenSSL 1.1.1+ #12750 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來排除</p>
+</blockquote>
+<p>我們也可以使用 <code>wget</code> 來下載 <code>docker-compose</code> 並且安裝。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ wget https://github.com/docker/compose/releases/latest/download/docker-compose-$(<span class="built_in">uname</span> -s)-$(<span class="built_in">uname</span> -m) </span><br><span class="line">$ sudo <span class="built_in">mv</span> docker-compose-$(<span class="built_in">uname</span> -s)-$(<span class="built_in">uname</span> -m) /usr/local/bin/docker-compose</span><br><span class="line">$ sudo <span class="built_in">chmod</span> -v +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure></div>
+
+<p>我們可以透過 <code>docker-compose --version</code> 來檢查 <code>docker-compose</code> 是否有安裝成功。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker-compose version</span><br><span class="line">docker-compose version 1.29.2, build unknown</span><br><span class="line">docker-py version: &lt;module <span class="string">&#x27;docker.version&#x27;</span> from <span class="string">&#x27;/home/ec2-user/.local/lib/python3.7/site-packages/docker/version.py&#x27;</span>&gt;</span><br><span class="line">CPython version: 3.7.16</span><br><span class="line">OpenSSL version: OpenSSL 1.0.2k-fips  26 Jan 2017</span><br></pre></td></tr></table></figure></div>
+
+
+<p>這時我們就可以開始使用 Docker 來做 Containerization 的工作了。</p>
+<p>最後附上一些在使用 Docker 時可能會用到的指令。祝福大家都能順利使用 Docker 來完成自己的工作。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># start the service</span></span><br><span class="line">$ sudo systemctl start docker.service</span><br><span class="line"><span class="comment"># stop the service</span></span><br><span class="line">$ sudo systemctl stop docker.service</span><br><span class="line"><span class="comment"># restart the service</span></span><br><span class="line">$ sudo systemctl restart docker.service</span><br><span class="line"><span class="comment"># get the service status</span></span><br><span class="line">$ sudo systemctl status docker.service</span><br></pre></td></tr></table></figure></div>
+
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a class="link"   href="https://www.cyberciti.biz/faq/how-to-install-docker-on-amazon-linux-2/" >How to install Docker on Amazon Linux 2 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://swapnasagarpradhan.medium.com/how-to-install-docker-on-amazon-linux-2-8e5161ac5464" >How to install Docker on Amazon Linux 2 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
+]]></content>
+      <categories>
+        <category>DEV</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>AWS</tag>
+        <tag>EC2</tag>
+        <tag>Amazon Linux 2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我在 Conda 常用的指令</title>
+    <url>/2023/07/30/dev-ops/conda_tips/</url>
+    <content><![CDATA[<blockquote>
+<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
+</blockquote>
+<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
+<p><strong>本文綱要</strong></p>
+<ul>
+<li><a href="#%E5%BB%BA%E7%AB%8B%E5%88%AA%E9%99%A4%E5%92%8C%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">建立、刪除和複製虛擬環境</a><ul>
+<li><a href="#%E5%BB%BA%E7%AB%8B%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">建立虛擬環境</a></li>
+<li><a href="#%E5%88%AA%E9%99%A4%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">刪除虛擬環境</a></li>
+<li><a href="#%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">複製虛擬環境</a></li>
+</ul>
+</li>
+<li><a href="#%E6%BF%80%E6%B4%BB%E8%88%87%E9%80%80%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">激活與退出虛擬環境</a></li>
+<li><a href="#%E5%AE%89%E8%A3%9D%E5%8F%8A%E5%88%AA%E9%99%A4%E9%9C%80%E8%A6%81%E7%9A%84-package-%E8%87%B3%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">安裝及刪除需要的 package 至虛擬環境</a></li>
+<li><a href="#%E6%9F%A5%E8%A9%A2%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83%E8%B3%87%E8%A8%8A">查詢虛擬環境資訊</a></li>
+<li><a href="#%E5%B0%8E%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">導出虛擬環境</a></li>
+<li><a href="#%E6%96%87%E6%9C%AB%E5%B0%8F%E7%B5%90">文末小結</a></li>
+<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
+</ul>
+<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
+<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
+
+<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/../assets/imgs/conda_command.png"
+                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
+                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
+<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
+<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
+<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
 <h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
 <li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#103;&#x6f;&#x39;&#x37;&#x30;&#50;&#49;&#55;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#x6f;&#109;" >&#x68;&#x75;&#103;&#x6f;&#x39;&#x37;&#x30;&#50;&#49;&#55;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#103;&#x6f;&#57;&#x37;&#48;&#50;&#x31;&#x37;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;" >&#104;&#x75;&#103;&#x6f;&#57;&#x37;&#48;&#50;&#x31;&#x37;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
-        <category>Algorithm</category>
+        <category>DEV</category>
       </categories>
       <tags>
-        <tag>algorithm</tag>
-        <tag>note</tag>
+        <tag>python</tag>
+        <tag>venv</tag>
+        <tag>conda</tag>
+        <tag>tips</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何編輯 /var/www/html 中的檔案</title>
+    <url>/2024/03/18/dev-ops/edit-server-html/</url>
+    <content><![CDATA[<p>首先為甚麼我們會需要編輯 <code>/var/www/html</code> 中的檔案呢？這是因為我們如果要在 Linux 中架設屬於我們的伺服器，像是 Apache 或是 Nginx，我們需要將我們的網頁檔案放在 <code>/var/www/html</code> 中。因此，如果我們要修改我們的網頁檔案，我們就需要進入這個資料夾中進行修改。</p>
+<p>但是在 Linux 中的 <code>/</code> 之下的檔案都是屬於 root 的，因此我們需要使用 <code>sudo</code> 來進行修改。因此之前在要編輯 <code>/var/www/html</code> 中的檔案時候，看到很多人的做法是直接修改權限，因為 Linux 每個檔案都可以設定不同的權限，但其實如果 user 本身權限不同，會導致一些問題。</p>
+<p>因此我想提供一個當直接擁有 root user 權限時，最快能成功修改的方法，那就是直接加上 sudo 來進行修改即可！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo vi /var/www/html/index.php</span><br></pre></td></tr></table></figure></div>
+
+<p>這樣就可以更改 <code>/var/www/html</code> 中的檔案了！</p>
+]]></content>
+      <categories>
+        <category>DEV</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</title>
+    <url>/2023/09/08/dev-ops/git_ssh/</url>
+    <content><![CDATA[<p><strong>本文綱要</strong></p>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#1-%E7%94%A2%E7%94%9F-ssh-key">1. 產生 ssh key</a></li>
+<li><a href="#2-%E5%8F%96%E5%BE%97-public-ssh-key">2. 取得 public ssh key</a></li>
+<li><a href="#3-%E6%8A%8A-public-key-%E8%A8%AD%E5%AE%9A%E5%88%B0-github">3. 把 public key 設定到 GitHub</a><ul>
+<li><a href="#a-%E5%89%8D%E5%BE%80-github-%E8%A8%AD%E5%AE%9A">A. 前往 GitHub 設定</a></li>
+<li><a href="#b-%E9%BB%9E%E6%93%8A-ssh-and-gpg-keys">B. 點擊 “SSH and GPG keys”</a></li>
+<li><a href="#c-%E9%80%B2%E5%85%A5-ssh-and-gpg-keys-%E9%A0%81%E9%9D%A2%E5%BE%8C%E9%BB%9E%E6%93%8A-new-ssh-key">C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”</a></li>
+<li><a href="#d-%E8%B2%BC%E4%B8%8A-public-key-%E6%9C%80%E5%BE%8C%E9%80%81%E5%87%BA">D. 貼上 public key 最後送出</a></li>
+</ul>
+</li>
+<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
+</ul>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Git 是每位軟體工程師日常工作不可或缺的工具之一，畢竟軟體開發常常需要跟他人合作，甚至是維護、更新等⋯⋯可能都需要參照過去的成果，甚至需要快速與團隊同步，因此 Git 對大家而言都不陌生吧！<br>但是，有時候我們會遇到一些問題，例如：每次 push 都需要輸入帳號密碼，或是每次 push 都需要輸入密碼，這些都是可以透過 ssh 來解決的，接下來就讓我們一起來看看如何使用 ssh 與 GitHub 連線吧！</p>
+<h3 id="1-產生-ssh-key"><a href="#1-產生-ssh-key" class="headerlink" title="1. 產生 ssh key"></a>1. 產生 ssh key</h3><p>首先，我們需要先產生 ssh key，這個 key 會被存在 <code>~/.ssh</code> 資料夾中，如果沒有的話，可以使用以下指令建立（記得要把 email 改成你自己的 email，否則永遠不會成功哦！）：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>上述操作 <code>ed25519</code> 其實是較新的演算法，如果電腦不支援的話也可以使用以下另一種演算法生成（同樣也要記得把 email 改成你自己的 email）：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>以下將使用 <code>id_rsa</code> 做示範，接下來將出現以下畫面，直接按 <strong>Enter</strong> 就會幫你把產生的 key 放在預設的地方 <code>~/.ssh/id_rsa</code> ，也就是下方括號內的位址。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ Enter a file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/you/.ssh/id_rsa):</span><br></pre></td></tr></table></figure></div>
+
+<p>接下來會出現以下畫面，若不想以後 push 都要輸入 <code>passphrase</code> 的話，就連續點擊兩次 <strong>Enter</strong> 這樣 <code>passphrase</code> 就會是空的，以後 push 就不用輸入了！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Click Enter Twice</span></span><br><span class="line">$ Enter passphrase (empty <span class="keyword">for</span> no passphrase): [Type a passphrase]</span><br><span class="line">$ Enter same passphrase again: [Type passphrase again]</span><br></pre></td></tr></table></figure></div>
+
+<p>這樣做 ssh key 就已經生成好了！</p>
+<p>總共會生成兩個 key，private and public key，接下來會帶大家如何找到這兩個 key。</p>
+<h3 id="2-取得-public-ssh-key"><a href="#2-取得-public-ssh-key" class="headerlink" title="2. 取得 public ssh key"></a>2. 取得 public ssh key</h3><p>接著我們要進到剛剛放置 key 的位置，因此我們照著以下流程，把 public 的 key 拿出（副檔名為 <code>.pub</code>），要特別注意 GitHub 只需要 public 的 key，private 要自己留好！千萬不要給任何人！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> .ssh</span><br><span class="line">$ <span class="built_in">ls</span></span><br><span class="line">id_rsa          id_rsa.pub</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cat</span> id_rsa.pub</span><br></pre></td></tr></table></figure></div>
+
+<p>接下來就把 <code>cat id_rsa.pub</code> 的內容複製下來，我們就可以回 GitHub 做最後一步設定了！</p>
+<h3 id="3-把-public-key-設定到-GitHub"><a href="#3-把-public-key-設定到-GitHub" class="headerlink" title="3. 把 public key 設定到 GitHub"></a>3. 把 public key 設定到 GitHub</h3><p>接下來我們要把 public key 設定到 GitHub，這樣 GitHub 才能辨識你的電腦，讓你可以透過 ssh 連線到 GitHub，這樣就可以真的達到不用每次 push 都要輸入帳號密碼了！接下來將用截圖畫面的方式展示步驟！</p>
+<h4 id="A-前往-GitHub-設定"><a href="#A-前往-GitHub-設定" class="headerlink" title="A. 前往 GitHub 設定"></a>A. 前往 GitHub 設定</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/01.png"
+                     
+                ></p>
+<h4 id="B-點擊-“SSH-and-GPG-keys”"><a href="#B-點擊-“SSH-and-GPG-keys”" class="headerlink" title="B. 點擊 “SSH and GPG keys”"></a>B. 點擊 “SSH and GPG keys”</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/02.png"
+                     
+                ></p>
+<h4 id="C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”"><a href="#C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”" class="headerlink" title="C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”"></a>C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/03.png"
+                     
+                ></p>
+<h4 id="D-貼上-public-key-最後送出"><a href="#D-貼上-public-key-最後送出" class="headerlink" title="D. 貼上 public key 最後送出"></a>D. 貼上 public key 最後送出</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/04.png"
+                     
+                ></p>
+<p>照著上述步驟就一切沒問題了，以後把專案 clone 到本地就選擇 ssh 的方式就搞定啦！<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/05.png"
+                     
+                ></p>
+<p>如果原先專案是走 <code>http</code> 的方式 <code>clone</code> 下來的話只要做以下更改就可以換成 <code>ssh</code> 啦！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote set-url origin &lt;your_project_ssh_url&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>如此以後專案 push 到 GitHub 就都會走 ssh 了也不需要每次都輸入帳號密碼了！最後祝大家以後都開發順利！可以開始進行更多遠端的 Git 操作了！</p>
+<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
+<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>My Linktree: <a class="link"   href="https://1chooo.github.io/linktree/" >1chooo’s Linktree <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#117;&#x67;&#x6f;&#x39;&#x37;&#48;&#50;&#x31;&#x37;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;" >&#104;&#117;&#x67;&#x6f;&#x39;&#x37;&#48;&#50;&#x31;&#x37;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DEV</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>GitHub</tag>
+        <tag>SSH Key</tag>
       </tags>
   </entry>
 </search>
