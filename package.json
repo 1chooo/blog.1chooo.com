@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "gitalk": "^1.8.0",
-    "hexo": "^6.3.0",
+    "hexo": "^7.1.1",
     "hexo-asset-image": "^1.0.0",
     "hexo-deployer-git": "^4.0.0",
     "hexo-filter-mathjax": "^0.9.0",
