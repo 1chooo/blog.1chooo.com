@@ -7,14 +7,12 @@ tags:
 - AWS
 - EC2
 - Amazon Linux 2
-cover: /images/cover/amazon-linux-2-install-docker.png
+cover: /images/cover/dev-ops/amazon-linux-2-install-docker.png
 ---
 
 在我們需要做 DevOps 時，我們常常會需要用到 Containerization 技術，而 Docker 是目前最為廣泛使用的 Containerization 技術之一。同時我們也可能會用到雲端的算力來幫助我們完成這些工作，因此我們今天將會介紹如何在 Amazon Linux 2 上安裝 Docker。
 
-![](/images/cover/amazon-linux-2-install-docker.png)
-
-## 連線到 EC2
+### 連線到 EC2
 
 我們會需要透過 SSH 連線到 EC2，當然我們也可以直接透過 Console 連線到 Shell 來操作，我們將會以 SSH 的方式連線到 EC2 來操作，畢竟可以本地連上去操作會更加順手。
 
@@ -22,9 +20,9 @@ cover: /images/cover/amazon-linux-2-install-docker.png
 # 把 <ec2-public-ip> 換成你的 EC2 的 Public IP
 $ ssh -i "your.pem" ec2-user@<ec2-public-ip>.compute-1.amazonaws.com
    ,     #_
-   ~\_  ####_        Amazon Linux 2
-  ~~  \_#####\
-  ~~     \###|       AL2 End of Life is 2025-06-30.
+   ~\_  ######_        Amazon Linux 2
+  ~~  \_#######\
+  ~~     \####|       AL2 End of Life is 2025-06-30.
   ~~       \#/ ___
    ~~       V~' '->
     ~~~         /    A newer version of Amazon Linux is available!
@@ -35,7 +33,7 @@ $ ssh -i "your.pem" ec2-user@<ec2-public-ip>.compute-1.amazonaws.com
 [ec2-user]@your-ip ~ $
 ```
 
-## 檢查安裝所需的 [yum](https://en.wikipedia.org/wiki/Yum_(software))
+### 檢查安裝所需的 [yum](https://en.wikipedia.org/wiki/Yum_(software))
 
 透過 [yum](https://en.wikipedia.org/wiki/Yum_(software)) 來檢查我們的版本，並且我們也會用作安裝 Docker 的套件。
 
@@ -71,7 +69,7 @@ Name        : docker
 ```
 
 
-## 安裝 Docker 以及啟動 Docker 服務
+### 安裝 Docker 以及啟動 Docker 服務
 
 在查看完 Docker 的資訊後，我們可以透過 yum 來安裝 Docker。
 
@@ -138,7 +136,7 @@ uid=1000(ec2-user) gid=1000(ec2-user) groups=1000(ec2-user),4(adm),10(wheel),190
 $ newgrp docker
 ```
 
-## 安裝 `docker-compose`
+### 安裝 `docker-compose`
 
 我們需要安裝 `docker-compose` 來幫助我們管理 Docker 的 Container，我們可以透過 pip3 來安裝 `docker-compose`。
 
@@ -200,7 +198,7 @@ $ sudo systemctl status docker.service
 ```
 
 
-## Reference
+### Reference
 
 - [How to install Docker on Amazon Linux 2](https://www.cyberciti.biz/faq/how-to-install-docker-on-amazon-linux-2/)
 - [How to install Docker on Amazon Linux 2](https://swapnasagarpradhan.medium.com/how-to-install-docker-on-amazon-linux-2-8e5161ac5464)

@@ -6,19 +6,9 @@ tags:
 - Git 
 - GitHub
 - SSH Key
-cover: /images/cover/git_tips_cover.png
+cover: /images/cover/dev-ops/git-ssh.png
 ---
 
-**本文綱要**
-- [前言](#前言)
-- [1. 產生 ssh key](#1-產生-ssh-key)
-- [2. 取得 public ssh key](#2-取得-public-ssh-key)
-- [3. 把 public key 設定到 GitHub](#3-把-public-key-設定到-github)
-  - [A. 前往 GitHub 設定](#a-前往-github-設定)
-  - [B. 點擊 "SSH and GPG keys"](#b-點擊-ssh-and-gpg-keys)
-  - [C. 進入 "SSH and GPG keys" 頁面後點擊 "New SSH key"](#c-進入-ssh-and-gpg-keys-頁面後點擊-new-ssh-key)
-  - [D. 貼上 public key 最後送出](#d-貼上-public-key-最後送出)
-- [How to reach out to me](#how-to-reach-out-to-me)
 
 ### 前言
 Git 是每位軟體工程師日常工作不可或缺的工具之一，畢竟軟體開發常常需要跟他人合作，甚至是維護、更新等⋯⋯可能都需要參照過去的成果，甚至需要快速與團隊同步，因此 Git 對大家而言都不陌生吧！
@@ -70,21 +60,25 @@ $ cat id_rsa.pub
 
 接下來我們要把 public key 設定到 GitHub，這樣 GitHub 才能辨識你的電腦，讓你可以透過 ssh 連線到 GitHub，這樣就可以真的達到不用每次 push 都要輸入帳號密碼了！接下來將用截圖畫面的方式展示步驟！
 
-#### A. 前往 GitHub 設定
+#### 3-A. 前往 GitHub 設定
 
-![](https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/01.png)
+![](/images/post/dev-ops/git-ssh/01.png)
 
-#### B. 點擊 "SSH and GPG keys"
-![](https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/02.png)
+#### 3-B. 點擊 "SSH and GPG keys"
 
-#### C. 進入 "SSH and GPG keys" 頁面後點擊 "New SSH key"
-![](https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/03.png)
+![](/images/post/dev-ops/git-ssh/02.png)
 
-#### D. 貼上 public key 最後送出
-![](https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/04.png)
+#### 3-C. 進入 "SSH and GPG keys" 頁面後點擊 "New SSH key"
+
+![](/images/post/dev-ops/git-ssh/03.png)
+
+#### 3-D. 貼上 public key 最後送出
+
+![](/images/post/dev-ops/git-ssh/04.png)
 
 照著上述步驟就一切沒問題了，以後把專案 clone 到本地就選擇 ssh 的方式就搞定啦！ 
-![](https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/05.png)
+
+![](/images/post/dev-ops/git-ssh/05.png)
 
 如果原先專案是走 `http` 的方式 `clone` 下來的話只要做以下更改就可以換成 `ssh` 啦！
 
@@ -93,10 +87,3 @@ $ git remote set-url origin <your_project_ssh_url>
 ```
 
 如此以後專案 push 到 GitHub 就都會走 ssh 了也不需要每次都輸入帳號密碼了！最後祝大家以後都開發順利！可以開始進行更多遠端的 Git 操作了！
-
-### How to reach out to me
-- Ins: [@lcho____](https://www.instagram.com/lcho____/)
-- Linkedin: [Hugo ChunHo Lin](https://www.linkedin.com/in/1chooo/)
-- GitHub: [1chooo](https://github.com/1chooo)
-- My Linktree: [1chooo's Linktree](https://1chooo.github.io/linktree/)
-- Email: hugo970217@gmail.com
