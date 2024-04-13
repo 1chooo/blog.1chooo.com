@@ -53,7 +53,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#117;&#103;&#x6f;&#x39;&#x37;&#48;&#x32;&#49;&#55;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;" >&#x68;&#117;&#103;&#x6f;&#x39;&#x37;&#48;&#x32;&#49;&#55;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#103;&#x6f;&#57;&#x37;&#48;&#x32;&#49;&#x37;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#109;" >&#104;&#x75;&#103;&#x6f;&#57;&#x37;&#48;&#x32;&#49;&#x37;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -62,317 +62,6 @@
       <tags>
         <tag>algorithm</tag>
         <tag>note</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何在 AWS EC2 Amazon Linux 2 上安裝 Docker</title>
-    <url>/2024/04/11/dev-ops/amazon-linux-2-install-docker/</url>
-    <content><![CDATA[<p>在我們需要做 DevOps 時，我們常常會需要用到 Containerization 技術，而 Docker 是目前最為廣泛使用的 Containerization 技術之一。同時我們也可能會用到雲端的算力來幫助我們完成這些工作，因此我們今天將會介紹如何在 Amazon Linux 2 上安裝 Docker。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/cover/dev-ops/amazon-linux-2-install-docker.png"
-                     
-                ></p>
-<h2 id="連線到-EC2"><a href="#連線到-EC2" class="headerlink" title="連線到 EC2"></a>連線到 EC2</h2><p>我們會需要透過 SSH 連線到 EC2，當然我們也可以直接透過 Console 連線到 Shell 來操作，我們將會以 SSH 的方式連線到 EC2 來操作，畢竟可以本地連上去操作會更加順手。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 把 &lt;ec2-public-ip&gt; 換成你的 EC2 的 Public IP</span></span><br><span class="line">$ ssh -i <span class="string">&quot;your.pem&quot;</span> ec2-user@&lt;ec2-public-ip&gt;.compute-1.amazonaws.com</span><br><span class="line">   ,     <span class="comment">#_</span></span><br><span class="line">   ~\_  <span class="comment">####_        Amazon Linux 2</span></span><br><span class="line">  ~~  \_<span class="comment">#####\</span></span><br><span class="line">  ~~     \<span class="comment">###|       AL2 End of Life is 2025-06-30.</span></span><br><span class="line">  ~~       \<span class="comment">#/ ___</span></span><br><span class="line">   ~~       V~<span class="string">&#x27; &#x27;</span>-&gt;</span><br><span class="line">    ~~~         /    A newer version of Amazon Linux is available!</span><br><span class="line">      ~~._.   _/</span><br><span class="line">         _/ _/       Amazon Linux 2023, GA and supported <span class="keyword">until</span> 2028-03-15.</span><br><span class="line">       _/m/<span class="string">&#x27;           https://aws.amazon.com/linux/amazon-linux-2023/</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[ec2-user]@your-ip ~ $</span></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="檢查安裝所需的-yum"><a href="#檢查安裝所需的-yum" class="headerlink" title="檢查安裝所需的 yum"></a>檢查安裝所需的 <a class="link"   href="https://en.wikipedia.org/wiki/Yum_(software)" >yum <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h2><p>透過 <a class="link"   href="https://en.wikipedia.org/wiki/Yum_(software)" >yum <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來檢查我們的版本，並且我們也會用作安裝 Docker 的套件。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 檢查 yum 的版本</span></span><br><span class="line">$ sudo yum update</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">No packages marked <span class="keyword">for</span> update</span><br></pre></td></tr></table></figure></div>
-
-
-<p>透過 yum 來搜尋 Docker 的套件，並且查看 Docker 的資訊。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 搜尋 Docker 的套件</span></span><br><span class="line">$ sudo yum search docker</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">===================================================== N/S matched: docker =====================================================</span><br><span class="line">pcp-pmda-docker.x86_64 : Performance Co-Pilot (PCP) metrics from the Docker daemon</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
-
-<p>使用 <code>yum info docker</code> 來查看 Docker 的資訊。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum info docker</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">Available Packages</span><br><span class="line">Name        : docker</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
-
-
-<h2 id="安裝-Docker-以及啟動-Docker-服務"><a href="#安裝-Docker-以及啟動-Docker-服務" class="headerlink" title="安裝 Docker 以及啟動 Docker 服務"></a>安裝 Docker 以及啟動 Docker 服務</h2><p>在查看完 Docker 的資訊後，我們可以透過 yum 來安裝 Docker。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum install docker</span><br><span class="line">...</span><br><span class="line">Installed:</span><br><span class="line">  docker.x86_64 0:20.10.25-1.amzn2.0.4</span><br><span class="line"></span><br><span class="line">Dependency Installed:</span><br><span class="line">  containerd.x86_64 0:1.7.11-1.amzn2.0.1        libcgroup.x86_64 0:0.41-21.amzn2        pigz.x86_64 0:2.3.4-1.amzn2.0.1</span><br><span class="line">  runc.x86_64 0:1.1.11-1.amzn2</span><br><span class="line"></span><br><span class="line">Complete!</span><br></pre></td></tr></table></figure></div>
-
-<p>檢查一下我們的 Docker 是否有安裝成功吧！</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo docker version</span><br><span class="line">Client:</span><br><span class="line"> Version:           20.10.25</span><br><span class="line"> ...</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Engine:</span><br><span class="line">  Version:          20.10.25</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure></div>
-
-
-<p>啟動我們的 Docker 服務。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo service docker start</span><br><span class="line">Redirecting to /bin/systemctl start docker.service</span><br><span class="line"></span><br><span class="line">$ sudo systemctl <span class="built_in">enable</span> docker.service</span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.</span><br></pre></td></tr></table></figure></div>
-
-<p>我們可以透過 systemctl 來檢查 Docker 服務的狀態，當我們看到 <code>Active: active (running)</code> 時，就代表我們的 Docker 服務已經成功啟動。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo systemctl status docker.service</span><br><span class="line">● docker.service - Docker Application Container Engine</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; vendor preset: disabled)</span><br><span class="line">   Active: active (running) since Wed 2024-04-10 02:29:53 UTC; 1min 13s ago</span><br><span class="line">     Docs: https://docs.docker.com</span><br><span class="line"> Main PID: 3529 (dockerd)</span><br><span class="line">   CGroup: /system.slice/docker.service</span><br><span class="line">           └─3529 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --default-ulimit nofile=32768:65536...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
-
-<p>我們可以把 ec2-user 加入到 docker 群組中，這樣我們就不需要每次都要用 sudo 來執行 Docker 的指令。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo usermod -a -G docker ec2-user</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">id</span> ec2-user</span><br><span class="line">uid=1000(ec2-user) gid=1000(ec2-user) <span class="built_in">groups</span>=1000(ec2-user),4(adm),10(wheel),190(systemd-journal),992(docker)</span><br><span class="line"></span><br><span class="line">$ newgrp docker</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="安裝-docker-compose"><a href="#安裝-docker-compose" class="headerlink" title="安裝 docker-compose"></a>安裝 <code>docker-compose</code></h2><p>我們需要安裝 <code>docker-compose</code> 來幫助我們管理 Docker 的 Container，我們可以透過 pip3 來安裝 <code>docker-compose</code>。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. Get pip3</span></span><br><span class="line">$ sudo yum install python3-pip</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">amzn2-core                                                                                              | 3.6 kB  00:00:00</span><br><span class="line">Package python3-pip-20.2.2-1.amzn2.0.5.noarch already installed and latest version</span><br><span class="line">Nothing to <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. Then run any one of the following</span></span><br><span class="line">$ pip3 install --user docker-compose</span><br><span class="line">Collecting docker-compose</span><br><span class="line">  Downloading docker_compose-1.29.2-py2.py3-none-any.whl (114 kB)</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">Successfully installed ... docker-compose-1.29.2 ...</span><br></pre></td></tr></table></figure></div>
-
-<blockquote>
-<p>[!WARNING]<br>如果在安裝 <code>docker-compose</code> 時出現錯誤，可能是因為 <code>urllib3</code> 的版本支援問題，我們可以透過 <code>pip3 install urllib3==1.26.15</code> 來安裝特定版本的 <code>urllib3</code>。</p>
-<p>可以參考 <a class="link"   href="https://github.com/explosion/spaCy/discussions/12750" >Persisting spaCy import error: NotOpenSSLWarning: urllib3 v2.0 only supports OpenSSL 1.1.1+ #12750 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來排除</p>
-</blockquote>
-<p>我們也可以使用 <code>wget</code> 來下載 <code>docker-compose</code> 並且安裝。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ wget https://github.com/docker/compose/releases/latest/download/docker-compose-$(<span class="built_in">uname</span> -s)-$(<span class="built_in">uname</span> -m) </span><br><span class="line">$ sudo <span class="built_in">mv</span> docker-compose-$(<span class="built_in">uname</span> -s)-$(<span class="built_in">uname</span> -m) /usr/local/bin/docker-compose</span><br><span class="line">$ sudo <span class="built_in">chmod</span> -v +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure></div>
-
-<p>我們可以透過 <code>docker-compose --version</code> 來檢查 <code>docker-compose</code> 是否有安裝成功。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker-compose version</span><br><span class="line">docker-compose version 1.29.2, build unknown</span><br><span class="line">docker-py version: &lt;module <span class="string">&#x27;docker.version&#x27;</span> from <span class="string">&#x27;/home/ec2-user/.local/lib/python3.7/site-packages/docker/version.py&#x27;</span>&gt;</span><br><span class="line">CPython version: 3.7.16</span><br><span class="line">OpenSSL version: OpenSSL 1.0.2k-fips  26 Jan 2017</span><br></pre></td></tr></table></figure></div>
-
-
-<p>這時我們就可以開始使用 Docker 來做 Containerization 的工作了。</p>
-<p>最後附上一些在使用 Docker 時可能會用到的指令。祝福大家都能順利使用 Docker 來完成自己的工作。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># start the service</span></span><br><span class="line">$ sudo systemctl start docker.service</span><br><span class="line"><span class="comment"># stop the service</span></span><br><span class="line">$ sudo systemctl stop docker.service</span><br><span class="line"><span class="comment"># restart the service</span></span><br><span class="line">$ sudo systemctl restart docker.service</span><br><span class="line"><span class="comment"># get the service status</span></span><br><span class="line">$ sudo systemctl status docker.service</span><br></pre></td></tr></table></figure></div>
-
-
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a class="link"   href="https://www.cyberciti.biz/faq/how-to-install-docker-on-amazon-linux-2/" >How to install Docker on Amazon Linux 2 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://swapnasagarpradhan.medium.com/how-to-install-docker-on-amazon-linux-2-8e5161ac5464" >How to install Docker on Amazon Linux 2 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DEV</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>AWS</tag>
-        <tag>EC2</tag>
-        <tag>Amazon Linux 2</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)</title>
-    <url>/2024/03/22/dev-ops/aws-security-group-nacl/</url>
-    <content><![CDATA[<p>During a meeting, we explored a scenario: “If we disable the inbound rule of the Network Access Control List (NACL), the connection will be interrupted. However, if we turn off inbound traffic in the Security Group, would we still be able to connect?” Surprisingly, the answer is YES. The rationale behind this phenomenon will be elaborated on in this article.</p>
-<p>We can discuss the differences between Security Group and Network Access Control List (NACL) from various perspectives. The primary difference between the two is:</p>
-<blockquote>
-<p>The Security Group acts as the firewall for EC2 Instances. </p>
-<p>The Network ACL serves as the firewall for the VPC Subnets.</p>
-</blockquote>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/dev-ops/aws-security-group-nacl/arch.png"
-                      alt="Awesome Cloud — Security Groups and Network ACLs"
-                ><figcaption>Awesome Cloud — Security Groups and Network ACLs</figcaption></figure></p>
-<p>Next, we can discuss the differences between the two from the following perspectives:</p>
-<h2 id="Defense-Layers"><a href="#Defense-Layers" class="headerlink" title="Defense Layers"></a>Defense Layers</h2><p>Security Groups are associated with specific instances, which could be an EC2 instance, an ECS cluster, or an RDS database instance. On the other hand, Network Access Control Lists (NACLs) operate at the subnet level. This means that any instance within a subnet that has an associated NACL will automatically adhere to the NACL’s rules.</p>
-<h2 id="Application-Scope"><a href="#Application-Scope" class="headerlink" title="Application Scope"></a>Application Scope</h2><p>While Security Groups are tailored for individual instances, NACLs are designed to provide rules for the entire Subnet within a Virtual Private Cloud (VPC).</p>
-<h2 id="Statefulness"><a href="#Statefulness" class="headerlink" title="Statefulness"></a>Statefulness</h2><p>Security Group is stateful which means if you allow the inbound traffic, the response traffic is allowed automatically. No matter what the outbound rules are. However, NACL is stateless and do not track the state of a connection.</p>
-<h2 id="Default-Rules"><a href="#Default-Rules" class="headerlink" title="Default Rules"></a>Default Rules</h2><p>By default, Security Groups block all inbound traffic while allowing all outbound traffic. Conversely, Network Access Control Lists (NACLs) have a default rule at the subnet boundary that permits both inbound and outbound traffic. The application of these rules in NACLs is determined by Rule Numbers, with higher numbers indicating higher priority.</p>
-<h2 id="Rule-Application-Order"><a href="#Rule-Application-Order" class="headerlink" title="Rule Application Order"></a>Rule Application Order</h2><p>NACLs apply a numbered list of rules sequentially. However, Security Groups do not follow a specific order in rule application.</p>
-<h2 id="Traffic-Blocking-Capabilities"><a href="#Traffic-Blocking-Capabilities" class="headerlink" title="Traffic Blocking Capabilities"></a>Traffic Blocking Capabilities</h2><p>NACLs have the ability to block traffic at the subnet level. In contrast, Security Groups can only block traffic at the instance level.</p>
-<h2 id="Impact-on-Network-Performance"><a href="#Impact-on-Network-Performance" class="headerlink" title="Impact on Network Performance"></a>Impact on Network Performance</h2><p>Network Access Control Lists (NACLs) can potentially exert a significant impact on network performance. This is because they operate at the subnet level, applying their rules to all instances within the subnet. On the other hand, Security Groups operate at the instance level, applying their rules only to individual instances, thus having a more localized impact.</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>To sum up, let’s circle back to our main discussion. “If we disable the inbound rule of the Network Access Control List (NACL), the connection will be interrupted. Why is that?” Unlike Security Groups, NACLs are stateless. This means they do not keep track of the connection’s state, and each packet of data is treated independently. Therefore, if we disable the inbound rule of a NACL, it will not allow any incoming traffic, effectively breaking the connection.</p>
-<p>On the other hand, if we turn off inbound traffic in the Security Group, we can still connect. The absence of inbound rules does not disrupt the connection because the Security Group functions as a stateful firewall. Even with specific inbound traffic blocked, a connection can still be established as it originates from within the EC2 instance, and the returning traffic is allowed.</p>
-<p>This concept aligns with the TCP Three-way Handshake (SYN, SYN-ACK, ACK). The connection is initiated by the client, and the server responds to the client’s request. Once we create the tunnel between the server and client, the connection is established.</p>
-<p>Therefore, after disabling the Inbound Rule of the Security Group, we have a grace period to inform customers or other parties, preventing an immediate disruption of the service connection.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a class="link"   href="https://www.mygreatlearning.com/aws/tutorials/nacl-vs-security-group" >NACL vs Security Group <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://www.knowledgehut.com/tutorials/aws/nacl-vs-security-groups" >Security groups vs Network ACLs - What is the Difference? <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://k21academy.com/amazon-web-services/aws-solutions-architect/aws-security-groups-vs-nacl/" >AWS Network Security: NACL vs Security Groups <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://digitalcloud.training/aws-security-group-vs-nacl-key-differences/" >AWS Security Group vs NACL – Key Differences <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://community.meraki.com/t5/Security-SD-WAN/Meraki-vMX-amp-AWS-security-group/m-p/222409#:~:text=Having%20no%20inbound%20rules%20does%20not%20cause%20the%20tunnel%20to,instance%20and%20returning%20traffic%20allowed" >Meraki vMX &amp; AWS security group <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://medium.com/awesome-cloud/aws-difference-between-security-groups-and-network-acls-adc632ea29ae" >AWS — Difference between Security Groups and Network Access Control List (NACL) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DEV</category>
-      </categories>
-      <tags>
-        <tag>AWS</tag>
-        <tag>EC2</tag>
-        <tag>Cli</tag>
-        <tag>Security Group</tag>
-        <tag>NACL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我在 Conda 常用的指令</title>
-    <url>/2023/07/30/dev-ops/conda_tips/</url>
-    <content><![CDATA[<blockquote>
-<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
-</blockquote>
-<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
-<p><strong>本文綱要</strong></p>
-<ul>
-<li><a href="#%E5%BB%BA%E7%AB%8B%E5%88%AA%E9%99%A4%E5%92%8C%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">建立、刪除和複製虛擬環境</a><ul>
-<li><a href="#%E5%BB%BA%E7%AB%8B%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">建立虛擬環境</a></li>
-<li><a href="#%E5%88%AA%E9%99%A4%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">刪除虛擬環境</a></li>
-<li><a href="#%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">複製虛擬環境</a></li>
-</ul>
-</li>
-<li><a href="#%E6%BF%80%E6%B4%BB%E8%88%87%E9%80%80%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">激活與退出虛擬環境</a></li>
-<li><a href="#%E5%AE%89%E8%A3%9D%E5%8F%8A%E5%88%AA%E9%99%A4%E9%9C%80%E8%A6%81%E7%9A%84-package-%E8%87%B3%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">安裝及刪除需要的 package 至虛擬環境</a></li>
-<li><a href="#%E6%9F%A5%E8%A9%A2%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83%E8%B3%87%E8%A8%8A">查詢虛擬環境資訊</a></li>
-<li><a href="#%E5%B0%8E%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">導出虛擬環境</a></li>
-<li><a href="#%E6%96%87%E6%9C%AB%E5%B0%8F%E7%B5%90">文末小結</a></li>
-<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
-</ul>
-<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
-<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
-
-<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../assets/imgs/conda_command.png"
-                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
-                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
-<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
-<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
-<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
-<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
-<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#103;&#111;&#x39;&#55;&#48;&#x32;&#x31;&#x37;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;" >&#104;&#x75;&#103;&#111;&#x39;&#55;&#48;&#x32;&#x31;&#x37;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DEV</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>venv</tag>
-        <tag>conda</tag>
-        <tag>tips</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何編輯 /var/www/html 中的檔案</title>
-    <url>/2024/03/18/dev-ops/edit-server-html/</url>
-    <content><![CDATA[<p>首先為甚麼我們會需要編輯 <code>/var/www/html</code> 中的檔案呢？這是因為我們如果要在 Linux 中架設屬於我們的伺服器，像是 Apache 或是 Nginx，我們需要將我們的網頁檔案放在 <code>/var/www/html</code> 中。因此，如果我們要修改我們的網頁檔案，我們就需要進入這個資料夾中進行修改。</p>
-<p>但是在 Linux 中的 <code>/</code> 之下的檔案都是屬於 root 的，因此我們需要使用 <code>sudo</code> 來進行修改。因此之前在要編輯 <code>/var/www/html</code> 中的檔案時候，看到很多人的做法是直接修改權限，因為 Linux 每個檔案都可以設定不同的權限，但其實如果 user 本身權限不同，會導致一些問題。</p>
-<p>因此我想提供一個當直接擁有 root user 權限時，最快能成功修改的方法，那就是直接加上 sudo 來進行修改即可！</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo vi /var/www/html/index.php</span><br></pre></td></tr></table></figure></div>
-
-<p>這樣就可以更改 <code>/var/www/html</code> 中的檔案了！</p>
-]]></content>
-      <categories>
-        <category>DEV</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</title>
-    <url>/2023/09/08/dev-ops/git_ssh/</url>
-    <content><![CDATA[<p><strong>本文綱要</strong></p>
-<ul>
-<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
-<li><a href="#1-%E7%94%A2%E7%94%9F-ssh-key">1. 產生 ssh key</a></li>
-<li><a href="#2-%E5%8F%96%E5%BE%97-public-ssh-key">2. 取得 public ssh key</a></li>
-<li><a href="#3-%E6%8A%8A-public-key-%E8%A8%AD%E5%AE%9A%E5%88%B0-github">3. 把 public key 設定到 GitHub</a><ul>
-<li><a href="#a-%E5%89%8D%E5%BE%80-github-%E8%A8%AD%E5%AE%9A">A. 前往 GitHub 設定</a></li>
-<li><a href="#b-%E9%BB%9E%E6%93%8A-ssh-and-gpg-keys">B. 點擊 “SSH and GPG keys”</a></li>
-<li><a href="#c-%E9%80%B2%E5%85%A5-ssh-and-gpg-keys-%E9%A0%81%E9%9D%A2%E5%BE%8C%E9%BB%9E%E6%93%8A-new-ssh-key">C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”</a></li>
-<li><a href="#d-%E8%B2%BC%E4%B8%8A-public-key-%E6%9C%80%E5%BE%8C%E9%80%81%E5%87%BA">D. 貼上 public key 最後送出</a></li>
-</ul>
-</li>
-<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
-</ul>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Git 是每位軟體工程師日常工作不可或缺的工具之一，畢竟軟體開發常常需要跟他人合作，甚至是維護、更新等⋯⋯可能都需要參照過去的成果，甚至需要快速與團隊同步，因此 Git 對大家而言都不陌生吧！<br>但是，有時候我們會遇到一些問題，例如：每次 push 都需要輸入帳號密碼，或是每次 push 都需要輸入密碼，這些都是可以透過 ssh 來解決的，接下來就讓我們一起來看看如何使用 ssh 與 GitHub 連線吧！</p>
-<h3 id="1-產生-ssh-key"><a href="#1-產生-ssh-key" class="headerlink" title="1. 產生 ssh key"></a>1. 產生 ssh key</h3><p>首先，我們需要先產生 ssh key，這個 key 會被存在 <code>~/.ssh</code> 資料夾中，如果沒有的話，可以使用以下指令建立（記得要把 email 改成你自己的 email，否則永遠不會成功哦！）：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>上述操作 <code>ed25519</code> 其實是較新的演算法，如果電腦不支援的話也可以使用以下另一種演算法生成（同樣也要記得把 email 改成你自己的 email）：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>以下將使用 <code>id_rsa</code> 做示範，接下來將出現以下畫面，直接按 <strong>Enter</strong> 就會幫你把產生的 key 放在預設的地方 <code>~/.ssh/id_rsa</code> ，也就是下方括號內的位址。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ Enter a file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/you/.ssh/id_rsa):</span><br></pre></td></tr></table></figure></div>
-
-<p>接下來會出現以下畫面，若不想以後 push 都要輸入 <code>passphrase</code> 的話，就連續點擊兩次 <strong>Enter</strong> 這樣 <code>passphrase</code> 就會是空的，以後 push 就不用輸入了！</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Click Enter Twice</span></span><br><span class="line">$ Enter passphrase (empty <span class="keyword">for</span> no passphrase): [Type a passphrase]</span><br><span class="line">$ Enter same passphrase again: [Type passphrase again]</span><br></pre></td></tr></table></figure></div>
-
-<p>這樣做 ssh key 就已經生成好了！</p>
-<p>總共會生成兩個 key，private and public key，接下來會帶大家如何找到這兩個 key。</p>
-<h3 id="2-取得-public-ssh-key"><a href="#2-取得-public-ssh-key" class="headerlink" title="2. 取得 public ssh key"></a>2. 取得 public ssh key</h3><p>接著我們要進到剛剛放置 key 的位置，因此我們照著以下流程，把 public 的 key 拿出（副檔名為 <code>.pub</code>），要特別注意 GitHub 只需要 public 的 key，private 要自己留好！千萬不要給任何人！</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> .ssh</span><br><span class="line">$ <span class="built_in">ls</span></span><br><span class="line">id_rsa          id_rsa.pub</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cat</span> id_rsa.pub</span><br></pre></td></tr></table></figure></div>
-
-<p>接下來就把 <code>cat id_rsa.pub</code> 的內容複製下來，我們就可以回 GitHub 做最後一步設定了！</p>
-<h3 id="3-把-public-key-設定到-GitHub"><a href="#3-把-public-key-設定到-GitHub" class="headerlink" title="3. 把 public key 設定到 GitHub"></a>3. 把 public key 設定到 GitHub</h3><p>接下來我們要把 public key 設定到 GitHub，這樣 GitHub 才能辨識你的電腦，讓你可以透過 ssh 連線到 GitHub，這樣就可以真的達到不用每次 push 都要輸入帳號密碼了！接下來將用截圖畫面的方式展示步驟！</p>
-<h4 id="A-前往-GitHub-設定"><a href="#A-前往-GitHub-設定" class="headerlink" title="A. 前往 GitHub 設定"></a>A. 前往 GitHub 設定</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/01.png"
-                     
-                ></p>
-<h4 id="B-點擊-“SSH-and-GPG-keys”"><a href="#B-點擊-“SSH-and-GPG-keys”" class="headerlink" title="B. 點擊 “SSH and GPG keys”"></a>B. 點擊 “SSH and GPG keys”</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/02.png"
-                     
-                ></p>
-<h4 id="C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”"><a href="#C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”" class="headerlink" title="C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”"></a>C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/03.png"
-                     
-                ></p>
-<h4 id="D-貼上-public-key-最後送出"><a href="#D-貼上-public-key-最後送出" class="headerlink" title="D. 貼上 public key 最後送出"></a>D. 貼上 public key 最後送出</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/04.png"
-                     
-                ></p>
-<p>照著上述步驟就一切沒問題了，以後把專案 clone 到本地就選擇 ssh 的方式就搞定啦！<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://1chooo.github.io/1chooo-blog/images/post/DEV/git_ssh/05.png"
-                     
-                ></p>
-<p>如果原先專案是走 <code>http</code> 的方式 <code>clone</code> 下來的話只要做以下更改就可以換成 <code>ssh</code> 啦！</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote set-url origin &lt;your_project_ssh_url&gt;</span><br></pre></td></tr></table></figure></div>
-
-<p>如此以後專案 push 到 GitHub 就都會走 ssh 了也不需要每次都輸入帳號密碼了！最後祝大家以後都開發順利！可以開始進行更多遠端的 Git 操作了！</p>
-<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
-<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>My Linktree: <a class="link"   href="https://1chooo.github.io/linktree/" >1chooo’s Linktree <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#117;&#103;&#111;&#57;&#55;&#48;&#50;&#49;&#55;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#109;" >&#104;&#117;&#103;&#111;&#57;&#55;&#48;&#50;&#49;&#55;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DEV</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>GitHub</tag>
-        <tag>SSH Key</tag>
       </tags>
   </entry>
   <entry>
@@ -453,7 +142,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#x67;&#x6f;&#57;&#x37;&#x30;&#x32;&#x31;&#55;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#109;" >&#x68;&#x75;&#x67;&#x6f;&#57;&#x37;&#x30;&#x32;&#x31;&#55;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#117;&#x67;&#x6f;&#x39;&#55;&#x30;&#50;&#x31;&#x37;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;" >&#104;&#117;&#x67;&#x6f;&#x39;&#55;&#x30;&#50;&#x31;&#x37;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -498,7 +187,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#x67;&#111;&#57;&#55;&#x30;&#50;&#49;&#x37;&#x40;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;" >&#x68;&#x75;&#x67;&#111;&#57;&#55;&#x30;&#50;&#49;&#x37;&#x40;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#103;&#111;&#x39;&#55;&#48;&#50;&#49;&#x37;&#x40;&#103;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;" >&#104;&#x75;&#103;&#111;&#x39;&#55;&#48;&#50;&#49;&#x37;&#x40;&#103;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -591,7 +280,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#103;&#111;&#57;&#55;&#x30;&#50;&#49;&#55;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;" >&#x68;&#x75;&#103;&#111;&#57;&#55;&#x30;&#50;&#49;&#55;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#x67;&#111;&#57;&#x37;&#x30;&#x32;&#49;&#x37;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;" >&#x68;&#x75;&#x67;&#111;&#57;&#x37;&#x30;&#x32;&#49;&#x37;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -600,6 +289,342 @@
       <tags>
         <tag>python</tag>
         <tag>pygame</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>五個 Python 好習慣</title>
+    <url>/2024/03/16/coding-style/python-5-tips/</url>
+    <content><![CDATA[<p>在學習基礎程式語言中，我們往往只在乎程式能不能運行，會不會基礎語法，然而很多人沒有累積到專案中實際撰寫的好習慣，因此這篇文章中，我將會討論五個 Python 的好習慣，並且這些事我已經落實在專案中的 Coding Style 希望透過這次的分享能夠幫助看到這邊的你寫出更好的程式碼。</p>
+<h3 id="1-if-name-main"><a href="#1-if-name-main" class="headerlink" title="1. if __name__ == &#39;__main__&#39;:"></a>1. <code>if __name__ == &#39;__main__&#39;:</code></h3><p>很多人可能在 review 別人的 Python 專案時，都會發現這個條件式。這個條件式的目的是為了確保這個檔案是被直接執行，而不是被 import 進其他檔案中，我們可以舉個例子來看看加上這個條件式的重要性。</p>
+<p>我們今天要設計一個 <code>api</code> 是 <code>get_name()</code>，透過呼叫這個 api 我們可以得到從資料庫中取得名字，我們先來看看以下的程式碼：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># api.py</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_name</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Getting name...&#x27;</span>)</span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hugo&#x27;</span>)</span><br><span class="line"></span><br><span class="line">get_name()</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># main.py</span></span><br><span class="line"><span class="keyword">from</span> api <span class="keyword">import</span> get_name</span><br><span class="line"></span><br><span class="line">get_name()</span><br></pre></td></tr></table></figure></div>
+
+<p>我們可以先觀察執行結果如以下：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Getting name...</span><br><span class="line">Hugo</span><br><span class="line">Getting name...</span><br><span class="line">Hugo</span><br></pre></td></tr></table></figure></div>
+
+<p>總共執行了兩次 <code>get_name()</code>，但是奇怪的是我們明明只有在 <code>main.py</code> 中呼叫了一次 <code>get_name()</code>，為什麼會執行兩次呢？</p>
+<p>因為我們在 <code>api.py</code> 中的 <code>get_name()</code> 是直接被執行的，所以當我們在 <code>main.py</code> 中 import <code>api.py</code> 時，<code>get_name()</code> 也會被執行一次。</p>
+<p>因此我們只要把 <code>main.py</code> 改成以下的程式碼就可以解決這個問題：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># main.py</span></span><br><span class="line"><span class="keyword">from</span> api <span class="keyword">import</span> get_name</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    get_name()</span><br></pre></td></tr></table></figure></div>
+
+<p>我們就會得到我們想要的執行結果如以下：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Getting name...</span><br><span class="line">Hugo</span><br></pre></td></tr></table></figure></div>
+
+<p>這樣就不會執行兩次 <code>get_name()</code> 了，也就是說在我們的程式碼中加上 <code>if __name__ == &#39;__main__&#39;:</code> 可以讓 Python 知道「只要」執行該檔案呼叫的程式碼，而不是從其他 import 進來的 function。</p>
+<h3 id="2-在-Python-中加入-main-function"><a href="#2-在-Python-中加入-main-function" class="headerlink" title="2. 在 Python 中加入 main() function"></a>2. 在 Python 中加入 <code>main()</code> function</h3><p>在很多程式語言中都有 <code>main()</code> function 的存在，像是 Go, C, C++, Java 等等。因為對於 Python 任何皆是物件的特性，沒有 <code>main()</code> function 也是可以執行的，不過加上 <code>main()</code> function 我們可以知道程式主要的進入點是什麼。</p>
+<p>我們可以從以下範例程式碼觀察，這是沒有加上 <code>main()</code> function 的程式碼：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Bad Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_hello</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_goodbye</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Goodbye&#x27;</span>)</span><br><span class="line"></span><br><span class="line">say_hello()</span><br><span class="line">say_goodbye()</span><br></pre></td></tr></table></figure></div>
+
+<p>另外我們可以看到搭配第一個好習慣的 <code>if __name__ == &#39;__main__&#39;:</code>，再加上宣告 <code>main()</code> function，這樣我們就可以確保程式的進入點是 <code>main()</code> function，另外我們也可以確認的是執行的是該檔案呼叫的 <code>main()</code> function。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Good Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_hello</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_goodbye</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Goodbye&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    say_hello()</span><br><span class="line">    say_goodbye()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></div>
+
+<p>這時候大家可能會覺得我平常的寫法也不會出錯，何必多寫幾行呢？</p>
+<p>我們今天要假使當你的專案越來越大時，要在幾千行之中找到主程式運行的地方是一件非常困難的事情，因此加上 <code>main()</code> function 可以讓你的程式碼更加的有組織性，並且也可以更快地釐清 scripts 的運行目的。</p>
+<h3 id="3-避免過多的-if-巢狀判斷邏輯"><a href="#3-避免過多的-if-巢狀判斷邏輯" class="headerlink" title="3. 避免過多的 if 巢狀判斷邏輯"></a>3. 避免過多的 <code>if</code> 巢狀判斷邏輯</h3><p>假如我們今天上課只想點資工系的大三，我們要先判斷年級，再判斷系所，如果都有符合那就是點名成功，否則就是翹課出去爽了，我們可以看看這個 scenario 的實現：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Bad Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_attendance</span>(<span class="params">grade: <span class="built_in">int</span>, department: <span class="built_in">str</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">if</span> grade == <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">if</span> department == <span class="string">&#x27;CS&#x27;</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Attendance success&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;You are not in CS department&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;You are not in 3rd grade&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>這樣的寫法看起來沒有什麼問題，但是當我們的判斷條件越來越多時，這樣的寫法會讓我們的程式碼變得非常難以閱讀，我們可以透過以下的寫法來改善：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Good Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_year_three</span>(<span class="params">grade: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">    <span class="keyword">return</span> grade == <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_cs_major</span>(<span class="params">department: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">    <span class="keyword">return</span> department == <span class="string">&#x27;CS&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_attendance</span>(<span class="params">grade: <span class="built_in">int</span>, department: <span class="built_in">str</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">if</span> is_year_three(grade) <span class="keyword">and</span> is_cs_major(department):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Attendance success&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;You are not in the class&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>如此我們可以把條件給分開成不同的判斷，這樣我們如果要修改條件的話也可以直接從獨立出來的 function 進行修改，而不用去修改原本的程式碼，同時也避免同一個 function 中有過多的 <code>if</code> 巢狀判斷邏輯，造成閱讀上的困難。</p>
+<h3 id="4-為變數加上型別提示"><a href="#4-為變數加上型別提示" class="headerlink" title="4. 為變數加上型別提示"></a>4. 為變數加上型別提示</h3><p>Python 是個不用宣告型別的程式語言，這樣的特性讓 Python 的程式碼變得非常的靈活，但是當我們接手他人的專案又或是需要快速理解程式邏輯時，我們很難一眼就看出這個變數是什麼型別，這時候我們可以透過型別提示來讓程式碼更加的易讀。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">number1: <span class="built_in">int</span> = <span class="number">10</span></span><br><span class="line">number2: <span class="built_in">int</span> = <span class="string">&#x27;20&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(number1)  <span class="comment"># 10</span></span><br><span class="line"><span class="built_in">print</span>(number2)  <span class="comment"># 20</span></span><br></pre></td></tr></table></figure></div>
+
+<p>以上的範例中，我們可以看到 <code>number1</code> 和 <code>number2</code> 都有加上型別提示，都是 <code>int</code>，不過我們可以看到 <code>number2</code> 中，我們賦予的內容是 <code>&#39;20&#39;</code>，這個作法在 Python 中我們單純只是 print 出來的話是不會有問題的，但是如果我們要進行數學運算的話就會出現問題，這時候我們就可以透過型別提示來瞭解該變數該賦予的類型，以免在後續使用出問題。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">number1: <span class="built_in">int</span> = <span class="number">10</span></span><br><span class="line">number2: <span class="built_in">int</span> = <span class="string">&#x27;20&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(number1 + number2)</span><br></pre></td></tr></table></figure></div>
+
+<p>錯誤訊息會如以下，會發現 <code>number1</code> 和 <code>number2</code> 的型別不同，所以無法進行運算，也就是說當初我們在宣告變數時加上型別提示，可以讓我們避免做出型別混用的錯誤。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;hugo/is/great/developer/python_tip_04.py&quot;</span>, line 4, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="built_in">print</span>(number1 + number2)</span><br><span class="line">          ~~~~~~~~^~~~~~~~~</span><br><span class="line">TypeError: unsupported operand <span class="built_in">type</span>(s) <span class="keyword">for</span> +: <span class="string">&#x27;int&#x27;</span> and <span class="string">&#x27;str&#x27;</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="5-List-Comprehension"><a href="#5-List-Comprehension" class="headerlink" title="5. List Comprehension"></a>5. List Comprehension</h3><p>我們在撰寫程式時，常常會需要遍歷一個 list，並且對每一個元素進行操作，這時候我們可能會需要撰寫一堆 <code>for</code> 迴圈還有 <code>if</code> 來得到我們要的資訊，這時我們就可以透過 List Comprehension 來讓我們的程式碼更加的簡潔。</p>
+<p>當我們今天要在一個 List 找出所有的偶數，我們可以透過以下的寫法來達成：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Bad Habit</span></span><br><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">even_numbers = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> numbers:</span><br><span class="line">    <span class="keyword">if</span> number % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        even_numbers.append(number)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(even_numbers) <span class="comment"># [2, 4]</span></span><br></pre></td></tr></table></figure></div>
+
+<p>透過 List Comprehension 我們可以把上面的程式碼簡化成以下的寫法：</p>
+<blockquote>
+<p><strong>💡 TIP</strong></p>
+<p>這邊提供大家 List Comprehension 的記憶方法，那就是 <code>[目標 for 目標 in 來源 if 條件]</code>，這樣可以幫助大家更快理解以及上手。</p>
+</blockquote>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Good Habit</span></span><br><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">even_numbers = [number <span class="keyword">for</span> number <span class="keyword">in</span> numbers <span class="keyword">if</span> number % <span class="number">2</span> == <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(even_numbers) <span class="comment"># [2, 4]</span></span><br></pre></td></tr></table></figure></div>
+
+<p>完成啦 🖐🏻！以上就是五個在 Python 中的好習慣，也是我在撰寫專案中一步一步累積到的經驗，有些也不是老師上課會教的內容，但是好習慣往往從日常最好養成，希望大家在未來的開發途中，也可以將這些技巧運用在專案中，讓程式碼更加的易讀並且更加的有組織性，未來也會持續分享更多的 Python 小技巧，請大家持續關注。</p>
+]]></content>
+      <categories>
+        <category>Coding Style</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Clean Code</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在 AWS EC2 Amazon Linux 2 上安裝 Docker</title>
+    <url>/2024/04/11/dev-ops/amazon-linux-2-install-docker/</url>
+    <content><![CDATA[<p>在我們需要做 DevOps 時，我們常常會需要用到 Containerization 技術，而 Docker 是目前最為廣泛使用的 Containerization 技術之一。同時我們也可能會用到雲端的算力來幫助我們完成這些工作，因此我們今天將會介紹如何在 Amazon Linux 2 上安裝 Docker。</p>
+<h3 id="連線到-EC2"><a href="#連線到-EC2" class="headerlink" title="連線到 EC2"></a>連線到 EC2</h3><p>我們會需要透過 SSH 連線到 EC2，當然我們也可以直接透過 Console 連線到 Shell 來操作，我們將會以 SSH 的方式連線到 EC2 來操作，畢竟可以本地連上去操作會更加順手。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 把 &lt;ec2-public-ip&gt; 換成你的 EC2 的 Public IP</span></span><br><span class="line">$ ssh -i <span class="string">&quot;your.pem&quot;</span> ec2-user@&lt;ec2-public-ip&gt;.compute-1.amazonaws.com</span><br><span class="line">   ,     <span class="comment">#_</span></span><br><span class="line">   ~\_  <span class="comment">######_        Amazon Linux 2</span></span><br><span class="line">  ~~  \_<span class="comment">#######\</span></span><br><span class="line">  ~~     \<span class="comment">####|       AL2 End of Life is 2025-06-30.</span></span><br><span class="line">  ~~       \<span class="comment">#/ ___</span></span><br><span class="line">   ~~       V~<span class="string">&#x27; &#x27;</span>-&gt;</span><br><span class="line">    ~~~         /    A newer version of Amazon Linux is available!</span><br><span class="line">      ~~._.   _/</span><br><span class="line">         _/ _/       Amazon Linux 2023, GA and supported <span class="keyword">until</span> 2028-03-15.</span><br><span class="line">       _/m/<span class="string">&#x27;           https://aws.amazon.com/linux/amazon-linux-2023/</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[ec2-user]@your-ip ~ $</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="檢查安裝所需的-yum"><a href="#檢查安裝所需的-yum" class="headerlink" title="檢查安裝所需的 yum"></a>檢查安裝所需的 <a class="link"   href="https://en.wikipedia.org/wiki/Yum_(software)" >yum <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h3><p>透過 <a class="link"   href="https://en.wikipedia.org/wiki/Yum_(software)" >yum <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來檢查我們的版本，並且我們也會用作安裝 Docker 的套件。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 檢查 yum 的版本</span></span><br><span class="line">$ sudo yum update</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">No packages marked <span class="keyword">for</span> update</span><br></pre></td></tr></table></figure></div>
+
+
+<p>透過 yum 來搜尋 Docker 的套件，並且查看 Docker 的資訊。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 搜尋 Docker 的套件</span></span><br><span class="line">$ sudo yum search docker</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">===================================================== N/S matched: docker =====================================================</span><br><span class="line">pcp-pmda-docker.x86_64 : Performance Co-Pilot (PCP) metrics from the Docker daemon</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
+
+<p>使用 <code>yum info docker</code> 來查看 Docker 的資訊。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum info docker</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">Available Packages</span><br><span class="line">Name        : docker</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
+
+
+<h3 id="安裝-Docker-以及啟動-Docker-服務"><a href="#安裝-Docker-以及啟動-Docker-服務" class="headerlink" title="安裝 Docker 以及啟動 Docker 服務"></a>安裝 Docker 以及啟動 Docker 服務</h3><p>在查看完 Docker 的資訊後，我們可以透過 yum 來安裝 Docker。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum install docker</span><br><span class="line">...</span><br><span class="line">Installed:</span><br><span class="line">  docker.x86_64 0:20.10.25-1.amzn2.0.4</span><br><span class="line"></span><br><span class="line">Dependency Installed:</span><br><span class="line">  containerd.x86_64 0:1.7.11-1.amzn2.0.1        libcgroup.x86_64 0:0.41-21.amzn2        pigz.x86_64 0:2.3.4-1.amzn2.0.1</span><br><span class="line">  runc.x86_64 0:1.1.11-1.amzn2</span><br><span class="line"></span><br><span class="line">Complete!</span><br></pre></td></tr></table></figure></div>
+
+<p>檢查一下我們的 Docker 是否有安裝成功吧！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo docker version</span><br><span class="line">Client:</span><br><span class="line"> Version:           20.10.25</span><br><span class="line"> ...</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Engine:</span><br><span class="line">  Version:          20.10.25</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure></div>
+
+
+<p>啟動我們的 Docker 服務。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo service docker start</span><br><span class="line">Redirecting to /bin/systemctl start docker.service</span><br><span class="line"></span><br><span class="line">$ sudo systemctl <span class="built_in">enable</span> docker.service</span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.</span><br></pre></td></tr></table></figure></div>
+
+<p>我們可以透過 systemctl 來檢查 Docker 服務的狀態，當我們看到 <code>Active: active (running)</code> 時，就代表我們的 Docker 服務已經成功啟動。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo systemctl status docker.service</span><br><span class="line">● docker.service - Docker Application Container Engine</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; vendor preset: disabled)</span><br><span class="line">   Active: active (running) since Wed 2024-04-10 02:29:53 UTC; 1min 13s ago</span><br><span class="line">     Docs: https://docs.docker.com</span><br><span class="line"> Main PID: 3529 (dockerd)</span><br><span class="line">   CGroup: /system.slice/docker.service</span><br><span class="line">           └─3529 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --default-ulimit nofile=32768:65536...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
+
+<p>我們可以把 ec2-user 加入到 docker 群組中，這樣我們就不需要每次都要用 sudo 來執行 Docker 的指令。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo usermod -a -G docker ec2-user</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">id</span> ec2-user</span><br><span class="line">uid=1000(ec2-user) gid=1000(ec2-user) <span class="built_in">groups</span>=1000(ec2-user),4(adm),10(wheel),190(systemd-journal),992(docker)</span><br><span class="line"></span><br><span class="line">$ newgrp docker</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="安裝-docker-compose"><a href="#安裝-docker-compose" class="headerlink" title="安裝 docker-compose"></a>安裝 <code>docker-compose</code></h3><p>我們需要安裝 <code>docker-compose</code> 來幫助我們管理 Docker 的 Container，我們可以透過 pip3 來安裝 <code>docker-compose</code>。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. Get pip3</span></span><br><span class="line">$ sudo yum install python3-pip</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">amzn2-core                                                                                              | 3.6 kB  00:00:00</span><br><span class="line">Package python3-pip-20.2.2-1.amzn2.0.5.noarch already installed and latest version</span><br><span class="line">Nothing to <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. Then run any one of the following</span></span><br><span class="line">$ pip3 install --user docker-compose</span><br><span class="line">Collecting docker-compose</span><br><span class="line">  Downloading docker_compose-1.29.2-py2.py3-none-any.whl (114 kB)</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">Successfully installed ... docker-compose-1.29.2 ...</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>[!WARNING]<br>如果在安裝 <code>docker-compose</code> 時出現錯誤，可能是因為 <code>urllib3</code> 的版本支援問題，我們可以透過 <code>pip3 install urllib3==1.26.15</code> 來安裝特定版本的 <code>urllib3</code>。</p>
+<p>可以參考 <a class="link"   href="https://github.com/explosion/spaCy/discussions/12750" >Persisting spaCy import error: NotOpenSSLWarning: urllib3 v2.0 only supports OpenSSL 1.1.1+ #12750 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來排除</p>
+</blockquote>
+<p>我們也可以使用 <code>wget</code> 來下載 <code>docker-compose</code> 並且安裝。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ wget https://github.com/docker/compose/releases/latest/download/docker-compose-$(<span class="built_in">uname</span> -s)-$(<span class="built_in">uname</span> -m) </span><br><span class="line">$ sudo <span class="built_in">mv</span> docker-compose-$(<span class="built_in">uname</span> -s)-$(<span class="built_in">uname</span> -m) /usr/local/bin/docker-compose</span><br><span class="line">$ sudo <span class="built_in">chmod</span> -v +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure></div>
+
+<p>我們可以透過 <code>docker-compose --version</code> 來檢查 <code>docker-compose</code> 是否有安裝成功。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker-compose version</span><br><span class="line">docker-compose version 1.29.2, build unknown</span><br><span class="line">docker-py version: &lt;module <span class="string">&#x27;docker.version&#x27;</span> from <span class="string">&#x27;/home/ec2-user/.local/lib/python3.7/site-packages/docker/version.py&#x27;</span>&gt;</span><br><span class="line">CPython version: 3.7.16</span><br><span class="line">OpenSSL version: OpenSSL 1.0.2k-fips  26 Jan 2017</span><br></pre></td></tr></table></figure></div>
+
+
+<p>這時我們就可以開始使用 Docker 來做 Containerization 的工作了。</p>
+<p>最後附上一些在使用 Docker 時可能會用到的指令。祝福大家都能順利使用 Docker 來完成自己的工作。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># start the service</span></span><br><span class="line">$ sudo systemctl start docker.service</span><br><span class="line"><span class="comment"># stop the service</span></span><br><span class="line">$ sudo systemctl stop docker.service</span><br><span class="line"><span class="comment"># restart the service</span></span><br><span class="line">$ sudo systemctl restart docker.service</span><br><span class="line"><span class="comment"># get the service status</span></span><br><span class="line">$ sudo systemctl status docker.service</span><br></pre></td></tr></table></figure></div>
+
+
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a class="link"   href="https://www.cyberciti.biz/faq/how-to-install-docker-on-amazon-linux-2/" >How to install Docker on Amazon Linux 2 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://swapnasagarpradhan.medium.com/how-to-install-docker-on-amazon-linux-2-8e5161ac5464" >How to install Docker on Amazon Linux 2 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DEV</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>AWS</tag>
+        <tag>EC2</tag>
+        <tag>Amazon Linux 2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)</title>
+    <url>/2024/03/22/dev-ops/aws-security-group-nacl/</url>
+    <content><![CDATA[<p>During a meeting, we explored a scenario: “If we disable the inbound rule of the Network Access Control List (NACL), the connection will be interrupted. However, if we turn off inbound traffic in the Security Group, would we still be able to connect?” Surprisingly, the answer is YES. The rationale behind this phenomenon will be elaborated on in this article.</p>
+<p>We can discuss the differences between Security Group and Network Access Control List (NACL) from various perspectives. The primary difference between the two is:</p>
+<blockquote>
+<p>The Security Group acts as the firewall for EC2 Instances. </p>
+<p>The Network ACL serves as the firewall for the VPC Subnets.</p>
+</blockquote>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-ops/aws-security-group-nacl/arch.png"
+                      alt="Awesome Cloud — Security Groups and Network ACLs"
+                ><figcaption>Awesome Cloud — Security Groups and Network ACLs</figcaption></figure></p>
+<p>Next, we can discuss the differences between the two from the following perspectives:</p>
+<h3 id="Defense-Layers"><a href="#Defense-Layers" class="headerlink" title="Defense Layers"></a>Defense Layers</h3><p>Security Groups are associated with specific instances, which could be an EC2 instance, an ECS cluster, or an RDS database instance. On the other hand, Network Access Control Lists (NACLs) operate at the subnet level. This means that any instance within a subnet that has an associated NACL will automatically adhere to the NACL’s rules.</p>
+<h3 id="Application-Scope"><a href="#Application-Scope" class="headerlink" title="Application Scope"></a>Application Scope</h3><p>While Security Groups are tailored for individual instances, NACLs are designed to provide rules for the entire Subnet within a Virtual Private Cloud (VPC).</p>
+<h3 id="Statefulness"><a href="#Statefulness" class="headerlink" title="Statefulness"></a>Statefulness</h3><p>Security Group is stateful which means if you allow the inbound traffic, the response traffic is allowed automatically. No matter what the outbound rules are. However, NACL is stateless and do not track the state of a connection.</p>
+<h3 id="Default-Rules"><a href="#Default-Rules" class="headerlink" title="Default Rules"></a>Default Rules</h3><p>By default, Security Groups block all inbound traffic while allowing all outbound traffic. Conversely, Network Access Control Lists (NACLs) have a default rule at the subnet boundary that permits both inbound and outbound traffic. The application of these rules in NACLs is determined by Rule Numbers, with higher numbers indicating higher priority.</p>
+<h3 id="Rule-Application-Order"><a href="#Rule-Application-Order" class="headerlink" title="Rule Application Order"></a>Rule Application Order</h3><p>NACLs apply a numbered list of rules sequentially. However, Security Groups do not follow a specific order in rule application.</p>
+<h3 id="Traffic-Blocking-Capabilities"><a href="#Traffic-Blocking-Capabilities" class="headerlink" title="Traffic Blocking Capabilities"></a>Traffic Blocking Capabilities</h3><p>NACLs have the ability to block traffic at the subnet level. In contrast, Security Groups can only block traffic at the instance level.</p>
+<h3 id="Impact-on-Network-Performance"><a href="#Impact-on-Network-Performance" class="headerlink" title="Impact on Network Performance"></a>Impact on Network Performance</h3><p>Network Access Control Lists (NACLs) can potentially exert a significant impact on network performance. This is because they operate at the subnet level, applying their rules to all instances within the subnet. On the other hand, Security Groups operate at the instance level, applying their rules only to individual instances, thus having a more localized impact.</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>To sum up, let’s circle back to our main discussion. “If we disable the inbound rule of the Network Access Control List (NACL), the connection will be interrupted. Why is that?” Unlike Security Groups, NACLs are stateless. This means they do not keep track of the connection’s state, and each packet of data is treated independently. Therefore, if we disable the inbound rule of a NACL, it will not allow any incoming traffic, effectively breaking the connection.</p>
+<p>On the other hand, if we turn off inbound traffic in the Security Group, we can still connect. The absence of inbound rules does not disrupt the connection because the Security Group functions as a stateful firewall. Even with specific inbound traffic blocked, a connection can still be established as it originates from within the EC2 instance, and the returning traffic is allowed.</p>
+<p>This concept aligns with the TCP Three-way Handshake (SYN, SYN-ACK, ACK). The connection is initiated by the client, and the server responds to the client’s request. Once we create the tunnel between the server and client, the connection is established.</p>
+<p>Therefore, after disabling the Inbound Rule of the Security Group, we have a grace period to inform customers or other parties, preventing an immediate disruption of the service connection.</p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li><a class="link"   href="https://www.mygreatlearning.com/aws/tutorials/nacl-vs-security-group" >NACL vs Security Group <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://www.knowledgehut.com/tutorials/aws/nacl-vs-security-groups" >Security groups vs Network ACLs - What is the Difference? <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://k21academy.com/amazon-web-services/aws-solutions-architect/aws-security-groups-vs-nacl/" >AWS Network Security: NACL vs Security Groups <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://digitalcloud.training/aws-security-group-vs-nacl-key-differences/" >AWS Security Group vs NACL – Key Differences <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://community.meraki.com/t5/Security-SD-WAN/Meraki-vMX-amp-AWS-security-group/m-p/222409#:~:text=Having%20no%20inbound%20rules%20does%20not%20cause%20the%20tunnel%20to,instance%20and%20returning%20traffic%20allowed" >Meraki vMX &amp; AWS security group <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://medium.com/awesome-cloud/aws-difference-between-security-groups-and-network-acls-adc632ea29ae" >AWS — Difference between Security Groups and Network Access Control List (NACL) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DEV</category>
+      </categories>
+      <tags>
+        <tag>AWS</tag>
+        <tag>EC2</tag>
+        <tag>Cli</tag>
+        <tag>Security Group</tag>
+        <tag>NACL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我在 Conda 常用的指令</title>
+    <url>/2023/07/30/dev-ops/conda_tips/</url>
+    <content><![CDATA[<blockquote>
+<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
+</blockquote>
+<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
+<p><strong>本文綱要</strong></p>
+<ul>
+<li><a href="#%E5%BB%BA%E7%AB%8B%E5%88%AA%E9%99%A4%E5%92%8C%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">建立、刪除和複製虛擬環境</a><ul>
+<li><a href="#%E5%BB%BA%E7%AB%8B%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">建立虛擬環境</a></li>
+<li><a href="#%E5%88%AA%E9%99%A4%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">刪除虛擬環境</a></li>
+<li><a href="#%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">複製虛擬環境</a></li>
+</ul>
+</li>
+<li><a href="#%E6%BF%80%E6%B4%BB%E8%88%87%E9%80%80%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">激活與退出虛擬環境</a></li>
+<li><a href="#%E5%AE%89%E8%A3%9D%E5%8F%8A%E5%88%AA%E9%99%A4%E9%9C%80%E8%A6%81%E7%9A%84-package-%E8%87%B3%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">安裝及刪除需要的 package 至虛擬環境</a></li>
+<li><a href="#%E6%9F%A5%E8%A9%A2%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83%E8%B3%87%E8%A8%8A">查詢虛擬環境資訊</a></li>
+<li><a href="#%E5%B0%8E%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">導出虛擬環境</a></li>
+<li><a href="#%E6%96%87%E6%9C%AB%E5%B0%8F%E7%B5%90">文末小結</a></li>
+<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
+</ul>
+<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
+<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
+
+<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/../assets/imgs/conda_command.png"
+                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
+                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
+<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
+<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
+<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
+<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
+<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#117;&#103;&#111;&#x39;&#x37;&#48;&#50;&#49;&#55;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;" >&#104;&#117;&#103;&#111;&#x39;&#x37;&#48;&#50;&#49;&#55;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DEV</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>venv</tag>
+        <tag>conda</tag>
+        <tag>tips</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</title>
+    <url>/2023/09/08/dev-ops/git-ssh/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Git 是每位軟體工程師日常工作不可或缺的工具之一，畢竟軟體開發常常需要跟他人合作，甚至是維護、更新等⋯⋯可能都需要參照過去的成果，甚至需要快速與團隊同步，因此 Git 對大家而言都不陌生吧！<br>但是，有時候我們會遇到一些問題，例如：每次 push 都需要輸入帳號密碼，或是每次 push 都需要輸入密碼，這些都是可以透過 ssh 來解決的，接下來就讓我們一起來看看如何使用 ssh 與 GitHub 連線吧！</p>
+<h3 id="1-產生-ssh-key"><a href="#1-產生-ssh-key" class="headerlink" title="1. 產生 ssh key"></a>1. 產生 ssh key</h3><p>首先，我們需要先產生 ssh key，這個 key 會被存在 <code>~/.ssh</code> 資料夾中，如果沒有的話，可以使用以下指令建立（記得要把 email 改成你自己的 email，否則永遠不會成功哦！）：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>上述操作 <code>ed25519</code> 其實是較新的演算法，如果電腦不支援的話也可以使用以下另一種演算法生成（同樣也要記得把 email 改成你自己的 email）：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>以下將使用 <code>id_rsa</code> 做示範，接下來將出現以下畫面，直接按 <strong>Enter</strong> 就會幫你把產生的 key 放在預設的地方 <code>~/.ssh/id_rsa</code> ，也就是下方括號內的位址。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ Enter a file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/you/.ssh/id_rsa):</span><br></pre></td></tr></table></figure></div>
+
+<p>接下來會出現以下畫面，若不想以後 push 都要輸入 <code>passphrase</code> 的話，就連續點擊兩次 <strong>Enter</strong> 這樣 <code>passphrase</code> 就會是空的，以後 push 就不用輸入了！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Click Enter Twice</span></span><br><span class="line">$ Enter passphrase (empty <span class="keyword">for</span> no passphrase): [Type a passphrase]</span><br><span class="line">$ Enter same passphrase again: [Type passphrase again]</span><br></pre></td></tr></table></figure></div>
+
+<p>這樣做 ssh key 就已經生成好了！</p>
+<p>總共會生成兩個 key，private and public key，接下來會帶大家如何找到這兩個 key。</p>
+<h3 id="2-取得-public-ssh-key"><a href="#2-取得-public-ssh-key" class="headerlink" title="2. 取得 public ssh key"></a>2. 取得 public ssh key</h3><p>接著我們要進到剛剛放置 key 的位置，因此我們照著以下流程，把 public 的 key 拿出（副檔名為 <code>.pub</code>），要特別注意 GitHub 只需要 public 的 key，private 要自己留好！千萬不要給任何人！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> .ssh</span><br><span class="line">$ <span class="built_in">ls</span></span><br><span class="line">id_rsa          id_rsa.pub</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cat</span> id_rsa.pub</span><br></pre></td></tr></table></figure></div>
+
+<p>接下來就把 <code>cat id_rsa.pub</code> 的內容複製下來，我們就可以回 GitHub 做最後一步設定了！</p>
+<h3 id="3-把-public-key-設定到-GitHub"><a href="#3-把-public-key-設定到-GitHub" class="headerlink" title="3. 把 public key 設定到 GitHub"></a>3. 把 public key 設定到 GitHub</h3><p>接下來我們要把 public key 設定到 GitHub，這樣 GitHub 才能辨識你的電腦，讓你可以透過 ssh 連線到 GitHub，這樣就可以真的達到不用每次 push 都要輸入帳號密碼了！接下來將用截圖畫面的方式展示步驟！</p>
+<h4 id="3-A-前往-GitHub-設定"><a href="#3-A-前往-GitHub-設定" class="headerlink" title="3-A. 前往 GitHub 設定"></a>3-A. 前往 GitHub 設定</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-ops/git-ssh/01.png"
+                     
+                ></p>
+<h4 id="3-B-點擊-“SSH-and-GPG-keys”"><a href="#3-B-點擊-“SSH-and-GPG-keys”" class="headerlink" title="3-B. 點擊 “SSH and GPG keys”"></a>3-B. 點擊 “SSH and GPG keys”</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-ops/git-ssh/02.png"
+                     
+                ></p>
+<h4 id="3-C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”"><a href="#3-C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”" class="headerlink" title="3-C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”"></a>3-C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-ops/git-ssh/03.png"
+                     
+                ></p>
+<h4 id="3-D-貼上-public-key-最後送出"><a href="#3-D-貼上-public-key-最後送出" class="headerlink" title="3-D. 貼上 public key 最後送出"></a>3-D. 貼上 public key 最後送出</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-ops/git-ssh/04.png"
+                     
+                ></p>
+<p>照著上述步驟就一切沒問題了，以後把專案 clone 到本地就選擇 ssh 的方式就搞定啦！ </p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-ops/git-ssh/05.png"
+                     
+                ></p>
+<p>如果原先專案是走 <code>http</code> 的方式 <code>clone</code> 下來的話只要做以下更改就可以換成 <code>ssh</code> 啦！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote set-url origin &lt;your_project_ssh_url&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>如此以後專案 push 到 GitHub 就都會走 ssh 了也不需要每次都輸入帳號密碼了！最後祝大家以後都開發順利！可以開始進行更多遠端的 Git 操作了！</p>
+]]></content>
+      <categories>
+        <category>DEV</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>GitHub</tag>
+        <tag>SSH Key</tag>
       </tags>
   </entry>
 </search>
