@@ -13,25 +13,26 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://blog.1chooo.com/tags/amazon-linux-2/"/>
+    <link rel="canonical" href="https://blog.1chooo.com/2024/03/26/dev-ops/git-good-commit-look-like/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="I am Hugo ChunHo Lin (1chooo), a 4th-year student at National Central University (NCU), driven by a genuine passion for the field of Software Engineering 💻.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hugo&#39;s Blog">
-<meta property="og:url" content="https://blog.1chooo.com/tags/Amazon-Linux-2/index.html">
+        <meta name="description" content="在團隊用 Git 協作中，Commit Message 是很重要的一環，好的 Commit 可以讓我們的專案更容易維護，讓我們更容易了解專案的開發過程，我們可以想像是程式碼的註解，不過是針對專案改動的註解。所以我們想要用這個篇幅來介紹一些寫 Commit 的技巧，讓我們的 Commit 更優美。 那到底甚麼是好的 Commit Message？1fix  V.S.  1234567fix: log">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git Commit Message 到底怎麼寫才優美？">
+<meta property="og:url" content="https://blog.1chooo.com/2024/03/26/dev-ops/git-good-commit-look-like/index.html">
 <meta property="og:site_name" content="Hugo&#39;s Blog">
-<meta property="og:description" content="I am Hugo ChunHo Lin (1chooo), a 4th-year student at National Central University (NCU), driven by a genuine passion for the field of Software Engineering 💻.">
+<meta property="og:description" content="在團隊用 Git 協作中，Commit Message 是很重要的一環，好的 Commit 可以讓我們的專案更容易維護，讓我們更容易了解專案的開發過程，我們可以想像是程式碼的註解，不過是針對專案改動的註解。所以我們想要用這個篇幅來介紹一些寫 Commit 的技巧，讓我們的 Commit 更優美。 那到底甚麼是好的 Commit Message？1fix  V.S.  1234567fix: log">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/dev-ops/git-good-commit-look-like/meme.JPG">
+<meta property="article:published_time" content="2024-03-25T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-15T03:24:09.147Z">
 <meta property="article:author" content="Hugo ChunHo Lin (1chooo)">
-<meta property="article:tag" content="Hugo">
-<meta property="article:tag" content="Hugo ChunHo Lin">
-<meta property="article:tag" content="Hugo Lin">
-<meta property="article:tag" content="1chooo">
-<meta property="article:tag" content="林群賀">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="Commit">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.1chooo.com/images/post/dev-ops/git-good-commit-look-like/meme.JPG">
     
     
     <!--- Icon Part-->
@@ -43,7 +44,7 @@
     
     <title>
         
-            Tag: Amazon Linux 2 -
+            Git Commit Message 到底怎麼寫才優美？ -
         
         Hugo&#39;s Blog
     </title>
@@ -335,7 +336,7 @@
 
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class="active"
+                                <a class=""
                                    href="/tags/"
                                         >
                                     <i class="fa-solid fa-tags fa-fw"></i>
@@ -461,7 +462,7 @@
 
                     <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
                         
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
                            href="/tags/"
                         >
                             <span>
@@ -552,46 +553,327 @@
             <div class="main-content">
 
                 
-                    <div class="tag-container">
-	<div class="tag-name">
-		<i class="fa-solid fa-tag"></i>&nbsp;Amazon Linux 2
-	</div>
-	<div class="tag-post-list">
-		
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
 
-<div class="archive-list-container">
-    
-        <section class="archive-item">
-            <div class="archive-item-header flex flex-row items-center mb-2">
-                <span class="archive-year font-semibold text-3xl mr-2">2024</span>
-                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">1</span>
+        <div class="article-title relative w-full">
+            
+                
+                
+                <img src="/images/cover/dev-ops/git-good-commit-look-like.png" alt="Git Commit Message 到底怎麼寫才優美？" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">Git Commit Message 到底怎麼寫才優美？</h1>
+                </div>
+            
             </div>
-            <ul class="article-list pl-8 text-lg leading-[1.5]">
-              
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/profile.jpg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Hugo ChunHo Lin (1chooo)</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">he/him</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-03-26</span>
+        <span class="mobile">2024-03-26</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-04-15 11:24:09</span>
+            <span class="mobile">2024-04-15 11:24:09</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
                 
                     
-                    <li class="article-item" date-is='04-11'>
+                        
+                        <li>
+                            <a href="/categories/DevOps/">DevOps</a>&nbsp;
+                        </li>
+                    
+                    
                 
-                
-                    <a href="/2024/04/11/dev-ops/amazon-linux-2-install-docker/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">如何在 AWS EC2 Amazon Linux 2 上安裝 Docker</span>
-                    </a>
-                
-              
             </ul>
-        </section>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Git/">Git</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Commit/">Commit</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.5k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>6 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
     
 </div>
 
-	</div>
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <p>在團隊用 Git 協作中，Commit Message 是很重要的一環，好的 Commit 可以讓我們的專案更容易維護，讓我們更容易了解專案的開發過程，我們可以想像是程式碼的註解，不過是針對專案改動的註解。所以我們想要用這個篇幅來介紹一些寫 Commit 的技巧，讓我們的 Commit 更優美。</p>
+<h3 id="那到底甚麼是好的-Commit-Message？"><a href="#那到底甚麼是好的-Commit-Message？" class="headerlink" title="那到底甚麼是好的 Commit Message？"></a>那到底甚麼是好的 Commit Message？</h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fix</span><br></pre></td></tr></table></figure></div>
+
+<p>V.S. </p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fix: login error </span><br><span class="line"></span><br><span class="line">The past login router was being reused multiple times.</span><br><span class="line"></span><br><span class="line">Fixed it to use the correct route and extracted the duplicated parts.</span><br><span class="line"></span><br><span class="line">Issue: #1234</span><br></pre></td></tr></table></figure></div>
+
+<p>從上方的 Commit 案例中，如果都是一個月前的改動，甚至是一年前的改動，當我今天需要去了解這個改動的時候，我們可以發現第一個 Commit 是很難讓我們了解這個改動的目的，甚至是看不懂要做甚麼，而第二個 Commit 會讓我們更容易了解這個改動的目的，這就是好的 Commit Message 的重要性。</p>
+<p>常常軟體工程師中有個迷因 <a class="link"   target="_blank" rel="noopener" href="https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months" >Is it normal if I can’t remember how my code works after just 6 months? <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 就是，大家回去看自己寫的程式都看不懂，甚至會覺得噁心，因此好的 Commit 可以讓我們更容易了解過去團隊做了甚麼事情，這樣我們就可以更容易地維護專案。</p>
+<p><figure class="image-caption"><img src="/images/post/dev-ops/git-good-commit-look-like/meme.JPG" alt="https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months"><figcaption>https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months</figcaption></figure></p>
+<h2 id="Commit-Message-的格式"><a href="#Commit-Message-的格式" class="headerlink" title="Commit Message 的格式"></a>Commit Message 的格式</h2><p>好的 Commit 應該要能夠一眼看出種類、工作內容的大鋼，更重要的是一致性，這樣我們可以更容易地追蹤開發過程。因此我們可以從以下幾個內容：我們做了甚麼努力（What）、又為什麼要做這件事情（Why）、還有是用什麼方法做到的（How）。</p>
+<p>我們可以參考以下的格式：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Header: &lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;</span><br><span class="line">    - TYPE: Represents the category of the commit.</span><br><span class="line">    - SCOPE: Represents the scope of the commit.</span><br><span class="line">    - (Required) SUBJECT: Represents a brief description of the commit, (limited to 50 characters and should not end with a period)</span><br><span class="line"></span><br><span class="line">Body: 72-character wrapped. This should answer:</span><br><span class="line">    - Provide a detailed description of the commit. (Can be <span class="built_in">split</span> into multiple lines, with each line limited to 72 characters.)</span><br><span class="line">    - Explain the changes made <span class="keyword">in</span> the code, and Why to <span class="keyword">do</span>?</span><br><span class="line"></span><br><span class="line">Footer:</span><br><span class="line">    - (<span class="keyword">if</span> applicable) Include the task number.</span><br><span class="line">    - (optional) BREAKING CHANGE: Record incompatible changes. It should start with <span class="string">&quot;BREAKING CHANGE:&quot;</span> followed by a description of the change, the reason <span class="keyword">for</span> the change, and migration instructions.</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Commit-Message-Header"><a href="#Commit-Message-Header" class="headerlink" title="Commit Message Header: &lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;"></a>Commit Message Header: <code>&lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;</code></h3><ul>
+<li>TYPE: 代表 commit 的類別，如：feat, fix, docs, style, refactor, test, chore</li>
+<li>（可選）SCOPE：commit 影響的範圍，如：資料庫、控制層、模板層等，視專案不同改變</li>
+<li>（必要）SUBJECT：commit 的簡短描述，不超過 50 個字元，結尾不加句號，盡量讓 Commit 單一化，一次只更動一個主題</li>
+</ul>
+<h4 id="Type-的種類"><a href="#Type-的種類" class="headerlink" title="Type 的種類"></a>Type 的種類</h4><p>Type 有以下幾種的類別，每個都會是一個動作，代表提交 Commit 的類別，以下是一些我們使用慣例：</p>
+<ul>
+<li>feat: 對專案做了哪些新增、修改 (Feature)。</li>
+<li>fix: 修復了那些功能 (Bug Fix)。</li>
+<li>docs: 對專案撰寫文件 (Documentation)。</li>
+<li>style: 撰寫格式改動 (不影響程式碼運行的變動 white-space, formatting, missing semi colons, et.)。</li>
+<li>refactor: 重構 (既不是新增功能，也不是修補 bug 的程式碼變動)。</li>
+<li>perf: 改善效能 (A code change that improves performance)。</li>
+<li>test: 增加測試 (when adding missing tests)。</li>
+<li>chore: 建構程序或輔助工具的變動 (maintain)。</li>
+<li>revert: 撤銷回覆先前的 commit 例如：revert: type(scope): subject (回覆版本：xxxx)。</li>
+</ul>
+<h3 id="Commit-Message-Body"><a href="#Commit-Message-Body" class="headerlink" title="Commit Message Body"></a>Commit Message Body</h3><p>傳達「我們做了甚麼努力（What）、又為什麼要做這件事情（Why）、還有是用什麼方法做到的（How）」，描述詳細改動的內容，可以分成多行，每行不超過 72 個字元，也可以有前後改動差異的描述。</p>
+<h3 id="Commit-Message-Footer"><a href="#Commit-Message-Footer" class="headerlink" title="Commit Message Footer"></a>Commit Message Footer</h3><p>用來填寫相關聯 issue 的編號，像是 <code>Issue: #1234</code>。另外還有 BREAKING CHANGE（未必需要），記錄不相容的變動，應該以「BREAKING CHANGE:」開頭，後面是變動的描述、原因和遷移方法。</p>
+<h3 id="一些實際的例子"><a href="#一些實際的例子" class="headerlink" title="一些實際的例子"></a>一些實際的例子</h3><p>我們在現有的功能上加上了 email 驗證，我們可以使用 <code>feat</code> 來撰寫：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">feat: email validation</span><br><span class="line"></span><br><span class="line">We have implemented the following enhancements:</span><br><span class="line"></span><br><span class="line">1. Introduced email validation to the login form.</span><br><span class="line">2. The new feature verifies if the user&#x27;s input is in a valid email format.</span><br><span class="line">3. It checks if the entered email corresponds to an actual email account.</span><br><span class="line">4. This update aims to prevent users from entering incorrect email addresses.</span><br><span class="line">5. It improves overall user experience and data integrity.</span><br><span class="line"></span><br><span class="line">Issue: #1234</span><br></pre></td></tr></table></figure></div>
+
+<p>今天我們需要基於過去版本做開發，我們可以使用 <code>revert</code> 來回覆先前的 Commit：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">revert: feat: email validation</span><br><span class="line"></span><br><span class="line">To address the issue, we have decided to revert the email validation feature to the previous version.</span><br><span class="line"></span><br><span class="line">Issue: #2345</span><br></pre></td></tr></table></figure></div>
+
+<p>我們在準備將產品上線的時候，我們駔了幾個 unit test，我們可以使用 <code>test</code> 來撰寫：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">test: email validation</span><br><span class="line"></span><br><span class="line">There are several unit tests for the email validation feature:</span><br><span class="line">1. Test the email validation function with invalid email addresses.</span><br><span class="line">2. Test the email validation function with valid email addresses.</span><br><span class="line"></span><br><span class="line">Issue: #3456</span><br></pre></td></tr></table></figure></div>
+
+<p>今天我們已經將新功能做好了，我們希望加上文件的說明，我們可以使用 <code>docs</code> 來撰寫：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docs: email validation</span><br><span class="line"></span><br><span class="line">We have added documentation for the email validation feature:</span><br><span class="line">1. Add the Tech Stack documentation.</span><br><span class="line">2. Add the User Guide documentation.</span><br><span class="line">3. Add the API documentation.</span><br><span class="line"></span><br><span class="line">Issue: #4567</span><br></pre></td></tr></table></figure></div>
+
+<p>後來因為我們的用戶數量變多了，我們希望優化現有的架構提升驗證速度，我們可以使用 <code>perf</code> 來撰寫：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">perf: email validation</span><br><span class="line"></span><br><span class="line">We have optimized the email validation feature:</span><br><span class="line">1. Improved the email validation algorithm.</span><br><span class="line">2. Reduced the time required to validate email addresses.</span><br><span class="line">3. Enhanced the user experience by providing faster feedback.</span><br><span class="line"></span><br><span class="line">Issue: #5678</span><br></pre></td></tr></table></figure></div>
+
+
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>Commit Message 的撰寫會需要大量的練習，也需要時間讓團隊成員去實踐，如此可以讓我們追朔過去的努力，也可以幫助團隊成員更快速地餐與開發過程，這樣我們就可以更容易地維護專案。最後祝大家一切開發都順利，也希望大家的 Commit Message 越來越優美。</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://wadehuanglearning.blogspot.com/2019/05/commit-commit-commit-why-what-commit.html" >Git Commit Message 這樣寫會更好，替專案引入規範與範例 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://heidiliu2020.github.io/git-commit-message/" >[學習筆記] 如何撰好的 Git Commit Message <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Git/">#Git</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Commit/">#Commit</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+  <div class="recommended-article px-2 sm:px-6 md:px-8">
+   <div class="recommended-desktop">
+    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
+     <i aria-hidden="true"></i><span>Recommendation</span>
+    </div>
+    <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/09/08/dev-ops/git-ssh/" title="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻" rel="bookmark">
+  <img src="/images/cover/dev-ops/git-ssh.png" alt="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻" class="!max-w-none">
+  <span class="title">踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</span>
+</a><a class="recommended-article-item" href="/2024/03/22/dev-ops/aws-security-group-nacl/" title="Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)" rel="bookmark">
+  <img src="/images/cover/dev-ops/aws-security-group-nacl.png" alt="Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)" class="!max-w-none">
+  <span class="title">Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)</span>
+</a><a class="recommended-article-item" href="/2024/03/16/coding-tips/python-5-tips/" title="五個 Python 好習慣" rel="bookmark">
+  <img src="/images/cover/coding-style/python-5-tips.png" alt="五個 Python 好習慣" class="!max-w-none">
+  <span class="title">五個 Python 好習慣</span>
+</a></div>
+   </div>
+   <div class="recommended-mobile">
+   <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
+     <i aria-hidden="true"></i><span>Recommendation</span>
+   </div>
+   <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/09/08/dev-ops/git-ssh/" title="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻" rel="bookmark">
+  <img src="/images/cover/dev-ops/git-ssh.png" alt="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻" class="!max-w-none">
+  <span class="title">踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</span>
+</a><a class="recommended-article-item" href="/2024/03/22/dev-ops/aws-security-group-nacl/" title="Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)" rel="bookmark">
+  <img src="/images/cover/dev-ops/aws-security-group-nacl.png" alt="Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)" class="!max-w-none">
+  <span class="title">Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)</span>
+</a></div>
+   </div>
+  </div>
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2024/04/11/dev-ops/amazon-linux-2-install-docker/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">如何在 AWS EC2 Amazon Linux 2 上安裝 Docker</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/03/22/dev-ops/aws-security-group-nacl/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="gitalk-container"></div>
+    <script data-swup-reload-script
+            src="//cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+    <script data-swup-reload-script>
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: 'd043543465ae0b35fc84',
+                    clientSecret: '5495a53c8727e73ca5c8f2ee001e20394228b11b',
+                    repo: 'blog.1chooo.com',
+                    owner: '1chooo',
+                    admin: ['1chooo'],
+                    id: __gitalk__pathname,
+                    language: 'en',
+                    proxy: 'https://github.com/login/oauth/access_token'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('true') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+
+        
+    
 </div>
 
-<div class="tag-paginator">
-	<div class="paginator">
-    <span class="page-number current">1</span>
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">Git Commit Message 到底怎麼寫才優美？</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%A3%E5%88%B0%E5%BA%95%E7%94%9A%E9%BA%BC%E6%98%AF%E5%A5%BD%E7%9A%84-Commit-Message%EF%BC%9F"><span class="nav-text">那到底甚麼是好的 Commit Message？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Commit-Message-%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="nav-text">Commit Message 的格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Commit-Message-Header"><span class="nav-text">Commit Message Header: &lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Commit-Message-Body"><span class="nav-text">Commit Message Body</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Commit-Message-Footer"><span class="nav-text">Commit Message Footer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%AF%A6%E9%9A%9B%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="nav-text">一些實際的例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conclusion"><span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
 </div>
 
-</div>
 
 
                 
@@ -665,6 +947,27 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-side-tools-container">
