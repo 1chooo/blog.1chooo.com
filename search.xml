@@ -1,15 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>演算法第一講——Euclid Algorithm 歐幾里得演算法</title>
-    <url>/2023/07/30/euclid/</url>
-    <content><![CDATA[<p>大家在過往學習的經驗中，可能都有聽過歐幾里德這名鼎鼎大名的人物，是位在希臘化時期的數學家，有著著名著作「幾何原本」，在數學領域中有著極大化的貢獻，為現今眾多數學家所認同。</p>
+    <title>我在 Conda 常用的指令</title>
+    <url>/2023/07/30/dev-env/conda-dev-env/</url>
+    <content><![CDATA[<blockquote>
+<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
+</blockquote>
+<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
+<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
+<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
+
+<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
 <p><figure class="image-caption"><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1340/format:webp/1*xS3rVXn57DTerPNCZuOJ_g.jpeg"
-                      alt="Euclid and Geometry"
-                ><figcaption>Euclid and Geometry</figcaption></figure></p>
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*HINgY65FwzLssf65NsA8tQ.png"
+                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
+                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
+<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
+<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
+<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
+<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
+<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#x68;&#117;&#x67;&#111;&#x39;&#x37;&#48;&#50;&#49;&#55;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109;" >&#x68;&#117;&#x67;&#111;&#x39;&#x37;&#48;&#50;&#49;&#55;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DevEnv</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>venv</tag>
+        <tag>conda</tag>
+        <tag>tips</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>演算法第一講——Euclid Algorithm 歐幾里得演算法</title>
+    <url>/2023/07/30/ds-alg/euclid/</url>
+    <content><![CDATA[<p>大家在過往學習的經驗中，可能都有聽過歐幾里德這名鼎鼎大名的人物，是位在希臘化時期的數學家，有著著名著作「幾何原本」，在數學領域中有著極大化的貢獻，為現今眾多數學家所認同。</p>
 <p>然而在古希臘的時代的數學家竟然能跟演算法畫上關係，畢竟演算法便是透過有限的步驟中，將給定的輸入做出最有效的解決，並且在執行玩這些有效的步驟中會有正當的終止，產生最後輸出結果，而歐幾里德演算法得以詮釋這些過程，歐幾里德演算法的問題是要在給定的兩個正整數 m 和 n 中找出兩束的最大公因數，因此我們可以列出以下解題步驟：</p>
 <ol>
 <li>找出餘數 (m % n)</li>
@@ -48,13 +112,6 @@
 <li><a class="link"   href="https://zhuanlan.zhihu.com/p/56528787" >欧几里得与《几何原本》(上篇） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li><a class="link"   href="https://jason-chen-1992.weebly.com/home/-euclidean-algorithm" >【演算法】歐幾里得算法 Euclidean Algorithm <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
-<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
-<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#x67;&#111;&#57;&#55;&#48;&#50;&#49;&#55;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;" >&#x68;&#x75;&#x67;&#111;&#57;&#55;&#48;&#50;&#49;&#55;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
 ]]></content>
       <categories>
         <category>Algorithm</category>
@@ -62,74 +119,6 @@
       <tags>
         <tag>algorithm</tag>
         <tag>note</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>五個 Python 好習慣</title>
-    <url>/2024/03/16/coding-style/python-5-tips/</url>
-    <content><![CDATA[<p>在學習基礎程式語言中，我們往往只在乎程式能不能運行，會不會基礎語法，然而很多人沒有累積到專案中實際撰寫的好習慣，因此這篇文章中，我將會討論五個 Python 的好習慣，並且這些事我已經落實在專案中的 Coding Style 希望透過這次的分享能夠幫助看到這邊的你寫出更好的程式碼。</p>
-<h3 id="1-if-name-main"><a href="#1-if-name-main" class="headerlink" title="1. if __name__ == &#39;__main__&#39;:"></a>1. <code>if __name__ == &#39;__main__&#39;:</code></h3><p>很多人可能在 review 別人的 Python 專案時，都會發現這個條件式。這個條件式的目的是為了確保這個檔案是被直接執行，而不是被 import 進其他檔案中，我們可以舉個例子來看看加上這個條件式的重要性。</p>
-<p>我們今天要設計一個 <code>api</code> 是 <code>get_name()</code>，透過呼叫這個 api 我們可以得到從資料庫中取得名字，我們先來看看以下的程式碼：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># api.py</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_name</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Getting name...&#x27;</span>)</span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hugo&#x27;</span>)</span><br><span class="line"></span><br><span class="line">get_name()</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># main.py</span></span><br><span class="line"><span class="keyword">from</span> api <span class="keyword">import</span> get_name</span><br><span class="line"></span><br><span class="line">get_name()</span><br></pre></td></tr></table></figure></div>
-
-<p>我們可以先觀察執行結果如以下：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Getting name...</span><br><span class="line">Hugo</span><br><span class="line">Getting name...</span><br><span class="line">Hugo</span><br></pre></td></tr></table></figure></div>
-
-<p>總共執行了兩次 <code>get_name()</code>，但是奇怪的是我們明明只有在 <code>main.py</code> 中呼叫了一次 <code>get_name()</code>，為什麼會執行兩次呢？</p>
-<p>因為我們在 <code>api.py</code> 中的 <code>get_name()</code> 是直接被執行的，所以當我們在 <code>main.py</code> 中 import <code>api.py</code> 時，<code>get_name()</code> 也會被執行一次。</p>
-<p>因此我們只要把 <code>main.py</code> 改成以下的程式碼就可以解決這個問題：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># main.py</span></span><br><span class="line"><span class="keyword">from</span> api <span class="keyword">import</span> get_name</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    get_name()</span><br></pre></td></tr></table></figure></div>
-
-<p>我們就會得到我們想要的執行結果如以下：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Getting name...</span><br><span class="line">Hugo</span><br></pre></td></tr></table></figure></div>
-
-<p>這樣就不會執行兩次 <code>get_name()</code> 了，也就是說在我們的程式碼中加上 <code>if __name__ == &#39;__main__&#39;:</code> 可以讓 Python 知道「只要」執行該檔案呼叫的程式碼，而不是從其他 import 進來的 function。</p>
-<h3 id="2-在-Python-中加入-main-function"><a href="#2-在-Python-中加入-main-function" class="headerlink" title="2. 在 Python 中加入 main() function"></a>2. 在 Python 中加入 <code>main()</code> function</h3><p>在很多程式語言中都有 <code>main()</code> function 的存在，像是 Go, C, C++, Java 等等。因為對於 Python 任何皆是物件的特性，沒有 <code>main()</code> function 也是可以執行的，不過加上 <code>main()</code> function 我們可以知道程式主要的進入點是什麼。</p>
-<p>我們可以從以下範例程式碼觀察，這是沒有加上 <code>main()</code> function 的程式碼：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Bad Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_hello</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_goodbye</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Goodbye&#x27;</span>)</span><br><span class="line"></span><br><span class="line">say_hello()</span><br><span class="line">say_goodbye()</span><br></pre></td></tr></table></figure></div>
-
-<p>另外我們可以看到搭配第一個好習慣的 <code>if __name__ == &#39;__main__&#39;:</code>，再加上宣告 <code>main()</code> function，這樣我們就可以確保程式的進入點是 <code>main()</code> function，另外我們也可以確認的是執行的是該檔案呼叫的 <code>main()</code> function。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Good Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_hello</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_goodbye</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Goodbye&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    say_hello()</span><br><span class="line">    say_goodbye()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></div>
-
-<p>這時候大家可能會覺得我平常的寫法也不會出錯，何必多寫幾行呢？</p>
-<p>我們今天要假使當你的專案越來越大時，要在幾千行之中找到主程式運行的地方是一件非常困難的事情，因此加上 <code>main()</code> function 可以讓你的程式碼更加的有組織性，並且也可以更快地釐清 scripts 的運行目的。</p>
-<h3 id="3-避免過多的-if-巢狀判斷邏輯"><a href="#3-避免過多的-if-巢狀判斷邏輯" class="headerlink" title="3. 避免過多的 if 巢狀判斷邏輯"></a>3. 避免過多的 <code>if</code> 巢狀判斷邏輯</h3><p>假如我們今天上課只想點資工系的大三，我們要先判斷年級，再判斷系所，如果都有符合那就是點名成功，否則就是翹課出去爽了，我們可以看看這個 scenario 的實現：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Bad Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_attendance</span>(<span class="params">grade: <span class="built_in">int</span>, department: <span class="built_in">str</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">if</span> grade == <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">if</span> department == <span class="string">&#x27;CS&#x27;</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Attendance success&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;You are not in CS department&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;You are not in 3rd grade&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>這樣的寫法看起來沒有什麼問題，但是當我們的判斷條件越來越多時，這樣的寫法會讓我們的程式碼變得非常難以閱讀，我們可以透過以下的寫法來改善：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Good Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_year_three</span>(<span class="params">grade: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">    <span class="keyword">return</span> grade == <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_cs_major</span>(<span class="params">department: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">    <span class="keyword">return</span> department == <span class="string">&#x27;CS&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_attendance</span>(<span class="params">grade: <span class="built_in">int</span>, department: <span class="built_in">str</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">if</span> is_year_three(grade) <span class="keyword">and</span> is_cs_major(department):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Attendance success&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;You are not in the class&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>如此我們可以把條件給分開成不同的判斷，這樣我們如果要修改條件的話也可以直接從獨立出來的 function 進行修改，而不用去修改原本的程式碼，同時也避免同一個 function 中有過多的 <code>if</code> 巢狀判斷邏輯，造成閱讀上的困難。</p>
-<h3 id="4-為變數加上型別提示"><a href="#4-為變數加上型別提示" class="headerlink" title="4. 為變數加上型別提示"></a>4. 為變數加上型別提示</h3><p>Python 是個不用宣告型別的程式語言，這樣的特性讓 Python 的程式碼變得非常的靈活，但是當我們接手他人的專案又或是需要快速理解程式邏輯時，我們很難一眼就看出這個變數是什麼型別，這時候我們可以透過型別提示來讓程式碼更加的易讀。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">number1: <span class="built_in">int</span> = <span class="number">10</span></span><br><span class="line">number2: <span class="built_in">int</span> = <span class="string">&#x27;20&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(number1)  <span class="comment"># 10</span></span><br><span class="line"><span class="built_in">print</span>(number2)  <span class="comment"># 20</span></span><br></pre></td></tr></table></figure></div>
-
-<p>以上的範例中，我們可以看到 <code>number1</code> 和 <code>number2</code> 都有加上型別提示，都是 <code>int</code>，不過我們可以看到 <code>number2</code> 中，我們賦予的內容是 <code>&#39;20&#39;</code>，這個作法在 Python 中我們單純只是 print 出來的話是不會有問題的，但是如果我們要進行數學運算的話就會出現問題，這時候我們就可以透過型別提示來瞭解該變數該賦予的類型，以免在後續使用出問題。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">number1: <span class="built_in">int</span> = <span class="number">10</span></span><br><span class="line">number2: <span class="built_in">int</span> = <span class="string">&#x27;20&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(number1 + number2)</span><br></pre></td></tr></table></figure></div>
-
-<p>錯誤訊息會如以下，會發現 <code>number1</code> 和 <code>number2</code> 的型別不同，所以無法進行運算，也就是說當初我們在宣告變數時加上型別提示，可以讓我們避免做出型別混用的錯誤。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;hugo/is/great/developer/python_tip_04.py&quot;</span>, line 4, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="built_in">print</span>(number1 + number2)</span><br><span class="line">          ~~~~~~~~^~~~~~~~~</span><br><span class="line">TypeError: unsupported operand <span class="built_in">type</span>(s) <span class="keyword">for</span> +: <span class="string">&#x27;int&#x27;</span> and <span class="string">&#x27;str&#x27;</span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="5-List-Comprehension"><a href="#5-List-Comprehension" class="headerlink" title="5. List Comprehension"></a>5. List Comprehension</h3><p>我們在撰寫程式時，常常會需要遍歷一個 list，並且對每一個元素進行操作，這時候我們可能會需要撰寫一堆 <code>for</code> 迴圈還有 <code>if</code> 來得到我們要的資訊，這時我們就可以透過 List Comprehension 來讓我們的程式碼更加的簡潔。</p>
-<p>當我們今天要在一個 List 找出所有的偶數，我們可以透過以下的寫法來達成：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Bad Habit</span></span><br><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">even_numbers = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> numbers:</span><br><span class="line">    <span class="keyword">if</span> number % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        even_numbers.append(number)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(even_numbers) <span class="comment"># [2, 4]</span></span><br></pre></td></tr></table></figure></div>
-
-<p>透過 List Comprehension 我們可以把上面的程式碼簡化成以下的寫法：</p>
-<blockquote>
-<p><strong>💡 TIP</strong></p>
-<p>這邊提供大家 List Comprehension 的記憶方法，那就是 <code>[目標 for 目標 in 來源 if 條件]</code>，這樣可以幫助大家更快理解以及上手。</p>
-</blockquote>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Good Habit</span></span><br><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">even_numbers = [number <span class="keyword">for</span> number <span class="keyword">in</span> numbers <span class="keyword">if</span> number % <span class="number">2</span> == <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(even_numbers) <span class="comment"># [2, 4]</span></span><br></pre></td></tr></table></figure></div>
-
-<p>完成啦 🖐🏻！以上就是五個在 Python 中的好習慣，也是我在撰寫專案中一步一步累積到的經驗，有些也不是老師上課會教的內容，但是好習慣往往從日常最好養成，希望大家在未來的開發途中，也可以將這些技巧運用在專案中，讓程式碼更加的易讀並且更加的有組織性，未來也會持續分享更多的 Python 小技巧，請大家持續關注。</p>
-]]></content>
-      <categories>
-        <category>Coding Style</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Clean Code</tag>
       </tags>
   </entry>
   <entry>
@@ -191,7 +180,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>DEV</category>
+        <category>DevOps</category>
       </categories>
       <tags>
         <tag>Docker</tag>
@@ -237,7 +226,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>DEV</category>
+        <category>DevOps</category>
       </categories>
       <tags>
         <tag>AWS</tag>
@@ -245,91 +234,6 @@
         <tag>Cli</tag>
         <tag>Security Group</tag>
         <tag>NACL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我在 Conda 常用的指令</title>
-    <url>/2023/07/30/dev-ops/conda_tips/</url>
-    <content><![CDATA[<blockquote>
-<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
-</blockquote>
-<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
-<p><strong>本文綱要</strong></p>
-<ul>
-<li><a href="#%E5%BB%BA%E7%AB%8B%E5%88%AA%E9%99%A4%E5%92%8C%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">建立、刪除和複製虛擬環境</a><ul>
-<li><a href="#%E5%BB%BA%E7%AB%8B%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">建立虛擬環境</a></li>
-<li><a href="#%E5%88%AA%E9%99%A4%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">刪除虛擬環境</a></li>
-<li><a href="#%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">複製虛擬環境</a></li>
-</ul>
-</li>
-<li><a href="#%E6%BF%80%E6%B4%BB%E8%88%87%E9%80%80%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">激活與退出虛擬環境</a></li>
-<li><a href="#%E5%AE%89%E8%A3%9D%E5%8F%8A%E5%88%AA%E9%99%A4%E9%9C%80%E8%A6%81%E7%9A%84-package-%E8%87%B3%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">安裝及刪除需要的 package 至虛擬環境</a></li>
-<li><a href="#%E6%9F%A5%E8%A9%A2%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83%E8%B3%87%E8%A8%8A">查詢虛擬環境資訊</a></li>
-<li><a href="#%E5%B0%8E%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">導出虛擬環境</a></li>
-<li><a href="#%E6%96%87%E6%9C%AB%E5%B0%8F%E7%B5%90">文末小結</a></li>
-<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
-</ul>
-<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
-<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
-
-<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../assets/imgs/conda_command.png"
-                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
-                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
-<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
-<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
-<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
-<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
-<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#117;&#x67;&#x6f;&#57;&#55;&#x30;&#50;&#x31;&#x37;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;" >&#104;&#117;&#x67;&#x6f;&#57;&#55;&#x30;&#50;&#x31;&#x37;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DEV</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>venv</tag>
-        <tag>conda</tag>
-        <tag>tips</tag>
       </tags>
   </entry>
   <entry>
@@ -392,147 +296,12 @@
 <p>如此以後專案 push 到 GitHub 就都會走 ssh 了也不需要每次都輸入帳號密碼了！最後祝大家以後都開發順利！可以開始進行更多遠端的 Git 操作了！</p>
 ]]></content>
       <categories>
-        <category>DEV</category>
+        <category>DevOps</category>
       </categories>
       <tags>
         <tag>Git</tag>
         <tag>GitHub</tag>
         <tag>SSH Key</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>平板能輔助大學生上課嗎？</title>
-    <url>/2023/07/30/life/no_book/</url>
-    <content><![CDATA[<blockquote>
-<p>誒～怎麼身邊上課的人開始都不帶書了！？</p>
-</blockquote>
-<p>大學生上大學到底要不要買平板來輔助學習，這個話題其實一直被討論著，現在也是不斷地被拿出來討論，沒有特定一個答案，於是賀編決定撰寫這篇文章，並結合就讀中央的期間，身邊所被討論過的內容以及自己的一些經驗（賀編本身有使用平板輔助的習慣）。</p>
-<p><strong>🧸本篇文章討論流程：</strong></p>
-<ul>
-<li><a href="#%E7%94%A8%E9%80%94">用途</a><ul>
-<li><a href="#%E8%AA%B2%E5%A0%82%E4%B8%8A">課堂上：</a></li>
-<li><a href="#%E8%AA%B2%E5%A0%82%E5%A4%96">課堂外：</a></li>
-</ul>
-</li>
-<li><a href="#%E5%83%B9%E6%A0%BC%E5%8F%8A%E6%8C%91%E9%81%B8">價格及挑選</a></li>
-<li><a href="#%E7%B5%90%E8%AB%96">結論</a></li>
-<li><a href="#%E9%A1%8C%E5%A4%96%E8%A9%B1">題外話</a><ul>
-<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
-</ul>
-</li>
-</ul>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*tg5IdfMpb60zbPonfmZHXQ.jpeg"
-                      alt="pexels-cottonbro-4065171.jpg"
-                ><figcaption>pexels-cottonbro-4065171.jpg</figcaption></figure></p>
-<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>使用平板在大學生多數場景可以大致上分為兩個，第一個為課堂上，第二個是課堂外。</p>
-<h3 id="課堂上："><a href="#課堂上：" class="headerlink" title="課堂上："></a>課堂上：</h3><p>課堂上有平板的同學，可以臨時做筆記，快速記筆記，如果需要修改可以馬上修改，不用塗塗改      改，不會像傳統紙張、筆記本，可能需要用立可帶塗掉，甚至老師突然補述先前提及的內容也可以馬  上做修正，不會發生沒空間抄寫的問題。</p>
-<p>臨時需要查找資料時也可以快速從平板搜尋，不需要從書包裡翻找出之前記錄過的內容。</p>
-<p>另外有些學院的教授開始把教材變成電子檔，用平板的同學可以快速地在教材上記錄下重點，而不需要在上課前先去將教材印出來，而且忘記帶講義的時候，可以即時下載資料，避免發生在上課時沒有資料的慘況發生⋯⋯</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Ba2Sy3vX6mH29pfLNb4MNA.png"
-                      alt="Screen Shot 2022-07-03 at 11.09.13 PM.png"
-                ><figcaption>Screen Shot 2022-07-03 at 11.09.13 PM.png</figcaption></figure></p>
-<h3 id="課堂外："><a href="#課堂外：" class="headerlink" title="課堂外："></a>課堂外：</h3><p>描述完課堂上的使用場景，來說說課堂外的使用吧！這時候大家做常聽到的說詞「買前生產力；買後愛奇藝」便會悄悄地晃到我們耳邊，不過我們本篇文章還是預設大家的使用場景是用來輔助學習，雖說好的放鬆時光也是推進我們向前的一大動力，哈！不過我們還是回到正題吧！</p>
-<p>賀編本身是理工學院相關科系的，所以自身及身邊的同學使用量最大的場景便是計算繁雜的數學算式，甚至是公式推導，畢竟要複習課程中的內容，還有迫於時間因素，教授也未必會在課堂上將完整算式做推導，畢竟在大學裡可能隨便一個小小的算式用上幾張計算紙都算是家常便飯，於是平板這時便能發揮所長，可以快速翻閱資料，寫錯也可以快速塗改（例如：從計算的剛開頭就算錯的時候⋯⋯還有漏寫算式的時候⋯⋯）</p>
-<p>講完了理工學院相關科系，來講個所有學院都將面臨到的使用情景「讀Paper」，這能帶到平板的一大功能「閱讀」，很多人都會透過平板做大量的閱讀，無論是文獻，又或者是自己的愛好書籍，一台平板，可以抵掉很多書籍的重量，又可以隨時隨地閱讀。</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*gRyheXK1Zr4o7nzUNgl69Q.jpeg"
-                      alt="pexels-rfstudio-3060654.jpg"
-                ><figcaption>pexels-rfstudio-3060654.jpg</figcaption></figure></p>
-<h2 id="價格及挑選"><a href="#價格及挑選" class="headerlink" title="價格及挑選"></a>價格及挑選</h2><p>平板的挑選也可以分為兩大類，第一個是Apple，另一個則是Android，其實無論是哪個類別的平板都需要投入金錢的成本，不過結合賀編，以及身邊還有訪問過的人的經驗，可以總結出兩個結論：</p>
-<ol>
-<li>財力</li>
-<li>習慣</li>
-</ol>
-<p>首先來講述第一點「財力」，其實說老實話上述提及過的場景，只要有支觸控筆加上平板便能應付大多數的需求，所以不論Apple系統又或者是Android系統的高階、中階、低階平板都能夠負荷，因此挑選平板可以考量自己的經濟能力，想要比較新穎的功能或者其他需求，可能就得多多捏一點上更好的規格，哈！</p>
-<p>另外換講述第二點「習慣」，Apple系統或者Android系統，本就是兩大陣營，早就經歷很多次的比較、爭辯，各有各自的擁護者，還是回到老話一句，其實只要有支觸控筆加上平板便能應付大多數的需求，因此自己習慣哪個系統，便可朝那個方向做挑選。</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*RZ1xmhqrFefd5ffypyGVjw.jpeg"
-                      alt="1333cba4be91a78d0d1db873ea6cc980.jpg"
-                ><figcaption>1333cba4be91a78d0d1db873ea6cc980.jpg</figcaption></figure></p>
-<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>以上分享了一些賀編生活的案例，以及跟身邊討論、聊天提及到的情況，其實要不要買平板，這個話題真的太多人討論了，那要不要買真的端看個人習慣，平板雖說方便，可有一點就是完全無法取代，那便是「在紙張書寫的觸感」，許多人學習就喜歡觸碰實體書籍的感覺，況且要做好學問，無論是紙張或是平板都有辦法做好，再怎麼說平板就是個輔助學習的工具，賀編想近期會又這麼多討論，大概便是順應現在時代的變遷，學習的路徑加上了一個工具選項可以做嘗試，可能唯一能給到的建議，就是可以多爬些文章做比較，網路上還有很多很好的文章以及影片，一切端看自己的需求，以及財力，來做對自己好的決定。</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e11db370-730a-4b13-89ce-bde047c05b8c/pexels-mikhail-nilov-6931023.jpg"
-                      alt="pexels-mikhail-nilov-6931023.jpg"
-                ><figcaption>pexels-mikhail-nilov-6931023.jpg</figcaption></figure></p>
-<h2 id="題外話"><a href="#題外話" class="headerlink" title="題外話"></a>題外話</h2><p>文章下完結論後來分享一個賀編看到的一個有趣的經驗，在剛從大一升到大二時，班上的瞬間多了很多平板，超過半數的同學都買了平板，而且幾乎都是Ipad，多數同學都是搭上了Apple的「Back to school」方案做購買，這是大專學院的專屬優惠，如果暑假想要添購新設備的同學可以多多關注，可以少捏一點上好一點的設備，當然這個活動也不只平板啦！可以自行去官網看看哦～</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2tMD7NLX88PVvklYR2t_hg.jpeg"
-                      alt="1655899178-f039f51cb6c66a067487eb6aacf97c83.jpg"
-                ><figcaption>1655899178-f039f51cb6c66a067487eb6aacf97c83.jpg</figcaption></figure></p>
-<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
-<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#103;&#x6f;&#x39;&#55;&#48;&#x32;&#x31;&#55;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#x6d;" >&#x68;&#x75;&#103;&#x6f;&#x39;&#55;&#48;&#x32;&#x31;&#55;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Life</category>
-      </categories>
-      <tags>
-        <tag>ipad</tag>
-        <tag>Apple</tag>
-        <tag>Freshman</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剛上大學的我如何挑到適合我的平板！？</title>
-    <url>/2023/07/30/life/pick_ipad/</url>
-    <content><![CDATA[<p>疫情嚴峻的 2021 年中，所有戶外活動皆需要暫停，身為大一生，參與的校園活動被迫中止，連課程都改為遠距教學，學習方法勢必有所改變</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*f2BkDSANBT2XUGEzR-1_gw.jpeg"
-                      alt="My iPad 8 !!!"
-                ><figcaption>My iPad 8 !!!</figcaption></figure></p>
-<p><strong>本文綱要</strong></p>
-<ul>
-<li><a href="#%E8%B3%BC%E8%B2%B7%E5%89%8D%E6%89%80%E5%81%9A%E7%9A%84%E6%BA%96%E5%82%99">購買前所做的準備</a></li>
-<li><a href="#%E5%AD%B8%E7%BF%92%E6%96%B9%E6%B3%95%E5%92%8C%E7%94%9F%E6%B4%BB%E6%96%B9%E5%BC%8F%E7%9A%84%E8%AE%8A%E5%8C%96">學習方法和生活方式的變化</a></li>
-<li><a href="#%E6%88%91%E7%9A%84%E8%A7%80%E9%BB%9E%E7%B5%90%E8%AB%96">我的觀點結論</a></li>
-<li><a href="#%E6%9C%AC%E6%96%87%E5%BE%8C%E7%BA%8C">本文後續</a></li>
-<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
-</ul>
-<h3 id="購買前所做的準備"><a href="#購買前所做的準備" class="headerlink" title="購買前所做的準備"></a>購買前所做的準備</h3><p>上大學前，在挑選筆電的時候選擇了 MacBookPro 2020 13”，然而追求輕便的我，面對剛上大學一連串的教科書非常不適應，只要去圖書館或咖啡廳看書就要背著一大堆厚厚一疊的書，因此很傾向電子化的讀書方式，因此一直在考慮要買一台 iPad 來輔助我學習。</p>
-<p>本來就在觀望iPad 的我，在疫情爆發全國遠距教學的背景下，便有了相當合適的契機購入了人生第一台 iPad，而購買的版本是 2020 年發行的第八代，容量為 128GB，接下來會先分享購買前的事前準備以及分享這生產力工具帶給我學習方法和生活方式的變化。</p>
-<p>說到 iPad，常常聽到一句話買前生產力；買後愛奇藝或者是效能過剩這類的話，然而這類的話語大多出現在 iPad Pro 及 iPad Air 這類的機型，較少篇幅在描述最入門的款式，而剛好我所使用的機型便較不受此討論範疇，而最終也是我選購平板。</p>
-<p>那接著來說說我是為何選購這台平價入門款的平板吧！</p>
-<p>當下要購買平板的我卡在一個尷尬的時間點，而這時間點正逢新款 iPad Pro和大專生暑期活動——Back to School，這兩件大事之前，心裡的想法就是：科技產品買新不買舊、我都忍了快一年不入手 iPad Pro 了，當然要買最新的啊！、剛好暑假的活動可以送耳機，我需要那個酷東西。諸如此類的想法充斥在我的腦海中，不偏不倚正值遠距上課的高峰期，對於每天線上上課的狀態，我更充分展現了平板的需求，所以這時候才妥協：「既然買不到最新的 iPad Pro，享受不到蘋果的耳機優惠，我也沒有很想多貼錢換 iPad Air，那不然我就換最便宜的 iPad就好了！」（其實當時很多科技產品都缺貨，蘋果的平板也因為遠距非常熱賣，大多數規格都缺貨了），於是在如此掙扎之後就開始了和我的新學習夥伴的生活。</p>
-<h3 id="學習方法和生活方式的變化"><a href="#學習方法和生活方式的變化" class="headerlink" title="學習方法和生活方式的變化"></a>學習方法和生活方式的變化</h3><p>那在前段文章分享完我購買平板當下的心境後，接著就來說說我的學習方法吧！其實我的學習方法並未有所差異性的改變，一如既往，依舊是在課後做著課後所需的練習、公式相關的推導，畢竟一直以來都沒有上課抄寫老師黑板上所講述的內容，這或許可以用下個篇幅來分享為什麽我不抄筆記～～～小組討論時，可以快速地記下註記把大家的短時間內產出的內容快速記下來以不致於遺漏；至於生活方法的話，偶爾可以在平板畫點小圖案，畢竟平板可以不受限於紙張條件，也可以快速更換畫筆的顏色，所以畫點小圖可說是非常便利呢！哦還有個至關重要的那就是每日的 TODO List，因為平板的便利，就可以在各個場合之下查看當日的待辦事項，或是目標進度，不需要再從書包裡掏出筆記本來查看，再來就是，書包變輕也變整潔了，因為不用在背更多書本、紙張，頂多就是平板、筆電、充電器就能出門了！</p>
-<h3 id="我的觀點結論"><a href="#我的觀點結論" class="headerlink" title="我的觀點結論"></a>我的觀點結論</h3><p>綜上經驗，平板對於我的日常是有達到幫助的，不過其實可以很坦白地說：「平板是真的方便，不過有沒有買是真的沒什麼差！！！」方便性這點就是可以隨時隨地做筆記，打開平板就能隨時查看需要的資料，再加上有些講義也是電子的形式，所以就更為方便了，那為何還有後面那句話呢？就是其實買平板不會變得特別認真，也不會讀得更好，就只是讀書的形式變了，但本質並未作改變，在大學要想學得更多，完全端看自己的讀書習管以及方法，平板並不會帶來太多的改變，也可能是我的使用情境頂多寫寫數學算式，做做統整、小筆記，所以這些完全紙本也能應付，所以才有此說法，並沒有像網路上很多開箱的人所說的這麼神。</p>
-<p>所以我滿慶幸自己買到的平板是入門款的，無論是入門或是高規的平板，對於大多數人的需求而言都已經很足夠了，只有一點小小抱怨：「就是這台平版螢幕沒有全貼和，看劇體驗頗差的」看劇還是都用 MacBook Pro 看（蘋果筆電螢幕就是舒服！），在日常書寫真的沒有差太多，書寫完的樣子根本沒什麼差別，所以單就一般文書處理、寫寫筆記，真的真心話：「入門款就夠用了，把錢省了吧！」。</p>
-<p>最後想給看到這篇的人購買建議就是：「其實一個產品在很多時候，任何人都會有不同的推薦、或是貶低，但一個產品到底需不需要購買，最重要的還是自己的需求。」與其看更多別人的使用場景，不如問問自己的吧！</p>
-<h3 id="本文後續"><a href="#本文後續" class="headerlink" title="本文後續"></a>本文後續</h3><p>更一個後續，這篇文由於是第一次撰寫，共經歷了大一、大二階段才撰寫完成的，之後一定會有一篇詳細介紹我的讀書、辦公環境的，文章裡一定會提到更多我學習相關的內容的！</p>
-<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
-<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#117;&#103;&#111;&#x39;&#x37;&#x30;&#50;&#x31;&#55;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#x6d;" >&#104;&#117;&#103;&#111;&#x39;&#x37;&#x30;&#50;&#x31;&#55;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Life</category>
-      </categories>
-      <tags>
-        <tag>ipad</tag>
-        <tag>Apple</tag>
-        <tag>Freshman</tag>
       </tags>
   </entry>
   <entry>
@@ -551,7 +320,6 @@
 <li><a href="#%E6%9B%B4%E6%96%B0%E5%B0%88%E6%A1%88%E5%BE%8C%E7%BA%8C%E7%99%BC%E5%B1%95">（更新）專案後續發展</a></li>
 <li><a href="#%E9%87%8D%E6%A7%8B%E5%BF%83%E5%BE%97">重構心得</a><ul>
 <li><a href="#source-code-in-github-python_snake_game">Source Code in GitHub: python_snake_game</a></li>
-<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
 </ul>
 </li>
 </ul>
@@ -611,20 +379,183 @@
                      
                 ></p>
 <h2 id="重構心得"><a href="#重構心得" class="headerlink" title="重構心得"></a>重構心得</h2><p>這次會想要重構程式碼，便是因為 2022 後半年使用 python3 完成了一個新的專案，也在過程中才更認識 python3 類別的應用以及開發所需注意的小細節，所以才回想起曾經做過的小專案，嘗試將後續所學到的內容更應用在程式碼撰寫上，也增加自己多一次的經驗累積。</p>
-<h3 id="Source-Code-in-GitHub-python-snake-game"><a href="#Source-Code-in-GitHub-python-snake-game" class="headerlink" title="Source Code in GitHub: python_snake_game"></a>Source Code in GitHub: <a class="link"   href="https://github.com/1chooo/junk-project/tree/main/python_snake_game" >python_snake_game <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h3><h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
-<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#x67;&#x6f;&#x39;&#x37;&#48;&#x32;&#49;&#x37;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;" >&#104;&#x75;&#x67;&#x6f;&#x39;&#x37;&#48;&#x32;&#49;&#x37;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
+<h3 id="Source-Code-in-GitHub-python-snake-game"><a href="#Source-Code-in-GitHub-python-snake-game" class="headerlink" title="Source Code in GitHub: python_snake_game"></a>Source Code in GitHub: <a class="link"   href="https://github.com/1chooo/junk-project/tree/main/python_snake_game" >python_snake_game <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h3>]]></content>
       <categories>
         <category>Project</category>
       </categories>
       <tags>
         <tag>python</tag>
         <tag>pygame</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>五個 Python 好習慣</title>
+    <url>/2024/03/16/coding-style/python-5-tips/</url>
+    <content><![CDATA[<p>在學習基礎程式語言中，我們往往只在乎程式能不能運行，會不會基礎語法，然而很多人沒有累積到專案中實際撰寫的好習慣，因此這篇文章中，我將會討論五個 Python 的好習慣，並且這些事我已經落實在專案中的 Coding Style 希望透過這次的分享能夠幫助看到這邊的你寫出更好的程式碼。</p>
+<h3 id="1-if-name-main"><a href="#1-if-name-main" class="headerlink" title="1. if __name__ == &#39;__main__&#39;:"></a>1. <code>if __name__ == &#39;__main__&#39;:</code></h3><p>很多人可能在 review 別人的 Python 專案時，都會發現這個條件式。這個條件式的目的是為了確保這個檔案是被直接執行，而不是被 import 進其他檔案中，我們可以舉個例子來看看加上這個條件式的重要性。</p>
+<p>我們今天要設計一個 <code>api</code> 是 <code>get_name()</code>，透過呼叫這個 api 我們可以得到從資料庫中取得名字，我們先來看看以下的程式碼：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># api.py</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_name</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Getting name...&#x27;</span>)</span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hugo&#x27;</span>)</span><br><span class="line"></span><br><span class="line">get_name()</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># main.py</span></span><br><span class="line"><span class="keyword">from</span> api <span class="keyword">import</span> get_name</span><br><span class="line"></span><br><span class="line">get_name()</span><br></pre></td></tr></table></figure></div>
+
+<p>我們可以先觀察執行結果如以下：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Getting name...</span><br><span class="line">Hugo</span><br><span class="line">Getting name...</span><br><span class="line">Hugo</span><br></pre></td></tr></table></figure></div>
+
+<p>總共執行了兩次 <code>get_name()</code>，但是奇怪的是我們明明只有在 <code>main.py</code> 中呼叫了一次 <code>get_name()</code>，為什麼會執行兩次呢？</p>
+<p>因為我們在 <code>api.py</code> 中的 <code>get_name()</code> 是直接被執行的，所以當我們在 <code>main.py</code> 中 import <code>api.py</code> 時，<code>get_name()</code> 也會被執行一次。</p>
+<p>因此我們只要把 <code>main.py</code> 改成以下的程式碼就可以解決這個問題：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># main.py</span></span><br><span class="line"><span class="keyword">from</span> api <span class="keyword">import</span> get_name</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    get_name()</span><br></pre></td></tr></table></figure></div>
+
+<p>我們就會得到我們想要的執行結果如以下：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Getting name...</span><br><span class="line">Hugo</span><br></pre></td></tr></table></figure></div>
+
+<p>這樣就不會執行兩次 <code>get_name()</code> 了，也就是說在我們的程式碼中加上 <code>if __name__ == &#39;__main__&#39;:</code> 可以讓 Python 知道「只要」執行該檔案呼叫的程式碼，而不是從其他 import 進來的 function。</p>
+<h3 id="2-在-Python-中加入-main-function"><a href="#2-在-Python-中加入-main-function" class="headerlink" title="2. 在 Python 中加入 main() function"></a>2. 在 Python 中加入 <code>main()</code> function</h3><p>在很多程式語言中都有 <code>main()</code> function 的存在，像是 Go, C, C++, Java 等等。因為對於 Python 任何皆是物件的特性，沒有 <code>main()</code> function 也是可以執行的，不過加上 <code>main()</code> function 我們可以知道程式主要的進入點是什麼。</p>
+<p>我們可以從以下範例程式碼觀察，這是沒有加上 <code>main()</code> function 的程式碼：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Bad Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_hello</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_goodbye</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Goodbye&#x27;</span>)</span><br><span class="line"></span><br><span class="line">say_hello()</span><br><span class="line">say_goodbye()</span><br></pre></td></tr></table></figure></div>
+
+<p>另外我們可以看到搭配第一個好習慣的 <code>if __name__ == &#39;__main__&#39;:</code>，再加上宣告 <code>main()</code> function，這樣我們就可以確保程式的進入點是 <code>main()</code> function，另外我們也可以確認的是執行的是該檔案呼叫的 <code>main()</code> function。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Good Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_hello</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_goodbye</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Goodbye&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    say_hello()</span><br><span class="line">    say_goodbye()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></div>
+
+<p>這時候大家可能會覺得我平常的寫法也不會出錯，何必多寫幾行呢？</p>
+<p>我們今天要假使當你的專案越來越大時，要在幾千行之中找到主程式運行的地方是一件非常困難的事情，因此加上 <code>main()</code> function 可以讓你的程式碼更加的有組織性，並且也可以更快地釐清 scripts 的運行目的。</p>
+<h3 id="3-避免過多的-if-巢狀判斷邏輯"><a href="#3-避免過多的-if-巢狀判斷邏輯" class="headerlink" title="3. 避免過多的 if 巢狀判斷邏輯"></a>3. 避免過多的 <code>if</code> 巢狀判斷邏輯</h3><p>假如我們今天上課只想點資工系的大三，我們要先判斷年級，再判斷系所，如果都有符合那就是點名成功，否則就是翹課出去爽了，我們可以看看這個 scenario 的實現：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Bad Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_attendance</span>(<span class="params">grade: <span class="built_in">int</span>, department: <span class="built_in">str</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">if</span> grade == <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">if</span> department == <span class="string">&#x27;CS&#x27;</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Attendance success&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;You are not in CS department&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;You are not in 3rd grade&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>這樣的寫法看起來沒有什麼問題，但是當我們的判斷條件越來越多時，這樣的寫法會讓我們的程式碼變得非常難以閱讀，我們可以透過以下的寫法來改善：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Good Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_year_three</span>(<span class="params">grade: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">    <span class="keyword">return</span> grade == <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_cs_major</span>(<span class="params">department: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">    <span class="keyword">return</span> department == <span class="string">&#x27;CS&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_attendance</span>(<span class="params">grade: <span class="built_in">int</span>, department: <span class="built_in">str</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">if</span> is_year_three(grade) <span class="keyword">and</span> is_cs_major(department):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Attendance success&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;You are not in the class&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>如此我們可以把條件給分開成不同的判斷，這樣我們如果要修改條件的話也可以直接從獨立出來的 function 進行修改，而不用去修改原本的程式碼，同時也避免同一個 function 中有過多的 <code>if</code> 巢狀判斷邏輯，造成閱讀上的困難。</p>
+<h3 id="4-為變數加上型別提示"><a href="#4-為變數加上型別提示" class="headerlink" title="4. 為變數加上型別提示"></a>4. 為變數加上型別提示</h3><p>Python 是個不用宣告型別的程式語言，這樣的特性讓 Python 的程式碼變得非常的靈活，但是當我們接手他人的專案又或是需要快速理解程式邏輯時，我們很難一眼就看出這個變數是什麼型別，這時候我們可以透過型別提示來讓程式碼更加的易讀。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">number1: <span class="built_in">int</span> = <span class="number">10</span></span><br><span class="line">number2: <span class="built_in">int</span> = <span class="string">&#x27;20&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(number1)  <span class="comment"># 10</span></span><br><span class="line"><span class="built_in">print</span>(number2)  <span class="comment"># 20</span></span><br></pre></td></tr></table></figure></div>
+
+<p>以上的範例中，我們可以看到 <code>number1</code> 和 <code>number2</code> 都有加上型別提示，都是 <code>int</code>，不過我們可以看到 <code>number2</code> 中，我們賦予的內容是 <code>&#39;20&#39;</code>，這個作法在 Python 中我們單純只是 print 出來的話是不會有問題的，但是如果我們要進行數學運算的話就會出現問題，這時候我們就可以透過型別提示來瞭解該變數該賦予的類型，以免在後續使用出問題。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">number1: <span class="built_in">int</span> = <span class="number">10</span></span><br><span class="line">number2: <span class="built_in">int</span> = <span class="string">&#x27;20&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(number1 + number2)</span><br></pre></td></tr></table></figure></div>
+
+<p>錯誤訊息會如以下，會發現 <code>number1</code> 和 <code>number2</code> 的型別不同，所以無法進行運算，也就是說當初我們在宣告變數時加上型別提示，可以讓我們避免做出型別混用的錯誤。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;hugo/is/great/developer/python_tip_04.py&quot;</span>, line 4, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="built_in">print</span>(number1 + number2)</span><br><span class="line">          ~~~~~~~~^~~~~~~~~</span><br><span class="line">TypeError: unsupported operand <span class="built_in">type</span>(s) <span class="keyword">for</span> +: <span class="string">&#x27;int&#x27;</span> and <span class="string">&#x27;str&#x27;</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="5-List-Comprehension"><a href="#5-List-Comprehension" class="headerlink" title="5. List Comprehension"></a>5. List Comprehension</h3><p>我們在撰寫程式時，常常會需要遍歷一個 list，並且對每一個元素進行操作，這時候我們可能會需要撰寫一堆 <code>for</code> 迴圈還有 <code>if</code> 來得到我們要的資訊，這時我們就可以透過 List Comprehension 來讓我們的程式碼更加的簡潔。</p>
+<p>當我們今天要在一個 List 找出所有的偶數，我們可以透過以下的寫法來達成：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Bad Habit</span></span><br><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">even_numbers = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> numbers:</span><br><span class="line">    <span class="keyword">if</span> number % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        even_numbers.append(number)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(even_numbers) <span class="comment"># [2, 4]</span></span><br></pre></td></tr></table></figure></div>
+
+<p>透過 List Comprehension 我們可以把上面的程式碼簡化成以下的寫法：</p>
+
+  <div class="note p-4 mb-4 rounded-small green">
+    <p><strong>💡 TIP</strong></p>
+<p>這邊提供大家 List Comprehension 的記憶方法，那就是 <code>[目標 for 目標 in 來源 if 條件]</code>，這樣可以幫助大家更快理解以及上手。</p>
+
+  </div>
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Good Habit</span></span><br><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">even_numbers = [number <span class="keyword">for</span> number <span class="keyword">in</span> numbers <span class="keyword">if</span> number % <span class="number">2</span> == <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(even_numbers) <span class="comment"># [2, 4]</span></span><br></pre></td></tr></table></figure></div>
+
+<p>完成啦 🖐🏻！以上就是五個在 Python 中的好習慣，也是我在撰寫專案中一步一步累積到的經驗，有些也不是老師上課會教的內容，但是好習慣往往從日常最好養成，希望大家在未來的開發途中，也可以將這些技巧運用在專案中，讓程式碼更加的易讀並且更加的有組織性，未來也會持續分享更多的 Python 小技巧，請大家持續關注。</p>
+]]></content>
+      <categories>
+        <category>Coding Style</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Clean Code</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剛上大學的我如何挑到適合我的平板！？</title>
+    <url>/2023/07/30/talks/freshman-pick-up-ipad/</url>
+    <content><![CDATA[<p>疫情嚴峻的 2021 年中，所有戶外活動皆需要暫停，身為大一生，參與的校園活動被迫中止，連課程都改為遠距教學，學習方法勢必有所改變</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*f2BkDSANBT2XUGEzR-1_gw.jpeg"
+                      alt="My iPad 8 !!!"
+                ><figcaption>My iPad 8 !!!</figcaption></figure></p>
+<h3 id="購買前所做的準備"><a href="#購買前所做的準備" class="headerlink" title="購買前所做的準備"></a>購買前所做的準備</h3><p>上大學前，在挑選筆電的時候選擇了 MacBookPro 2020 13”，然而追求輕便的我，面對剛上大學一連串的教科書非常不適應，只要去圖書館或咖啡廳看書就要背著一大堆厚厚一疊的書，因此很傾向電子化的讀書方式，因此一直在考慮要買一台 iPad 來輔助我學習。</p>
+<p>本來就在觀望iPad 的我，在疫情爆發全國遠距教學的背景下，便有了相當合適的契機購入了人生第一台 iPad，而購買的版本是 2020 年發行的第八代，容量為 128GB，接下來會先分享購買前的事前準備以及分享這生產力工具帶給我學習方法和生活方式的變化。</p>
+<p>說到 iPad，常常聽到一句話買前生產力；買後愛奇藝或者是效能過剩這類的話，然而這類的話語大多出現在 iPad Pro 及 iPad Air 這類的機型，較少篇幅在描述最入門的款式，而剛好我所使用的機型便較不受此討論範疇，而最終也是我選購平板。</p>
+<p>那接著來說說我是為何選購這台平價入門款的平板吧！</p>
+<p>當下要購買平板的我卡在一個尷尬的時間點，而這時間點正逢新款 iPad Pro和大專生暑期活動——Back to School，這兩件大事之前，心裡的想法就是：科技產品買新不買舊、我都忍了快一年不入手 iPad Pro 了，當然要買最新的啊！、剛好暑假的活動可以送耳機，我需要那個酷東西。諸如此類的想法充斥在我的腦海中，不偏不倚正值遠距上課的高峰期，對於每天線上上課的狀態，我更充分展現了平板的需求，所以這時候才妥協：「既然買不到最新的 iPad Pro，享受不到蘋果的耳機優惠，我也沒有很想多貼錢換 iPad Air，那不然我就換最便宜的 iPad就好了！」（其實當時很多科技產品都缺貨，蘋果的平板也因為遠距非常熱賣，大多數規格都缺貨了），於是在如此掙扎之後就開始了和我的新學習夥伴的生活。</p>
+<h3 id="學習方法和生活方式的變化"><a href="#學習方法和生活方式的變化" class="headerlink" title="學習方法和生活方式的變化"></a>學習方法和生活方式的變化</h3><p>那在前段文章分享完我購買平板當下的心境後，接著就來說說我的學習方法吧！其實我的學習方法並未有所差異性的改變，一如既往，依舊是在課後做著課後所需的練習、公式相關的推導，畢竟一直以來都沒有上課抄寫老師黑板上所講述的內容，這或許可以用下個篇幅來分享為什麽我不抄筆記～～～小組討論時，可以快速地記下註記把大家的短時間內產出的內容快速記下來以不致於遺漏；至於生活方法的話，偶爾可以在平板畫點小圖案，畢竟平板可以不受限於紙張條件，也可以快速更換畫筆的顏色，所以畫點小圖可說是非常便利呢！哦還有個至關重要的那就是每日的 TODO List，因為平板的便利，就可以在各個場合之下查看當日的待辦事項，或是目標進度，不需要再從書包裡掏出筆記本來查看，再來就是，書包變輕也變整潔了，因為不用在背更多書本、紙張，頂多就是平板、筆電、充電器就能出門了！</p>
+<h3 id="我的觀點結論"><a href="#我的觀點結論" class="headerlink" title="我的觀點結論"></a>我的觀點結論</h3><p>綜上經驗，平板對於我的日常是有達到幫助的，不過其實可以很坦白地說：「平板是真的方便，不過有沒有買是真的沒什麼差！！！」方便性這點就是可以隨時隨地做筆記，打開平板就能隨時查看需要的資料，再加上有些講義也是電子的形式，所以就更為方便了，那為何還有後面那句話呢？就是其實買平板不會變得特別認真，也不會讀得更好，就只是讀書的形式變了，但本質並未作改變，在大學要想學得更多，完全端看自己的讀書習管以及方法，平板並不會帶來太多的改變，也可能是我的使用情境頂多寫寫數學算式，做做統整、小筆記，所以這些完全紙本也能應付，所以才有此說法，並沒有像網路上很多開箱的人所說的這麼神。</p>
+<p>所以我滿慶幸自己買到的平板是入門款的，無論是入門或是高規的平板，對於大多數人的需求而言都已經很足夠了，只有一點小小抱怨：「就是這台平版螢幕沒有全貼和，看劇體驗頗差的」看劇還是都用 MacBook Pro 看（蘋果筆電螢幕就是舒服！），在日常書寫真的沒有差太多，書寫完的樣子根本沒什麼差別，所以單就一般文書處理、寫寫筆記，真的真心話：「入門款就夠用了，把錢省了吧！」。</p>
+<p>最後想給看到這篇的人購買建議就是：「其實一個產品在很多時候，任何人都會有不同的推薦、或是貶低，但一個產品到底需不需要購買，最重要的還是自己的需求。」與其看更多別人的使用場景，不如問問自己的吧！</p>
+<h3 id="本文後續"><a href="#本文後續" class="headerlink" title="本文後續"></a>本文後續</h3><p>更一個後續，這篇文由於是第一次撰寫，共經歷了大一、大二階段才撰寫完成的，之後一定會有一篇詳細介紹我的讀書、辦公環境的，文章裡一定會提到更多我學習相關的內容的！</p>
+]]></content>
+      <categories>
+        <category>Talks</category>
+      </categories>
+      <tags>
+        <tag>ipad</tag>
+        <tag>Apple</tag>
+        <tag>Freshman</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>平板能輔助大學生上課嗎？</title>
+    <url>/2023/07/30/talks/no-book-in-uni/</url>
+    <content><![CDATA[<blockquote>
+<p>誒～怎麼身邊上課的人開始都不帶書了！？</p>
+</blockquote>
+<p>大學生上大學到底要不要買平板來輔助學習，這個話題其實一直被討論著，現在也是不斷地被拿出來討論，沒有特定一個答案，於是賀編決定撰寫這篇文章，並結合就讀中央的期間，身邊所被討論過的內容以及自己的一些經驗（賀編本身有使用平板輔助的習慣）。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*tg5IdfMpb60zbPonfmZHXQ.jpeg"
+                      alt="pexels-cottonbro-4065171.jpg"
+                ><figcaption>pexels-cottonbro-4065171.jpg</figcaption></figure></p>
+<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>使用平板在大學生多數場景可以大致上分為兩個，第一個為課堂上，第二個是課堂外。</p>
+<h3 id="課堂上："><a href="#課堂上：" class="headerlink" title="課堂上："></a>課堂上：</h3><p>課堂上有平板的同學，可以臨時做筆記，快速記筆記，如果需要修改可以馬上修改，不用塗塗改      改，不會像傳統紙張、筆記本，可能需要用立可帶塗掉，甚至老師突然補述先前提及的內容也可以馬  上做修正，不會發生沒空間抄寫的問題。</p>
+<p>臨時需要查找資料時也可以快速從平板搜尋，不需要從書包裡翻找出之前記錄過的內容。</p>
+<p>另外有些學院的教授開始把教材變成電子檔，用平板的同學可以快速地在教材上記錄下重點，而不需要在上課前先去將教材印出來，而且忘記帶講義的時候，可以即時下載資料，避免發生在上課時沒有資料的慘況發生⋯⋯</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Ba2Sy3vX6mH29pfLNb4MNA.png"
+                      alt="Screen Shot 2022-07-03 at 11.09.13 PM.png"
+                ><figcaption>Screen Shot 2022-07-03 at 11.09.13 PM.png</figcaption></figure></p>
+<h3 id="課堂外："><a href="#課堂外：" class="headerlink" title="課堂外："></a>課堂外：</h3><p>描述完課堂上的使用場景，來說說課堂外的使用吧！這時候大家做常聽到的說詞「買前生產力；買後愛奇藝」便會悄悄地晃到我們耳邊，不過我們本篇文章還是預設大家的使用場景是用來輔助學習，雖說好的放鬆時光也是推進我們向前的一大動力，哈！不過我們還是回到正題吧！</p>
+<p>賀編本身是理工學院相關科系的，所以自身及身邊的同學使用量最大的場景便是計算繁雜的數學算式，甚至是公式推導，畢竟要複習課程中的內容，還有迫於時間因素，教授也未必會在課堂上將完整算式做推導，畢竟在大學裡可能隨便一個小小的算式用上幾張計算紙都算是家常便飯，於是平板這時便能發揮所長，可以快速翻閱資料，寫錯也可以快速塗改（例如：從計算的剛開頭就算錯的時候⋯⋯還有漏寫算式的時候⋯⋯）</p>
+<p>講完了理工學院相關科系，來講個所有學院都將面臨到的使用情景「讀Paper」，這能帶到平板的一大功能「閱讀」，很多人都會透過平板做大量的閱讀，無論是文獻，又或者是自己的愛好書籍，一台平板，可以抵掉很多書籍的重量，又可以隨時隨地閱讀。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*gRyheXK1Zr4o7nzUNgl69Q.jpeg"
+                      alt="pexels-rfstudio-3060654.jpg"
+                ><figcaption>pexels-rfstudio-3060654.jpg</figcaption></figure></p>
+<h2 id="價格及挑選"><a href="#價格及挑選" class="headerlink" title="價格及挑選"></a>價格及挑選</h2><p>平板的挑選也可以分為兩大類，第一個是Apple，另一個則是Android，其實無論是哪個類別的平板都需要投入金錢的成本，不過結合賀編，以及身邊還有訪問過的人的經驗，可以總結出兩個結論：</p>
+<ol>
+<li>財力</li>
+<li>習慣</li>
+</ol>
+<p>首先來講述第一點「財力」，其實說老實話上述提及過的場景，只要有支觸控筆加上平板便能應付大多數的需求，所以不論Apple系統又或者是Android系統的高階、中階、低階平板都能夠負荷，因此挑選平板可以考量自己的經濟能力，想要比較新穎的功能或者其他需求，可能就得多多捏一點上更好的規格，哈！</p>
+<p>另外換講述第二點「習慣」，Apple系統或者Android系統，本就是兩大陣營，早就經歷很多次的比較、爭辯，各有各自的擁護者，還是回到老話一句，其實只要有支觸控筆加上平板便能應付大多數的需求，因此自己習慣哪個系統，便可朝那個方向做挑選。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*RZ1xmhqrFefd5ffypyGVjw.jpeg"
+                      alt="1333cba4be91a78d0d1db873ea6cc980.jpg"
+                ><figcaption>1333cba4be91a78d0d1db873ea6cc980.jpg</figcaption></figure></p>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>以上分享了一些賀編生活的案例，以及跟身邊討論、聊天提及到的情況，其實要不要買平板，這個話題真的太多人討論了，那要不要買真的端看個人習慣，平板雖說方便，可有一點就是完全無法取代，那便是「在紙張書寫的觸感」，許多人學習就喜歡觸碰實體書籍的感覺，況且要做好學問，無論是紙張或是平板都有辦法做好，再怎麼說平板就是個輔助學習的工具，賀編想近期會又這麼多討論，大概便是順應現在時代的變遷，學習的路徑加上了一個工具選項可以做嘗試，可能唯一能給到的建議，就是可以多爬些文章做比較，網路上還有很多很好的文章以及影片，一切端看自己的需求，以及財力，來做對自己好的決定。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e11db370-730a-4b13-89ce-bde047c05b8c/pexels-mikhail-nilov-6931023.jpg"
+                      alt="pexels-mikhail-nilov-6931023.jpg"
+                ><figcaption>pexels-mikhail-nilov-6931023.jpg</figcaption></figure></p>
+<h2 id="題外話"><a href="#題外話" class="headerlink" title="題外話"></a>題外話</h2><p>文章下完結論後來分享一個賀編看到的一個有趣的經驗，在剛從大一升到大二時，班上的瞬間多了很多平板，超過半數的同學都買了平板，而且幾乎都是Ipad，多數同學都是搭上了Apple的「Back to school」方案做購買，這是大專學院的專屬優惠，如果暑假想要添購新設備的同學可以多多關注，可以少捏一點上好一點的設備，當然這個活動也不只平板啦！可以自行去官網看看哦～</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2tMD7NLX88PVvklYR2t_hg.jpeg"
+                      alt="1655899178-f039f51cb6c66a067487eb6aacf97c83.jpg"
+                ><figcaption>1655899178-f039f51cb6c66a067487eb6aacf97c83.jpg</figcaption></figure></p>
+]]></content>
+      <categories>
+        <category>Talks</category>
+      </categories>
+      <tags>
+        <tag>ipad</tag>
+        <tag>Apple</tag>
+        <tag>Freshman</tag>
       </tags>
   </entry>
 </search>

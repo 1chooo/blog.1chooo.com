@@ -18,19 +18,19 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="還記得當時剛學習程式語言的時候，對於什麼知識都不懂，連搜尋能力也沒有，常常搜不到關鍵字，問題也解決不了，不過當時懵懂無知的狀態，完成了基礎貪吃蛇的小遊戲，所以決定撰寫一篇文章來記錄當時的過程。 本文綱要  環境建置 官網連結：   接著就開始建立環境吧！ 實作說明 實作感想 （更新）專案後續發展 重構心得 Source Code in GitHub: python_snake_game How t">
+        <meta name="description" content="還記得當時剛學習程式語言的時候，對於什麼知識都不懂，連搜尋能力也沒有，常常搜不到關鍵字，問題也解決不了，不過當時懵懂無知的狀態，完成了基礎貪吃蛇的小遊戲，所以決定撰寫一篇文章來記錄當時的過程。 本文綱要  環境建置 官網連結：   接著就開始建立環境吧！ 實作說明 實作感想 （更新）專案後續發展 重構心得 Source Code in GitHub: python_snake_game    環境">
 <meta property="og:type" content="article">
 <meta property="og:title" content="做個小貪吃蛇來玩吧！">
 <meta property="og:url" content="https://blog.1chooo.com/2023/07/30/projects/snake-game/index.html">
 <meta property="og:site_name" content="Hugo&#39;s Blog">
-<meta property="og:description" content="還記得當時剛學習程式語言的時候，對於什麼知識都不懂，連搜尋能力也沒有，常常搜不到關鍵字，問題也解決不了，不過當時懵懂無知的狀態，完成了基礎貪吃蛇的小遊戲，所以決定撰寫一篇文章來記錄當時的過程。 本文綱要  環境建置 官網連結：   接著就開始建立環境吧！ 實作說明 實作感想 （更新）專案後續發展 重構心得 Source Code in GitHub: python_snake_game How t">
+<meta property="og:description" content="還記得當時剛學習程式語言的時候，對於什麼知識都不懂，連搜尋能力也沒有，常常搜不到關鍵字，問題也解決不了，不過當時懵懂無知的狀態，完成了基礎貪吃蛇的小遊戲，所以決定撰寫一篇文章來記錄當時的過程。 本文綱要  環境建置 官網連結：   接著就開始建立環境吧！ 實作說明 實作感想 （更新）專案後續發展 重構心得 Source Code in GitHub: python_snake_game    環境">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://miro.medium.com/max/1400/1*1uDdGsxFlihzmPfLP6Mo4A.webp">
 <meta property="og:image" content="https://miro.medium.com/max/1400/1*xRYWm3kCCimYkrsHfh88KA.webp">
 <meta property="og:image" content="https://miro.medium.com/max/1400/1*okV2P3qTibFMO1NWbaRBJQ.webp">
 <meta property="og:image" content="https://miro.medium.com/max/1400/1*okV2P3qTibFMO1NWbaRBJQ.webp">
 <meta property="article:published_time" content="2023-07-30T07:00:00.000Z">
-<meta property="article:modified_time" content="2024-04-11T12:05:54.674Z">
+<meta property="article:modified_time" content="2024-04-15T01:41:44.173Z">
 <meta property="article:author" content="Hugo ChunHo Lin (1chooo)">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="pygame">
@@ -532,7 +532,7 @@
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
@@ -590,8 +590,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-04-11 20:05:54</span>
-            <span class="mobile">2024-04-11 20:05:54</span>
+            <span class="desktop">2024-04-15 09:41:44</span>
+            <span class="mobile">2024-04-15 09:41:44</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -638,7 +638,7 @@
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>8 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>7 Mins</span>
         </span>
     
     
@@ -670,7 +670,6 @@
 <li><a href="#%E6%9B%B4%E6%96%B0%E5%B0%88%E6%A1%88%E5%BE%8C%E7%BA%8C%E7%99%BC%E5%B1%95">（更新）專案後續發展</a></li>
 <li><a href="#%E9%87%8D%E6%A7%8B%E5%BF%83%E5%BE%97">重構心得</a><ul>
 <li><a href="#source-code-in-github-python_snake_game">Source Code in GitHub: python_snake_game</a></li>
-<li><a href="#how-to-reach-out-to-me">How to reach out to me</a></li>
 </ul>
 </li>
 </ul>
@@ -730,14 +729,7 @@
                      
                 ></p>
 <h2 id="重構心得"><a href="#重構心得" class="headerlink" title="重構心得"></a>重構心得</h2><p>這次會想要重構程式碼，便是因為 2022 後半年使用 python3 完成了一個新的專案，也在過程中才更認識 python3 類別的應用以及開發所需注意的小細節，所以才回想起曾經做過的小專案，嘗試將後續所學到的內容更應用在程式碼撰寫上，也增加自己多一次的經驗累積。</p>
-<h3 id="Source-Code-in-GitHub-python-snake-game"><a href="#Source-Code-in-GitHub-python-snake-game" class="headerlink" title="Source Code in GitHub: python_snake_game"></a>Source Code in GitHub: <a class="link"   target="_blank" rel="noopener" href="https://github.com/1chooo/junk-project/tree/main/python_snake_game" >python_snake_game <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h3><h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
-<li>Ins: <a class="link"   target="_blank" rel="noopener" href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Linkedin: <a class="link"   target="_blank" rel="noopener" href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>GitHub: <a class="link"   target="_blank" rel="noopener" href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>About me: <a class="link"   target="_blank" rel="noopener" href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#x67;&#x6f;&#x39;&#x37;&#48;&#x32;&#49;&#x37;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;" >&#104;&#x75;&#x67;&#x6f;&#x39;&#x37;&#48;&#x32;&#49;&#x37;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-
+<h3 id="Source-Code-in-GitHub-python-snake-game"><a href="#Source-Code-in-GitHub-python-snake-game" class="headerlink" title="Source Code in GitHub: python_snake_game"></a>Source Code in GitHub: <a class="link"   target="_blank" rel="noopener" href="https://github.com/1chooo/junk-project/tree/main/python_snake_game" >python_snake_game <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h3>
         </div>
 
         
@@ -762,22 +754,22 @@
     <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>Recommendation</span>
     </div>
-    <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/07/30/dev-ops/conda_tips/" title="我在 Conda 常用的指令" rel="bookmark">
+    <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/07/30/dev-env/conda-dev-env/" title="我在 Conda 常用的指令" rel="bookmark">
   <img src="/images/wallhaven-wqery6-light.webp" alt="我在 Conda 常用的指令" class="!max-w-none">
   <span class="title">我在 Conda 常用的指令</span>
 </a><a class="recommended-article-item" href="/2024/03/16/coding-style/python-5-tips/" title="五個 Python 好習慣" rel="bookmark">
   <img src="/images/cover/coding-style/python-5-tips.png" alt="五個 Python 好習慣" class="!max-w-none">
   <span class="title">五個 Python 好習慣</span>
-</a><a class="recommended-article-item" href="/2023/07/30/euclid/" title="演算法第一講——Euclid Algorithm 歐幾里得演算法" rel="bookmark">
-  <img src="https://miro.medium.com/v2/resize:fit:1340/format:webp/1*xS3rVXn57DTerPNCZuOJ_g.jpeg" alt="演算法第一講——Euclid Algorithm 歐幾里得演算法" class="!max-w-none">
-  <span class="title">演算法第一講——Euclid Algorithm 歐幾里得演算法</span>
+</a><a class="recommended-article-item" href="/2023/09/08/dev-ops/git-ssh/" title="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻" rel="bookmark">
+  <img src="/images/cover/dev-ops/git-ssh.png" alt="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻" class="!max-w-none">
+  <span class="title">踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</span>
 </a></div>
    </div>
    <div class="recommended-mobile">
    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>Recommendation</span>
    </div>
-   <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/07/30/dev-ops/conda_tips/" title="我在 Conda 常用的指令" rel="bookmark">
+   <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/07/30/dev-env/conda-dev-env/" title="我在 Conda 常用的指令" rel="bookmark">
   <img src="/images/wallhaven-wqery6-light.webp" alt="我在 Conda 常用的指令" class="!max-w-none">
   <span class="title">我在 Conda 常用的指令</span>
 </a><a class="recommended-article-item" href="/2024/03/16/coding-style/python-5-tips/" title="五個 Python 好習慣" rel="bookmark">
@@ -793,18 +785,33 @@
                     <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="prev"
                         rel="prev"
-                        href="/2023/07/30/life/pick_ipad/"
+                        href="/2023/07/30/ds-alg/euclid/"
                         >
                             <span class="left arrow-icon flex justify-center items-center">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </span>
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">剛上大學的我如何挑到適合我的平板！？</span>
+                                <span class="post-nav-title-item">演算法第一講——Euclid Algorithm 歐幾里得演算法</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
                     </div>
                 
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2023/07/30/talks/freshman-pick-up-ipad/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">剛上大學的我如何挑到適合我的平板！？</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
                 
             </div>
         
@@ -877,7 +884,7 @@
     <div class="post-toc">
         <div class="toc-title">On this page</div>
         <div class="page-title">做個小貪吃蛇來玩吧！</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%92%B0%E5%A2%83%E5%BB%BA%E7%BD%AE"><span class="nav-text">環境建置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E8%91%97%E5%B0%B1%E9%96%8B%E5%A7%8B%E5%BB%BA%E7%AB%8B%E7%92%B0%E5%A2%83%E5%90%A7%EF%BC%81"><span class="nav-text">接著就開始建立環境吧！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C%E8%AA%AA%E6%98%8E"><span class="nav-text">實作說明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C%E6%84%9F%E6%83%B3"><span class="nav-text">實作感想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%88%E6%9B%B4%E6%96%B0%EF%BC%89%E5%B0%88%E6%A1%88%E5%BE%8C%E7%BA%8C%E7%99%BC%E5%B1%95"><span class="nav-text">（更新）專案後續發展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E6%A7%8B%E5%BF%83%E5%BE%97"><span class="nav-text">重構心得</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Source-Code-in-GitHub-python-snake-game"><span class="nav-text">Source Code in GitHub: python_snake_game </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-reach-out-to-me"><span class="nav-text">How to reach out to me</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%92%B0%E5%A2%83%E5%BB%BA%E7%BD%AE"><span class="nav-text">環境建置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E8%91%97%E5%B0%B1%E9%96%8B%E5%A7%8B%E5%BB%BA%E7%AB%8B%E7%92%B0%E5%A2%83%E5%90%A7%EF%BC%81"><span class="nav-text">接著就開始建立環境吧！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C%E8%AA%AA%E6%98%8E"><span class="nav-text">實作說明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C%E6%84%9F%E6%83%B3"><span class="nav-text">實作感想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%88%E6%9B%B4%E6%96%B0%EF%BC%89%E5%B0%88%E6%A1%88%E5%BE%8C%E7%BA%8C%E7%99%BC%E5%B1%95"><span class="nav-text">（更新）專案後續發展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E6%A7%8B%E5%BF%83%E5%BE%97"><span class="nav-text">重構心得</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Source-Code-in-GitHub-python-snake-game"><span class="nav-text">Source Code in GitHub: python_snake_game </span></a></li></ol></li></ol>
 
     </div>
 </div>

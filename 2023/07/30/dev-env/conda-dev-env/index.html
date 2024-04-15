@@ -13,29 +13,28 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://blog.1chooo.com/2023/07/30/euclid/"/>
+    <link rel="canonical" href="https://blog.1chooo.com/2023/07/30/dev-env/conda-dev-env/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="大家在過往學習的經驗中，可能都有聽過歐幾里德這名鼎鼎大名的人物，是位在希臘化時期的數學家，有著著名著作「幾何原本」，在數學領域中有著極大化的貢獻，為現今眾多數學家所認同。 Euclid and Geometry 然而在古希臘的時代的數學家竟然能跟演算法畫上關係，畢竟演算法便是透過有限的步驟中，將給定的輸入做出最有效的解決，並且在執行玩這些有效的步驟中會有正當的終止，產生最後輸出結果，而歐幾里德演算">
+        <meta name="description" content="每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！  相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda">
 <meta property="og:type" content="article">
-<meta property="og:title" content="演算法第一講——Euclid Algorithm 歐幾里得演算法">
-<meta property="og:url" content="https://blog.1chooo.com/2023/07/30/euclid/index.html">
+<meta property="og:title" content="我在 Conda 常用的指令">
+<meta property="og:url" content="https://blog.1chooo.com/2023/07/30/dev-env/conda-dev-env/index.html">
 <meta property="og:site_name" content="Hugo&#39;s Blog">
-<meta property="og:description" content="大家在過往學習的經驗中，可能都有聽過歐幾里德這名鼎鼎大名的人物，是位在希臘化時期的數學家，有著著名著作「幾何原本」，在數學領域中有著極大化的貢獻，為現今眾多數學家所認同。 Euclid and Geometry 然而在古希臘的時代的數學家竟然能跟演算法畫上關係，畢竟演算法便是透過有限的步驟中，將給定的輸入做出最有效的解決，並且在執行玩這些有效的步驟中會有正當的終止，產生最後輸出結果，而歐幾里德演算">
+<meta property="og:description" content="每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！  相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1340/format:webp/1*xS3rVXn57DTerPNCZuOJ_g.jpeg">
-<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ZtKWx4DZ0FY6SBSctDWtUQ.png">
-<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png">
-<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png">
+<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*HINgY65FwzLssf65NsA8tQ.png">
 <meta property="article:published_time" content="2023-07-30T07:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-15T10:28:12.391Z">
+<meta property="article:modified_time" content="2024-04-15T01:39:43.983Z">
 <meta property="article:author" content="Hugo ChunHo Lin (1chooo)">
-<meta property="article:tag" content="algorithm">
-<meta property="article:tag" content="note">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="venv">
+<meta property="article:tag" content="conda">
+<meta property="article:tag" content="tips">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:1340/format:webp/1*xS3rVXn57DTerPNCZuOJ_g.jpeg">
+<meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*HINgY65FwzLssf65NsA8tQ.png">
     
     
     <!--- Icon Part-->
@@ -47,7 +46,7 @@
     
     <title>
         
-            演算法第一講——Euclid Algorithm 歐幾里得演算法 -
+            我在 Conda 常用的指令 -
         
         Hugo&#39;s Blog
     </title>
@@ -532,7 +531,7 @@
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
@@ -561,12 +560,8 @@
 
         <div class="article-title relative w-full">
             
-                
-                
-                <img src="https://miro.medium.com/v2/resize:fit:1340/format:webp/1*xS3rVXn57DTerPNCZuOJ_g.jpeg" alt="演算法第一講——Euclid Algorithm 歐幾里得演算法" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
-                
-                <div class="w-full flex items-center absolute bottom-0 justify-start">
-                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">演算法第一講——Euclid Algorithm 歐幾里得演算法</h1>
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">我在 Conda 常用的指令</h1>
                 </div>
             
             </div>
@@ -594,8 +589,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-01-15 18:28:12</span>
-            <span class="mobile">2024-01-15 18:28:12</span>
+            <span class="desktop">2024-04-15 09:39:43</span>
+            <span class="mobile">2024-04-15 09:39:43</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -609,7 +604,7 @@
                     
                         
                         <li>
-                            <a href="/categories/Algorithm/">Algorithm</a>&nbsp;
+                            <a href="/categories/DevEnv/">DevEnv</a>&nbsp;
                         </li>
                     
                     
@@ -623,11 +618,19 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/algorithm/">algorithm</a>&nbsp;
+                        <a href="/tags/python/">python</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/note/">note</a>&nbsp;
+                        | <a href="/tags/venv/">venv</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/conda/">conda</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/tips/">tips</a>&nbsp;
                     </li>
                 
             </ul>
@@ -637,12 +640,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>942 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.2k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>3 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>4 Mins</span>
         </span>
     
     
@@ -661,57 +664,61 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <p>大家在過往學習的經驗中，可能都有聽過歐幾里德這名鼎鼎大名的人物，是位在希臘化時期的數學家，有著著名著作「幾何原本」，在數學領域中有著極大化的貢獻，為現今眾多數學家所認同。</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1340/format:webp/1*xS3rVXn57DTerPNCZuOJ_g.jpeg"
-                      alt="Euclid and Geometry"
-                ><figcaption>Euclid and Geometry</figcaption></figure></p>
-<p>然而在古希臘的時代的數學家竟然能跟演算法畫上關係，畢竟演算法便是透過有限的步驟中，將給定的輸入做出最有效的解決，並且在執行玩這些有效的步驟中會有正當的終止，產生最後輸出結果，而歐幾里德演算法得以詮釋這些過程，歐幾里德演算法的問題是要在給定的兩個正整數 m 和 n 中找出兩束的最大公因數，因此我們可以列出以下解題步驟：</p>
-<ol>
-<li>找出餘數 (m % n)</li>
-<li>判斷餘數是否為零 (if (r &#x3D; 0) return n)</li>
-<li>被除數與餘數互換 (swap(m, n))</li>
-</ol>
-<p>那看到這邊可能人會有很多有很熟悉的感覺，畢竟我們曾經學習過求公因數的方法有：列舉法、質因數分解、短除法等⋯⋯那其中還有一個有趣的方法便是「輾轉相除法」，也就是我們今天要討論到的歐幾里德演算法，然而所謂的「輾轉」是什麼呢？可能是 Debug 睡不著的時候吧！哈！不過這樣也說得通，輾轉就是曲折的、不斷的過程，而我們正是透過這樣的特性來達成我們的演算法。</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ZtKWx4DZ0FY6SBSctDWtUQ.png"
-                      alt="輾轉相除法直式"
-                ><figcaption>輾轉相除法直式</figcaption></figure></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png"
-                      alt="輾轉過程"
-                ><figcaption>輾轉過程</figcaption></figure></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png"
-                      alt="過程以長方形圖是呈現"
-                ><figcaption>過程以長方形圖是呈現</figcaption></figure></p>
-<p>透過上方圖示我們便可看出輾轉的真正特性，透過互換且不斷地進行運算，已達到我們期望的結果，也可以從上圖中透過切割長方形的模式，在長方形中找出能切割的最大面積正方形，以此將整個長方形變成有正方形所組成的型態，這又可以回歸到上述所歸納的兩個解：</p>
-<ol>
-<li>餘數為 0 -&gt; 完整地切割</li>
-<li>餘數為 1 -&gt; 無法完整地切割</li>
-</ol>
-<p>想必讀到這裡一定更能理解輾轉相除法，接下來我們進行實作吧！</p>
-<h3 id="以下我們展示虛擬碼-Pseudocode"><a href="#以下我們展示虛擬碼-Pseudocode" class="headerlink" title="以下我們展示虛擬碼 (Pseudocode)"></a>以下我們展示虛擬碼 (Pseudocode)</h3><div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Algorithm: <span class="built_in">EuclidGCD</span>(m, n)</span><br><span class="line">Input: Two integer m <span class="keyword">and</span> n.</span><br><span class="line">Output: The greatest common factor of m <span class="keyword">and</span> n.</span><br><span class="line">r &lt;- m % n</span><br><span class="line"><span class="keyword">while</span> r != <span class="number">0</span> <span class="keyword">do</span></span><br><span class="line">    m &lt;- n</span><br><span class="line">    n &lt;- r</span><br><span class="line">    r &lt;- m % n</span><br><span class="line"><span class="keyword">return</span> n</span><br><span class="line">以下我們使用 cpp 實作</span><br><span class="line"><span class="type">int</span> <span class="built_in">EuclidGCD</span>(<span class="type">int</span> m, <span class="type">int</span> n) &#123;</span><br><span class="line">    <span class="type">int</span> r = m % n;</span><br><span class="line">    <span class="keyword">while</span> (r != <span class="number">0</span>) &#123;</span><br><span class="line">        m = n;</span><br><span class="line">        n = r;</span><br><span class="line">        r = m % n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+            <blockquote>
+<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
+</blockquote>
+<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
+<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
 
-<p>那上面我們討論到歐幾里德演算法的範疇實屬理論，那實際用途到底可以實現什麼情形呢？在分析這道問號題之前，我們可以再回想一下此演算法，最核心的就是要找出最大公因數，並且在由大化小的過程中，可以達成更有效率地轉換，畢竟是透過一系列輾轉的過程，所以其實輾轉相除法的應用層面非常廣，可以在密碼學、數學、計算機科學等⋯⋯領域做使用，甚至在音樂方面都能有實際上的應用，若想知道更多，網路上其實還有更多有趣的範例等著你們去挖掘呢！（維基百科下方的參考連結有超多有趣的例子！）</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/56528787" >欧几里得与《几何原本》(上篇） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://jason-chen-1992.weebly.com/home/-euclidean-algorithm" >【演算法】歐幾里得算法 Euclidean Algorithm <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
+<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
 </ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
+
+<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*HINgY65FwzLssf65NsA8tQ.png"
+                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
+                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
+<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
+<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
+<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
 <h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
 <li>Ins: <a class="link"   target="_blank" rel="noopener" href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>Linkedin: <a class="link"   target="_blank" rel="noopener" href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   target="_blank" rel="noopener" href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   target="_blank" rel="noopener" href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#x67;&#111;&#57;&#55;&#48;&#50;&#49;&#55;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;" >&#x68;&#x75;&#x67;&#111;&#57;&#55;&#48;&#50;&#49;&#55;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#x68;&#117;&#x67;&#111;&#x39;&#x37;&#48;&#50;&#49;&#55;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109;" >&#x68;&#117;&#x67;&#111;&#x39;&#x37;&#48;&#50;&#49;&#55;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 
         </div>
@@ -722,11 +729,19 @@
             <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/algorithm/">#algorithm</a>&nbsp;
+                        <a href="/tags/python/">#python</a>&nbsp;
                     </li>
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/note/">#note</a>&nbsp;
+                        <a href="/tags/venv/">#venv</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/conda/">#conda</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/tips/">#tips</a>&nbsp;
                     </li>
                 
             </ul>
@@ -738,27 +753,27 @@
     <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>Recommendation</span>
     </div>
-    <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/03/16/coding-style/python-5-tips/" title="五個 Python 好習慣" rel="bookmark">
+    <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/07/30/projects/snake-game/" title="做個小貪吃蛇來玩吧！" rel="bookmark">
+  <img src="/images/wallhaven-wqery6-light.webp" alt="做個小貪吃蛇來玩吧！" class="!max-w-none">
+  <span class="title">做個小貪吃蛇來玩吧！</span>
+</a><a class="recommended-article-item" href="/2024/03/16/coding-style/python-5-tips/" title="五個 Python 好習慣" rel="bookmark">
   <img src="/images/cover/coding-style/python-5-tips.png" alt="五個 Python 好習慣" class="!max-w-none">
   <span class="title">五個 Python 好習慣</span>
 </a><a class="recommended-article-item" href="/2023/09/08/dev-ops/git-ssh/" title="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻" rel="bookmark">
   <img src="/images/cover/dev-ops/git-ssh.png" alt="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻" class="!max-w-none">
   <span class="title">踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</span>
-</a><a class="recommended-article-item" href="/2023/07/30/life/no_book/" title="平板能輔助大學生上課嗎？" rel="bookmark">
-  <img src="https://blog.1chooo.com/images/cover/no_book_cover.jpg" alt="平板能輔助大學生上課嗎？" class="!max-w-none">
-  <span class="title">平板能輔助大學生上課嗎？</span>
 </a></div>
    </div>
    <div class="recommended-mobile">
    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>Recommendation</span>
    </div>
-   <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/03/16/coding-style/python-5-tips/" title="五個 Python 好習慣" rel="bookmark">
+   <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/07/30/projects/snake-game/" title="做個小貪吃蛇來玩吧！" rel="bookmark">
+  <img src="/images/wallhaven-wqery6-light.webp" alt="做個小貪吃蛇來玩吧！" class="!max-w-none">
+  <span class="title">做個小貪吃蛇來玩吧！</span>
+</a><a class="recommended-article-item" href="/2024/03/16/coding-style/python-5-tips/" title="五個 Python 好習慣" rel="bookmark">
   <img src="/images/cover/coding-style/python-5-tips.png" alt="五個 Python 好習慣" class="!max-w-none">
   <span class="title">五個 Python 好習慣</span>
-</a><a class="recommended-article-item" href="/2023/09/08/dev-ops/git-ssh/" title="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻" rel="bookmark">
-  <img src="/images/cover/dev-ops/git-ssh.png" alt="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻" class="!max-w-none">
-  <span class="title">踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</span>
 </a></div>
    </div>
   </div>
@@ -785,10 +800,10 @@
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2023/07/30/dev-ops/conda_tips/"
+                        href="/2023/07/30/ds-alg/euclid/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">我在 Conda 常用的指令</span>
+                                <span class="post-nav-title-item">演算法第一講——Euclid Algorithm 歐幾里得演算法</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -867,8 +882,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">演算法第一講——Euclid Algorithm 歐幾里得演算法</div>
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A5%E4%B8%8B%E6%88%91%E5%80%91%E5%B1%95%E7%A4%BA%E8%99%9B%E6%93%AC%E7%A2%BC-Pseudocode"><span class="nav-text">以下我們展示虛擬碼 (Pseudocode)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-reach-out-to-me"><span class="nav-text">How to reach out to me</span></a></li></ol>
+        <div class="page-title">我在 Conda 常用的指令</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E3%80%81%E5%88%AA%E9%99%A4%E5%92%8C%E8%A4%87%E8%A3%BD%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="nav-text">建立、刪除和複製虛擬環境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BF%80%E6%B4%BB%E8%88%87%E9%80%80%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="nav-text">激活與退出虛擬環境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E5%8F%8A%E5%88%AA%E9%99%A4%E9%9C%80%E8%A6%81%E7%9A%84-package-%E8%87%B3%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="nav-text">安裝及刪除需要的 package 至虛擬環境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%A9%A2%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83%E8%B3%87%E8%A8%8A"><span class="nav-text">查詢虛擬環境資訊</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8E%E5%87%BA%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="nav-text">導出虛擬環境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AB%E5%B0%8F%E7%B5%90"><span class="nav-text">文末小結</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-reach-out-to-me"><span class="nav-text">How to reach out to me</span></a></li></ol>
 
     </div>
 </div>
