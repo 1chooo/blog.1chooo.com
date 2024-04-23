@@ -1,6 +1,6 @@
 ---
 title: 踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻
-categories: DEV
+categories: DevOps
 date: 2023-09-08 00:00:00
 tags: 
 - Git 

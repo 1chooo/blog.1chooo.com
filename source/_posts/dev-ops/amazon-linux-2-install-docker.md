@@ -1,6 +1,6 @@
 ---
 title: 如何在 AWS EC2 Amazon Linux 2 上安裝 Docker
-categories: DEV
+categories: DevOps
 date: 2024-04-11 00:00:00
 tags: 
 - Docker

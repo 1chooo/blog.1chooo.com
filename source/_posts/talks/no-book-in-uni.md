@@ -1,6 +1,6 @@
 ---
 title: 平板能輔助大學生上課嗎？
-categories: Life
+categories: Talks
 date: 2023-07-30 15:00:00
 tags: 
 - ipad
@@ -13,15 +13,6 @@ cover: https://blog.1chooo.com/images/cover/no_book_cover.jpg
 
 大學生上大學到底要不要買平板來輔助學習，這個話題其實一直被討論著，現在也是不斷地被拿出來討論，沒有特定一個答案，於是賀編決定撰寫這篇文章，並結合就讀中央的期間，身邊所被討論過的內容以及自己的一些經驗（賀編本身有使用平板輔助的習慣）。
 
-**🧸本篇文章討論流程：**
-
-- [用途](#用途)
-  - [課堂上：](#課堂上)
-  - [課堂外：](#課堂外)
-- [價格及挑選](#價格及挑選)
-- [結論](#結論)
-- [題外話](#題外話)
-  - [How to reach out to me](#how-to-reach-out-to-me)
 
 ![pexels-cottonbro-4065171.jpg](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*tg5IdfMpb60zbPonfmZHXQ.jpeg)
 
@@ -73,10 +64,3 @@ cover: https://blog.1chooo.com/images/cover/no_book_cover.jpg
 文章下完結論後來分享一個賀編看到的一個有趣的經驗，在剛從大一升到大二時，班上的瞬間多了很多平板，超過半數的同學都買了平板，而且幾乎都是Ipad，多數同學都是搭上了Apple的「Back to school」方案做購買，這是大專學院的專屬優惠，如果暑假想要添購新設備的同學可以多多關注，可以少捏一點上好一點的設備，當然這個活動也不只平板啦！可以自行去官網看看哦～
 
 ![1655899178-f039f51cb6c66a067487eb6aacf97c83.jpg](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2tMD7NLX88PVvklYR2t_hg.jpeg)
-
-### How to reach out to me
-- Ins: [@lcho____](https://www.instagram.com/lcho____/)
-- Linkedin: [Hugo ChunHo Lin](https://www.linkedin.com/in/1chooo/)
-- GitHub: [1chooo](https://github.com/1chooo)
-- About me: [1chooo](https://sites.google.com/g.ncu.edu.tw/1chooo)
-- Email: hugo970217@gmail.com

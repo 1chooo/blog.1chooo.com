@@ -1,6 +1,6 @@
 ---
 title: 剛上大學的我如何挑到適合我的平板！？
-categories: Life
+categories: Talks
 date: 2023-07-30 15:00:00
 tags: 
 - ipad
@@ -13,13 +13,6 @@ cover: https://miro.medium.com/v2/resize:fit:1400/format:webp/1*f2BkDSANBT2XUGEz
 
 
 ![My iPad 8 !!!](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*f2BkDSANBT2XUGEzR-1_gw.jpeg)
-
-**本文綱要**
-- [購買前所做的準備](#購買前所做的準備)
-- [學習方法和生活方式的變化](#學習方法和生活方式的變化)
-- [我的觀點結論](#我的觀點結論)
-- [本文後續](#本文後續)
-- [How to reach out to me](#how-to-reach-out-to-me)
 
 
 ### 購買前所做的準備
@@ -48,10 +41,3 @@ cover: https://miro.medium.com/v2/resize:fit:1400/format:webp/1*f2BkDSANBT2XUGEz
 ### 本文後續
 
 更一個後續，這篇文由於是第一次撰寫，共經歷了大一、大二階段才撰寫完成的，之後一定會有一篇詳細介紹我的讀書、辦公環境的，文章裡一定會提到更多我學習相關的內容的！
-
-### How to reach out to me
-- Ins: [@lcho____](https://www.instagram.com/lcho____/)
-- Linkedin: [Hugo ChunHo Lin](https://www.linkedin.com/in/1chooo/)
-- GitHub: [1chooo](https://github.com/1chooo)
-- About me: [1chooo](https://sites.google.com/g.ncu.edu.tw/1chooo)
-- Email: hugo970217@gmail.com

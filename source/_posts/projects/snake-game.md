@@ -19,7 +19,6 @@ tags:
 - [（更新）專案後續發展](#更新專案後續發展)
 - [重構心得](#重構心得)
   - [Source Code in GitHub: python\_snake\_game](#source-code-in-github-python_snake_game)
-  - [How to reach out to me](#how-to-reach-out-to-me)
 
 ## 環境建置
 
@@ -256,10 +255,3 @@ $ python3 -m pygame.examples.aliens
 
 
 ### Source Code in GitHub: [python_snake_game](https://github.com/1chooo/junk-project/tree/main/python_snake_game)
-
-### How to reach out to me
-- Ins: [@lcho____](https://www.instagram.com/lcho____/)
-- Linkedin: [Hugo ChunHo Lin](https://www.linkedin.com/in/1chooo/)
-- GitHub: [1chooo](https://github.com/1chooo)
-- About me: [1chooo](https://sites.google.com/g.ncu.edu.tw/1chooo)
-- Email: hugo970217@gmail.com

@@ -1,6 +1,6 @@
 ---
 title: 五個 Python 好習慣
-categories: Coding Style
+categories: CodingTips
 date: 2024-03-16 00:00:00
 tags: 
 - Python
@@ -195,9 +195,11 @@ print(even_numbers) # [2, 4]
 
 透過 List Comprehension 我們可以把上面的程式碼簡化成以下的寫法：
 
-> **💡 TIP**
-> 
-> 這邊提供大家 List Comprehension 的記憶方法，那就是 `[目標 for 目標 in 來源 if 條件]`，這樣可以幫助大家更快理解以及上手。
+{% note green %}
+**💡 TIP**
+
+這邊提供大家 List Comprehension 的記憶方法，那就是 `[目標 for 目標 in 來源 if 條件]`，這樣可以幫助大家更快理解以及上手。
+{% endnote %}
 
 ```python
 # Good Habit

@@ -11,9 +11,6 @@ cover: https://miro.medium.com/v2/resize:fit:1340/format:webp/1*xS3rVXn57DTerPNC
 
 大家在過往學習的經驗中，可能都有聽過歐幾里德這名鼎鼎大名的人物，是位在希臘化時期的數學家，有著著名著作「幾何原本」，在數學領域中有著極大化的貢獻，為現今眾多數學家所認同。
 
-
-![Euclid and Geometry](https://miro.medium.com/v2/resize:fit:1340/format:webp/1*xS3rVXn57DTerPNCZuOJ_g.jpeg)
-
 然而在古希臘的時代的數學家竟然能跟演算法畫上關係，畢竟演算法便是透過有限的步驟中，將給定的輸入做出最有效的解決，並且在執行玩這些有效的步驟中會有正當的終止，產生最後輸出結果，而歐幾里德演算法得以詮釋這些過程，歐幾里德演算法的問題是要在給定的兩個正整數 m 和 n 中找出兩束的最大公因數，因此我們可以列出以下解題步驟：
 
 1. 找出餘數 (m % n)
@@ -65,11 +62,3 @@ int EuclidGCD(int m, int n) {
 ### Reference
 - [欧几里得与《几何原本》(上篇）](https://zhuanlan.zhihu.com/p/56528787)
 - [【演算法】歐幾里得算法 Euclidean Algorithm](https://jason-chen-1992.weebly.com/home/-euclidean-algorithm)
-
-
-### How to reach out to me
-- Ins: [@lcho____](https://www.instagram.com/lcho____/)
-- Linkedin: [Hugo ChunHo Lin](https://www.linkedin.com/in/1chooo/)
-- GitHub: [1chooo](https://github.com/1chooo)
-- About me: [1chooo](https://sites.google.com/g.ncu.edu.tw/1chooo)
-- Email: hugo970217@gmail.com
