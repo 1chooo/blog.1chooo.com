@@ -72,6 +72,76 @@
       </tags>
   </entry>
   <entry>
+    <title>我在 Conda 常用的指令</title>
+    <url>/2023/07/30/dev-env/conda-dev-env/</url>
+    <content><![CDATA[<blockquote>
+<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
+</blockquote>
+<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
+<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
+<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
+
+<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*HINgY65FwzLssf65NsA8tQ.png"
+                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
+                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
+<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
+<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
+<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
+<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
+<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#x67;&#111;&#57;&#x37;&#x30;&#50;&#49;&#55;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;" >&#x68;&#x75;&#x67;&#111;&#57;&#x37;&#x30;&#50;&#49;&#55;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DevEnv</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>venv</tag>
+        <tag>conda</tag>
+        <tag>tips</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)</title>
     <url>/2024/03/22/dev-ops/aws-security-group-nacl/</url>
     <content><![CDATA[<p>During a meeting, we explored a scenario: “If we disable the inbound rule of the Network Access Control List (NACL), the connection will be interrupted. However, if we turn off inbound traffic in the Security Group, would we still be able to connect?” Surprisingly, the answer is YES. The rationale behind this phenomenon will be elaborated on in this article.</p>
@@ -187,6 +257,71 @@
       </tags>
   </entry>
   <entry>
+    <title>Git Commit Message 到底怎麼寫才優美？</title>
+    <url>/2024/03/26/dev-ops/git-good-commit-look-like/</url>
+    <content><![CDATA[<p>在團隊用 Git 協作中，Commit Message 是很重要的一環，好的 Commit 可以讓我們的專案更容易維護，讓我們更容易了解專案的開發過程，我們可以想像是程式碼的註解，不過是針對專案改動的註解。所以我們想要用這個篇幅來介紹一些寫 Commit 的技巧，讓我們的 Commit 更優美。</p>
+<h3 id="那到底甚麼是好的-Commit-Message？"><a href="#那到底甚麼是好的-Commit-Message？" class="headerlink" title="那到底甚麼是好的 Commit Message？"></a>那到底甚麼是好的 Commit Message？</h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">fix</span><br></pre></td></tr></table></figure></div>
+
+<p>V.S. </p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">fix: login error </span><br><span class="line"></span><br><span class="line">The past login router was being reused multiple times.</span><br><span class="line"></span><br><span class="line">Fixed it to use the correct route and extracted the duplicated parts.</span><br><span class="line"></span><br><span class="line">Issue: #1234</span><br></pre></td></tr></table></figure></div>
+
+<p>從上方的 Commit 案例中，如果都是一個月前的改動，甚至是一年前的改動，當我今天需要去了解這個改動的時候，我們可以發現第一個 Commit 是很難讓我們了解這個改動的目的，甚至是看不懂要做甚麼，而第二個 Commit 會讓我們更容易了解這個改動的目的，這就是好的 Commit Message 的重要性。</p>
+<p>常常軟體工程師中有個迷因 <a class="link"   href="https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months" >Is it normal if I can’t remember how my code works after just 6 months? <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 就是，大家回去看自己寫的程式都看不懂，甚至會覺得噁心，因此好的 Commit 可以讓我們更容易了解過去團隊做了甚麼事情，這樣我們就可以更容易地維護專案。</p>
+<p><figure class="image-caption"><img src="/images/post/dev-ops/git-good-commit-look-like/meme.JPG" alt="https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months"><figcaption>https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months</figcaption></figure></p>
+<h2 id="Commit-Message-的格式"><a href="#Commit-Message-的格式" class="headerlink" title="Commit Message 的格式"></a>Commit Message 的格式</h2><p>好的 Commit 應該要能夠一眼看出種類、工作內容的大鋼，更重要的是一致性，這樣我們可以更容易地追蹤開發過程。因此我們可以從以下幾個內容：我們做了甚麼努力（What）、又為什麼要做這件事情（Why）、還有是用什麼方法做到的（How）。</p>
+<p>我們可以參考以下的格式：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Header: &lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;</span><br><span class="line">    - TYPE: Represents the category of the commit.</span><br><span class="line">    - SCOPE: Represents the scope of the commit.</span><br><span class="line">    - (Required) SUBJECT: Represents a brief description of the commit, (limited to 50 characters and should not end with a period)</span><br><span class="line"></span><br><span class="line">Body: 72-character wrapped. This should answer:</span><br><span class="line">    - Provide a detailed description of the commit. (Can be <span class="built_in">split</span> into multiple lines, with each line limited to 72 characters.)</span><br><span class="line">    - Explain the changes made <span class="keyword">in</span> the code, and Why to <span class="keyword">do</span>?</span><br><span class="line"></span><br><span class="line">Footer:</span><br><span class="line">    - (<span class="keyword">if</span> applicable) Include the task number.</span><br><span class="line">    - (optional) BREAKING CHANGE: Record incompatible changes. It should start with <span class="string">&quot;BREAKING CHANGE:&quot;</span> followed by a description of the change, the reason <span class="keyword">for</span> the change, and migration instructions.</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Commit-Message-Header"><a href="#Commit-Message-Header" class="headerlink" title="Commit Message Header: &lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;"></a>Commit Message Header: <code>&lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;</code></h3><ul>
+<li>TYPE: 代表 commit 的類別，如：feat, fix, docs, style, refactor, test, chore</li>
+<li>（可選）SCOPE：commit 影響的範圍，如：資料庫、控制層、模板層等，視專案不同改變</li>
+<li>（必要）SUBJECT：commit 的簡短描述，不超過 50 個字元，結尾不加句號，盡量讓 Commit 單一化，一次只更動一個主題</li>
+</ul>
+<h4 id="Type-的種類"><a href="#Type-的種類" class="headerlink" title="Type 的種類"></a>Type 的種類</h4><p>Type 有以下幾種的類別，每個都會是一個動作，代表提交 Commit 的類別，以下是一些我們使用慣例：</p>
+<ul>
+<li>feat: 對專案做了哪些新增、修改 (Feature)。</li>
+<li>fix: 修復了那些功能 (Bug Fix)。</li>
+<li>docs: 對專案撰寫文件 (Documentation)。</li>
+<li>style: 撰寫格式改動 (不影響程式碼運行的變動 white-space, formatting, missing semi colons, et.)。</li>
+<li>refactor: 重構 (既不是新增功能，也不是修補 bug 的程式碼變動)。</li>
+<li>perf: 改善效能 (A code change that improves performance)。</li>
+<li>test: 增加測試 (when adding missing tests)。</li>
+<li>chore: 建構程序或輔助工具的變動 (maintain)。</li>
+<li>revert: 撤銷回覆先前的 commit 例如：revert: type(scope): subject (回覆版本：xxxx)。</li>
+</ul>
+<h3 id="Commit-Message-Body"><a href="#Commit-Message-Body" class="headerlink" title="Commit Message Body"></a>Commit Message Body</h3><p>傳達「我們做了甚麼努力（What）、又為什麼要做這件事情（Why）、還有是用什麼方法做到的（How）」，描述詳細改動的內容，可以分成多行，每行不超過 72 個字元，也可以有前後改動差異的描述。</p>
+<h3 id="Commit-Message-Footer"><a href="#Commit-Message-Footer" class="headerlink" title="Commit Message Footer"></a>Commit Message Footer</h3><p>用來填寫相關聯 issue 的編號，像是 <code>Issue: #1234</code>。另外還有 BREAKING CHANGE（未必需要），記錄不相容的變動，應該以「BREAKING CHANGE:」開頭，後面是變動的描述、原因和遷移方法。</p>
+<h3 id="一些實際的例子"><a href="#一些實際的例子" class="headerlink" title="一些實際的例子"></a>一些實際的例子</h3><p>我們在現有的功能上加上了 email 驗證，我們可以使用 <code>feat</code> 來撰寫：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">feat: email validation</span><br><span class="line"></span><br><span class="line">We have implemented the following enhancements:</span><br><span class="line"></span><br><span class="line">1. Introduced email validation to the login form.</span><br><span class="line">2. The new feature verifies if the user&#x27;s input is in a valid email format.</span><br><span class="line">3. It checks if the entered email corresponds to an actual email account.</span><br><span class="line">4. This update aims to prevent users from entering incorrect email addresses.</span><br><span class="line">5. It improves overall user experience and data integrity.</span><br><span class="line"></span><br><span class="line">Issue: #1234</span><br></pre></td></tr></table></figure></div>
+
+<p>今天我們需要基於過去版本做開發，我們可以使用 <code>revert</code> 來回覆先前的 Commit：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">revert: feat: email validation</span><br><span class="line"></span><br><span class="line">To address the issue, we have decided to revert the email validation feature to the previous version.</span><br><span class="line"></span><br><span class="line">Issue: #2345</span><br></pre></td></tr></table></figure></div>
+
+<p>我們在準備將產品上線的時候，我們駔了幾個 unit test，我們可以使用 <code>test</code> 來撰寫：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">test: email validation</span><br><span class="line"></span><br><span class="line">There are several unit tests for the email validation feature:</span><br><span class="line">1. Test the email validation function with invalid email addresses.</span><br><span class="line">2. Test the email validation function with valid email addresses.</span><br><span class="line"></span><br><span class="line">Issue: #3456</span><br></pre></td></tr></table></figure></div>
+
+<p>今天我們已經將新功能做好了，我們希望加上文件的說明，我們可以使用 <code>docs</code> 來撰寫：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docs: email validation</span><br><span class="line"></span><br><span class="line">We have added documentation for the email validation feature:</span><br><span class="line">1. Add the Tech Stack documentation.</span><br><span class="line">2. Add the User Guide documentation.</span><br><span class="line">3. Add the API documentation.</span><br><span class="line"></span><br><span class="line">Issue: #4567</span><br></pre></td></tr></table></figure></div>
+
+<p>後來因為我們的用戶數量變多了，我們希望優化現有的架構提升驗證速度，我們可以使用 <code>perf</code> 來撰寫：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">perf: email validation</span><br><span class="line"></span><br><span class="line">We have optimized the email validation feature:</span><br><span class="line">1. Improved the email validation algorithm.</span><br><span class="line">2. Reduced the time required to validate email addresses.</span><br><span class="line">3. Enhanced the user experience by providing faster feedback.</span><br><span class="line"></span><br><span class="line">Issue: #5678</span><br></pre></td></tr></table></figure></div>
+
+
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>Commit Message 的撰寫會需要大量的練習，也需要時間讓團隊成員去實踐，如此可以讓我們追朔過去的努力，也可以幫助團隊成員更快速地餐與開發過程，這樣我們就可以更容易地維護專案。最後祝大家一切開發都順利，也希望大家的 Commit Message 越來越優美。</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a class="link"   href="https://wadehuanglearning.blogspot.com/2019/05/commit-commit-commit-why-what-commit.html" >Git Commit Message 這樣寫會更好，替專案引入規範與範例 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://heidiliu2020.github.io/git-commit-message/" >[學習筆記] 如何撰好的 Git Commit Message <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DevOps</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Commit</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</title>
     <url>/2023/09/08/dev-ops/git-ssh/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Git 是每位軟體工程師日常工作不可或缺的工具之一，畢竟軟體開發常常需要跟他人合作，甚至是維護、更新等⋯⋯可能都需要參照過去的成果，甚至需要快速與團隊同步，因此 Git 對大家而言都不陌生吧！<br>但是，有時候我們會遇到一些問題，例如：每次 push 都需要輸入帳號密碼，或是每次 push 都需要輸入密碼，這些都是可以透過 ssh 來解決的，接下來就讓我們一起來看看如何使用 ssh 與 GitHub 連線吧！</p>
@@ -255,141 +390,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git Commit Message 到底怎麼寫才優美？</title>
-    <url>/2024/03/26/dev-ops/git-good-commit-look-like/</url>
-    <content><![CDATA[<p>在團隊用 Git 協作中，Commit Message 是很重要的一環，好的 Commit 可以讓我們的專案更容易維護，讓我們更容易了解專案的開發過程，我們可以想像是程式碼的註解，不過是針對專案改動的註解。所以我們想要用這個篇幅來介紹一些寫 Commit 的技巧，讓我們的 Commit 更優美。</p>
-<h3 id="那到底甚麼是好的-Commit-Message？"><a href="#那到底甚麼是好的-Commit-Message？" class="headerlink" title="那到底甚麼是好的 Commit Message？"></a>那到底甚麼是好的 Commit Message？</h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">fix</span><br></pre></td></tr></table></figure></div>
-
-<p>V.S. </p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">fix: login error </span><br><span class="line"></span><br><span class="line">The past login router was being reused multiple times.</span><br><span class="line"></span><br><span class="line">Fixed it to use the correct route and extracted the duplicated parts.</span><br><span class="line"></span><br><span class="line">Issue: #1234</span><br></pre></td></tr></table></figure></div>
-
-<p>從上方的 Commit 案例中，如果都是一個月前的改動，甚至是一年前的改動，當我今天需要去了解這個改動的時候，我們可以發現第一個 Commit 是很難讓我們了解這個改動的目的，甚至是看不懂要做甚麼，而第二個 Commit 會讓我們更容易了解這個改動的目的，這就是好的 Commit Message 的重要性。</p>
-<p>常常軟體工程師中有個迷因 <a class="link"   href="https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months" >Is it normal if I can’t remember how my code works after just 6 months? <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 就是，大家回去看自己寫的程式都看不懂，甚至會覺得噁心，因此好的 Commit 可以讓我們更容易了解過去團隊做了甚麼事情，這樣我們就可以更容易地維護專案。</p>
-<p><figure class="image-caption"><img src="/images/post/dev-ops/git-good-commit-look-like/meme.JPG" alt="https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months"><figcaption>https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months</figcaption></figure></p>
-<h2 id="Commit-Message-的格式"><a href="#Commit-Message-的格式" class="headerlink" title="Commit Message 的格式"></a>Commit Message 的格式</h2><p>好的 Commit 應該要能夠一眼看出種類、工作內容的大鋼，更重要的是一致性，這樣我們可以更容易地追蹤開發過程。因此我們可以從以下幾個內容：我們做了甚麼努力（What）、又為什麼要做這件事情（Why）、還有是用什麼方法做到的（How）。</p>
-<p>我們可以參考以下的格式：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Header: &lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;</span><br><span class="line">    - TYPE: Represents the category of the commit.</span><br><span class="line">    - SCOPE: Represents the scope of the commit.</span><br><span class="line">    - (Required) SUBJECT: Represents a brief description of the commit, (limited to 50 characters and should not end with a period)</span><br><span class="line"></span><br><span class="line">Body: 72-character wrapped. This should answer:</span><br><span class="line">    - Provide a detailed description of the commit. (Can be <span class="built_in">split</span> into multiple lines, with each line limited to 72 characters.)</span><br><span class="line">    - Explain the changes made <span class="keyword">in</span> the code, and Why to <span class="keyword">do</span>?</span><br><span class="line"></span><br><span class="line">Footer:</span><br><span class="line">    - (<span class="keyword">if</span> applicable) Include the task number.</span><br><span class="line">    - (optional) BREAKING CHANGE: Record incompatible changes. It should start with <span class="string">&quot;BREAKING CHANGE:&quot;</span> followed by a description of the change, the reason <span class="keyword">for</span> the change, and migration instructions.</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="Commit-Message-Header"><a href="#Commit-Message-Header" class="headerlink" title="Commit Message Header: &lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;"></a>Commit Message Header: <code>&lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;</code></h3><ul>
-<li>TYPE: 代表 commit 的類別，如：feat, fix, docs, style, refactor, test, chore</li>
-<li>（可選）SCOPE：commit 影響的範圍，如：資料庫、控制層、模板層等，視專案不同改變</li>
-<li>（必要）SUBJECT：commit 的簡短描述，不超過 50 個字元，結尾不加句號，盡量讓 Commit 單一化，一次只更動一個主題</li>
-</ul>
-<h4 id="Type-的種類"><a href="#Type-的種類" class="headerlink" title="Type 的種類"></a>Type 的種類</h4><p>Type 有以下幾種的類別，每個都會是一個動作，代表提交 Commit 的類別，以下是一些我們使用慣例：</p>
-<ul>
-<li>feat: 對專案做了哪些新增、修改 (Feature)。</li>
-<li>fix: 修復了那些功能 (Bug Fix)。</li>
-<li>docs: 對專案撰寫文件 (Documentation)。</li>
-<li>style: 撰寫格式改動 (不影響程式碼運行的變動 white-space, formatting, missing semi colons, et.)。</li>
-<li>refactor: 重構 (既不是新增功能，也不是修補 bug 的程式碼變動)。</li>
-<li>perf: 改善效能 (A code change that improves performance)。</li>
-<li>test: 增加測試 (when adding missing tests)。</li>
-<li>chore: 建構程序或輔助工具的變動 (maintain)。</li>
-<li>revert: 撤銷回覆先前的 commit 例如：revert: type(scope): subject (回覆版本：xxxx)。</li>
-</ul>
-<h3 id="Commit-Message-Body"><a href="#Commit-Message-Body" class="headerlink" title="Commit Message Body"></a>Commit Message Body</h3><p>傳達「我們做了甚麼努力（What）、又為什麼要做這件事情（Why）、還有是用什麼方法做到的（How）」，描述詳細改動的內容，可以分成多行，每行不超過 72 個字元，也可以有前後改動差異的描述。</p>
-<h3 id="Commit-Message-Footer"><a href="#Commit-Message-Footer" class="headerlink" title="Commit Message Footer"></a>Commit Message Footer</h3><p>用來填寫相關聯 issue 的編號，像是 <code>Issue: #1234</code>。另外還有 BREAKING CHANGE（未必需要），記錄不相容的變動，應該以「BREAKING CHANGE:」開頭，後面是變動的描述、原因和遷移方法。</p>
-<h3 id="一些實際的例子"><a href="#一些實際的例子" class="headerlink" title="一些實際的例子"></a>一些實際的例子</h3><p>我們在現有的功能上加上了 email 驗證，我們可以使用 <code>feat</code> 來撰寫：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">feat: email validation</span><br><span class="line"></span><br><span class="line">We have implemented the following enhancements:</span><br><span class="line"></span><br><span class="line">1. Introduced email validation to the login form.</span><br><span class="line">2. The new feature verifies if the user&#x27;s input is in a valid email format.</span><br><span class="line">3. It checks if the entered email corresponds to an actual email account.</span><br><span class="line">4. This update aims to prevent users from entering incorrect email addresses.</span><br><span class="line">5. It improves overall user experience and data integrity.</span><br><span class="line"></span><br><span class="line">Issue: #1234</span><br></pre></td></tr></table></figure></div>
-
-<p>今天我們需要基於過去版本做開發，我們可以使用 <code>revert</code> 來回覆先前的 Commit：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">revert: feat: email validation</span><br><span class="line"></span><br><span class="line">To address the issue, we have decided to revert the email validation feature to the previous version.</span><br><span class="line"></span><br><span class="line">Issue: #2345</span><br></pre></td></tr></table></figure></div>
-
-<p>我們在準備將產品上線的時候，我們駔了幾個 unit test，我們可以使用 <code>test</code> 來撰寫：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">test: email validation</span><br><span class="line"></span><br><span class="line">There are several unit tests for the email validation feature:</span><br><span class="line">1. Test the email validation function with invalid email addresses.</span><br><span class="line">2. Test the email validation function with valid email addresses.</span><br><span class="line"></span><br><span class="line">Issue: #3456</span><br></pre></td></tr></table></figure></div>
-
-<p>今天我們已經將新功能做好了，我們希望加上文件的說明，我們可以使用 <code>docs</code> 來撰寫：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docs: email validation</span><br><span class="line"></span><br><span class="line">We have added documentation for the email validation feature:</span><br><span class="line">1. Add the Tech Stack documentation.</span><br><span class="line">2. Add the User Guide documentation.</span><br><span class="line">3. Add the API documentation.</span><br><span class="line"></span><br><span class="line">Issue: #4567</span><br></pre></td></tr></table></figure></div>
-
-<p>後來因為我們的用戶數量變多了，我們希望優化現有的架構提升驗證速度，我們可以使用 <code>perf</code> 來撰寫：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">perf: email validation</span><br><span class="line"></span><br><span class="line">We have optimized the email validation feature:</span><br><span class="line">1. Improved the email validation algorithm.</span><br><span class="line">2. Reduced the time required to validate email addresses.</span><br><span class="line">3. Enhanced the user experience by providing faster feedback.</span><br><span class="line"></span><br><span class="line">Issue: #5678</span><br></pre></td></tr></table></figure></div>
-
-
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>Commit Message 的撰寫會需要大量的練習，也需要時間讓團隊成員去實踐，如此可以讓我們追朔過去的努力，也可以幫助團隊成員更快速地餐與開發過程，這樣我們就可以更容易地維護專案。最後祝大家一切開發都順利，也希望大家的 Commit Message 越來越優美。</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a class="link"   href="https://wadehuanglearning.blogspot.com/2019/05/commit-commit-commit-why-what-commit.html" >Git Commit Message 這樣寫會更好，替專案引入規範與範例 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://heidiliu2020.github.io/git-commit-message/" >[學習筆記] 如何撰好的 Git Commit Message <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DevOps</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Commit</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我在 Conda 常用的指令</title>
-    <url>/2023/07/30/dev-env/conda-dev-env/</url>
-    <content><![CDATA[<blockquote>
-<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
-</blockquote>
-<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
-<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
-<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
-
-<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*HINgY65FwzLssf65NsA8tQ.png"
-                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
-                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
-<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
-<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
-<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
-<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
-<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#117;&#103;&#x6f;&#57;&#55;&#x30;&#50;&#49;&#55;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#111;&#109;" >&#104;&#117;&#103;&#x6f;&#57;&#55;&#x30;&#50;&#49;&#55;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DevEnv</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>venv</tag>
-        <tag>conda</tag>
-        <tag>tips</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>透過 Docker 打包 FastAPI 與 Redis 的服務串流</title>
     <url>/2024/04/15/dev-ops/python-reddis-docker/</url>
     <content><![CDATA[<p>當今天我們要自架一個服務的時候，我們會需要後端的 Server 以及需要 Database 來保存服務的內容，因此我們今天將透過 Docker 包裝 Redis 以及 Python FastAPI 來實作一個簡單的服務。</p>
@@ -415,10 +415,10 @@
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># app/main.py</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"><span class="keyword">from</span> dotenv <span class="keyword">import</span> find_dotenv, load_dotenv</span><br><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI, status</span><br><span class="line"><span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel</span><br><span class="line"><span class="keyword">from</span> fastapi.exceptions <span class="keyword">import</span> HTTPException</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Connect to Redis</span></span><br><span class="line">_ = load_dotenv(find_dotenv())</span><br><span class="line">REDIS_HOST = os.environ.get(<span class="string">&#x27;REDIS_HOST&#x27;</span>)</span><br><span class="line">REDIS_PORT = os.environ.get(<span class="string">&#x27;REDIS_PORT&#x27;</span>)</span><br><span class="line">redis_cli = redis.Redis(</span><br><span class="line">    host=REDIS_HOST, port=REDIS_PORT, </span><br><span class="line">    decode_responses=<span class="literal">True</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Item</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    name: <span class="built_in">str</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/&quot;</span>, status_code=status.HTTP_200_OK</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">root</span>():</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Hello World&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 新增 item 至 Redis</span></span><br><span class="line"><span class="meta">@app.post(<span class="params"><span class="string">&quot;/items/&quot;</span>, status_code=status.HTTP_201_CREATED</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">create_item</span>(<span class="params">item: Item</span>):</span><br><span class="line">    <span class="comment"># Add item to the Redis list</span></span><br><span class="line">    redis_cli.rpush(<span class="string">&quot;items&quot;</span>, item.name)</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Item added successfully&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得 Redis 內的所有 items</span></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/items/&quot;</span>, status_code=status.HTTP_200_OK</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">get_items</span>():</span><br><span class="line">    <span class="comment"># Retrieve items from the Redis list</span></span><br><span class="line">    items = redis_cli.lrange(<span class="string">&quot;items&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;items&quot;</span>: items&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Redis 內的特定 item</span></span><br><span class="line"><span class="meta">@app.delete(<span class="params"><span class="string">&quot;/items/&#123;item_name&#125;&quot;</span>, status_code=status.HTTP_200_OK</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">delete_item</span>(<span class="params">item_name: <span class="built_in">str</span></span>):</span><br><span class="line">    <span class="comment"># Delete a specific item from the Redis list</span></span><br><span class="line">    <span class="keyword">if</span> item_name <span class="keyword">not</span> <span class="keyword">in</span> redis_cli.lrange(<span class="string">&quot;items&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">raise</span> HTTPException(status_code=<span class="number">404</span>, detail=<span class="string">&quot;Item not found&quot;</span>)</span><br><span class="line">    redis_cli.lrem(<span class="string">&quot;items&quot;</span>, <span class="number">0</span>, item_name)</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;message&quot;</span>: <span class="string">f&quot;Item &#x27;<span class="subst">&#123;item_name&#125;</span>&#x27; deleted successfully&quot;</span>&#125;</span><br></pre></td></tr></table></figure></div>
 
 <h3 id="測試-API"><a href="#測試-API" class="headerlink" title="測試 API"></a>測試 API</h3><p>接著我們要撰寫一些 unittest 去測試我們的 API，我們會透過 requests 來發送 HTTP request 並且驗證回傳的 response 是否符合預期。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># test/test_api.py</span></span><br><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TestItemEndpoint</span>(unittest.TestCase):</span><br><span class="line">    base_url = <span class="string">&quot;http://localhost:8080/items/&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_create_items</span>(<span class="params">self</span>):</span><br><span class="line">        data = &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;item1&quot;</span>&#125;</span><br><span class="line">        response = requests.post(self.base_url, headers=&#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>&#125;, data=json.dumps(data))</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">201</span>)</span><br><span class="line"></span><br><span class="line">        data = &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;item2&quot;</span>&#125;</span><br><span class="line">        response = requests.post(self.base_url, headers=&#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>&#125;, data=json.dumps(data))</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">201</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_get_items</span>(<span class="params">self</span>):</span><br><span class="line">        response = requests.get(self.base_url)</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_delete_item</span>(<span class="params">self</span>):</span><br><span class="line">        response = requests.delete(self.base_url + <span class="string">&quot;item1&quot;</span>)</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">        response = requests.delete(self.base_url)</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_get_items_after_deletion</span>(<span class="params">self</span>):</span><br><span class="line">        response = requests.get(self.base_url)</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">200</span>)</span><br><span class="line">        data = response.json()</span><br><span class="line">        self.assertEqual(<span class="built_in">len</span>(data), <span class="number">1</span>)  <span class="comment"># Assuming only one item left after deletion</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># test/test_api.py</span></span><br><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TestItemEndpoint</span>(unittest.TestCase):</span><br><span class="line">    base_url = <span class="string">&quot;http://localhost:8080/items/&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_create_items</span>(<span class="params">self</span>):</span><br><span class="line">        data = &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;item1&quot;</span>&#125;</span><br><span class="line">        response = requests.post(self.base_url, headers=&#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>&#125;, data=json.dumps(data))</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">201</span>)</span><br><span class="line"></span><br><span class="line">        data = &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;item2&quot;</span>&#125;</span><br><span class="line">        response = requests.post(self.base_url, headers=&#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>&#125;, data=json.dumps(data))</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">201</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_get_items</span>(<span class="params">self</span>):</span><br><span class="line">        response = requests.get(self.base_url)</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_delete_item</span>(<span class="params">self</span>):</span><br><span class="line">        response = requests.delete(self.base_url + <span class="string">&quot;item1&quot;</span>)</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_get_items_after_deletion</span>(<span class="params">self</span>):</span><br><span class="line">        response = requests.get(self.base_url)</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">200</span>)</span><br><span class="line">        data = response.json()</span><br><span class="line">        self.assertEqual(<span class="built_in">len</span>(data), <span class="number">1</span>)  <span class="comment"># Assuming only one item left after deletion</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure></div>
 
 <p>當然我們也可以直接透過 <code>curl</code> 直接獲取 API 的 response。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -X POST <span class="string">&quot;http://localhost:8080/items/&quot;</span> -H <span class="string">&quot;Content-Type: application/json&quot;</span> -d <span class="string">&#x27;&#123;&quot;name&quot;: &quot;item1&quot;&#125;&#x27;</span></span><br><span class="line">$ curl -X POST <span class="string">&quot;http://localhost:8080/items/&quot;</span> -H <span class="string">&quot;Content-Type: application/json&quot;</span> -d <span class="string">&#x27;&#123;&quot;name&quot;: &quot;item2&quot;&#125;&#x27;</span></span><br><span class="line">$ curl -X GET <span class="string">&quot;http://localhost:8080/items/&quot;</span></span><br><span class="line">$ curl -X DELETE <span class="string">&quot;http://localhost:8080/items/item1&quot;</span></span><br><span class="line">$ curl -X GET <span class="string">&quot;http://localhost:8080/items/&quot;</span></span><br><span class="line">$ curl -X DELETE <span class="string">&quot;http://localhost:8080/items/&quot;</span></span><br><span class="line">$ curl -X GET <span class="string">&quot;http://localhost:8080/items/&quot;</span></span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -X POST <span class="string">&quot;http://localhost:8080/items/&quot;</span> -H <span class="string">&quot;Content-Type: application/json&quot;</span> -d <span class="string">&#x27;&#123;&quot;name&quot;: &quot;item1&quot;&#125;&#x27;</span></span><br><span class="line">$ curl -X POST <span class="string">&quot;http://localhost:8080/items/&quot;</span> -H <span class="string">&quot;Content-Type: application/json&quot;</span> -d <span class="string">&#x27;&#123;&quot;name&quot;: &quot;item2&quot;&#125;&#x27;</span></span><br><span class="line">$ curl -X GET <span class="string">&quot;http://localhost:8080/items/&quot;</span></span><br><span class="line">$ curl -X DELETE <span class="string">&quot;http://localhost:8080/items/item1&quot;</span></span><br><span class="line">$ curl -X GET <span class="string">&quot;http://localhost:8080/items/&quot;</span></span><br><span class="line">$ curl -X GET <span class="string">&quot;http://localhost:8080/items/&quot;</span></span><br></pre></td></tr></table></figure></div>
 
 <p>不過既然有 unittest 那我們就用 unittest 來測試我們的 API 吧。最後我們要加上 <code>run.sh</code> 以及 <code>test.sh</code> 來方便我們執行程式以及測試。</p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># scripts/run.sh</span></span><br><span class="line">uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload</span><br></pre></td></tr></table></figure></div>
@@ -447,7 +447,7 @@
 
   </div>
 
-<p>今天的內容操作就到這邊完全結束，大家可以參考 <a class="link"   href="https://github.com/1chooo/python-redis-docker" >Source Code - python-redis-docker <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 也祝大家都能成功地打包自己的服務！</p>
+<p>今天的內容操作就到這邊完全結束，大家可以參考 <a class="link"   href="https://github.com/1chooo/python-redis-docker/tree/blog" >Source Code - python-redis-docker <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 也祝大家都能成功地打包自己的服務！</p>
 <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
 <li><a class="link"   href="https://developer.redis.com/develop/python/fastapi/" >Using Redis with FastAPI <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li><a class="link"   href="https://github.com/seymaozler/card-application" >seymaozler&#x2F;card-application <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
@@ -467,105 +467,6 @@
         <tag>Python</tag>
         <tag>Docker</tag>
         <tag>Redis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剛上大學的我如何挑到適合我的平板！？</title>
-    <url>/2023/07/30/talks/freshman-pick-up-ipad/</url>
-    <content><![CDATA[<p>疫情嚴峻的 2021 年中，所有戶外活動皆需要暫停，身為大一生，參與的校園活動被迫中止，連課程都改為遠距教學，學習方法勢必有所改變</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*f2BkDSANBT2XUGEzR-1_gw.jpeg"
-                      alt="My iPad 8 !!!"
-                ><figcaption>My iPad 8 !!!</figcaption></figure></p>
-<h3 id="購買前所做的準備"><a href="#購買前所做的準備" class="headerlink" title="購買前所做的準備"></a>購買前所做的準備</h3><p>上大學前，在挑選筆電的時候選擇了 MacBookPro 2020 13”，然而追求輕便的我，面對剛上大學一連串的教科書非常不適應，只要去圖書館或咖啡廳看書就要背著一大堆厚厚一疊的書，因此很傾向電子化的讀書方式，因此一直在考慮要買一台 iPad 來輔助我學習。</p>
-<p>本來就在觀望iPad 的我，在疫情爆發全國遠距教學的背景下，便有了相當合適的契機購入了人生第一台 iPad，而購買的版本是 2020 年發行的第八代，容量為 128GB，接下來會先分享購買前的事前準備以及分享這生產力工具帶給我學習方法和生活方式的變化。</p>
-<p>說到 iPad，常常聽到一句話買前生產力；買後愛奇藝或者是效能過剩這類的話，然而這類的話語大多出現在 iPad Pro 及 iPad Air 這類的機型，較少篇幅在描述最入門的款式，而剛好我所使用的機型便較不受此討論範疇，而最終也是我選購平板。</p>
-<p>那接著來說說我是為何選購這台平價入門款的平板吧！</p>
-<p>當下要購買平板的我卡在一個尷尬的時間點，而這時間點正逢新款 iPad Pro和大專生暑期活動——Back to School，這兩件大事之前，心裡的想法就是：科技產品買新不買舊、我都忍了快一年不入手 iPad Pro 了，當然要買最新的啊！、剛好暑假的活動可以送耳機，我需要那個酷東西。諸如此類的想法充斥在我的腦海中，不偏不倚正值遠距上課的高峰期，對於每天線上上課的狀態，我更充分展現了平板的需求，所以這時候才妥協：「既然買不到最新的 iPad Pro，享受不到蘋果的耳機優惠，我也沒有很想多貼錢換 iPad Air，那不然我就換最便宜的 iPad就好了！」（其實當時很多科技產品都缺貨，蘋果的平板也因為遠距非常熱賣，大多數規格都缺貨了），於是在如此掙扎之後就開始了和我的新學習夥伴的生活。</p>
-<h3 id="學習方法和生活方式的變化"><a href="#學習方法和生活方式的變化" class="headerlink" title="學習方法和生活方式的變化"></a>學習方法和生活方式的變化</h3><p>那在前段文章分享完我購買平板當下的心境後，接著就來說說我的學習方法吧！其實我的學習方法並未有所差異性的改變，一如既往，依舊是在課後做著課後所需的練習、公式相關的推導，畢竟一直以來都沒有上課抄寫老師黑板上所講述的內容，這或許可以用下個篇幅來分享為什麽我不抄筆記～～～小組討論時，可以快速地記下註記把大家的短時間內產出的內容快速記下來以不致於遺漏；至於生活方法的話，偶爾可以在平板畫點小圖案，畢竟平板可以不受限於紙張條件，也可以快速更換畫筆的顏色，所以畫點小圖可說是非常便利呢！哦還有個至關重要的那就是每日的 TODO List，因為平板的便利，就可以在各個場合之下查看當日的待辦事項，或是目標進度，不需要再從書包裡掏出筆記本來查看，再來就是，書包變輕也變整潔了，因為不用在背更多書本、紙張，頂多就是平板、筆電、充電器就能出門了！</p>
-<h3 id="我的觀點結論"><a href="#我的觀點結論" class="headerlink" title="我的觀點結論"></a>我的觀點結論</h3><p>綜上經驗，平板對於我的日常是有達到幫助的，不過其實可以很坦白地說：「平板是真的方便，不過有沒有買是真的沒什麼差！！！」方便性這點就是可以隨時隨地做筆記，打開平板就能隨時查看需要的資料，再加上有些講義也是電子的形式，所以就更為方便了，那為何還有後面那句話呢？就是其實買平板不會變得特別認真，也不會讀得更好，就只是讀書的形式變了，但本質並未作改變，在大學要想學得更多，完全端看自己的讀書習管以及方法，平板並不會帶來太多的改變，也可能是我的使用情境頂多寫寫數學算式，做做統整、小筆記，所以這些完全紙本也能應付，所以才有此說法，並沒有像網路上很多開箱的人所說的這麼神。</p>
-<p>所以我滿慶幸自己買到的平板是入門款的，無論是入門或是高規的平板，對於大多數人的需求而言都已經很足夠了，只有一點小小抱怨：「就是這台平版螢幕沒有全貼和，看劇體驗頗差的」看劇還是都用 MacBook Pro 看（蘋果筆電螢幕就是舒服！），在日常書寫真的沒有差太多，書寫完的樣子根本沒什麼差別，所以單就一般文書處理、寫寫筆記，真的真心話：「入門款就夠用了，把錢省了吧！」。</p>
-<p>最後想給看到這篇的人購買建議就是：「其實一個產品在很多時候，任何人都會有不同的推薦、或是貶低，但一個產品到底需不需要購買，最重要的還是自己的需求。」與其看更多別人的使用場景，不如問問自己的吧！</p>
-<h3 id="本文後續"><a href="#本文後續" class="headerlink" title="本文後續"></a>本文後續</h3><p>更一個後續，這篇文由於是第一次撰寫，共經歷了大一、大二階段才撰寫完成的，之後一定會有一篇詳細介紹我的讀書、辦公環境的，文章裡一定會提到更多我學習相關的內容的！</p>
-]]></content>
-      <categories>
-        <category>Talks</category>
-      </categories>
-      <tags>
-        <tag>ipad</tag>
-        <tag>Apple</tag>
-        <tag>Freshman</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>平板能輔助大學生上課嗎？</title>
-    <url>/2023/07/30/talks/no-book-in-uni/</url>
-    <content><![CDATA[<blockquote>
-<p>誒～怎麼身邊上課的人開始都不帶書了！？</p>
-</blockquote>
-<p>大學生上大學到底要不要買平板來輔助學習，這個話題其實一直被討論著，現在也是不斷地被拿出來討論，沒有特定一個答案，於是賀編決定撰寫這篇文章，並結合就讀中央的期間，身邊所被討論過的內容以及自己的一些經驗（賀編本身有使用平板輔助的習慣）。</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*tg5IdfMpb60zbPonfmZHXQ.jpeg"
-                      alt="pexels-cottonbro-4065171.jpg"
-                ><figcaption>pexels-cottonbro-4065171.jpg</figcaption></figure></p>
-<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>使用平板在大學生多數場景可以大致上分為兩個，第一個為課堂上，第二個是課堂外。</p>
-<h3 id="課堂上："><a href="#課堂上：" class="headerlink" title="課堂上："></a>課堂上：</h3><p>課堂上有平板的同學，可以臨時做筆記，快速記筆記，如果需要修改可以馬上修改，不用塗塗改      改，不會像傳統紙張、筆記本，可能需要用立可帶塗掉，甚至老師突然補述先前提及的內容也可以馬  上做修正，不會發生沒空間抄寫的問題。</p>
-<p>臨時需要查找資料時也可以快速從平板搜尋，不需要從書包裡翻找出之前記錄過的內容。</p>
-<p>另外有些學院的教授開始把教材變成電子檔，用平板的同學可以快速地在教材上記錄下重點，而不需要在上課前先去將教材印出來，而且忘記帶講義的時候，可以即時下載資料，避免發生在上課時沒有資料的慘況發生⋯⋯</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Ba2Sy3vX6mH29pfLNb4MNA.png"
-                      alt="Screen Shot 2022-07-03 at 11.09.13 PM.png"
-                ><figcaption>Screen Shot 2022-07-03 at 11.09.13 PM.png</figcaption></figure></p>
-<h3 id="課堂外："><a href="#課堂外：" class="headerlink" title="課堂外："></a>課堂外：</h3><p>描述完課堂上的使用場景，來說說課堂外的使用吧！這時候大家做常聽到的說詞「買前生產力；買後愛奇藝」便會悄悄地晃到我們耳邊，不過我們本篇文章還是預設大家的使用場景是用來輔助學習，雖說好的放鬆時光也是推進我們向前的一大動力，哈！不過我們還是回到正題吧！</p>
-<p>賀編本身是理工學院相關科系的，所以自身及身邊的同學使用量最大的場景便是計算繁雜的數學算式，甚至是公式推導，畢竟要複習課程中的內容，還有迫於時間因素，教授也未必會在課堂上將完整算式做推導，畢竟在大學裡可能隨便一個小小的算式用上幾張計算紙都算是家常便飯，於是平板這時便能發揮所長，可以快速翻閱資料，寫錯也可以快速塗改（例如：從計算的剛開頭就算錯的時候⋯⋯還有漏寫算式的時候⋯⋯）</p>
-<p>講完了理工學院相關科系，來講個所有學院都將面臨到的使用情景「讀Paper」，這能帶到平板的一大功能「閱讀」，很多人都會透過平板做大量的閱讀，無論是文獻，又或者是自己的愛好書籍，一台平板，可以抵掉很多書籍的重量，又可以隨時隨地閱讀。</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*gRyheXK1Zr4o7nzUNgl69Q.jpeg"
-                      alt="pexels-rfstudio-3060654.jpg"
-                ><figcaption>pexels-rfstudio-3060654.jpg</figcaption></figure></p>
-<h2 id="價格及挑選"><a href="#價格及挑選" class="headerlink" title="價格及挑選"></a>價格及挑選</h2><p>平板的挑選也可以分為兩大類，第一個是Apple，另一個則是Android，其實無論是哪個類別的平板都需要投入金錢的成本，不過結合賀編，以及身邊還有訪問過的人的經驗，可以總結出兩個結論：</p>
-<ol>
-<li>財力</li>
-<li>習慣</li>
-</ol>
-<p>首先來講述第一點「財力」，其實說老實話上述提及過的場景，只要有支觸控筆加上平板便能應付大多數的需求，所以不論Apple系統又或者是Android系統的高階、中階、低階平板都能夠負荷，因此挑選平板可以考量自己的經濟能力，想要比較新穎的功能或者其他需求，可能就得多多捏一點上更好的規格，哈！</p>
-<p>另外換講述第二點「習慣」，Apple系統或者Android系統，本就是兩大陣營，早就經歷很多次的比較、爭辯，各有各自的擁護者，還是回到老話一句，其實只要有支觸控筆加上平板便能應付大多數的需求，因此自己習慣哪個系統，便可朝那個方向做挑選。</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*RZ1xmhqrFefd5ffypyGVjw.jpeg"
-                      alt="1333cba4be91a78d0d1db873ea6cc980.jpg"
-                ><figcaption>1333cba4be91a78d0d1db873ea6cc980.jpg</figcaption></figure></p>
-<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>以上分享了一些賀編生活的案例，以及跟身邊討論、聊天提及到的情況，其實要不要買平板，這個話題真的太多人討論了，那要不要買真的端看個人習慣，平板雖說方便，可有一點就是完全無法取代，那便是「在紙張書寫的觸感」，許多人學習就喜歡觸碰實體書籍的感覺，況且要做好學問，無論是紙張或是平板都有辦法做好，再怎麼說平板就是個輔助學習的工具，賀編想近期會又這麼多討論，大概便是順應現在時代的變遷，學習的路徑加上了一個工具選項可以做嘗試，可能唯一能給到的建議，就是可以多爬些文章做比較，網路上還有很多很好的文章以及影片，一切端看自己的需求，以及財力，來做對自己好的決定。</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e11db370-730a-4b13-89ce-bde047c05b8c/pexels-mikhail-nilov-6931023.jpg"
-                      alt="pexels-mikhail-nilov-6931023.jpg"
-                ><figcaption>pexels-mikhail-nilov-6931023.jpg</figcaption></figure></p>
-<h2 id="題外話"><a href="#題外話" class="headerlink" title="題外話"></a>題外話</h2><p>文章下完結論後來分享一個賀編看到的一個有趣的經驗，在剛從大一升到大二時，班上的瞬間多了很多平板，超過半數的同學都買了平板，而且幾乎都是Ipad，多數同學都是搭上了Apple的「Back to school」方案做購買，這是大專學院的專屬優惠，如果暑假想要添購新設備的同學可以多多關注，可以少捏一點上好一點的設備，當然這個活動也不只平板啦！可以自行去官網看看哦～</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2tMD7NLX88PVvklYR2t_hg.jpeg"
-                      alt="1655899178-f039f51cb6c66a067487eb6aacf97c83.jpg"
-                ><figcaption>1655899178-f039f51cb6c66a067487eb6aacf97c83.jpg</figcaption></figure></p>
-]]></content>
-      <categories>
-        <category>Talks</category>
-      </categories>
-      <tags>
-        <tag>ipad</tag>
-        <tag>Apple</tag>
-        <tag>Freshman</tag>
       </tags>
   </entry>
   <entry>
@@ -701,6 +602,286 @@
       <tags>
         <tag>python</tag>
         <tag>pygame</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剛上大學的我如何挑到適合我的平板！？</title>
+    <url>/2023/07/30/talks/freshman-pick-up-ipad/</url>
+    <content><![CDATA[<p>疫情嚴峻的 2021 年中，所有戶外活動皆需要暫停，身為大一生，參與的校園活動被迫中止，連課程都改為遠距教學，學習方法勢必有所改變</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*f2BkDSANBT2XUGEzR-1_gw.jpeg"
+                      alt="My iPad 8 !!!"
+                ><figcaption>My iPad 8 !!!</figcaption></figure></p>
+<h3 id="購買前所做的準備"><a href="#購買前所做的準備" class="headerlink" title="購買前所做的準備"></a>購買前所做的準備</h3><p>上大學前，在挑選筆電的時候選擇了 MacBookPro 2020 13”，然而追求輕便的我，面對剛上大學一連串的教科書非常不適應，只要去圖書館或咖啡廳看書就要背著一大堆厚厚一疊的書，因此很傾向電子化的讀書方式，因此一直在考慮要買一台 iPad 來輔助我學習。</p>
+<p>本來就在觀望iPad 的我，在疫情爆發全國遠距教學的背景下，便有了相當合適的契機購入了人生第一台 iPad，而購買的版本是 2020 年發行的第八代，容量為 128GB，接下來會先分享購買前的事前準備以及分享這生產力工具帶給我學習方法和生活方式的變化。</p>
+<p>說到 iPad，常常聽到一句話買前生產力；買後愛奇藝或者是效能過剩這類的話，然而這類的話語大多出現在 iPad Pro 及 iPad Air 這類的機型，較少篇幅在描述最入門的款式，而剛好我所使用的機型便較不受此討論範疇，而最終也是我選購平板。</p>
+<p>那接著來說說我是為何選購這台平價入門款的平板吧！</p>
+<p>當下要購買平板的我卡在一個尷尬的時間點，而這時間點正逢新款 iPad Pro和大專生暑期活動——Back to School，這兩件大事之前，心裡的想法就是：科技產品買新不買舊、我都忍了快一年不入手 iPad Pro 了，當然要買最新的啊！、剛好暑假的活動可以送耳機，我需要那個酷東西。諸如此類的想法充斥在我的腦海中，不偏不倚正值遠距上課的高峰期，對於每天線上上課的狀態，我更充分展現了平板的需求，所以這時候才妥協：「既然買不到最新的 iPad Pro，享受不到蘋果的耳機優惠，我也沒有很想多貼錢換 iPad Air，那不然我就換最便宜的 iPad就好了！」（其實當時很多科技產品都缺貨，蘋果的平板也因為遠距非常熱賣，大多數規格都缺貨了），於是在如此掙扎之後就開始了和我的新學習夥伴的生活。</p>
+<h3 id="學習方法和生活方式的變化"><a href="#學習方法和生活方式的變化" class="headerlink" title="學習方法和生活方式的變化"></a>學習方法和生活方式的變化</h3><p>那在前段文章分享完我購買平板當下的心境後，接著就來說說我的學習方法吧！其實我的學習方法並未有所差異性的改變，一如既往，依舊是在課後做著課後所需的練習、公式相關的推導，畢竟一直以來都沒有上課抄寫老師黑板上所講述的內容，這或許可以用下個篇幅來分享為什麽我不抄筆記～～～小組討論時，可以快速地記下註記把大家的短時間內產出的內容快速記下來以不致於遺漏；至於生活方法的話，偶爾可以在平板畫點小圖案，畢竟平板可以不受限於紙張條件，也可以快速更換畫筆的顏色，所以畫點小圖可說是非常便利呢！哦還有個至關重要的那就是每日的 TODO List，因為平板的便利，就可以在各個場合之下查看當日的待辦事項，或是目標進度，不需要再從書包裡掏出筆記本來查看，再來就是，書包變輕也變整潔了，因為不用在背更多書本、紙張，頂多就是平板、筆電、充電器就能出門了！</p>
+<h3 id="我的觀點結論"><a href="#我的觀點結論" class="headerlink" title="我的觀點結論"></a>我的觀點結論</h3><p>綜上經驗，平板對於我的日常是有達到幫助的，不過其實可以很坦白地說：「平板是真的方便，不過有沒有買是真的沒什麼差！！！」方便性這點就是可以隨時隨地做筆記，打開平板就能隨時查看需要的資料，再加上有些講義也是電子的形式，所以就更為方便了，那為何還有後面那句話呢？就是其實買平板不會變得特別認真，也不會讀得更好，就只是讀書的形式變了，但本質並未作改變，在大學要想學得更多，完全端看自己的讀書習管以及方法，平板並不會帶來太多的改變，也可能是我的使用情境頂多寫寫數學算式，做做統整、小筆記，所以這些完全紙本也能應付，所以才有此說法，並沒有像網路上很多開箱的人所說的這麼神。</p>
+<p>所以我滿慶幸自己買到的平板是入門款的，無論是入門或是高規的平板，對於大多數人的需求而言都已經很足夠了，只有一點小小抱怨：「就是這台平版螢幕沒有全貼和，看劇體驗頗差的」看劇還是都用 MacBook Pro 看（蘋果筆電螢幕就是舒服！），在日常書寫真的沒有差太多，書寫完的樣子根本沒什麼差別，所以單就一般文書處理、寫寫筆記，真的真心話：「入門款就夠用了，把錢省了吧！」。</p>
+<p>最後想給看到這篇的人購買建議就是：「其實一個產品在很多時候，任何人都會有不同的推薦、或是貶低，但一個產品到底需不需要購買，最重要的還是自己的需求。」與其看更多別人的使用場景，不如問問自己的吧！</p>
+<h3 id="本文後續"><a href="#本文後續" class="headerlink" title="本文後續"></a>本文後續</h3><p>更一個後續，這篇文由於是第一次撰寫，共經歷了大一、大二階段才撰寫完成的，之後一定會有一篇詳細介紹我的讀書、辦公環境的，文章裡一定會提到更多我學習相關的內容的！</p>
+]]></content>
+      <categories>
+        <category>Talks</category>
+      </categories>
+      <tags>
+        <tag>ipad</tag>
+        <tag>Apple</tag>
+        <tag>Freshman</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AWS: 用 AWS Lambda Function 開發 Serverless Line Bot - 1</title>
+    <url>/2024/04/23/projects/line-bot-with-aws-lambda-functions-1/</url>
+    <content><![CDATA[<p>過去在撰寫 Line Bot 我都是使用 Python 並且搭配後端框架，使用過 FastAPI 以及 Flask 做開發，都需要架起一個 Server 才能讓我們的 Line Bot 成功運行，此外還需要一台機器不斷地去幫我們運作才能處理 Line Bot 的請求，因此我轉向思考 Line Bot 的特性，Line Bot 就是透過用戶的傳遞訊息加以觸發回應，我們可以總結成三大要素：「用戶」、「觸發」、「回應」這三個關鍵字，因此我就想到了 AWS Lambda + API Gateway 的特性，當今天有用戶傳遞訊息給 Line Bot 時，透過 AWS Lambda Function 來觸發回應，這樣不就不需要架設 Server 了，還可以達成 Serverless 的概念，使用者用多少付多少，不用讓 Server 一直運作著。</p>
+<p>我們將使用 <code>linebot.v3</code> 用以開發，並且使用 AWS Lambda Function 部署 Line Bot。以 AWS 作為範例，本篇將以 echo Bot 作為 Serverless Line Bot 的 Demo 講述設計原理以及 AWS 的使用，接著我們將介紹如何在 Serverless 的 Line Bot。</p>
+<h3 id="使用-Flask-建構-Line-Bot"><a href="#使用-Flask-建構-Line-Bot" class="headerlink" title="使用 Flask 建構 Line Bot"></a>使用 Flask 建構 Line Bot</h3><p>我們需要先觀察，過去我們使用 Flask 建構一個 Line Bot 會需要的程式碼 (參考 <a class="link"   href="https://github.com/line/line-bot-sdk-python" >line-bot-sdk <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> example - <a class="link"   href="https://github.com/line/line-bot-sdk-python/tree/master/examples/flask-echo" >flask-echo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>)</p>
+<h4 id="Flask-app"><a href="#Flask-app" class="headerlink" title="Flask app"></a>Flask app</h4><p>透過 Flask 建立一個 Line Bot 的 Server，並且設定一個 <code>/callback</code> 的路由，當 Line Bot 收到用戶的訊息時，會透過 <code>/callback</code> 這個路由去承接 POST 請求。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, abort, request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/callback&quot;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">callback</span>():</span><br><span class="line">    <span class="comment"># get X-Line-Signature header value</span></span><br><span class="line">    signature = request.headers[<span class="string">&#x27;X-Line-Signature&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># get request body as text</span></span><br><span class="line">    body = request.get_data(as_text=<span class="literal">True</span>)</span><br><span class="line">    app.logger.info(<span class="string">&quot;Request body: &quot;</span> + body)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># handle webhook body</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        handler.handle(body, signature)</span><br><span class="line">    <span class="keyword">except</span> InvalidSignatureError:</span><br><span class="line">        app.logger.info(<span class="string">&quot;Invalid signature. Please check your channel access token/channel secret.&quot;</span>)</span><br><span class="line">        abort(<span class="number">400</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;OK&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app.run(port=<span class="number">8080</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="Line-Bot-WebhookHandler"><a href="#Line-Bot-WebhookHandler" class="headerlink" title="Line Bot WebhookHandler"></a>Line Bot WebhookHandler</h4><p>有了 Flask app 的 <code>callback</code> 路由，我們就可以透過 Line Bot SDK 的 <code>WebhookHandler</code> 來處理用戶的訊息，並且回應給用戶。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, abort, request</span><br><span class="line"><span class="keyword">from</span> linebot.v3 <span class="keyword">import</span> WebhookHandler</span><br><span class="line"><span class="keyword">from</span> linebot.v3.exceptions <span class="keyword">import</span> InvalidSignatureError</span><br><span class="line"><span class="keyword">from</span> linebot.v3.messaging <span class="keyword">import</span> (ApiClient, Configuration, MessagingApi,</span><br><span class="line">                                  ReplyMessageRequest, TextMessage)</span><br><span class="line"><span class="keyword">from</span> linebot.v3.webhooks <span class="keyword">import</span> MessageEvent, TextMessageContent</span><br><span class="line"></span><br><span class="line">configuration = Configuration(access_token=os.environ[<span class="string">&quot;CHANNEL_ACCESS_TOKEN&quot;</span>])</span><br><span class="line">handler = WebhookHandler(os.environ[<span class="string">&quot;CHANNEL_SECRET&quot;</span>])</span><br><span class="line"></span><br><span class="line"><span class="meta">@handler.add(<span class="params">MessageEvent, message=TextMessageContent</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">handle_message</span>(<span class="params">event</span>):</span><br><span class="line">    <span class="keyword">with</span> ApiClient(configuration) <span class="keyword">as</span> api_client:</span><br><span class="line">        line_bot_api = MessagingApi(api_client)</span><br><span class="line">        line_bot_api.reply_message_with_http_info(</span><br><span class="line">            ReplyMessageRequest(</span><br><span class="line">                reply_token=event.reply_token,</span><br><span class="line">                messages=[TextMessage(text=event.message.text)]</span><br><span class="line">            )</span><br><span class="line">        )</span><br></pre></td></tr></table></figure></div>
+
+<p>看完了上述範例程式的原理之後，發 呼叫 <code>/callback</code> 這個路由就使使用 Web API 去完成我們要的動作！也就是這個關鍵，其實我們可以直接用 AWS Lambda + API Gateway 來取代 flask 的 Web Server，這樣就不需要架設 Server 了，接下來我們就來看看如何使用 AWS Lambda Function 部署 Line Bot。</p>
+<h3 id="使用-AWS-Lambda-Function-部署-Line-Bot"><a href="#使用-AWS-Lambda-Function-部署-Line-Bot" class="headerlink" title="使用 AWS Lambda Function 部署 Line Bot"></a>使用 AWS Lambda Function 部署 Line Bot</h3><p>因為 Line Bot 會需要 <code>line-bot-sdk</code> 進行開發，這對 AWS Function 來說需要第三方函式庫，我們便需要將需要的函示庫打包成 Lambda Layer 形式上傳，以此讓我們的 Lambda Function 可以引用這些函式庫。</p>
+<p>我們這次選用的 Python Runtime 是 Python3.12，<a class="link"   href="https://repost.aws/knowledge-center/lambda-import-module-error-python" >運行在 Amazon Linux 2023 Amazon Machine Image (AMI) 上。因此我們要確保 Layer 是可以在 Amazon Linux 2023 操作系統上運行的 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，因此我們打包第三方套件的方式會跟從前不一樣。</p>
+<p>以下是我們打包 <code>line-bot-sdk</code> 的方式：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p lambda-layer/python</span><br><span class="line">$ <span class="built_in">cd</span> lambda-layer/python</span><br><span class="line">$ pip3 install --platform manylinux2014_x86_64 --target . --python-version 3.12 --only-binary=:all: line-bot-sdk</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> ..</span><br><span class="line">$ zip -r ./lambda_layers/linebot_lambda_layer.zip python</span><br></pre></td></tr></table></figure></div>
+
+<p>製作好後，我們就可以上傳 Layer 到 AWS Lambda Function，接著我們就可以開始撰寫 Line Bot 的 Lambda Function。</p>
+<h4 id="lambda-handler"><a href="#lambda-handler" class="headerlink" title="lambda_handler"></a>lambda_handler</h4><p>我們可以把 lambda_handler 想成當初的 <code>callback/</code> 路由，負責將承接從 Line Bot 過來的請求，並且可以透過 <code>WebhookHandler</code> 來處理用戶的訊息，可以想像成我們的主程式運行的地方。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">lambda_handler</span>(<span class="params">event, context</span>):</span><br><span class="line">    <span class="keyword">try</span>: </span><br><span class="line">        body = event[<span class="string">&#x27;body&#x27;</span>]</span><br><span class="line">        signature = event[<span class="string">&#x27;headers&#x27;</span>][<span class="string">&#x27;x-line-signature&#x27;</span>]</span><br><span class="line">        handler.handle(body, signature)</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;statusCode&#x27;</span>: <span class="number">201</span>,</span><br><span class="line">            <span class="string">&#x27;body&#x27;</span>: json.dumps(<span class="string">&#x27;Hello from Lambda!&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;statusCode&#x27;</span>: <span class="number">500</span>,</span><br><span class="line">            <span class="string">&#x27;body&#x27;</span>: json.dumps(<span class="built_in">str</span>(e))</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="Line-Bot-WebhookHandler-1"><a href="#Line-Bot-WebhookHandler-1" class="headerlink" title="Line Bot WebhookHandler"></a>Line Bot WebhookHandler</h4><p>有了可以承接請求的 <code>lambda_handler</code>，我們就可以透過 Line Bot SDK 的 <code>WebhookHandler</code> 來處理用戶的訊息，並且回應給用戶。我們做的是將 Text 相關的訊息做處理，並且回傳給用戶。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> linebot.v3 <span class="keyword">import</span> WebhookHandler</span><br><span class="line"><span class="keyword">from</span> linebot.v3.messaging <span class="keyword">import</span> (ApiClient, Configuration, MessagingApi,</span><br><span class="line">                                  ReplyMessageRequest, TextMessage)</span><br><span class="line"><span class="keyword">from</span> linebot.v3.webhooks <span class="keyword">import</span> MessageEvent, TextMessageContent</span><br><span class="line"></span><br><span class="line">configuration = Configuration(</span><br><span class="line">    access_token=os.getenv(<span class="string">&#x27;CHANNEL_ACCESS_TOKEN&#x27;</span>))</span><br><span class="line">handler = WebhookHandler(os.getenv(<span class="string">&#x27;CHANNEL_SECRET&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">@handler.add(<span class="params">MessageEvent, message=TextMessageContent</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">handle_message</span>(<span class="params">event</span>):</span><br><span class="line">    <span class="keyword">with</span> ApiClient(configuration) <span class="keyword">as</span> api_client:</span><br><span class="line">        line_bot_api = MessagingApi(api_client)</span><br><span class="line">        </span><br><span class="line">        line_bot_api.reply_message_with_http_info(</span><br><span class="line">            ReplyMessageRequest(</span><br><span class="line">                reply_token=event.reply_token,</span><br><span class="line">                messages=[TextMessage(text=event.message.text)]</span><br><span class="line">            )</span><br><span class="line">        )</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="實作流程與細節"><a href="#實作流程與細節" class="headerlink" title="實作流程與細節"></a>實作流程與細節</h3><p>在我們了解到如何使用 AWS Lambda Function 部署 Line Bot 之後，我們就可以開始實作了，以下是我們的實作流程與細節以及架構圖：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/arch.png"
+                     
+                ></p>
+<h4 id="建立-Line-Bot"><a href="#建立-Line-Bot" class="headerlink" title="建立 Line Bot"></a>建立 Line Bot</h4><p>前往 <a class="link"   href="https://account.line.biz/login?redirectUri=https://manager.line.biz/" >Line Business 登入管理頁面 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，登入後直接點擊建立</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/01.png"
+                     
+                ></p>
+<p>進到 「聊天」前往回應設定頁面</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/02.png"
+                     
+                ></p>
+<p>接著點擊「Messaging API」</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/03.png"
+                     
+                ></p>
+<p>進入設定頁面，並且向下滑找到 <a class="link"   href="https://developers.line.biz/" >Line Developers <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 點擊後找到 <a class="link"   href="https://developers.line.biz/console/" >Console <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 進入，我們要拿到 Channel Secrets 以及 Channel Access Token 可以想像我們要拿到 Line Bot 的鑰匙。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/04.png"
+                     
+                ></p>
+<p>我們進去 Console 後直接往下就可以找到 Channel Secrets，可以先複製起來我們待會需要用。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/05.png"
+                     
+                ></p>
+<p>再來我們去 Messaging API 頁面滑到最下面找到 Channel Access Token，這是我們的 Line Bot 的身份證，我們待會也需要用。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/06.png"
+                     
+                ></p>
+<h4 id="建立-AWS-Lambda-Function"><a href="#建立-AWS-Lambda-Function" class="headerlink" title="建立 AWS Lambda Function"></a>建立 AWS Lambda Function</h4><p>前往 <a class="link"   href="https://aws.amazon.com/tw/console/" >AWS Console <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 登陸，並且進到 Lambda 頁面（可自行選擇 Region），點擊建立函式</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/07.png"
+                     
+                ></p>
+<p>可自行命名 <code>function-name</code> Runtime 選擇 <code>Python3.12</code> Architecture 選擇 <code>x86_64</code>，並且點擊建立函式。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/08.png"
+                     
+                ></p>
+<h4 id="連結-Layer"><a href="#連結-Layer" class="headerlink" title="連結 Layer"></a>連結 Layer</h4><p>建立好 Lambda Function 後我們需要為我們的 Function 加上裝備，也就是我們要能夠支援第三的函式庫，因此我們要前往 Layer 頁面，點擊建立 Layer。</p>
+<p>可以透過以下腳本建立 <code>linebot_lambda_layer.zip</code> 的 Layer</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p lambda-layer/python</span><br><span class="line">$ <span class="built_in">cd</span> lambda-layer/python</span><br><span class="line">$ pip3 install --platform manylinux2014_x86_64 --target . --python-version 3.12 --only-binary=:all: line-bot-sdk</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> ..</span><br><span class="line">$ zip -r ./lambda_layers/linebot_lambda_layer.zip python</span><br></pre></td></tr></table></figure></div>
+
+<p>也可以直接透過 👉🏻 <a class="link"   href="https://raw.githubusercontent.com/1chooo/aws-educate-101-line-bot/main/lambda_layers/linebot_lambda_layer.zip" >Download linebot_lambda_layer <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 直接下載</p>
+
+  <div class="note p-4 mb-4 rounded-small warning">
+    <p><strong>⚠️ 注意</strong></p>
+<p>我們是用 <code>x86_64</code> 作為 Architect，如果當初選 arm 可能會出現 error</p>
+
+  </div>
+
+<p>可自行設定名稱、描述，直接透過上傳 <code>.zip</code> 的方式，Architecture 選擇 <code>x86_64</code>，Runtime 選擇 <code>Python3.12</code>，並且點擊建立 Layer。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/09.png"
+                     
+                ></p>
+<p>最後幫我回到 Lambda Function 拉到最下面點擊新增 Layer，並且選擇 <code>Custom Layer</code> 即可連結 Layer。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/10.png"
+                     
+                ></p>
+<h4 id="編輯-Lambda-Function"><a href="#編輯-Lambda-Function" class="headerlink" title="編輯 Lambda Function"></a>編輯 Lambda Function</h4><p>有了以上的設定之後我們就可以把之前所寫好的 lambda_handler 貼上去，記得要點擊 <code>Deploy</code> 否則不會生效。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> linebot.v3 <span class="keyword">import</span> WebhookHandler</span><br><span class="line"><span class="keyword">from</span> linebot.v3.messaging <span class="keyword">import</span> (ApiClient, Configuration, MessagingApi,</span><br><span class="line">                                  ReplyMessageRequest, TextMessage)</span><br><span class="line"><span class="keyword">from</span> linebot.v3.webhooks <span class="keyword">import</span> MessageEvent, TextMessageContent</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">configuration = Configuration(</span><br><span class="line">    access_token=os.getenv(<span class="string">&#x27;CHANNEL_ACCESS_TOKEN&#x27;</span>))</span><br><span class="line">handler = WebhookHandler(os.getenv(<span class="string">&#x27;CHANNEL_SECRET&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">@handler.add(<span class="params">MessageEvent, message=TextMessageContent</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">handle_message</span>(<span class="params">event</span>):</span><br><span class="line">    <span class="keyword">with</span> ApiClient(configuration) <span class="keyword">as</span> api_client:</span><br><span class="line">        line_bot_api = MessagingApi(api_client)</span><br><span class="line">        </span><br><span class="line">        line_bot_api.reply_message_with_http_info(</span><br><span class="line">            ReplyMessageRequest(</span><br><span class="line">                reply_token=event.reply_token,</span><br><span class="line">                messages=[TextMessage(text=event.message.text)]</span><br><span class="line">            )</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lambda_handler</span>(<span class="params">event, context</span>):</span><br><span class="line">    <span class="keyword">try</span>: </span><br><span class="line">        body = event[<span class="string">&#x27;body&#x27;</span>]</span><br><span class="line">        signature = event[<span class="string">&#x27;headers&#x27;</span>][<span class="string">&#x27;x-line-signature&#x27;</span>]</span><br><span class="line">        handler.handle(body, signature)</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;statusCode&#x27;</span>: <span class="number">200</span>,</span><br><span class="line">            <span class="string">&#x27;body&#x27;</span>: json.dumps(<span class="string">&#x27;Hello from Lambda!&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;statusCode&#x27;</span>: <span class="number">500</span>,</span><br><span class="line">            <span class="string">&#x27;body&#x27;</span>: json.dumps(<span class="built_in">str</span>(e))</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>再來我們要把之前從 Line 拿到的鑰匙 <code>CHANNEL_ACCESS_TOKEN</code> 以及 <code>CHANNEL_SECRET</code>，設定成為環境變數。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/11.png"
+                     
+                ></p>
+<h4 id="設定-API-Gateway"><a href="#設定-API-Gateway" class="headerlink" title="設定 API Gateway"></a>設定 API Gateway</h4><p>前往 API Gateway 頁面，點擊建立 API，並且選擇 <code>REST API</code>，點擊建立 API，可行命名 API 的名稱。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/12.png"
+                     
+                ></p>
+<p>創建好後我們要 Create Method 並且選擇 <code>POST</code>，並且點擊建立。</p>
+<p>Method Type 選擇 <code>POST</code>，Integration Type 選擇 <code>Lambda function</code>，勾選 <code>Use Lambda Proxy integration</code>，並且選擇剛剛建立的 Lambda Function，並且點擊建立。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/13.png"
+                     
+                ></p>
+
+  <div class="note p-4 mb-4 rounded-small warning">
+    <p><strong>⚠️ 注意</strong></p>
+<p>一定要勾選 Use Lambda Proxy integration，如果勾選起來的話，會將其他 Http request Header 中的資訊也帶入 AWS Lambda，如果沒勾選 AWS Lambda 只會收到 Body tag 中的值。因為 Line Bot 會需要用到在 header 中的 <strong>x-line-signature</strong>，所以會需要勾選此選項。</p>
+
+  </div>
+
+<p>建立好後，回到 API Gateway 頁面，點擊 Deploy API，並且選擇 New Stage，輸入 <code>prod</code> 點擊 Deploy，我們會拿到一個連結，這個連結就是我們的 API Gateway 的 Endpoint，我們要把這個 Endpoint 貼到 Line Bot 的 Webhook URL。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/14.png"
+                     
+                ></p>
+<h4 id="設定-Line-Bot-Webhook-URL"><a href="#設定-Line-Bot-Webhook-URL" class="headerlink" title="設定 Line Bot Webhook URL"></a>設定 Line Bot Webhook URL</h4><p>我們將剛剛拿到的 API Gateway 的 Endpoint 貼到 Line Bot 的 Webhook URL，就可以開始使用 Line Bot 了。我們需要回到<a class="link"   href="https://developers.line.biz/console/" >Line Developers Console <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 進入，前往到 Messaging API 分頁，貼上我們的 Webhook URL 並且要點擊 <code>Allow Webhook</code>，這樣我們的 Line Bot 就可以開始運作了。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/15.png"
+                     
+                ></p>
+<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><p>最後我們看 Demo 吧！</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/demo.jpg"
+                     
+                ></p>
+<p>恭喜大家完成了 Serverless Line Bot 的部署，這樣就不需要架設 Server 了，也可以達成 Serverless 的概念，使用者用多少付多少，不用讓 Server 一直運作著。不過大家會不會覺得機器人只會回應我們傳的內容有點太單調，下一篇我們將會介紹如何在我們的 Line Bot 中加入 Large Language Model 達到更高的互動性。</p>
+<h3 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h3><p>這篇真的花了非常多的時間，讓我想起了之前在 AWS 擔任校園大使準備技術工作坊的時光，希望這篇文章能夠帶給大家認識雲的開發，並且也能成功完成一個 Line Bot 的小 project。另外工商一下這屆大使正在籌辦 證照的計畫，如果有對於最入門的 <a class="link"   href="https://aws.amazon.com/certification/certified-cloud-practitioner/" >AWS Certified Cloud Practitioner（CCP） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>和技術相關的 <a class="link"   href="https://aws.amazon.com/tw/certification/certified-solutions-architect-associate/" >AWS Certified Solutions Architect - Associate（SAA） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>有興趣的朋友都可以透過 👉🏻 <a class="link"   href="https://www.surveycake.com/s/6dWGq" >報名連結 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，加入證照陪跑計劃！</p>
+]]></content>
+      <categories>
+        <category>Project</category>
+      </categories>
+      <tags>
+        <tag>AWS</tag>
+        <tag>Lambda Function</tag>
+        <tag>Serverless</tag>
+        <tag>API Gateway</tag>
+        <tag>Line Bot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>平板能輔助大學生上課嗎？</title>
+    <url>/2023/07/30/talks/no-book-in-uni/</url>
+    <content><![CDATA[<blockquote>
+<p>誒～怎麼身邊上課的人開始都不帶書了！？</p>
+</blockquote>
+<p>大學生上大學到底要不要買平板來輔助學習，這個話題其實一直被討論著，現在也是不斷地被拿出來討論，沒有特定一個答案，於是賀編決定撰寫這篇文章，並結合就讀中央的期間，身邊所被討論過的內容以及自己的一些經驗（賀編本身有使用平板輔助的習慣）。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*tg5IdfMpb60zbPonfmZHXQ.jpeg"
+                      alt="pexels-cottonbro-4065171.jpg"
+                ><figcaption>pexels-cottonbro-4065171.jpg</figcaption></figure></p>
+<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>使用平板在大學生多數場景可以大致上分為兩個，第一個為課堂上，第二個是課堂外。</p>
+<h3 id="課堂上："><a href="#課堂上：" class="headerlink" title="課堂上："></a>課堂上：</h3><p>課堂上有平板的同學，可以臨時做筆記，快速記筆記，如果需要修改可以馬上修改，不用塗塗改      改，不會像傳統紙張、筆記本，可能需要用立可帶塗掉，甚至老師突然補述先前提及的內容也可以馬  上做修正，不會發生沒空間抄寫的問題。</p>
+<p>臨時需要查找資料時也可以快速從平板搜尋，不需要從書包裡翻找出之前記錄過的內容。</p>
+<p>另外有些學院的教授開始把教材變成電子檔，用平板的同學可以快速地在教材上記錄下重點，而不需要在上課前先去將教材印出來，而且忘記帶講義的時候，可以即時下載資料，避免發生在上課時沒有資料的慘況發生⋯⋯</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Ba2Sy3vX6mH29pfLNb4MNA.png"
+                      alt="Screen Shot 2022-07-03 at 11.09.13 PM.png"
+                ><figcaption>Screen Shot 2022-07-03 at 11.09.13 PM.png</figcaption></figure></p>
+<h3 id="課堂外："><a href="#課堂外：" class="headerlink" title="課堂外："></a>課堂外：</h3><p>描述完課堂上的使用場景，來說說課堂外的使用吧！這時候大家做常聽到的說詞「買前生產力；買後愛奇藝」便會悄悄地晃到我們耳邊，不過我們本篇文章還是預設大家的使用場景是用來輔助學習，雖說好的放鬆時光也是推進我們向前的一大動力，哈！不過我們還是回到正題吧！</p>
+<p>賀編本身是理工學院相關科系的，所以自身及身邊的同學使用量最大的場景便是計算繁雜的數學算式，甚至是公式推導，畢竟要複習課程中的內容，還有迫於時間因素，教授也未必會在課堂上將完整算式做推導，畢竟在大學裡可能隨便一個小小的算式用上幾張計算紙都算是家常便飯，於是平板這時便能發揮所長，可以快速翻閱資料，寫錯也可以快速塗改（例如：從計算的剛開頭就算錯的時候⋯⋯還有漏寫算式的時候⋯⋯）</p>
+<p>講完了理工學院相關科系，來講個所有學院都將面臨到的使用情景「讀Paper」，這能帶到平板的一大功能「閱讀」，很多人都會透過平板做大量的閱讀，無論是文獻，又或者是自己的愛好書籍，一台平板，可以抵掉很多書籍的重量，又可以隨時隨地閱讀。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*gRyheXK1Zr4o7nzUNgl69Q.jpeg"
+                      alt="pexels-rfstudio-3060654.jpg"
+                ><figcaption>pexels-rfstudio-3060654.jpg</figcaption></figure></p>
+<h2 id="價格及挑選"><a href="#價格及挑選" class="headerlink" title="價格及挑選"></a>價格及挑選</h2><p>平板的挑選也可以分為兩大類，第一個是Apple，另一個則是Android，其實無論是哪個類別的平板都需要投入金錢的成本，不過結合賀編，以及身邊還有訪問過的人的經驗，可以總結出兩個結論：</p>
+<ol>
+<li>財力</li>
+<li>習慣</li>
+</ol>
+<p>首先來講述第一點「財力」，其實說老實話上述提及過的場景，只要有支觸控筆加上平板便能應付大多數的需求，所以不論Apple系統又或者是Android系統的高階、中階、低階平板都能夠負荷，因此挑選平板可以考量自己的經濟能力，想要比較新穎的功能或者其他需求，可能就得多多捏一點上更好的規格，哈！</p>
+<p>另外換講述第二點「習慣」，Apple系統或者Android系統，本就是兩大陣營，早就經歷很多次的比較、爭辯，各有各自的擁護者，還是回到老話一句，其實只要有支觸控筆加上平板便能應付大多數的需求，因此自己習慣哪個系統，便可朝那個方向做挑選。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*RZ1xmhqrFefd5ffypyGVjw.jpeg"
+                      alt="1333cba4be91a78d0d1db873ea6cc980.jpg"
+                ><figcaption>1333cba4be91a78d0d1db873ea6cc980.jpg</figcaption></figure></p>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>以上分享了一些賀編生活的案例，以及跟身邊討論、聊天提及到的情況，其實要不要買平板，這個話題真的太多人討論了，那要不要買真的端看個人習慣，平板雖說方便，可有一點就是完全無法取代，那便是「在紙張書寫的觸感」，許多人學習就喜歡觸碰實體書籍的感覺，況且要做好學問，無論是紙張或是平板都有辦法做好，再怎麼說平板就是個輔助學習的工具，賀編想近期會又這麼多討論，大概便是順應現在時代的變遷，學習的路徑加上了一個工具選項可以做嘗試，可能唯一能給到的建議，就是可以多爬些文章做比較，網路上還有很多很好的文章以及影片，一切端看自己的需求，以及財力，來做對自己好的決定。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e11db370-730a-4b13-89ce-bde047c05b8c/pexels-mikhail-nilov-6931023.jpg"
+                      alt="pexels-mikhail-nilov-6931023.jpg"
+                ><figcaption>pexels-mikhail-nilov-6931023.jpg</figcaption></figure></p>
+<h2 id="題外話"><a href="#題外話" class="headerlink" title="題外話"></a>題外話</h2><p>文章下完結論後來分享一個賀編看到的一個有趣的經驗，在剛從大一升到大二時，班上的瞬間多了很多平板，超過半數的同學都買了平板，而且幾乎都是Ipad，多數同學都是搭上了Apple的「Back to school」方案做購買，這是大專學院的專屬優惠，如果暑假想要添購新設備的同學可以多多關注，可以少捏一點上好一點的設備，當然這個活動也不只平板啦！可以自行去官網看看哦～</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2tMD7NLX88PVvklYR2t_hg.jpeg"
+                      alt="1655899178-f039f51cb6c66a067487eb6aacf97c83.jpg"
+                ><figcaption>1655899178-f039f51cb6c66a067487eb6aacf97c83.jpg</figcaption></figure></p>
+]]></content>
+      <categories>
+        <category>Talks</category>
+      </categories>
+      <tags>
+        <tag>ipad</tag>
+        <tag>Apple</tag>
+        <tag>Freshman</tag>
       </tags>
   </entry>
 </search>

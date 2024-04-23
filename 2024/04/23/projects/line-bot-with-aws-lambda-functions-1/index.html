@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hugo,Hugo ChunHo Lin,Hugo Lin,1chooo,林群賀">
+    
+    <meta name="author" content="Hugo ChunHo Lin (1chooo)">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://blog.1chooo.com/2024/04/23/projects/line-bot-with-aws-lambda-functions-1/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="過去在撰寫 Line Bot 我都是使用 Python 並且搭配後端框架，使用過 FastAPI 以及 Flask 做開發，都需要架起一個 Server 才能讓我們的 Line Bot 成功運行，此外還需要一台機器不斷地去幫我們運作才能處理 Line Bot 的請求，因此我轉向思考 Line Bot 的特性，Line Bot 就是透過用戶的傳遞訊息加以觸發回應，我們可以總結成三大要素：「用戶」、「">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AWS: 用 AWS Lambda Function 開發 Serverless Line Bot - 1">
+<meta property="og:url" content="https://blog.1chooo.com/2024/04/23/projects/line-bot-with-aws-lambda-functions-1/index.html">
+<meta property="og:site_name" content="Hugo&#39;s Blog">
+<meta property="og:description" content="過去在撰寫 Line Bot 我都是使用 Python 並且搭配後端框架，使用過 FastAPI 以及 Flask 做開發，都需要架起一個 Server 才能讓我們的 Line Bot 成功運行，此外還需要一台機器不斷地去幫我們運作才能處理 Line Bot 的請求，因此我轉向思考 Line Bot 的特性，Line Bot 就是透過用戶的傳遞訊息加以觸發回應，我們可以總結成三大要素：「用戶」、「">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/projects/line-bot-with-aws-lambda-functions-1/arch.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/projects/line-bot-with-aws-lambda-functions-1/01.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/projects/line-bot-with-aws-lambda-functions-1/02.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/projects/line-bot-with-aws-lambda-functions-1/03.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/projects/line-bot-with-aws-lambda-functions-1/04.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/projects/line-bot-with-aws-lambda-functions-1/05.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/projects/line-bot-with-aws-lambda-functions-1/06.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/projects/line-bot-with-aws-lambda-functions-1/07.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/projects/line-bot-with-aws-lambda-functions-1/08.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/projects/line-bot-with-aws-lambda-functions-1/09.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/projects/line-bot-with-aws-lambda-functions-1/10.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/projects/line-bot-with-aws-lambda-functions-1/11.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/projects/line-bot-with-aws-lambda-functions-1/12.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/projects/line-bot-with-aws-lambda-functions-1/13.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/projects/line-bot-with-aws-lambda-functions-1/14.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/projects/line-bot-with-aws-lambda-functions-1/15.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/projects/line-bot-with-aws-lambda-functions-1/demo.jpg">
+<meta property="article:published_time" content="2024-04-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-23T12:45:50.573Z">
+<meta property="article:author" content="Hugo ChunHo Lin (1chooo)">
+<meta property="article:tag" content="AWS">
+<meta property="article:tag" content="Lambda Function">
+<meta property="article:tag" content="Serverless">
+<meta property="article:tag" content="API Gateway">
+<meta property="article:tag" content="Line Bot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.1chooo.com/images/post/projects/line-bot-with-aws-lambda-functions-1/arch.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <!--- Page Info-->
+    
+    <title>
+        
+            AWS: 用 AWS Lambda Function 開發 Serverless Line Bot - 1 -
+        
+        Hugo&#39;s Blog
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        Hugo&#39;s Blog
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+    <!--- Inject Part-->
+    
+    <script id="hexo-configurations">
+    window.config = {"hostname":"blog.1chooo.com","root":"/","language":"en","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"title_alignment":"left"},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":["he/him"]},"code_block":{"copy":true,"style":"simple","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":false,"lazyload":true,"recommendation":{"enable":true,"title":"Recommendation","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null},"busuanzi_counter":{"enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"pjax":true},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/campus_girl.jpg","dark":"/images/dark_mac.jpg"},"title":"Hugo's Blog","subtitle":{"text":["This is Hugo ChunHo Lin (1chooo)","The one who eagers to CS Field"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"links":{"github":"https://github.com/1chooo","instagram":"https://www.instagram.com/lcho____/","zhihu":null,"twitter":"https://twitter.com/1chooo___","email":"hugo970217@gmail.com","linkedin":"https://www.linkedin.com/in/1chooo/","medium":"https://medium.com/@1chooo"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.0","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Categories":{"icon":"fa-solid fa-folder","path":"/categories/"},"Tags":{"icon":"fa-solid fa-tags","path":"/tags/"},"More":{"icon":"fa-regular fa-user","submenus":{"About":"/about","GitHub":"https://github.com/1chooo","Linkedin":"https://www.linkedin.com/in/1chooo/","Portfolio":"https://1chooo.com"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"eCloudValley - Cloud Developer Intern | Ex AWS Educate, PEGATRON | ATM, CS at NCU","links":{"About":{"path":"/about","icon":"fa-regular fa-user"},"Github":{"path":"https://github.com/1chooo","icon":"fa-brands fa-github"},"Linkedin":{"path":"https://www.linkedin.com/in/1chooo/","icon":"fa-brands fa-linkedin"}}},"article_date_format":"MMM D, YYYY","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2023/2/10 05:20:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":true};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container">
+
+    <div class="navbar-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/favicon.ico">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                Hugo&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/"
+                                        >
+                                    <i class="fa-solid fa-folder fa-fw"></i>
+                                    CATEGORIES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags/"
+                                        >
+                                    <i class="fa-solid fa-tags fa-fw"></i>
+                                    TAGS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    MORE
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ABOUT
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/1chooo">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/1chooo/">
+                                                    LINKEDIN
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://1chooo.com">
+                                                    PORTFOLIO
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/"
+                        >
+                            <span>
+                                CATEGORIES
+                            </span>
+                            
+                                <i class="fa-solid fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags/"
+                        >
+                            <span>
+                                TAGS
+                            </span>
+                            
+                                <i class="fa-solid fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-More"
+                        >
+                            <span>
+                                MORE
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-More">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ABOUT</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/1chooo">GITHUB</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://www.linkedin.com/in/1chooo/">LINKEDIN</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://1chooo.com">PORTFOLIO</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">28</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">12</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                
+                
+                <img src="/images/cover/projects/line-bot-with-aws-lambda-functions-1.png" alt="AWS: 用 AWS Lambda Function 開發 Serverless Line Bot - 1" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">AWS: 用 AWS Lambda Function 開發 Serverless Line Bot - 1</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/profile.jpg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Hugo ChunHo Lin (1chooo)</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">he/him</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-04-23</span>
+        <span class="mobile">2024-04-23</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-04-23 20:45:50</span>
+            <span class="mobile">2024-04-23 20:45:50</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/Project/">Project</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/AWS/">AWS</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Lambda-Function/">Lambda Function</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Serverless/">Serverless</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/API-Gateway/">API Gateway</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Line-Bot/">Line Bot</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2.3k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>10 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <p>過去在撰寫 Line Bot 我都是使用 Python 並且搭配後端框架，使用過 FastAPI 以及 Flask 做開發，都需要架起一個 Server 才能讓我們的 Line Bot 成功運行，此外還需要一台機器不斷地去幫我們運作才能處理 Line Bot 的請求，因此我轉向思考 Line Bot 的特性，Line Bot 就是透過用戶的傳遞訊息加以觸發回應，我們可以總結成三大要素：「用戶」、「觸發」、「回應」這三個關鍵字，因此我就想到了 AWS Lambda + API Gateway 的特性，當今天有用戶傳遞訊息給 Line Bot 時，透過 AWS Lambda Function 來觸發回應，這樣不就不需要架設 Server 了，還可以達成 Serverless 的概念，使用者用多少付多少，不用讓 Server 一直運作著。</p>
+<p>我們將使用 <code>linebot.v3</code> 用以開發，並且使用 AWS Lambda Function 部署 Line Bot。以 AWS 作為範例，本篇將以 echo Bot 作為 Serverless Line Bot 的 Demo 講述設計原理以及 AWS 的使用，接著我們將介紹如何在 Serverless 的 Line Bot。</p>
+<h3 id="使用-Flask-建構-Line-Bot"><a href="#使用-Flask-建構-Line-Bot" class="headerlink" title="使用 Flask 建構 Line Bot"></a>使用 Flask 建構 Line Bot</h3><p>我們需要先觀察，過去我們使用 Flask 建構一個 Line Bot 會需要的程式碼 (參考 <a class="link"   target="_blank" rel="noopener" href="https://github.com/line/line-bot-sdk-python" >line-bot-sdk <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> example - <a class="link"   target="_blank" rel="noopener" href="https://github.com/line/line-bot-sdk-python/tree/master/examples/flask-echo" >flask-echo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>)</p>
+<h4 id="Flask-app"><a href="#Flask-app" class="headerlink" title="Flask app"></a>Flask app</h4><p>透過 Flask 建立一個 Line Bot 的 Server，並且設定一個 <code>/callback</code> 的路由，當 Line Bot 收到用戶的訊息時，會透過 <code>/callback</code> 這個路由去承接 POST 請求。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, abort, request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/callback&quot;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">callback</span>():</span><br><span class="line">    <span class="comment"># get X-Line-Signature header value</span></span><br><span class="line">    signature = request.headers[<span class="string">&#x27;X-Line-Signature&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># get request body as text</span></span><br><span class="line">    body = request.get_data(as_text=<span class="literal">True</span>)</span><br><span class="line">    app.logger.info(<span class="string">&quot;Request body: &quot;</span> + body)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># handle webhook body</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        handler.handle(body, signature)</span><br><span class="line">    <span class="keyword">except</span> InvalidSignatureError:</span><br><span class="line">        app.logger.info(<span class="string">&quot;Invalid signature. Please check your channel access token/channel secret.&quot;</span>)</span><br><span class="line">        abort(<span class="number">400</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;OK&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app.run(port=<span class="number">8080</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="Line-Bot-WebhookHandler"><a href="#Line-Bot-WebhookHandler" class="headerlink" title="Line Bot WebhookHandler"></a>Line Bot WebhookHandler</h4><p>有了 Flask app 的 <code>callback</code> 路由，我們就可以透過 Line Bot SDK 的 <code>WebhookHandler</code> 來處理用戶的訊息，並且回應給用戶。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, abort, request</span><br><span class="line"><span class="keyword">from</span> linebot.v3 <span class="keyword">import</span> WebhookHandler</span><br><span class="line"><span class="keyword">from</span> linebot.v3.exceptions <span class="keyword">import</span> InvalidSignatureError</span><br><span class="line"><span class="keyword">from</span> linebot.v3.messaging <span class="keyword">import</span> (ApiClient, Configuration, MessagingApi,</span><br><span class="line">                                  ReplyMessageRequest, TextMessage)</span><br><span class="line"><span class="keyword">from</span> linebot.v3.webhooks <span class="keyword">import</span> MessageEvent, TextMessageContent</span><br><span class="line"></span><br><span class="line">configuration = Configuration(access_token=os.environ[<span class="string">&quot;CHANNEL_ACCESS_TOKEN&quot;</span>])</span><br><span class="line">handler = WebhookHandler(os.environ[<span class="string">&quot;CHANNEL_SECRET&quot;</span>])</span><br><span class="line"></span><br><span class="line"><span class="meta">@handler.add(<span class="params">MessageEvent, message=TextMessageContent</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">handle_message</span>(<span class="params">event</span>):</span><br><span class="line">    <span class="keyword">with</span> ApiClient(configuration) <span class="keyword">as</span> api_client:</span><br><span class="line">        line_bot_api = MessagingApi(api_client)</span><br><span class="line">        line_bot_api.reply_message_with_http_info(</span><br><span class="line">            ReplyMessageRequest(</span><br><span class="line">                reply_token=event.reply_token,</span><br><span class="line">                messages=[TextMessage(text=event.message.text)]</span><br><span class="line">            )</span><br><span class="line">        )</span><br></pre></td></tr></table></figure></div>
+
+<p>看完了上述範例程式的原理之後，發 呼叫 <code>/callback</code> 這個路由就使使用 Web API 去完成我們要的動作！也就是這個關鍵，其實我們可以直接用 AWS Lambda + API Gateway 來取代 flask 的 Web Server，這樣就不需要架設 Server 了，接下來我們就來看看如何使用 AWS Lambda Function 部署 Line Bot。</p>
+<h3 id="使用-AWS-Lambda-Function-部署-Line-Bot"><a href="#使用-AWS-Lambda-Function-部署-Line-Bot" class="headerlink" title="使用 AWS Lambda Function 部署 Line Bot"></a>使用 AWS Lambda Function 部署 Line Bot</h3><p>因為 Line Bot 會需要 <code>line-bot-sdk</code> 進行開發，這對 AWS Function 來說需要第三方函式庫，我們便需要將需要的函示庫打包成 Lambda Layer 形式上傳，以此讓我們的 Lambda Function 可以引用這些函式庫。</p>
+<p>我們這次選用的 Python Runtime 是 Python3.12，<a class="link"   target="_blank" rel="noopener" href="https://repost.aws/knowledge-center/lambda-import-module-error-python" >運行在 Amazon Linux 2023 Amazon Machine Image (AMI) 上。因此我們要確保 Layer 是可以在 Amazon Linux 2023 操作系統上運行的 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，因此我們打包第三方套件的方式會跟從前不一樣。</p>
+<p>以下是我們打包 <code>line-bot-sdk</code> 的方式：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p lambda-layer/python</span><br><span class="line">$ <span class="built_in">cd</span> lambda-layer/python</span><br><span class="line">$ pip3 install --platform manylinux2014_x86_64 --target . --python-version 3.12 --only-binary=:all: line-bot-sdk</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> ..</span><br><span class="line">$ zip -r ./lambda_layers/linebot_lambda_layer.zip python</span><br></pre></td></tr></table></figure></div>
+
+<p>製作好後，我們就可以上傳 Layer 到 AWS Lambda Function，接著我們就可以開始撰寫 Line Bot 的 Lambda Function。</p>
+<h4 id="lambda-handler"><a href="#lambda-handler" class="headerlink" title="lambda_handler"></a>lambda_handler</h4><p>我們可以把 lambda_handler 想成當初的 <code>callback/</code> 路由，負責將承接從 Line Bot 過來的請求，並且可以透過 <code>WebhookHandler</code> 來處理用戶的訊息，可以想像成我們的主程式運行的地方。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">lambda_handler</span>(<span class="params">event, context</span>):</span><br><span class="line">    <span class="keyword">try</span>: </span><br><span class="line">        body = event[<span class="string">&#x27;body&#x27;</span>]</span><br><span class="line">        signature = event[<span class="string">&#x27;headers&#x27;</span>][<span class="string">&#x27;x-line-signature&#x27;</span>]</span><br><span class="line">        handler.handle(body, signature)</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;statusCode&#x27;</span>: <span class="number">201</span>,</span><br><span class="line">            <span class="string">&#x27;body&#x27;</span>: json.dumps(<span class="string">&#x27;Hello from Lambda!&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;statusCode&#x27;</span>: <span class="number">500</span>,</span><br><span class="line">            <span class="string">&#x27;body&#x27;</span>: json.dumps(<span class="built_in">str</span>(e))</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="Line-Bot-WebhookHandler-1"><a href="#Line-Bot-WebhookHandler-1" class="headerlink" title="Line Bot WebhookHandler"></a>Line Bot WebhookHandler</h4><p>有了可以承接請求的 <code>lambda_handler</code>，我們就可以透過 Line Bot SDK 的 <code>WebhookHandler</code> 來處理用戶的訊息，並且回應給用戶。我們做的是將 Text 相關的訊息做處理，並且回傳給用戶。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> linebot.v3 <span class="keyword">import</span> WebhookHandler</span><br><span class="line"><span class="keyword">from</span> linebot.v3.messaging <span class="keyword">import</span> (ApiClient, Configuration, MessagingApi,</span><br><span class="line">                                  ReplyMessageRequest, TextMessage)</span><br><span class="line"><span class="keyword">from</span> linebot.v3.webhooks <span class="keyword">import</span> MessageEvent, TextMessageContent</span><br><span class="line"></span><br><span class="line">configuration = Configuration(</span><br><span class="line">    access_token=os.getenv(<span class="string">&#x27;CHANNEL_ACCESS_TOKEN&#x27;</span>))</span><br><span class="line">handler = WebhookHandler(os.getenv(<span class="string">&#x27;CHANNEL_SECRET&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">@handler.add(<span class="params">MessageEvent, message=TextMessageContent</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">handle_message</span>(<span class="params">event</span>):</span><br><span class="line">    <span class="keyword">with</span> ApiClient(configuration) <span class="keyword">as</span> api_client:</span><br><span class="line">        line_bot_api = MessagingApi(api_client)</span><br><span class="line">        </span><br><span class="line">        line_bot_api.reply_message_with_http_info(</span><br><span class="line">            ReplyMessageRequest(</span><br><span class="line">                reply_token=event.reply_token,</span><br><span class="line">                messages=[TextMessage(text=event.message.text)]</span><br><span class="line">            )</span><br><span class="line">        )</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="實作流程與細節"><a href="#實作流程與細節" class="headerlink" title="實作流程與細節"></a>實作流程與細節</h3><p>在我們了解到如何使用 AWS Lambda Function 部署 Line Bot 之後，我們就可以開始實作了，以下是我們的實作流程與細節以及架構圖：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/arch.png"
+                     
+                ></p>
+<h4 id="建立-Line-Bot"><a href="#建立-Line-Bot" class="headerlink" title="建立 Line Bot"></a>建立 Line Bot</h4><p>前往 <a class="link"   target="_blank" rel="noopener" href="https://account.line.biz/login?redirectUri=https://manager.line.biz/" >Line Business 登入管理頁面 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，登入後直接點擊建立</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/01.png"
+                     
+                ></p>
+<p>進到 「聊天」前往回應設定頁面</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/02.png"
+                     
+                ></p>
+<p>接著點擊「Messaging API」</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/03.png"
+                     
+                ></p>
+<p>進入設定頁面，並且向下滑找到 <a class="link"   target="_blank" rel="noopener" href="https://developers.line.biz/" >Line Developers <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 點擊後找到 <a class="link"   target="_blank" rel="noopener" href="https://developers.line.biz/console/" >Console <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 進入，我們要拿到 Channel Secrets 以及 Channel Access Token 可以想像我們要拿到 Line Bot 的鑰匙。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/04.png"
+                     
+                ></p>
+<p>我們進去 Console 後直接往下就可以找到 Channel Secrets，可以先複製起來我們待會需要用。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/05.png"
+                     
+                ></p>
+<p>再來我們去 Messaging API 頁面滑到最下面找到 Channel Access Token，這是我們的 Line Bot 的身份證，我們待會也需要用。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/06.png"
+                     
+                ></p>
+<h4 id="建立-AWS-Lambda-Function"><a href="#建立-AWS-Lambda-Function" class="headerlink" title="建立 AWS Lambda Function"></a>建立 AWS Lambda Function</h4><p>前往 <a class="link"   target="_blank" rel="noopener" href="https://aws.amazon.com/tw/console/" >AWS Console <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 登陸，並且進到 Lambda 頁面（可自行選擇 Region），點擊建立函式</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/07.png"
+                     
+                ></p>
+<p>可自行命名 <code>function-name</code> Runtime 選擇 <code>Python3.12</code> Architecture 選擇 <code>x86_64</code>，並且點擊建立函式。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/08.png"
+                     
+                ></p>
+<h4 id="連結-Layer"><a href="#連結-Layer" class="headerlink" title="連結 Layer"></a>連結 Layer</h4><p>建立好 Lambda Function 後我們需要為我們的 Function 加上裝備，也就是我們要能夠支援第三的函式庫，因此我們要前往 Layer 頁面，點擊建立 Layer。</p>
+<p>可以透過以下腳本建立 <code>linebot_lambda_layer.zip</code> 的 Layer</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p lambda-layer/python</span><br><span class="line">$ <span class="built_in">cd</span> lambda-layer/python</span><br><span class="line">$ pip3 install --platform manylinux2014_x86_64 --target . --python-version 3.12 --only-binary=:all: line-bot-sdk</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> ..</span><br><span class="line">$ zip -r ./lambda_layers/linebot_lambda_layer.zip python</span><br></pre></td></tr></table></figure></div>
+
+<p>也可以直接透過 👉🏻 <a class="link"   target="_blank" rel="noopener" href="https://raw.githubusercontent.com/1chooo/aws-educate-101-line-bot/main/lambda_layers/linebot_lambda_layer.zip" >Download linebot_lambda_layer <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 直接下載</p>
+
+  <div class="note p-4 mb-4 rounded-small warning">
+    <p><strong>⚠️ 注意</strong></p>
+<p>我們是用 <code>x86_64</code> 作為 Architect，如果當初選 arm 可能會出現 error</p>
+
+  </div>
+
+<p>可自行設定名稱、描述，直接透過上傳 <code>.zip</code> 的方式，Architecture 選擇 <code>x86_64</code>，Runtime 選擇 <code>Python3.12</code>，並且點擊建立 Layer。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/09.png"
+                     
+                ></p>
+<p>最後幫我回到 Lambda Function 拉到最下面點擊新增 Layer，並且選擇 <code>Custom Layer</code> 即可連結 Layer。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/10.png"
+                     
+                ></p>
+<h4 id="編輯-Lambda-Function"><a href="#編輯-Lambda-Function" class="headerlink" title="編輯 Lambda Function"></a>編輯 Lambda Function</h4><p>有了以上的設定之後我們就可以把之前所寫好的 lambda_handler 貼上去，記得要點擊 <code>Deploy</code> 否則不會生效。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> linebot.v3 <span class="keyword">import</span> WebhookHandler</span><br><span class="line"><span class="keyword">from</span> linebot.v3.messaging <span class="keyword">import</span> (ApiClient, Configuration, MessagingApi,</span><br><span class="line">                                  ReplyMessageRequest, TextMessage)</span><br><span class="line"><span class="keyword">from</span> linebot.v3.webhooks <span class="keyword">import</span> MessageEvent, TextMessageContent</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">configuration = Configuration(</span><br><span class="line">    access_token=os.getenv(<span class="string">&#x27;CHANNEL_ACCESS_TOKEN&#x27;</span>))</span><br><span class="line">handler = WebhookHandler(os.getenv(<span class="string">&#x27;CHANNEL_SECRET&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">@handler.add(<span class="params">MessageEvent, message=TextMessageContent</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">handle_message</span>(<span class="params">event</span>):</span><br><span class="line">    <span class="keyword">with</span> ApiClient(configuration) <span class="keyword">as</span> api_client:</span><br><span class="line">        line_bot_api = MessagingApi(api_client)</span><br><span class="line">        </span><br><span class="line">        line_bot_api.reply_message_with_http_info(</span><br><span class="line">            ReplyMessageRequest(</span><br><span class="line">                reply_token=event.reply_token,</span><br><span class="line">                messages=[TextMessage(text=event.message.text)]</span><br><span class="line">            )</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lambda_handler</span>(<span class="params">event, context</span>):</span><br><span class="line">    <span class="keyword">try</span>: </span><br><span class="line">        body = event[<span class="string">&#x27;body&#x27;</span>]</span><br><span class="line">        signature = event[<span class="string">&#x27;headers&#x27;</span>][<span class="string">&#x27;x-line-signature&#x27;</span>]</span><br><span class="line">        handler.handle(body, signature)</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;statusCode&#x27;</span>: <span class="number">200</span>,</span><br><span class="line">            <span class="string">&#x27;body&#x27;</span>: json.dumps(<span class="string">&#x27;Hello from Lambda!&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;statusCode&#x27;</span>: <span class="number">500</span>,</span><br><span class="line">            <span class="string">&#x27;body&#x27;</span>: json.dumps(<span class="built_in">str</span>(e))</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>再來我們要把之前從 Line 拿到的鑰匙 <code>CHANNEL_ACCESS_TOKEN</code> 以及 <code>CHANNEL_SECRET</code>，設定成為環境變數。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/11.png"
+                     
+                ></p>
+<h4 id="設定-API-Gateway"><a href="#設定-API-Gateway" class="headerlink" title="設定 API Gateway"></a>設定 API Gateway</h4><p>前往 API Gateway 頁面，點擊建立 API，並且選擇 <code>REST API</code>，點擊建立 API，可行命名 API 的名稱。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/12.png"
+                     
+                ></p>
+<p>創建好後我們要 Create Method 並且選擇 <code>POST</code>，並且點擊建立。</p>
+<p>Method Type 選擇 <code>POST</code>，Integration Type 選擇 <code>Lambda function</code>，勾選 <code>Use Lambda Proxy integration</code>，並且選擇剛剛建立的 Lambda Function，並且點擊建立。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/13.png"
+                     
+                ></p>
+
+  <div class="note p-4 mb-4 rounded-small warning">
+    <p><strong>⚠️ 注意</strong></p>
+<p>一定要勾選 Use Lambda Proxy integration，如果勾選起來的話，會將其他 Http request Header 中的資訊也帶入 AWS Lambda，如果沒勾選 AWS Lambda 只會收到 Body tag 中的值。因為 Line Bot 會需要用到在 header 中的 <strong>x-line-signature</strong>，所以會需要勾選此選項。</p>
+
+  </div>
+
+<p>建立好後，回到 API Gateway 頁面，點擊 Deploy API，並且選擇 New Stage，輸入 <code>prod</code> 點擊 Deploy，我們會拿到一個連結，這個連結就是我們的 API Gateway 的 Endpoint，我們要把這個 Endpoint 貼到 Line Bot 的 Webhook URL。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/14.png"
+                     
+                ></p>
+<h4 id="設定-Line-Bot-Webhook-URL"><a href="#設定-Line-Bot-Webhook-URL" class="headerlink" title="設定 Line Bot Webhook URL"></a>設定 Line Bot Webhook URL</h4><p>我們將剛剛拿到的 API Gateway 的 Endpoint 貼到 Line Bot 的 Webhook URL，就可以開始使用 Line Bot 了。我們需要回到<a class="link"   target="_blank" rel="noopener" href="https://developers.line.biz/console/" >Line Developers Console <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 進入，前往到 Messaging API 分頁，貼上我們的 Webhook URL 並且要點擊 <code>Allow Webhook</code>，這樣我們的 Line Bot 就可以開始運作了。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/15.png"
+                     
+                ></p>
+<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><p>最後我們看 Demo 吧！</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/demo.jpg"
+                     
+                ></p>
+<p>恭喜大家完成了 Serverless Line Bot 的部署，這樣就不需要架設 Server 了，也可以達成 Serverless 的概念，使用者用多少付多少，不用讓 Server 一直運作著。不過大家會不會覺得機器人只會回應我們傳的內容有點太單調，下一篇我們將會介紹如何在我們的 Line Bot 中加入 Large Language Model 達到更高的互動性。</p>
+<h3 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h3><p>這篇真的花了非常多的時間，讓我想起了之前在 AWS 擔任校園大使準備技術工作坊的時光，希望這篇文章能夠帶給大家認識雲的開發，並且也能成功完成一個 Line Bot 的小 project。另外工商一下這屆大使正在籌辦 證照的計畫，如果有對於最入門的 <a class="link"   target="_blank" rel="noopener" href="https://aws.amazon.com/certification/certified-cloud-practitioner/" >AWS Certified Cloud Practitioner（CCP） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>和技術相關的 <a class="link"   target="_blank" rel="noopener" href="https://aws.amazon.com/tw/certification/certified-solutions-architect-associate/" >AWS Certified Solutions Architect - Associate（SAA） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>有興趣的朋友都可以透過 👉🏻 <a class="link"   target="_blank" rel="noopener" href="https://www.surveycake.com/s/6dWGq" >報名連結 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，加入證照陪跑計劃！</p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/AWS/">#AWS</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Lambda-Function/">#Lambda Function</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Serverless/">#Serverless</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/API-Gateway/">#API Gateway</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Line-Bot/">#Line Bot</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+  <div class="recommended-article px-2 sm:px-6 md:px-8">
+   <div class="recommended-desktop">
+    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
+     <i aria-hidden="true"></i><span>Recommendation</span>
+    </div>
+    <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/04/15/dev-ops/python-reddis-docker/" title="透過 Docker 打包 FastAPI 與 Redis 的服務串流" rel="bookmark">
+  <img src="/images/cover/dev-ops/python-reddis-docker.png" alt="透過 Docker 打包 FastAPI 與 Redis 的服務串流" class="!max-w-none">
+  <span class="title">透過 Docker 打包 FastAPI 與 Redis 的服務串流</span>
+</a><a class="recommended-article-item" href="/2024/03/16/coding-tips/python-5-tips/" title="五個 Python 好習慣" rel="bookmark">
+  <img src="/images/cover/coding-style/python-5-tips.png" alt="五個 Python 好習慣" class="!max-w-none">
+  <span class="title">五個 Python 好習慣</span>
+</a><a class="recommended-article-item" href="/2023/07/30/projects/snake-game/" title="做個小貪吃蛇來玩吧！" rel="bookmark">
+  <img src="/images/wallhaven-wqery6-light.webp" alt="做個小貪吃蛇來玩吧！" class="!max-w-none">
+  <span class="title">做個小貪吃蛇來玩吧！</span>
+</a></div>
+   </div>
+   <div class="recommended-mobile">
+   <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
+     <i aria-hidden="true"></i><span>Recommendation</span>
+   </div>
+   <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/04/15/dev-ops/python-reddis-docker/" title="透過 Docker 打包 FastAPI 與 Redis 的服務串流" rel="bookmark">
+  <img src="/images/cover/dev-ops/python-reddis-docker.png" alt="透過 Docker 打包 FastAPI 與 Redis 的服務串流" class="!max-w-none">
+  <span class="title">透過 Docker 打包 FastAPI 與 Redis 的服務串流</span>
+</a><a class="recommended-article-item" href="/2024/03/16/coding-tips/python-5-tips/" title="五個 Python 好習慣" rel="bookmark">
+  <img src="/images/cover/coding-style/python-5-tips.png" alt="五個 Python 好習慣" class="!max-w-none">
+  <span class="title">五個 Python 好習慣</span>
+</a></div>
+   </div>
+  </div>
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/04/15/dev-ops/python-reddis-docker/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">透過 Docker 打包 FastAPI 與 Redis 的服務串流</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="gitalk-container"></div>
+    <script data-swup-reload-script
+            src="//cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+    <script data-swup-reload-script>
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: 'd043543465ae0b35fc84',
+                    clientSecret: '5495a53c8727e73ca5c8f2ee001e20394228b11b',
+                    repo: 'blog.1chooo.com',
+                    owner: '1chooo',
+                    admin: ['1chooo'],
+                    id: __gitalk__pathname,
+                    language: 'en',
+                    proxy: 'https://github.com/login/oauth/access_token'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('true') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">AWS: 用 AWS Lambda Function 開發 Serverless Line Bot - 1</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Flask-%E5%BB%BA%E6%A7%8B-Line-Bot"><span class="nav-text">使用 Flask 建構 Line Bot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-AWS-Lambda-Function-%E9%83%A8%E7%BD%B2-Line-Bot"><span class="nav-text">使用 AWS Lambda Function 部署 Line Bot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C%E6%B5%81%E7%A8%8B%E8%88%87%E7%B4%B0%E7%AF%80"><span class="nav-text">實作流程與細節</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Demo"><span class="nav-text">Demo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%8C%E8%A8%98"><span class="nav-text">後記</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2023</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Hugo ChunHo Lin (1chooo)</a>
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.0</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+    
+<script src="/js/libs/minimasonry.min.js"></script>
+
+    
+<script src="/js/plugins/masonry.js" type="module"></script>
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>
