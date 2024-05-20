@@ -1,5 +1,5 @@
 ---
-title: "Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)"
+title: "AWS: Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)"
 categories: DevOps
 date: 2024-03-22 00:00:00
 tags: 
