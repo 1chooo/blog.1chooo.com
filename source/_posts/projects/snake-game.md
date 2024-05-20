@@ -5,8 +5,8 @@ date: 2023-07-30 15:00:00
 tags:
 - python
 - pygame
+cover: /images/cover/projects/snake-game/snake-game.png
 ---
-
 
 還記得當時剛學習程式語言的時候，對於什麼知識都不懂，連搜尋能力也沒有，常常搜不到關鍵字，問題也解決不了，不過當時懵懂無知的狀態，完成了基礎貪吃蛇的小遊戲，所以決定撰寫一篇文章來記錄當時的過程。
 
