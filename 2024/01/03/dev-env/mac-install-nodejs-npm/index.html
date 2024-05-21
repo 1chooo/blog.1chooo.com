@@ -13,25 +13,39 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://blog.1chooo.com/categories/talks/"/>
+    <link rel="canonical" href="https://blog.1chooo.com/2024/01/03/dev-env/mac-install-nodejs-npm/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="I am Hugo ChunHo Lin (1chooo), a 4th-year student at National Central University (NCU), driven by a genuine passion for the field of Software Engineering 💻.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hugo&#39;s Blog">
-<meta property="og:url" content="https://blog.1chooo.com/categories/Talks/index.html">
+        <meta name="description" content="新年剛好把 MacOS 重灌，讓這台老 macbook pro 2020 重獲新生，也藉此機會重新建置開發環境。 因此我們將示範如何在 Mac 安裝 Node.js 以及 NPM，其實直接從官網安裝 Node.js 時就會同時安裝 NPM，因此我將以 Mac 作為示範如何在成功安裝 Node.js，並且展示成功結果！ 👉🏻 Node.js 官網連結  下載 LTS 的版本選擇 LTS 版本 點">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何在 Mac 安裝 Node.js &amp; NPM">
+<meta property="og:url" content="https://blog.1chooo.com/2024/01/03/dev-env/mac-install-nodejs-npm/index.html">
 <meta property="og:site_name" content="Hugo&#39;s Blog">
-<meta property="og:description" content="I am Hugo ChunHo Lin (1chooo), a 4th-year student at National Central University (NCU), driven by a genuine passion for the field of Software Engineering 💻.">
+<meta property="og:description" content="新年剛好把 MacOS 重灌，讓這台老 macbook pro 2020 重獲新生，也藉此機會重新建置開發環境。 因此我們將示範如何在 Mac 安裝 Node.js 以及 NPM，其實直接從官網安裝 Node.js 時就會同時安裝 NPM，因此我將以 Mac 作為示範如何在成功安裝 Node.js，並且展示成功結果！ 👉🏻 Node.js 官網連結  下載 LTS 的版本選擇 LTS 版本 點">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*aREalwTkLM8kSMAokcCBvw.png">
+<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*dAvr0F9ceBHDgU7PCeDGtA.png">
+<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*62YZY321G_LxvvFvHNiblA.png">
+<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*jpdJaKgGK14D8H1ypSuQ3g.png">
+<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*PNhmDNjLvukKMrVKwQhjRg.png">
+<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*F8rHXI-ZTIJkwpb9G6aGWw.png">
+<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*IaKki0SZuybAVHPCev-G-g.png">
+<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*wWCsxVfJS98KftYNcypWhg.png">
+<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*P_rTeMsh4tUrbfbdR4KkNw.png">
+<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*YGQ7GD9BDgk49o0Y14hItQ.png">
+<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*RKp-Y_Tet-mljSanTCKfcw.png">
+<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*1JkRsWl-n7Gex7hsnbb7xA.png">
+<meta property="article:published_time" content="2024-01-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-21T08:10:24.424Z">
 <meta property="article:author" content="Hugo ChunHo Lin (1chooo)">
-<meta property="article:tag" content="Hugo">
-<meta property="article:tag" content="Hugo ChunHo Lin">
-<meta property="article:tag" content="Hugo Lin">
-<meta property="article:tag" content="1chooo">
-<meta property="article:tag" content="林群賀">
+<meta property="article:tag" content="Node">
+<meta property="article:tag" content="npm">
+<meta property="article:tag" content="Mac">
+<meta property="article:tag" content="Install">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*aREalwTkLM8kSMAokcCBvw.png">
     
     
     <!--- Icon Part-->
@@ -43,7 +57,7 @@
     
     <title>
         
-            Category: Talks -
+            如何在 Mac 安裝 Node.js &amp; NPM -
         
         Hugo&#39;s Blog
     </title>
@@ -318,7 +332,7 @@
 
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class="active"
+                                <a class=""
                                    href="/categories/"
                                         >
                                     <i class="fa-solid fa-folder fa-fw"></i>
@@ -441,7 +455,7 @@
 
                     <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
                         
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
                            href="/categories/"
                         >
                             <span>
@@ -552,51 +566,379 @@
             <div class="main-content">
 
                 
-                    <div class="category-container">
-    <div class="category-name">
-        <i class="fa-solid fa-folder"></i>&nbsp;Talks
-    </div>
-    <div class="category-post-list">
-        
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
 
-<div class="archive-list-container">
-    
-        <section class="archive-item">
-            <div class="archive-item-header flex flex-row items-center mb-2">
-                <span class="archive-year font-semibold text-3xl mr-2">2023</span>
-                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">2</span>
+        <div class="article-title relative w-full">
+            
+                
+                
+                <img src="/images/cover/dev-env/mac-install-nodejs-npm/mac-install-nodejs-npm.png" alt="如何在 Mac 安裝 Node.js &amp; NPM" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">如何在 Mac 安裝 Node.js &amp; NPM</h1>
+                </div>
+            
             </div>
-            <ul class="article-list pl-8 text-lg leading-[1.5]">
-              
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/profile.jpg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Hugo ChunHo Lin (1chooo)</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">he/him</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-01-03</span>
+        <span class="mobile">2024-01-03</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-05-21 16:10:24</span>
+            <span class="mobile">2024-05-21 16:10:24</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
                 
                     
-                    <li class="article-item" date-is='07-30'>
+                        
+                        <li>
+                            <a href="/categories/DevEnv/">DevEnv</a>&nbsp;
+                        </li>
+                    
+                    
                 
-                
-                    <a href="/2023/07/30/talks/freshman-pick-up-ipad/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">剛上大學的我如何挑到適合我的平板！？</span>
-                    </a>
-                
-              
-                
-                
-                    <a href="/2023/07/30/talks/no-book-in-uni/" class="block overflow-hidden">
-                        <span class="article-title mb-0.5 text-2xl">平板能輔助大學生上課嗎？</span>
-                    </a>
-                
-              
             </ul>
-        </section>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Node/">Node</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/npm/">npm</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Mac/">Mac</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Install/">Install</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>478 Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
     
 </div>
 
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <p>新年剛好把 MacOS 重灌，讓這台老 macbook pro 2020 重獲新生，也藉此機會重新建置開發環境。</p>
+<p>因此我們將示範如何在 Mac 安裝 <code>Node.js</code> 以及 <code>NPM</code>，其實直接從官網安裝 <code>Node.js</code> 時就會同時安裝 <code>NPM</code>，因此我將以 Mac 作為示範如何在成功安裝 <code>Node.js</code>，並且展示成功結果！</p>
+<p>👉🏻 <a class="link"   target="_blank" rel="noopener" href="https://nodejs.org/en?source=post_page-----3d7101d998f4--------------------------------" >Node.js 官網連結 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h4 id="下載-LTS-的版本"><a href="#下載-LTS-的版本" class="headerlink" title="下載 LTS 的版本"></a>下載 LTS 的版本</h4><p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*aREalwTkLM8kSMAokcCBvw.png"
+                      alt="選擇 LTS 版本"
+                ><figcaption>選擇 LTS 版本</figcaption></figure></p>
+<h4 id="點擊下載的-node-vx-x-x-pkg-檔安裝-Node-js"><a href="#點擊下載的-node-vx-x-x-pkg-檔安裝-Node-js" class="headerlink" title="點擊下載的 node-vx.x.x.pkg 檔安裝 Node.js"></a>點擊下載的 <code>node-vx.x.x.pkg</code> 檔安裝 <code>Node.js</code></h4><p>緊接著就是點擊 MacOS 安裝的一堆確認（建議安裝時可以看一下細節！）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*dAvr0F9ceBHDgU7PCeDGtA.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*62YZY321G_LxvvFvHNiblA.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*jpdJaKgGK14D8H1ypSuQ3g.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*PNhmDNjLvukKMrVKwQhjRg.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*F8rHXI-ZTIJkwpb9G6aGWw.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*IaKki0SZuybAVHPCev-G-g.png"
+                     
+                ></p>
+<h4 id="成功安裝後我們回到-Terminal"><a href="#成功安裝後我們回到-Terminal" class="headerlink" title="成功安裝後我們回到 Terminal"></a>成功安裝後我們回到 Terminal</h4><p>安裝成功後，我們可以透過 Terminal 使用 <code>which</code> 確認是否安裝成功，可以試著在 Terminal 輸入以下命令：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">which</span> npm</span><br><span class="line">/usr/local/bin/npm</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">which</span> node</span><br><span class="line">/usr/local/bin/node</span><br></pre></td></tr></table></figure></div>
+
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*wWCsxVfJS98KftYNcypWhg.png"
+                      alt="有成功回傳路徑就是成功！"
+                ><figcaption>有成功回傳路徑就是成功！</figcaption></figure></p>
+<h4 id="輸入-node-npm-Command"><a href="#輸入-node-npm-Command" class="headerlink" title="輸入 node &amp; npm Command"></a>輸入 node &amp; npm Command</h4><p>我們可以就在 Terminal 做 <code>node</code> &amp; <code>npm</code> 的 command 啦！</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*P_rTeMsh4tUrbfbdR4KkNw.png"
+                      alt="node command"
+                ><figcaption>node command</figcaption></figure></p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*YGQ7GD9BDgk49o0Y14hItQ.png"
+                      alt="npm command"
+                ><figcaption>npm command</figcaption></figure></p>
+<h4 id="啟動一個-web-server"><a href="#啟動一個-web-server" class="headerlink" title="啟動一個 web server"></a>啟動一個 web server</h4><p>我們可以另外寫一個 web server 的 app 來測試一下，這邊我們使用 <code>http</code> 來啟動一個 web server，實作程式碼如下：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// server.js</span></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="property">statusCode</span> = <span class="number">200</span>;</span><br><span class="line">  res.<span class="title function_">setHeader</span>(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;text/plain&#x27;</span>);</span><br><span class="line">  res.<span class="title function_">end</span>(<span class="string">&#x27;Hello World\n&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="string">&#x27;localhost&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Server running at http://localhost:3000/&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+
+<p>接著我們透過 <code>node</code> 來啟動這個 web server，輸入以下命令：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node server.js</span><br><span class="line">Server running at http://localhost:3000/</span><br></pre></td></tr></table></figure></div>
+
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*RKp-Y_Tet-mljSanTCKfcw.png"
+                      alt="run the server"
+                ><figcaption>run the server</figcaption></figure></p>
+<p>接著我們前往瀏覽器點開 <code>http://localhost:3000/</code>，就可以看到 <code>Hello World</code> 的字串啦！結果如下圖，如果有看到 <code>Hello World</code> 就代表我們完全成功啦！</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*1JkRsWl-n7Gex7hsnbb7xA.png"
+                      alt="Hello World !!!"
+                ><figcaption>Hello World !!!</figcaption></figure></p>
+<p>這樣就大功告成啦！祝大家開發順利！也祝大家新年快樂！</p>
+<p>同場加映如何在 MacOS 上撰寫 TypeScripts 的 React</p>
+<h4 id="Install-the-react-native-CLI"><a href="#Install-the-react-native-CLI" class="headerlink" title="Install the react-native CLI"></a>Install the react-native CLI</h4><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -g react-native-cli</span><br></pre></td></tr></table></figure></div>
+
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Node/">#Node</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/npm/">#npm</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Mac/">#Mac</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Install/">#Install</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+  <div class="recommended-article px-2 sm:px-6 md:px-8">
+   <div class="recommended-desktop">
+    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
+     <i aria-hidden="true"></i><span>Recommendation</span>
     </div>
-</div>
-<div class="category-paginator">
-    <div class="paginator">
-    <span class="page-number current">1</span>
+    <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/05/15/dev-env/node-access-error/" title="如何解決 npm install 時報錯 - Error: EACCES: permission denied" rel="bookmark">
+  <img src="/images/cover/dev-env/node-access-error/node-access-error.png" alt="如何解決 npm install 時報錯 - Error: EACCES: permission denied" class="!max-w-none">
+  <span class="title">如何解決 npm install 時報錯 - Error: EACCES: permission denied</span>
+</a><a class="recommended-article-item" href="/2024/04/15/dev-ops/python-reddis-docker/" title="透過 Docker 打包 FastAPI 與 Redis 的服務串流" rel="bookmark">
+  <img src="/images/cover/dev-ops/python-reddis-docker.png" alt="透過 Docker 打包 FastAPI 與 Redis 的服務串流" class="!max-w-none">
+  <span class="title">透過 Docker 打包 FastAPI 與 Redis 的服務串流</span>
+</a><a class="recommended-article-item" href="/2024/04/23/projects/line-bot-with-aws-lambda-functions-1/" title="AWS: 用 AWS Lambda Function 開發 Serverless Line Bot - 1" rel="bookmark">
+  <img src="/images/cover/projects/line-bot-with-aws-lambda-functions-1.png" alt="AWS: 用 AWS Lambda Function 開發 Serverless Line Bot - 1" class="!max-w-none">
+  <span class="title">AWS: 用 AWS Lambda Function 開發 Serverless Line Bot - 1</span>
+</a></div>
+   </div>
+   <div class="recommended-mobile">
+   <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
+     <i aria-hidden="true"></i><span>Recommendation</span>
+   </div>
+   <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/05/15/dev-env/node-access-error/" title="如何解決 npm install 時報錯 - Error: EACCES: permission denied" rel="bookmark">
+  <img src="/images/cover/dev-env/node-access-error/node-access-error.png" alt="如何解決 npm install 時報錯 - Error: EACCES: permission denied" class="!max-w-none">
+  <span class="title">如何解決 npm install 時報錯 - Error: EACCES: permission denied</span>
+</a><a class="recommended-article-item" href="/2024/04/15/dev-ops/python-reddis-docker/" title="透過 Docker 打包 FastAPI 與 Redis 的服務串流" rel="bookmark">
+  <img src="/images/cover/dev-ops/python-reddis-docker.png" alt="透過 Docker 打包 FastAPI 與 Redis 的服務串流" class="!max-w-none">
+  <span class="title">透過 Docker 打包 FastAPI 與 Redis 的服務串流</span>
+</a></div>
+   </div>
+  </div>
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2024/03/16/coding-tips/python-5-tips/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">五個 Python 好習慣</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2023/09/08/dev-ops/git-ssh/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="gitalk-container"></div>
+    <script data-swup-reload-script
+            src="//cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+    <script data-swup-reload-script>
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: 'd043543465ae0b35fc84',
+                    clientSecret: '5495a53c8727e73ca5c8f2ee001e20394228b11b',
+                    repo: 'blog.1chooo.com',
+                    owner: '1chooo',
+                    admin: ['1chooo'],
+                    id: __gitalk__pathname,
+                    language: 'en',
+                    proxy: 'https://github.com/login/oauth/access_token'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('true') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+
+        
+    
 </div>
 
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">如何在 Mac 安裝 Node.js &amp; NPM</div>
+        
+
+    </div>
+</div>
+        </div>
+    
 </div>
 
 
@@ -672,6 +1014,27 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-side-tools-container">
