@@ -157,11 +157,12 @@ Collecting docker-compose
 Successfully installed ... docker-compose-1.29.2 ...
 ```
 
-> [!WARNING]
-> 如果在安裝 `docker-compose` 時出現錯誤，可能是因為 `urllib3` 的版本支援問題，我們可以透過 `pip3 install urllib3==1.26.15` 來安裝特定版本的 `urllib3`。
->
-> 可以參考 [Persisting spaCy import error: NotOpenSSLWarning: urllib3 v2.0 only supports OpenSSL 1.1.1+ #12750](https://github.com/explosion/spaCy/discussions/12750) 來排除
+{% note warning  %}
+**⚠️ 注意**
+如果在安裝 `docker-compose` 時出現錯誤，可能是因為 `urllib3` 的版本支援問題，我們可以透過 `pip3 install urllib3==1.26.15` 來安裝特定版本的 `urllib3`。
 
+可以參考 [Persisting spaCy import error: NotOpenSSLWarning: urllib3 v2.0 only supports OpenSSL 1.1.1+ #12750](https://github.com/explosion/spaCy/discussions/12750) 來排除
+{% endnote %}
 
 我們也可以使用 `wget` 來下載 `docker-compose` 並且安裝。
 
