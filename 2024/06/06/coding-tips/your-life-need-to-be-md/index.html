@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hugo,Hugo ChunHo Lin,Hugo Lin,1chooo,林群賀">
+    
+    <meta name="author" content="Hugo ChunHo Lin (1chooo)">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://blog.1chooo.com/2024/06/06/coding-tips/your-life-need-to-be-md/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="Since I frequently use Markdown to write technical documents and also love recording my life with it, I am currently developing a VSCode  extension - Markdown Everything . The aim is to enhance the pr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Your life need to be MARKDOWNED: Essential Tips for Exceptional GitHub Writing">
+<meta property="og:url" content="https://blog.1chooo.com/2024/06/06/coding-tips/your-life-need-to-be-md/index.html">
+<meta property="og:site_name" content="Hugo&#39;s Blog">
+<meta property="og:description" content="Since I frequently use Markdown to write technical documents and also love recording my life with it, I am currently developing a VSCode  extension - Markdown Everything . The aim is to enhance the pr">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/header.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/emphasis.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/unordered.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/ordered.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/combined.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/links.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/image.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/inline-code.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/code-block.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/quotes.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/alert.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/table.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/ignore-md.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/footnotes.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/math.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/demo.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/expandable-sections.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/flowchart.png">
+<meta property="article:published_time" content="2024-06-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-06-11T04:28:33.550Z">
+<meta property="article:author" content="Hugo ChunHo Lin (1chooo)">
+<meta property="article:tag" content="Markdown">
+<meta property="article:tag" content="GitHub">
+<meta property="article:tag" content="Technical Writing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.1chooo.com/images/post/coding-tips/your-life-need-to-be-md/header.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <!--- Page Info-->
+    
+    <title>
+        
+            Your life need to be MARKDOWNED: Essential Tips for Exceptional GitHub Writing -
+        
+        Hugo&#39;s Blog
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        Hugo&#39;s Blog
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+    <!--- Inject Part-->
+    
+    <script id="hexo-configurations">
+    window.config = {"hostname":"blog.1chooo.com","root":"/","language":"en","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"title_alignment":"left"},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":["he/him"]},"code_block":{"copy":true,"style":"simple","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":false,"lazyload":true,"recommendation":{"enable":true,"title":"Recommendation","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null},"busuanzi_counter":{"enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"pjax":true},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/campus_girl.jpg","dark":"/images/dark_mac.jpg"},"title":"Hugo's Blog","subtitle":{"text":["This is Hugo ChunHo Lin (1chooo)","The one who eagers to CS Field"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"links":{"github":"https://github.com/1chooo","instagram":"https://www.instagram.com/lcho____/","zhihu":null,"twitter":"https://twitter.com/1chooo___","email":"hugo970217@gmail.com","linkedin":"https://www.linkedin.com/in/1chooo/","medium":"https://medium.com/@1chooo"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.0","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Categories":{"icon":"fa-solid fa-folder","path":"/categories/"},"Tags":{"icon":"fa-solid fa-tags","path":"/tags/"},"More":{"icon":"fa-regular fa-user","submenus":{"About":"/about","GitHub":"https://github.com/1chooo","Linkedin":"https://www.linkedin.com/in/1chooo/","Portfolio":"https://1chooo.com"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"eCloudValley - Cloud Developer Intern | Ex AWS Educate, PEGATRON | ATM, CS at NCU","links":{"About":{"path":"/about","icon":"fa-regular fa-user"},"Github":{"path":"https://github.com/1chooo","icon":"fa-brands fa-github"},"Linkedin":{"path":"https://www.linkedin.com/in/1chooo/","icon":"fa-brands fa-linkedin"}}},"article_date_format":"MMM D, YYYY","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2023/2/10 05:20:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":true};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container">
+
+    <div class="navbar-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/favicon.ico">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                Hugo&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/"
+                                        >
+                                    <i class="fa-solid fa-folder fa-fw"></i>
+                                    CATEGORIES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags/"
+                                        >
+                                    <i class="fa-solid fa-tags fa-fw"></i>
+                                    TAGS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    MORE
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ABOUT
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/1chooo">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/1chooo/">
+                                                    LINKEDIN
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://1chooo.com">
+                                                    PORTFOLIO
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/"
+                        >
+                            <span>
+                                CATEGORIES
+                            </span>
+                            
+                                <i class="fa-solid fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags/"
+                        >
+                            <span>
+                                TAGS
+                            </span>
+                            
+                                <i class="fa-solid fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-More"
+                        >
+                            <span>
+                                MORE
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-More">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ABOUT</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/1chooo">GITHUB</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://www.linkedin.com/in/1chooo/">LINKEDIN</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://1chooo.com">PORTFOLIO</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">35</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">15</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                
+                
+                <img src="/images/cover/coding-tips/your-life-need-to-be-md.png" alt="Your life need to be MARKDOWNED: Essential Tips for Exceptional GitHub Writing" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">Your life need to be MARKDOWNED: Essential Tips for Exceptional GitHub Writing</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/profile.jpg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Hugo ChunHo Lin (1chooo)</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">he/him</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-06-06</span>
+        <span class="mobile">2024-06-06</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-06-11 12:28:33</span>
+            <span class="mobile">2024-06-11 12:28:33</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/CodingTips/">CodingTips</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Markdown/">Markdown</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/GitHub/">GitHub</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Technical-Writing/">Technical Writing</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.2k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>7 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <p>Since I frequently use <strong>Markdown</strong> to write technical documents and also love recording my life with it, I am currently developing a <a class="link"   target="_blank" rel="noopener" href="https://code.visualstudio.com/" >VSCode <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> extension - <a class="link"   target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=1chooo.markdown-everything" >Markdown Everything <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>. The aim is to enhance the preview of Markdown rendering and meet my customized needs.</p>
+<p>Before <a class="link"   target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=1chooo.markdown-everything" >MARKDOWN EVERYTHING <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>, you need to know how to markdown. This document will help you to understand the basic markdown syntax.</p>
+<h2 id="Headers"><a href="#Headers" class="headerlink" title="Headers"></a>Headers</h2><p>To use the headers, you can use <code>#</code> to <code>######</code> for Header 1 to Header 6. And it will be helpful to understand the structure of the document.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/header.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># This is Header 1</span></span><br><span class="line"><span class="section">## This is Header 2</span></span><br><span class="line"><span class="section">### This is Header 3</span></span><br><span class="line"><span class="section">#### This is Header 4</span></span><br><span class="line"><span class="section">##### This is Header 5</span></span><br><span class="line"><span class="section">###### This is Header 6</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Emphasis"><a href="#Emphasis" class="headerlink" title="Emphasis"></a>Emphasis</h2><p>To make the words vividly, you can add the emphasis adaptively.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/emphasis.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="emphasis">*This text will be italic*</span> or <span class="emphasis">_This text will be italic_</span></span><br><span class="line"><span class="bullet">-</span> <span class="strong">**This text will be bold**</span> or <span class="strong">__This text will be bold__</span></span><br><span class="line"><span class="bullet">-</span> <span class="strong">**<span class="emphasis">*This text will be italic and bold*</span>**</span> or <span class="strong">__<span class="emphasis">_This text will be italic and bold_</span>__</span></span><br><span class="line"><span class="bullet">-</span> ~~This text will be strikethrough~~</span><br><span class="line"><span class="bullet">-</span> <span class="language-xml"><span class="tag">&lt;<span class="name">u</span>&gt;</span></span>This text will be underlined<span class="language-xml"><span class="tag">&lt;/<span class="name">u</span>&gt;</span></span></span><br><span class="line"><span class="bullet">-</span> <span class="language-xml"><span class="tag">&lt;<span class="name">sup</span>&gt;</span></span>This text will be superscript<span class="language-xml"><span class="tag">&lt;/<span class="name">sup</span>&gt;</span></span></span><br><span class="line"><span class="bullet">-</span> <span class="language-xml"><span class="tag">&lt;<span class="name">sub</span>&gt;</span></span>This text will be subscript<span class="language-xml"><span class="tag">&lt;/<span class="name">sub</span>&gt;</span></span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Lists"><a href="#Lists" class="headerlink" title="Lists"></a>Lists</h2><p>There are two types of lists, unordered and ordered. You can use <code>*</code> for unordered and <code>1.</code> for ordered. And you can use the combination of them.</p>
+<h3 id="Unordered"><a href="#Unordered" class="headerlink" title="Unordered"></a>Unordered</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/unordered.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="code">`* Item 1`</span></span><br><span class="line"><span class="bullet">-</span> <span class="code">`* Item 2`</span></span><br><span class="line"><span class="bullet">  -</span> <span class="code">`* Item 2a`</span></span><br><span class="line"><span class="bullet">  -</span> <span class="code">`* Item 2b`</span></span><br><span class="line"><span class="bullet">  -</span> <span class="code">`* Item 2c`</span></span><br><span class="line"><span class="bullet">    -</span> <span class="code">`* Item 2c1`</span></span><br><span class="line"><span class="bullet">    -</span> <span class="code">`* Item 2c2`</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Ordered"><a href="#Ordered" class="headerlink" title="Ordered"></a>Ordered</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/ordered.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> <span class="code">`1. Item 1`</span></span><br><span class="line"><span class="bullet">2.</span> <span class="code">`2. Item 2`</span></span><br><span class="line"><span class="bullet">   1.</span> <span class="code">`1. Item 2a`</span></span><br><span class="line"><span class="bullet">   2.</span> <span class="code">`2. Item 2b`</span></span><br><span class="line"><span class="bullet">   3.</span> <span class="code">`3. Item 2c`</span></span><br><span class="line"><span class="bullet">      1.</span> <span class="code">`1. Item 2c1`</span></span><br><span class="line"><span class="bullet">      2.</span> <span class="code">`2. Item 2c2`</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Combined"><a href="#Combined" class="headerlink" title="Combined"></a>Combined</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/combined.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> <span class="code">`1. Item 1`</span></span><br><span class="line"><span class="bullet">2.</span> <span class="code">`2. Item 2`</span></span><br><span class="line"><span class="bullet">   -</span> <span class="code">`* Item 2a`</span></span><br><span class="line"><span class="bullet">   -</span> <span class="code">`* Item 2b`</span></span><br><span class="line"><span class="bullet">   -</span> <span class="code">`* Item 2c`</span></span><br><span class="line"><span class="bullet">      1.</span> <span class="code">`1. Item 2c1`</span></span><br><span class="line"><span class="bullet">      2.</span> <span class="code">`2. Item 2c2`</span></span><br></pre></td></tr></table></figure></div>
+
+
+  <div class="note p-4 mb-4 rounded-small success">
+    <p><strong>💡 TIP</strong><br>To insert a line break within a text field, you can use the keyboard shortcut <code>Shift + Enter</code>. This allows you to start a new line without ending the current paragraph.</p>
+
+  </div>
+
+
+<h2 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h2><p>We can add links in markdown with the hyerlink.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/links.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> [<span class="string">Hugo&#x27;s Portfolio</span>](<span class="link">https://1chooo.com</span>)</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Hugo&#x27;s Blog</span>](<span class="link">https://blog.1chooo.com</span>)</span><br><span class="line"></span><br><span class="line">Sample: [<span class="string">alt text</span>](<span class="link">url</span>)</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h2><p>We can embed images in markdown with the file path or URL.</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/image.png"
+                      alt="Image Demo"
+                ><figcaption>Image Demo</figcaption></figure></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">Markdown Everything</span>](<span class="link">/images/post/coding-tips/your-life-need-to-be-md/demo.png</span>)</span><br><span class="line"></span><br><span class="line">Sample: ![<span class="string">alt text</span>](<span class="link">url</span>)</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>We can use inline code and code block in markdown to represent the code.</p>
+<h3 id="Inline-Code"><a href="#Inline-Code" class="headerlink" title="Inline Code"></a>Inline Code</h3><p>We can use the backticks <code>`</code> to create the inline code.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/inline-code.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">`print(&quot;Hello, World!&quot;)`</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Code-Block"><a href="#Code-Block" class="headerlink" title="Code Block"></a>Code Block</h3><p>With three backticks <code>```</code>, we can create the code block. Also, we can specify the language to highlight the syntax next to the first three backticks, such as <code>```python</code>.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/code-block.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```python</span></span><br><span class="line"><span class="code">def foo() -&gt; str:</span></span><br><span class="line"><span class="code">    &quot;&quot;&quot;</span></span><br><span class="line"><span class="code">    This is a function to return the string &#x27;bar&#x27;</span></span><br><span class="line"><span class="code">    </span></span><br><span class="line"><span class="code">    Returns:</span></span><br><span class="line"><span class="code">        str: &#x27;bar&#x27;</span></span><br><span class="line"><span class="code">    &quot;&quot;&quot;</span></span><br><span class="line"><span class="code">    return &#x27;bar&#x27;</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="Quotes"><a href="#Quotes" class="headerlink" title="Quotes"></a>Quotes</h2><p>We can use the <code>&gt;</code> to create the quotes in markdown.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/quotes.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; &quot;This is a quote.&quot;</span></span><br><span class="line"><span class="quote">&gt;</span></span><br><span class="line"><span class="quote">&gt; 1. Item 1</span></span><br><span class="line"><span class="quote">&gt; 2. Item 2</span></span><br><span class="line"><span class="quote">&gt;     - Item 2a</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; <span class="strong">**Python Hello World:**</span></span></span><br><span class="line"><span class="quote">&gt;</span></span><br><span class="line"><span class="quote">&gt; ```python</span></span><br><span class="line"><span class="quote">&gt; print(&#x27;Hello, World!&#x27;)</span></span><br><span class="line"><span class="quote">&gt; ```</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Alert"><a href="#Alert" class="headerlink" title="Alert"></a>Alert</h2><p>In GitHub, it supports the render of alerts. You can use the following syntax to create alerts, also known as callouts.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/alert.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; [!NOTE]</span></span><br><span class="line"><span class="quote">&gt; Useful information that users should know, even when skimming content.</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; [!TIP]</span></span><br><span class="line"><span class="quote">&gt; Helpful advice for doing things better or more easily.</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; [!IMPORTANT]</span></span><br><span class="line"><span class="quote">&gt; Key information users need to know to achieve their goal.</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; [!WARNING]</span></span><br><span class="line"><span class="quote">&gt; Urgent info that needs immediate user attention to avoid problems.</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; [!CAUTION]</span></span><br><span class="line"><span class="quote">&gt; Advises about risks or negative outcomes of certain actions.</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Tables"><a href="#Tables" class="headerlink" title="Tables"></a>Tables</h2><p>You can create the tables to represent the data in markdown.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/table.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| Header 1 | Header 2 | Header 3 |</span><br><span class="line">| -------- | -------- | -------- |</span><br><span class="line">| Cell 1   | Cell 2   | Cell 3   |</span><br><span class="line">| Cell 4   | Cell 5   | Cell 6   |</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Ignore-Markdown"><a href="#Ignore-Markdown" class="headerlink" title="Ignore Markdown"></a>Ignore Markdown</h2><p>If you want to ignore the markdown syntax, you can use the backslash <code>\</code>. If you want to ignore the markdown syntax in the whole line, you can use the <code>&lt;!-- --&gt;</code> to comment out the line.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/ignore-md.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Let&#x27;s \<span class="emphasis">*\*</span>rename\<span class="emphasis">*\*</span> the variable \<span class="code">`var\`</span> in with \<span class="code">`var2\`</span> in the \<span class="code">`main.py\`</span></span><br><span class="line"></span><br><span class="line">&lt;!-- This content will not appear in the rendered Markdown --&gt;</span><br></pre></td></tr></table></figure></div>
+
+
+  <div class="note p-4 mb-4 rounded-small success">
+    <p><strong>💡 TIP</strong><br>Sometimes, I will use <code>HTML</code> to ignore the markdown syntax.</p>
+
+  </div>
+
+<h2 id="Footnotes"><a href="#Footnotes" class="headerlink" title="Footnotes"></a>Footnotes</h2><p>We can add the footnotes in markdown to provide additional information.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/footnotes.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">This is Hugo Speaking 👨🏻‍💻 [^1], [^bignote], [^2]</span><br><span class="line"></span><br><span class="line">[<span class="symbol">^1</span>]: <span class="link">This is the first footnote.</span></span><br><span class="line"></span><br><span class="line">[<span class="string">^2</span>]: [<span class="string">Hugo</span>](<span class="link">https://1chooo.com</span>)</span><br><span class="line"></span><br><span class="line">[<span class="symbol">^bignote</span>]: <span class="link">Here&#x27;s one with multiple paragraphs and code.</span></span><br><span class="line"></span><br><span class="line"><span class="code">    Indent paragraphs to include them in the footnote.</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">    `&#123; my code &#125;`</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">    Add as many paragraphs as you like.</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">    ```python</span></span><br><span class="line"><span class="code">    def foo():</span></span><br><span class="line"><span class="code">        return &#x27;bar&#x27;</span></span><br><span class="line"><span class="code">    ```</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><p>In markdown, we can use the $\LaTeX$ syntax to represent the math equations. We can use the inline math with <code>$</code> and block math with <code>$$</code>.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/math.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> Inline Math: $E = mc^2$</span><br><span class="line"><span class="bullet">-</span> Block Math:</span><br><span class="line"></span><br><span class="line">$$</span><br><span class="line">\int<span class="emphasis">_&#123;-\infty&#125;^\infty e^&#123;-x^2&#125; dx = \sqrt&#123;\pi&#125;</span></span><br><span class="line"><span class="emphasis">$$</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">- Algorithm:</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">$$</span></span><br><span class="line"><span class="emphasis">\begin&#123;array&#125;&#123;l&#125;</span></span><br><span class="line"><span class="emphasis">\textbf&#123;Algorithm 1 QuickSort(array A, l, r)&#125; \\</span></span><br><span class="line"><span class="emphasis">1.\ \text&#123;if&#125;\ r - l + 1 \leq 1\ \text&#123;then&#125; \\</span></span><br><span class="line"><span class="emphasis">2.\ \quad \text&#123;return&#125; \\</span></span><br><span class="line"><span class="emphasis">3.\ \text&#123;end if&#125; \\</span></span><br><span class="line"><span class="emphasis">4.\ p = \text&#123;ChoicePivot&#125;(A, l, r) \\</span></span><br><span class="line"><span class="emphasis">5.\ \text&#123;Partition&#125;(A, p, l, r) \\</span></span><br><span class="line"><span class="emphasis">6.\ \text&#123;QuickSort&#125;(A, l, p - 1) \\</span></span><br><span class="line"><span class="emphasis">7.\ \text&#123;QuickSort&#125;(A, p + 1, r) \\</span></span><br><span class="line"><span class="emphasis">\end&#123;array&#125;</span></span><br><span class="line"><span class="emphasis">$$</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Expandable-Sections"><a href="#Expandable-Sections" class="headerlink" title="Expandable Sections"></a>Expandable Sections</h2><p>We can create the expandable sections in markdown to hide the content.</p>
+<details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>👉🏻 Click Me to expand </summary>
+              <div class='content'>
+              <p>Hi.</p><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/demo.png"
+                     
+                > </p>
+              </div>
+            </details>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/expandable-sections.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">details</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">summary</span>&gt;</span></span>👉🏻 Click Me to expand<span class="language-xml"><span class="tag">&lt;/<span class="name">summary</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">Hi.</span><br><span class="line"></span><br><span class="line">![](<span class="link">/images/post/coding-tips/your-life-need-to-be-md/demo.png</span>)</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">details</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">details</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">summary</span>&gt;</span></span>👉🏻 Click Me to expand<span class="language-xml"><span class="tag">&lt;/<span class="name">summary</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">Hi.</span><br><span class="line"></span><br><span class="line">![](<span class="link">/images/post/coding-tips/your-life-need-to-be-md/demo.png</span>)</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">details</span>&gt;</span></span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Chart"><a href="#Chart" class="headerlink" title="Chart"></a>Chart</h2><p>We can plot a variety of charts with <code>mermaid</code> syntax in markdown. Let’s take <code>flowchart</code> as an example. If you want more examples, you can visit the <a class="link"   target="_blank" rel="noopener" href="https://mermaid.js.org/ecosystem/tutorials.html" >Mermaid.js - Tutorial <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/flowchart.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">```mermaid</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"><span class="section">title: Multistep Processing of a User Program by Hugo</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line">flowchart-elk LR</span><br><span class="line"><span class="code">    A((Source Program)) --&gt; B[Compiler or Assembler]</span></span><br><span class="line"><span class="code">    B[Compiler or Assembler] --&gt; C((Object Module))</span></span><br><span class="line"><span class="code">    C((Object Module)) --&gt; E[Linkage Editor]</span></span><br><span class="line"><span class="code">    D((&quot;`Other </span></span><br><span class="line"><span class="code">    Object </span></span><br><span class="line"><span class="code">    Modules`&quot;)) --&gt; E[Linkage Editor]</span></span><br><span class="line"><span class="code">    H((System Library)) --&gt; G[Loader]</span></span><br><span class="line"><span class="code">    G[Loader] --&gt; J[in-memory binary memory image]</span></span><br><span class="line"><span class="code">    I((&quot;`Dynamically </span></span><br><span class="line"><span class="code">    Loaded </span></span><br><span class="line"><span class="code">    System </span></span><br><span class="line"><span class="code">    Library`&quot;)) --&gt; J[in-memory binary memory image]</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">    subgraph Compile Time</span></span><br><span class="line"><span class="code">        direction TB</span></span><br><span class="line"><span class="code">        B[Compiler or Assembler]</span></span><br><span class="line"><span class="code">    end</span></span><br><span class="line"><span class="code">    subgraph Load Time</span></span><br><span class="line"><span class="code">        direction TB</span></span><br><span class="line"><span class="code">        E[Linkage Editor] --&gt; F((Load Module))</span></span><br><span class="line"><span class="code">        F((Load Module)) --&gt; G[Loader]</span></span><br><span class="line"><span class="code">    end</span></span><br><span class="line"><span class="code">    subgraph Execution Time</span></span><br><span class="line"><span class="code">        direction TB</span></span><br><span class="line"><span class="code">        J[in-memory binary memory image]</span></span><br><span class="line"><span class="code">    end</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure></div>
+
+<p>Finally!!! These are all the tips I use to write proficient notes on GitHub with Markdown. I hope everyone can also MARK the wonderful content DOWN!</p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Markdown/">#Markdown</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/GitHub/">#GitHub</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Technical-Writing/">#Technical Writing</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+  <div class="recommended-article px-2 sm:px-6 md:px-8">
+   <div class="recommended-desktop">
+    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
+     <i aria-hidden="true"></i><span>Recommendation</span>
+    </div>
+    <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/03/22/dev-ops/aws-security-group-nacl/" title="AWS: Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)" rel="bookmark">
+  <img src="/images/cover/dev-ops/aws-security-group-nacl.png" alt="AWS: Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)" class="!max-w-none">
+  <span class="title">AWS: Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)</span>
+</a><a class="recommended-article-item" href="/2024/03/26/dev-ops/git-good-commit-look-like/" title="Git Commit Message 到底怎麼寫才優美？" rel="bookmark">
+  <img src="/images/cover/dev-ops/git-good-commit-look-like.png" alt="Git Commit Message 到底怎麼寫才優美？" class="!max-w-none">
+  <span class="title">Git Commit Message 到底怎麼寫才優美？</span>
+</a><a class="recommended-article-item" href="/2024/04/15/dev-ops/python-reddis-docker/" title="透過 Docker 打包 FastAPI 與 Redis 的服務串流" rel="bookmark">
+  <img src="/images/cover/dev-ops/python-reddis-docker.png" alt="透過 Docker 打包 FastAPI 與 Redis 的服務串流" class="!max-w-none">
+  <span class="title">透過 Docker 打包 FastAPI 與 Redis 的服務串流</span>
+</a></div>
+   </div>
+   <div class="recommended-mobile">
+   <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
+     <i aria-hidden="true"></i><span>Recommendation</span>
+   </div>
+   <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/03/22/dev-ops/aws-security-group-nacl/" title="AWS: Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)" rel="bookmark">
+  <img src="/images/cover/dev-ops/aws-security-group-nacl.png" alt="AWS: Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)" class="!max-w-none">
+  <span class="title">AWS: Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)</span>
+</a><a class="recommended-article-item" href="/2024/03/26/dev-ops/git-good-commit-look-like/" title="Git Commit Message 到底怎麼寫才優美？" rel="bookmark">
+  <img src="/images/cover/dev-ops/git-good-commit-look-like.png" alt="Git Commit Message 到底怎麼寫才優美？" class="!max-w-none">
+  <span class="title">Git Commit Message 到底怎麼寫才優美？</span>
+</a></div>
+   </div>
+  </div>
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/05/15/dev-env/node-access-error/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">如何解決 npm install 時報錯 - Error: EACCES: permission denied</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="gitalk-container"></div>
+    <script data-swup-reload-script
+            src="//cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+    <script data-swup-reload-script>
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: 'd043543465ae0b35fc84',
+                    clientSecret: '5495a53c8727e73ca5c8f2ee001e20394228b11b',
+                    repo: 'blog.1chooo.com',
+                    owner: '1chooo',
+                    admin: ['1chooo'],
+                    id: __gitalk__pathname,
+                    language: 'en',
+                    proxy: 'https://github.com/login/oauth/access_token'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('true') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">Your life need to be MARKDOWNED: Essential Tips for Exceptional GitHub Writing</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Headers"><span class="nav-text">Headers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Emphasis"><span class="nav-text">Emphasis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lists"><span class="nav-text">Lists</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Unordered"><span class="nav-text">Unordered</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ordered"><span class="nav-text">Ordered</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Combined"><span class="nav-text">Combined</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Links"><span class="nav-text">Links</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Images"><span class="nav-text">Images</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-text">Code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Inline-Code"><span class="nav-text">Inline Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-Block"><span class="nav-text">Code Block</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quotes"><span class="nav-text">Quotes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Alert"><span class="nav-text">Alert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tables"><span class="nav-text">Tables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ignore-Markdown"><span class="nav-text">Ignore Markdown</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Footnotes"><span class="nav-text">Footnotes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Math"><span class="nav-text">Math</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Expandable-Sections"><span class="nav-text">Expandable Sections</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chart"><span class="nav-text">Chart</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2023</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Hugo ChunHo Lin (1chooo)</a>
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.0</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+    
+<script src="/js/libs/minimasonry.min.js"></script>
+
+    
+<script src="/js/plugins/masonry.js" type="module"></script>
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

@@ -1,6 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>五個 Python 好習慣</title>
+    <url>/2024/03/16/coding-tips/python-5-tips/</url>
+    <content><![CDATA[<p>在學習基礎程式語言中，我們往往只在乎程式能不能運行，會不會基礎語法，然而很多人沒有累積到專案中實際撰寫的好習慣，因此這篇文章中，我將會討論五個 Python 的好習慣，並且這些事我已經落實在專案中的 Coding Style 希望透過這次的分享能夠幫助看到這邊的你寫出更好的程式碼。</p>
+<h3 id="1-if-name-main"><a href="#1-if-name-main" class="headerlink" title="1. if __name__ == &#39;__main__&#39;:"></a>1. <code>if __name__ == &#39;__main__&#39;:</code></h3><p>很多人可能在 review 別人的 Python 專案時，都會發現這個條件式。這個條件式的目的是為了確保這個檔案是被直接執行，而不是被 import 進其他檔案中，我們可以舉個例子來看看加上這個條件式的重要性。</p>
+<p>我們今天要設計一個 <code>api</code> 是 <code>get_name()</code>，透過呼叫這個 api 我們可以得到從資料庫中取得名字，我們先來看看以下的程式碼：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># api.py</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_name</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Getting name...&#x27;</span>)</span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hugo&#x27;</span>)</span><br><span class="line"></span><br><span class="line">get_name()</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># main.py</span></span><br><span class="line"><span class="keyword">from</span> api <span class="keyword">import</span> get_name</span><br><span class="line"></span><br><span class="line">get_name()</span><br></pre></td></tr></table></figure></div>
+
+<p>我們可以先觀察執行結果如以下：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Getting name...</span><br><span class="line">Hugo</span><br><span class="line">Getting name...</span><br><span class="line">Hugo</span><br></pre></td></tr></table></figure></div>
+
+<p>總共執行了兩次 <code>get_name()</code>，但是奇怪的是我們明明只有在 <code>main.py</code> 中呼叫了一次 <code>get_name()</code>，為什麼會執行兩次呢？</p>
+<p>因為我們在 <code>api.py</code> 中的 <code>get_name()</code> 是直接被執行的，所以當我們在 <code>main.py</code> 中 import <code>api.py</code> 時，<code>get_name()</code> 也會被執行一次。</p>
+<p>因此我們只要把 <code>main.py</code> 改成以下的程式碼就可以解決這個問題：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># main.py</span></span><br><span class="line"><span class="keyword">from</span> api <span class="keyword">import</span> get_name</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    get_name()</span><br></pre></td></tr></table></figure></div>
+
+<p>我們就會得到我們想要的執行結果如以下：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Getting name...</span><br><span class="line">Hugo</span><br></pre></td></tr></table></figure></div>
+
+<p>這樣就不會執行兩次 <code>get_name()</code> 了，也就是說在我們的程式碼中加上 <code>if __name__ == &#39;__main__&#39;:</code> 可以讓 Python 知道「只要」執行該檔案呼叫的程式碼，而不是從其他 import 進來的 function。</p>
+<h3 id="2-在-Python-中加入-main-function"><a href="#2-在-Python-中加入-main-function" class="headerlink" title="2. 在 Python 中加入 main() function"></a>2. 在 Python 中加入 <code>main()</code> function</h3><p>在很多程式語言中都有 <code>main()</code> function 的存在，像是 Go, C, C++, Java 等等。因為對於 Python 任何皆是物件的特性，沒有 <code>main()</code> function 也是可以執行的，不過加上 <code>main()</code> function 我們可以知道程式主要的進入點是什麼。</p>
+<p>我們可以從以下範例程式碼觀察，這是沒有加上 <code>main()</code> function 的程式碼：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Bad Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_hello</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_goodbye</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Goodbye&#x27;</span>)</span><br><span class="line"></span><br><span class="line">say_hello()</span><br><span class="line">say_goodbye()</span><br></pre></td></tr></table></figure></div>
+
+<p>另外我們可以看到搭配第一個好習慣的 <code>if __name__ == &#39;__main__&#39;:</code>，再加上宣告 <code>main()</code> function，這樣我們就可以確保程式的進入點是 <code>main()</code> function，另外我們也可以確認的是執行的是該檔案呼叫的 <code>main()</code> function。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Good Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_hello</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_goodbye</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Goodbye&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    say_hello()</span><br><span class="line">    say_goodbye()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></div>
+
+<p>這時候大家可能會覺得我平常的寫法也不會出錯，何必多寫幾行呢？</p>
+<p>我們今天要假使當你的專案越來越大時，要在幾千行之中找到主程式運行的地方是一件非常困難的事情，因此加上 <code>main()</code> function 可以讓你的程式碼更加的有組織性，並且也可以更快地釐清 scripts 的運行目的。</p>
+<h3 id="3-避免過多的-if-巢狀判斷邏輯"><a href="#3-避免過多的-if-巢狀判斷邏輯" class="headerlink" title="3. 避免過多的 if 巢狀判斷邏輯"></a>3. 避免過多的 <code>if</code> 巢狀判斷邏輯</h3><p>假如我們今天上課只想點資工系的大三，我們要先判斷年級，再判斷系所，如果都有符合那就是點名成功，否則就是翹課出去爽了，我們可以看看這個 scenario 的實現：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Bad Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_attendance</span>(<span class="params">grade: <span class="built_in">int</span>, department: <span class="built_in">str</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">if</span> grade == <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">if</span> department == <span class="string">&#x27;CS&#x27;</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Attendance success&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;You are not in CS department&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;You are not in 3rd grade&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>這樣的寫法看起來沒有什麼問題，但是當我們的判斷條件越來越多時，這樣的寫法會讓我們的程式碼變得非常難以閱讀，我們可以透過以下的寫法來改善：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Good Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_year_three</span>(<span class="params">grade: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">    <span class="keyword">return</span> grade == <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_cs_major</span>(<span class="params">department: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">    <span class="keyword">return</span> department == <span class="string">&#x27;CS&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_attendance</span>(<span class="params">grade: <span class="built_in">int</span>, department: <span class="built_in">str</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">if</span> is_year_three(grade) <span class="keyword">and</span> is_cs_major(department):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Attendance success&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;You are not in the class&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>如此我們可以把條件給分開成不同的判斷，這樣我們如果要修改條件的話也可以直接從獨立出來的 function 進行修改，而不用去修改原本的程式碼，同時也避免同一個 function 中有過多的 <code>if</code> 巢狀判斷邏輯，造成閱讀上的困難。</p>
+<h3 id="4-為變數加上型別提示"><a href="#4-為變數加上型別提示" class="headerlink" title="4. 為變數加上型別提示"></a>4. 為變數加上型別提示</h3><p>Python 是個不用宣告型別的程式語言，這樣的特性讓 Python 的程式碼變得非常的靈活，但是當我們接手他人的專案又或是需要快速理解程式邏輯時，我們很難一眼就看出這個變數是什麼型別，這時候我們可以透過型別提示來讓程式碼更加的易讀。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">number1: <span class="built_in">int</span> = <span class="number">10</span></span><br><span class="line">number2: <span class="built_in">int</span> = <span class="string">&#x27;20&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(number1)  <span class="comment"># 10</span></span><br><span class="line"><span class="built_in">print</span>(number2)  <span class="comment"># 20</span></span><br></pre></td></tr></table></figure></div>
+
+<p>以上的範例中，我們可以看到 <code>number1</code> 和 <code>number2</code> 都有加上型別提示，都是 <code>int</code>，不過我們可以看到 <code>number2</code> 中，我們賦予的內容是 <code>&#39;20&#39;</code>，這個作法在 Python 中我們單純只是 print 出來的話是不會有問題的，但是如果我們要進行數學運算的話就會出現問題，這時候我們就可以透過型別提示來瞭解該變數該賦予的類型，以免在後續使用出問題。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">number1: <span class="built_in">int</span> = <span class="number">10</span></span><br><span class="line">number2: <span class="built_in">int</span> = <span class="string">&#x27;20&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(number1 + number2)</span><br></pre></td></tr></table></figure></div>
+
+<p>錯誤訊息會如以下，會發現 <code>number1</code> 和 <code>number2</code> 的型別不同，所以無法進行運算，也就是說當初我們在宣告變數時加上型別提示，可以讓我們避免做出型別混用的錯誤。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;hugo/is/great/developer/python_tip_04.py&quot;</span>, line 4, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="built_in">print</span>(number1 + number2)</span><br><span class="line">          ~~~~~~~~^~~~~~~~~</span><br><span class="line">TypeError: unsupported operand <span class="built_in">type</span>(s) <span class="keyword">for</span> +: <span class="string">&#x27;int&#x27;</span> and <span class="string">&#x27;str&#x27;</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="5-List-Comprehension"><a href="#5-List-Comprehension" class="headerlink" title="5. List Comprehension"></a>5. List Comprehension</h3><p>我們在撰寫程式時，常常會需要遍歷一個 list，並且對每一個元素進行操作，這時候我們可能會需要撰寫一堆 <code>for</code> 迴圈還有 <code>if</code> 來得到我們要的資訊，這時我們就可以透過 List Comprehension 來讓我們的程式碼更加的簡潔。</p>
+<p>當我們今天要在一個 List 找出所有的偶數，我們可以透過以下的寫法來達成：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Bad Habit</span></span><br><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">even_numbers = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> numbers:</span><br><span class="line">    <span class="keyword">if</span> number % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        even_numbers.append(number)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(even_numbers) <span class="comment"># [2, 4]</span></span><br></pre></td></tr></table></figure></div>
+
+<p>透過 List Comprehension 我們可以把上面的程式碼簡化成以下的寫法：</p>
+
+  <div class="note p-4 mb-4 rounded-small green">
+    <p><strong>💡 TIP</strong></p>
+<p>這邊提供大家 List Comprehension 的記憶方法，那就是 <code>[目標 for 目標 in 來源 if 條件]</code>，這樣可以幫助大家更快理解以及上手。</p>
+
+  </div>
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Good Habit</span></span><br><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">even_numbers = [number <span class="keyword">for</span> number <span class="keyword">in</span> numbers <span class="keyword">if</span> number % <span class="number">2</span> == <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(even_numbers) <span class="comment"># [2, 4]</span></span><br></pre></td></tr></table></figure></div>
+
+<p>完成啦 🖐🏻！以上就是五個在 Python 中的好習慣，也是我在撰寫專案中一步一步累積到的經驗，有些也不是老師上課會教的內容，但是好習慣往往從日常最好養成，希望大家在未來的開發途中，也可以將這些技巧運用在專案中，讓程式碼更加的易讀並且更加的有組織性，未來也會持續分享更多的 Python 小技巧，請大家持續關注。</p>
+]]></content>
+      <categories>
+        <category>CodingTips</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Clean Code</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>我在 Conda 常用的指令</title>
     <url>/2023/07/30/dev-env/conda-dev-env/</url>
     <content><![CDATA[<blockquote>
@@ -57,7 +128,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#117;&#x67;&#x6f;&#x39;&#x37;&#48;&#x32;&#x31;&#55;&#64;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d;" >&#x68;&#117;&#x67;&#x6f;&#x39;&#x37;&#48;&#x32;&#x31;&#55;&#64;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#117;&#x67;&#111;&#57;&#55;&#48;&#x32;&#x31;&#x37;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;" >&#104;&#117;&#x67;&#111;&#57;&#55;&#48;&#x32;&#x31;&#x37;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -68,6 +139,218 @@
         <tag>venv</tag>
         <tag>conda</tag>
         <tag>tips</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Your life need to be MARKDOWNED: Essential Tips for Exceptional GitHub Writing</title>
+    <url>/2024/06/06/coding-tips/your-life-need-to-be-md/</url>
+    <content><![CDATA[<p>Since I frequently use <strong>Markdown</strong> to write technical documents and also love recording my life with it, I am currently developing a <a class="link"   href="https://code.visualstudio.com/" >VSCode <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> extension - <a class="link"   href="https://marketplace.visualstudio.com/items?itemName=1chooo.markdown-everything" >Markdown Everything <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>. The aim is to enhance the preview of Markdown rendering and meet my customized needs.</p>
+<p>Before <a class="link"   href="https://marketplace.visualstudio.com/items?itemName=1chooo.markdown-everything" >MARKDOWN EVERYTHING <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>, you need to know how to markdown. This document will help you to understand the basic markdown syntax.</p>
+<h2 id="Headers"><a href="#Headers" class="headerlink" title="Headers"></a>Headers</h2><p>To use the headers, you can use <code>#</code> to <code>######</code> for Header 1 to Header 6. And it will be helpful to understand the structure of the document.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/header.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># This is Header 1</span></span><br><span class="line"><span class="section">## This is Header 2</span></span><br><span class="line"><span class="section">### This is Header 3</span></span><br><span class="line"><span class="section">#### This is Header 4</span></span><br><span class="line"><span class="section">##### This is Header 5</span></span><br><span class="line"><span class="section">###### This is Header 6</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Emphasis"><a href="#Emphasis" class="headerlink" title="Emphasis"></a>Emphasis</h2><p>To make the words vividly, you can add the emphasis adaptively.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/emphasis.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="emphasis">*This text will be italic*</span> or <span class="emphasis">_This text will be italic_</span></span><br><span class="line"><span class="bullet">-</span> <span class="strong">**This text will be bold**</span> or <span class="strong">__This text will be bold__</span></span><br><span class="line"><span class="bullet">-</span> <span class="strong">**<span class="emphasis">*This text will be italic and bold*</span>**</span> or <span class="strong">__<span class="emphasis">_This text will be italic and bold_</span>__</span></span><br><span class="line"><span class="bullet">-</span> ~~This text will be strikethrough~~</span><br><span class="line"><span class="bullet">-</span> <span class="language-xml"><span class="tag">&lt;<span class="name">u</span>&gt;</span></span>This text will be underlined<span class="language-xml"><span class="tag">&lt;/<span class="name">u</span>&gt;</span></span></span><br><span class="line"><span class="bullet">-</span> <span class="language-xml"><span class="tag">&lt;<span class="name">sup</span>&gt;</span></span>This text will be superscript<span class="language-xml"><span class="tag">&lt;/<span class="name">sup</span>&gt;</span></span></span><br><span class="line"><span class="bullet">-</span> <span class="language-xml"><span class="tag">&lt;<span class="name">sub</span>&gt;</span></span>This text will be subscript<span class="language-xml"><span class="tag">&lt;/<span class="name">sub</span>&gt;</span></span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Lists"><a href="#Lists" class="headerlink" title="Lists"></a>Lists</h2><p>There are two types of lists, unordered and ordered. You can use <code>*</code> for unordered and <code>1.</code> for ordered. And you can use the combination of them.</p>
+<h3 id="Unordered"><a href="#Unordered" class="headerlink" title="Unordered"></a>Unordered</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/unordered.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="code">`* Item 1`</span></span><br><span class="line"><span class="bullet">-</span> <span class="code">`* Item 2`</span></span><br><span class="line"><span class="bullet">  -</span> <span class="code">`* Item 2a`</span></span><br><span class="line"><span class="bullet">  -</span> <span class="code">`* Item 2b`</span></span><br><span class="line"><span class="bullet">  -</span> <span class="code">`* Item 2c`</span></span><br><span class="line"><span class="bullet">    -</span> <span class="code">`* Item 2c1`</span></span><br><span class="line"><span class="bullet">    -</span> <span class="code">`* Item 2c2`</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Ordered"><a href="#Ordered" class="headerlink" title="Ordered"></a>Ordered</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/ordered.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1.</span> <span class="code">`1. Item 1`</span></span><br><span class="line"><span class="bullet">2.</span> <span class="code">`2. Item 2`</span></span><br><span class="line"><span class="bullet">   1.</span> <span class="code">`1. Item 2a`</span></span><br><span class="line"><span class="bullet">   2.</span> <span class="code">`2. Item 2b`</span></span><br><span class="line"><span class="bullet">   3.</span> <span class="code">`3. Item 2c`</span></span><br><span class="line"><span class="bullet">      1.</span> <span class="code">`1. Item 2c1`</span></span><br><span class="line"><span class="bullet">      2.</span> <span class="code">`2. Item 2c2`</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Combined"><a href="#Combined" class="headerlink" title="Combined"></a>Combined</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/combined.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1.</span> <span class="code">`1. Item 1`</span></span><br><span class="line"><span class="bullet">2.</span> <span class="code">`2. Item 2`</span></span><br><span class="line"><span class="bullet">   -</span> <span class="code">`* Item 2a`</span></span><br><span class="line"><span class="bullet">   -</span> <span class="code">`* Item 2b`</span></span><br><span class="line"><span class="bullet">   -</span> <span class="code">`* Item 2c`</span></span><br><span class="line"><span class="bullet">      1.</span> <span class="code">`1. Item 2c1`</span></span><br><span class="line"><span class="bullet">      2.</span> <span class="code">`2. Item 2c2`</span></span><br></pre></td></tr></table></figure></div>
+
+
+  <div class="note p-4 mb-4 rounded-small success">
+    <p><strong>💡 TIP</strong><br>To insert a line break within a text field, you can use the keyboard shortcut <code>Shift + Enter</code>. This allows you to start a new line without ending the current paragraph.</p>
+
+  </div>
+
+
+<h2 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h2><p>We can add links in markdown with the hyerlink.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/links.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">-</span> [<span class="string">Hugo&#x27;s Portfolio</span>](<span class="link">https://1chooo.com</span>)</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Hugo&#x27;s Blog</span>](<span class="link">https://blog.1chooo.com</span>)</span><br><span class="line"></span><br><span class="line">Sample: [<span class="string">alt text</span>](<span class="link">url</span>)</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h2><p>We can embed images in markdown with the file path or URL.</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/image.png"
+                      alt="Image Demo"
+                ><figcaption>Image Demo</figcaption></figure></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line">![<span class="string">Markdown Everything</span>](<span class="link">/images/post/coding-tips/your-life-need-to-be-md/demo.png</span>)</span><br><span class="line"></span><br><span class="line">Sample: ![<span class="string">alt text</span>](<span class="link">url</span>)</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>We can use inline code and code block in markdown to represent the code.</p>
+<h3 id="Inline-Code"><a href="#Inline-Code" class="headerlink" title="Inline Code"></a>Inline Code</h3><p>We can use the backticks <code>`</code> to create the inline code.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/inline-code.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="code">`print(&quot;Hello, World!&quot;)`</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Code-Block"><a href="#Code-Block" class="headerlink" title="Code Block"></a>Code Block</h3><p>With three backticks <code>```</code>, we can create the code block. Also, we can specify the language to highlight the syntax next to the first three backticks, such as <code>```python</code>.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/code-block.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="code">```python</span></span><br><span class="line"><span class="code">def foo() -&gt; str:</span></span><br><span class="line"><span class="code">    &quot;&quot;&quot;</span></span><br><span class="line"><span class="code">    This is a function to return the string &#x27;bar&#x27;</span></span><br><span class="line"><span class="code">    </span></span><br><span class="line"><span class="code">    Returns:</span></span><br><span class="line"><span class="code">        str: &#x27;bar&#x27;</span></span><br><span class="line"><span class="code">    &quot;&quot;&quot;</span></span><br><span class="line"><span class="code">    return &#x27;bar&#x27;</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="Quotes"><a href="#Quotes" class="headerlink" title="Quotes"></a>Quotes</h2><p>We can use the <code>&gt;</code> to create the quotes in markdown.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/quotes.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="quote">&gt; &quot;This is a quote.&quot;</span></span><br><span class="line"><span class="quote">&gt;</span></span><br><span class="line"><span class="quote">&gt; 1. Item 1</span></span><br><span class="line"><span class="quote">&gt; 2. Item 2</span></span><br><span class="line"><span class="quote">&gt;     - Item 2a</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; <span class="strong">**Python Hello World:**</span></span></span><br><span class="line"><span class="quote">&gt;</span></span><br><span class="line"><span class="quote">&gt; ```python</span></span><br><span class="line"><span class="quote">&gt; print(&#x27;Hello, World!&#x27;)</span></span><br><span class="line"><span class="quote">&gt; ```</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Alert"><a href="#Alert" class="headerlink" title="Alert"></a>Alert</h2><p>In GitHub, it supports the render of alerts. You can use the following syntax to create alerts, also known as callouts.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/alert.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="quote">&gt; [!NOTE]</span></span><br><span class="line"><span class="quote">&gt; Useful information that users should know, even when skimming content.</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; [!TIP]</span></span><br><span class="line"><span class="quote">&gt; Helpful advice for doing things better or more easily.</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; [!IMPORTANT]</span></span><br><span class="line"><span class="quote">&gt; Key information users need to know to achieve their goal.</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; [!WARNING]</span></span><br><span class="line"><span class="quote">&gt; Urgent info that needs immediate user attention to avoid problems.</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; [!CAUTION]</span></span><br><span class="line"><span class="quote">&gt; Advises about risks or negative outcomes of certain actions.</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Tables"><a href="#Tables" class="headerlink" title="Tables"></a>Tables</h2><p>You can create the tables to represent the data in markdown.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/table.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line">| Header 1 | Header 2 | Header 3 |</span><br><span class="line">| -------- | -------- | -------- |</span><br><span class="line">| Cell 1   | Cell 2   | Cell 3   |</span><br><span class="line">| Cell 4   | Cell 5   | Cell 6   |</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Ignore-Markdown"><a href="#Ignore-Markdown" class="headerlink" title="Ignore Markdown"></a>Ignore Markdown</h2><p>If you want to ignore the markdown syntax, you can use the backslash <code>\</code>. If you want to ignore the markdown syntax in the whole line, you can use the <code>&lt;!-- --&gt;</code> to comment out the line.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/ignore-md.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line">Let&#x27;s \<span class="emphasis">*\*</span>rename\<span class="emphasis">*\*</span> the variable \<span class="code">`var\`</span> in with \<span class="code">`var2\`</span> in the \<span class="code">`main.py\`</span></span><br><span class="line"></span><br><span class="line">&lt;!-- This content will not appear in the rendered Markdown --&gt;</span><br></pre></td></tr></table></figure></div>
+
+
+  <div class="note p-4 mb-4 rounded-small success">
+    <p><strong>💡 TIP</strong><br>Sometimes, I will use <code>HTML</code> to ignore the markdown syntax.</p>
+
+  </div>
+
+<h2 id="Footnotes"><a href="#Footnotes" class="headerlink" title="Footnotes"></a>Footnotes</h2><p>We can add the footnotes in markdown to provide additional information.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/footnotes.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line">This is Hugo Speaking 👨🏻‍💻 [^1], [^bignote], [^2]</span><br><span class="line"></span><br><span class="line">[<span class="symbol">^1</span>]: <span class="link">This is the first footnote.</span></span><br><span class="line"></span><br><span class="line">[<span class="string">^2</span>]: [<span class="string">Hugo</span>](<span class="link">https://1chooo.com</span>)</span><br><span class="line"></span><br><span class="line">[<span class="symbol">^bignote</span>]: <span class="link">Here&#x27;s one with multiple paragraphs and code.</span></span><br><span class="line"></span><br><span class="line"><span class="code">    Indent paragraphs to include them in the footnote.</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">    `&#123; my code &#125;`</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">    Add as many paragraphs as you like.</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">    ```python</span></span><br><span class="line"><span class="code">    def foo():</span></span><br><span class="line"><span class="code">        return &#x27;bar&#x27;</span></span><br><span class="line"><span class="code">    ```</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><p>In markdown, we can use the $\LaTeX$ syntax to represent the math equations. We can use the inline math with <code>$</code> and block math with <code>$$</code>.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/math.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">-</span> Inline Math: $E = mc^2$</span><br><span class="line"><span class="bullet">-</span> Block Math:</span><br><span class="line"></span><br><span class="line">$$</span><br><span class="line">\int<span class="emphasis">_&#123;-\infty&#125;^\infty e^&#123;-x^2&#125; dx = \sqrt&#123;\pi&#125;</span></span><br><span class="line"><span class="emphasis">$$</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">- Algorithm:</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">$$</span></span><br><span class="line"><span class="emphasis">\begin&#123;array&#125;&#123;l&#125;</span></span><br><span class="line"><span class="emphasis">\textbf&#123;Algorithm 1 QuickSort(array A, l, r)&#125; \\</span></span><br><span class="line"><span class="emphasis">1.\ \text&#123;if&#125;\ r - l + 1 \leq 1\ \text&#123;then&#125; \\</span></span><br><span class="line"><span class="emphasis">2.\ \quad \text&#123;return&#125; \\</span></span><br><span class="line"><span class="emphasis">3.\ \text&#123;end if&#125; \\</span></span><br><span class="line"><span class="emphasis">4.\ p = \text&#123;ChoicePivot&#125;(A, l, r) \\</span></span><br><span class="line"><span class="emphasis">5.\ \text&#123;Partition&#125;(A, p, l, r) \\</span></span><br><span class="line"><span class="emphasis">6.\ \text&#123;QuickSort&#125;(A, l, p - 1) \\</span></span><br><span class="line"><span class="emphasis">7.\ \text&#123;QuickSort&#125;(A, p + 1, r) \\</span></span><br><span class="line"><span class="emphasis">\end&#123;array&#125;</span></span><br><span class="line"><span class="emphasis">$$</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Expandable-Sections"><a href="#Expandable-Sections" class="headerlink" title="Expandable Sections"></a>Expandable Sections</h2><p>We can create the expandable sections in markdown to hide the content.</p>
+<details class="blue" data-header-exclude><summary><i class="fa-solid fa-chevron-right"></i>👉🏻 Click Me to expand </summary>
+              <div class='content'>
+              <p>Hi.</p><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/demo.png"
+                     
+                > </p>
+              </div>
+            </details>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/expandable-sections.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">details</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">summary</span>&gt;</span></span>👉🏻 Click Me to expand<span class="language-xml"><span class="tag">&lt;/<span class="name">summary</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">Hi.</span><br><span class="line"></span><br><span class="line">![](<span class="link">/images/post/coding-tips/your-life-need-to-be-md/demo.png</span>)</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">details</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">details</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">summary</span>&gt;</span></span>👉🏻 Click Me to expand<span class="language-xml"><span class="tag">&lt;/<span class="name">summary</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">Hi.</span><br><span class="line"></span><br><span class="line">![](<span class="link">/images/post/coding-tips/your-life-need-to-be-md/demo.png</span>)</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">details</span>&gt;</span></span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Chart"><a href="#Chart" class="headerlink" title="Chart"></a>Chart</h2><p>We can plot a variety of charts with <code>mermaid</code> syntax in markdown. Let’s take <code>flowchart</code> as an example. If you want more examples, you can visit the <a class="link"   href="https://mermaid.js.org/ecosystem/tutorials.html" >Mermaid.js - Tutorial <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/your-life-need-to-be-md/flowchart.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section">```mermaid</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"><span class="section">title: Multistep Processing of a User Program by Hugo</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line">flowchart-elk LR</span><br><span class="line"><span class="code">    A((Source Program)) --&gt; B[Compiler or Assembler]</span></span><br><span class="line"><span class="code">    B[Compiler or Assembler] --&gt; C((Object Module))</span></span><br><span class="line"><span class="code">    C((Object Module)) --&gt; E[Linkage Editor]</span></span><br><span class="line"><span class="code">    D((&quot;`Other </span></span><br><span class="line"><span class="code">    Object </span></span><br><span class="line"><span class="code">    Modules`&quot;)) --&gt; E[Linkage Editor]</span></span><br><span class="line"><span class="code">    H((System Library)) --&gt; G[Loader]</span></span><br><span class="line"><span class="code">    G[Loader] --&gt; J[in-memory binary memory image]</span></span><br><span class="line"><span class="code">    I((&quot;`Dynamically </span></span><br><span class="line"><span class="code">    Loaded </span></span><br><span class="line"><span class="code">    System </span></span><br><span class="line"><span class="code">    Library`&quot;)) --&gt; J[in-memory binary memory image]</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">    subgraph Compile Time</span></span><br><span class="line"><span class="code">        direction TB</span></span><br><span class="line"><span class="code">        B[Compiler or Assembler]</span></span><br><span class="line"><span class="code">    end</span></span><br><span class="line"><span class="code">    subgraph Load Time</span></span><br><span class="line"><span class="code">        direction TB</span></span><br><span class="line"><span class="code">        E[Linkage Editor] --&gt; F((Load Module))</span></span><br><span class="line"><span class="code">        F((Load Module)) --&gt; G[Loader]</span></span><br><span class="line"><span class="code">    end</span></span><br><span class="line"><span class="code">    subgraph Execution Time</span></span><br><span class="line"><span class="code">        direction TB</span></span><br><span class="line"><span class="code">        J[in-memory binary memory image]</span></span><br><span class="line"><span class="code">    end</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure></div>
+
+<p>Finally!!! These are all the tips I use to write proficient notes on GitHub with Markdown. I hope everyone can also MARK the wonderful content DOWN!</p>
+]]></content>
+      <categories>
+        <category>CodingTips</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+        <tag>GitHub</tag>
+        <tag>Technical Writing</tag>
       </tags>
   </entry>
   <entry>
@@ -272,77 +555,6 @@
       <tags>
         <tag>algorithm</tag>
         <tag>note</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>五個 Python 好習慣</title>
-    <url>/2024/03/16/coding-tips/python-5-tips/</url>
-    <content><![CDATA[<p>在學習基礎程式語言中，我們往往只在乎程式能不能運行，會不會基礎語法，然而很多人沒有累積到專案中實際撰寫的好習慣，因此這篇文章中，我將會討論五個 Python 的好習慣，並且這些事我已經落實在專案中的 Coding Style 希望透過這次的分享能夠幫助看到這邊的你寫出更好的程式碼。</p>
-<h3 id="1-if-name-main"><a href="#1-if-name-main" class="headerlink" title="1. if __name__ == &#39;__main__&#39;:"></a>1. <code>if __name__ == &#39;__main__&#39;:</code></h3><p>很多人可能在 review 別人的 Python 專案時，都會發現這個條件式。這個條件式的目的是為了確保這個檔案是被直接執行，而不是被 import 進其他檔案中，我們可以舉個例子來看看加上這個條件式的重要性。</p>
-<p>我們今天要設計一個 <code>api</code> 是 <code>get_name()</code>，透過呼叫這個 api 我們可以得到從資料庫中取得名字，我們先來看看以下的程式碼：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># api.py</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_name</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Getting name...&#x27;</span>)</span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hugo&#x27;</span>)</span><br><span class="line"></span><br><span class="line">get_name()</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># main.py</span></span><br><span class="line"><span class="keyword">from</span> api <span class="keyword">import</span> get_name</span><br><span class="line"></span><br><span class="line">get_name()</span><br></pre></td></tr></table></figure></div>
-
-<p>我們可以先觀察執行結果如以下：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Getting name...</span><br><span class="line">Hugo</span><br><span class="line">Getting name...</span><br><span class="line">Hugo</span><br></pre></td></tr></table></figure></div>
-
-<p>總共執行了兩次 <code>get_name()</code>，但是奇怪的是我們明明只有在 <code>main.py</code> 中呼叫了一次 <code>get_name()</code>，為什麼會執行兩次呢？</p>
-<p>因為我們在 <code>api.py</code> 中的 <code>get_name()</code> 是直接被執行的，所以當我們在 <code>main.py</code> 中 import <code>api.py</code> 時，<code>get_name()</code> 也會被執行一次。</p>
-<p>因此我們只要把 <code>main.py</code> 改成以下的程式碼就可以解決這個問題：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># main.py</span></span><br><span class="line"><span class="keyword">from</span> api <span class="keyword">import</span> get_name</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    get_name()</span><br></pre></td></tr></table></figure></div>
-
-<p>我們就會得到我們想要的執行結果如以下：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Getting name...</span><br><span class="line">Hugo</span><br></pre></td></tr></table></figure></div>
-
-<p>這樣就不會執行兩次 <code>get_name()</code> 了，也就是說在我們的程式碼中加上 <code>if __name__ == &#39;__main__&#39;:</code> 可以讓 Python 知道「只要」執行該檔案呼叫的程式碼，而不是從其他 import 進來的 function。</p>
-<h3 id="2-在-Python-中加入-main-function"><a href="#2-在-Python-中加入-main-function" class="headerlink" title="2. 在 Python 中加入 main() function"></a>2. 在 Python 中加入 <code>main()</code> function</h3><p>在很多程式語言中都有 <code>main()</code> function 的存在，像是 Go, C, C++, Java 等等。因為對於 Python 任何皆是物件的特性，沒有 <code>main()</code> function 也是可以執行的，不過加上 <code>main()</code> function 我們可以知道程式主要的進入點是什麼。</p>
-<p>我們可以從以下範例程式碼觀察，這是沒有加上 <code>main()</code> function 的程式碼：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Bad Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_hello</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_goodbye</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Goodbye&#x27;</span>)</span><br><span class="line"></span><br><span class="line">say_hello()</span><br><span class="line">say_goodbye()</span><br></pre></td></tr></table></figure></div>
-
-<p>另外我們可以看到搭配第一個好習慣的 <code>if __name__ == &#39;__main__&#39;:</code>，再加上宣告 <code>main()</code> function，這樣我們就可以確保程式的進入點是 <code>main()</code> function，另外我們也可以確認的是執行的是該檔案呼叫的 <code>main()</code> function。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Good Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_hello</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_goodbye</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Goodbye&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>() -&gt; <span class="literal">None</span>:</span><br><span class="line">    say_hello()</span><br><span class="line">    say_goodbye()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></div>
-
-<p>這時候大家可能會覺得我平常的寫法也不會出錯，何必多寫幾行呢？</p>
-<p>我們今天要假使當你的專案越來越大時，要在幾千行之中找到主程式運行的地方是一件非常困難的事情，因此加上 <code>main()</code> function 可以讓你的程式碼更加的有組織性，並且也可以更快地釐清 scripts 的運行目的。</p>
-<h3 id="3-避免過多的-if-巢狀判斷邏輯"><a href="#3-避免過多的-if-巢狀判斷邏輯" class="headerlink" title="3. 避免過多的 if 巢狀判斷邏輯"></a>3. 避免過多的 <code>if</code> 巢狀判斷邏輯</h3><p>假如我們今天上課只想點資工系的大三，我們要先判斷年級，再判斷系所，如果都有符合那就是點名成功，否則就是翹課出去爽了，我們可以看看這個 scenario 的實現：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Bad Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_attendance</span>(<span class="params">grade: <span class="built_in">int</span>, department: <span class="built_in">str</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">if</span> grade == <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">if</span> department == <span class="string">&#x27;CS&#x27;</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Attendance success&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;You are not in CS department&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;You are not in 3rd grade&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>這樣的寫法看起來沒有什麼問題，但是當我們的判斷條件越來越多時，這樣的寫法會讓我們的程式碼變得非常難以閱讀，我們可以透過以下的寫法來改善：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Good Habit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_year_three</span>(<span class="params">grade: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">    <span class="keyword">return</span> grade == <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_cs_major</span>(<span class="params">department: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">    <span class="keyword">return</span> department == <span class="string">&#x27;CS&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_attendance</span>(<span class="params">grade: <span class="built_in">int</span>, department: <span class="built_in">str</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">if</span> is_year_three(grade) <span class="keyword">and</span> is_cs_major(department):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Attendance success&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;You are not in the class&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>如此我們可以把條件給分開成不同的判斷，這樣我們如果要修改條件的話也可以直接從獨立出來的 function 進行修改，而不用去修改原本的程式碼，同時也避免同一個 function 中有過多的 <code>if</code> 巢狀判斷邏輯，造成閱讀上的困難。</p>
-<h3 id="4-為變數加上型別提示"><a href="#4-為變數加上型別提示" class="headerlink" title="4. 為變數加上型別提示"></a>4. 為變數加上型別提示</h3><p>Python 是個不用宣告型別的程式語言，這樣的特性讓 Python 的程式碼變得非常的靈活，但是當我們接手他人的專案又或是需要快速理解程式邏輯時，我們很難一眼就看出這個變數是什麼型別，這時候我們可以透過型別提示來讓程式碼更加的易讀。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">number1: <span class="built_in">int</span> = <span class="number">10</span></span><br><span class="line">number2: <span class="built_in">int</span> = <span class="string">&#x27;20&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(number1)  <span class="comment"># 10</span></span><br><span class="line"><span class="built_in">print</span>(number2)  <span class="comment"># 20</span></span><br></pre></td></tr></table></figure></div>
-
-<p>以上的範例中，我們可以看到 <code>number1</code> 和 <code>number2</code> 都有加上型別提示，都是 <code>int</code>，不過我們可以看到 <code>number2</code> 中，我們賦予的內容是 <code>&#39;20&#39;</code>，這個作法在 Python 中我們單純只是 print 出來的話是不會有問題的，但是如果我們要進行數學運算的話就會出現問題，這時候我們就可以透過型別提示來瞭解該變數該賦予的類型，以免在後續使用出問題。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">number1: <span class="built_in">int</span> = <span class="number">10</span></span><br><span class="line">number2: <span class="built_in">int</span> = <span class="string">&#x27;20&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(number1 + number2)</span><br></pre></td></tr></table></figure></div>
-
-<p>錯誤訊息會如以下，會發現 <code>number1</code> 和 <code>number2</code> 的型別不同，所以無法進行運算，也就是說當初我們在宣告變數時加上型別提示，可以讓我們避免做出型別混用的錯誤。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;hugo/is/great/developer/python_tip_04.py&quot;</span>, line 4, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="built_in">print</span>(number1 + number2)</span><br><span class="line">          ~~~~~~~~^~~~~~~~~</span><br><span class="line">TypeError: unsupported operand <span class="built_in">type</span>(s) <span class="keyword">for</span> +: <span class="string">&#x27;int&#x27;</span> and <span class="string">&#x27;str&#x27;</span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="5-List-Comprehension"><a href="#5-List-Comprehension" class="headerlink" title="5. List Comprehension"></a>5. List Comprehension</h3><p>我們在撰寫程式時，常常會需要遍歷一個 list，並且對每一個元素進行操作，這時候我們可能會需要撰寫一堆 <code>for</code> 迴圈還有 <code>if</code> 來得到我們要的資訊，這時我們就可以透過 List Comprehension 來讓我們的程式碼更加的簡潔。</p>
-<p>當我們今天要在一個 List 找出所有的偶數，我們可以透過以下的寫法來達成：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Bad Habit</span></span><br><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">even_numbers = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> numbers:</span><br><span class="line">    <span class="keyword">if</span> number % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        even_numbers.append(number)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(even_numbers) <span class="comment"># [2, 4]</span></span><br></pre></td></tr></table></figure></div>
-
-<p>透過 List Comprehension 我們可以把上面的程式碼簡化成以下的寫法：</p>
-
-  <div class="note p-4 mb-4 rounded-small green">
-    <p><strong>💡 TIP</strong></p>
-<p>這邊提供大家 List Comprehension 的記憶方法，那就是 <code>[目標 for 目標 in 來源 if 條件]</code>，這樣可以幫助大家更快理解以及上手。</p>
-
-  </div>
-
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Good Habit</span></span><br><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">even_numbers = [number <span class="keyword">for</span> number <span class="keyword">in</span> numbers <span class="keyword">if</span> number % <span class="number">2</span> == <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(even_numbers) <span class="comment"># [2, 4]</span></span><br></pre></td></tr></table></figure></div>
-
-<p>完成啦 🖐🏻！以上就是五個在 Python 中的好習慣，也是我在撰寫專案中一步一步累積到的經驗，有些也不是老師上課會教的內容，但是好習慣往往從日常最好養成，希望大家在未來的開發途中，也可以將這些技巧運用在專案中，讓程式碼更加的易讀並且更加的有組織性，未來也會持續分享更多的 Python 小技巧，請大家持續關注。</p>
-]]></content>
-      <categories>
-        <category>CodingTips</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Clean Code</tag>
       </tags>
   </entry>
   <entry>
@@ -591,8 +803,8 @@
         <category>DevOps</category>
       </categories>
       <tags>
-        <tag>Git</tag>
         <tag>GitHub</tag>
+        <tag>Git</tag>
         <tag>SSH Key</tag>
       </tags>
   </entry>
