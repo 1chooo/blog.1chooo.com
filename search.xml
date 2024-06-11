@@ -1,6 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>我在 Conda 常用的指令</title>
+    <url>/2023/07/30/dev-env/conda-dev-env/</url>
+    <content><![CDATA[<blockquote>
+<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
+</blockquote>
+<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
+<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
+<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
+
+<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*HINgY65FwzLssf65NsA8tQ.png"
+                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
+                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
+<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
+<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
+<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
+<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
+<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#x68;&#117;&#x67;&#x6f;&#57;&#x37;&#48;&#x32;&#x31;&#55;&#64;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;" >&#x68;&#117;&#x67;&#x6f;&#57;&#x37;&#48;&#x32;&#x31;&#55;&#64;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DevEnv</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>venv</tag>
+        <tag>conda</tag>
+        <tag>tips</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在 Mac 安裝 Node.js &amp; NPM</title>
+    <url>/2024/01/03/dev-env/mac-install-nodejs-npm/</url>
+    <content><![CDATA[<p>新年剛好把 MacOS 重灌，讓這台老 macbook pro 2020 重獲新生，也藉此機會重新建置開發環境。</p>
+<p>因此我們將示範如何在 Mac 安裝 <code>Node.js</code> 以及 <code>NPM</code>，其實直接從官網安裝 <code>Node.js</code> 時就會同時安裝 <code>NPM</code>，因此我將以 Mac 作為示範如何在成功安裝 <code>Node.js</code>，並且展示成功結果！</p>
+<p>👉🏻 <a class="link"   href="https://nodejs.org/en?source=post_page-----3d7101d998f4--------------------------------" >Node.js 官網連結 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h4 id="下載-LTS-的版本"><a href="#下載-LTS-的版本" class="headerlink" title="下載 LTS 的版本"></a>下載 LTS 的版本</h4><p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*aREalwTkLM8kSMAokcCBvw.png"
+                      alt="選擇 LTS 版本"
+                ><figcaption>選擇 LTS 版本</figcaption></figure></p>
+<h4 id="點擊下載的-node-vx-x-x-pkg-檔安裝-Node-js"><a href="#點擊下載的-node-vx-x-x-pkg-檔安裝-Node-js" class="headerlink" title="點擊下載的 node-vx.x.x.pkg 檔安裝 Node.js"></a>點擊下載的 <code>node-vx.x.x.pkg</code> 檔安裝 <code>Node.js</code></h4><p>緊接著就是點擊 MacOS 安裝的一堆確認（建議安裝時可以看一下細節！）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*dAvr0F9ceBHDgU7PCeDGtA.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*62YZY321G_LxvvFvHNiblA.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*jpdJaKgGK14D8H1ypSuQ3g.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*PNhmDNjLvukKMrVKwQhjRg.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*F8rHXI-ZTIJkwpb9G6aGWw.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*IaKki0SZuybAVHPCev-G-g.png"
+                     
+                ></p>
+<h4 id="成功安裝後我們回到-Terminal"><a href="#成功安裝後我們回到-Terminal" class="headerlink" title="成功安裝後我們回到 Terminal"></a>成功安裝後我們回到 Terminal</h4><p>安裝成功後，我們可以透過 Terminal 使用 <code>which</code> 確認是否安裝成功，可以試著在 Terminal 輸入以下命令：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">which</span> npm</span><br><span class="line">/usr/local/bin/npm</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">which</span> node</span><br><span class="line">/usr/local/bin/node</span><br></pre></td></tr></table></figure></div>
+
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*wWCsxVfJS98KftYNcypWhg.png"
+                      alt="有成功回傳路徑就是成功！"
+                ><figcaption>有成功回傳路徑就是成功！</figcaption></figure></p>
+<h4 id="輸入-node-npm-Command"><a href="#輸入-node-npm-Command" class="headerlink" title="輸入 node &amp; npm Command"></a>輸入 node &amp; npm Command</h4><p>我們可以就在 Terminal 做 <code>node</code> &amp; <code>npm</code> 的 command 啦！</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*P_rTeMsh4tUrbfbdR4KkNw.png"
+                      alt="node command"
+                ><figcaption>node command</figcaption></figure></p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*YGQ7GD9BDgk49o0Y14hItQ.png"
+                      alt="npm command"
+                ><figcaption>npm command</figcaption></figure></p>
+<h4 id="啟動一個-web-server"><a href="#啟動一個-web-server" class="headerlink" title="啟動一個 web server"></a>啟動一個 web server</h4><p>我們可以另外寫一個 web server 的 app 來測試一下，這邊我們使用 <code>http</code> 來啟動一個 web server，實作程式碼如下：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// server.js</span></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="property">statusCode</span> = <span class="number">200</span>;</span><br><span class="line">  res.<span class="title function_">setHeader</span>(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;text/plain&#x27;</span>);</span><br><span class="line">  res.<span class="title function_">end</span>(<span class="string">&#x27;Hello World\n&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="string">&#x27;localhost&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Server running at http://localhost:3000/&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+
+<p>接著我們透過 <code>node</code> 來啟動這個 web server，輸入以下命令：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ node server.js</span><br><span class="line">Server running at http://localhost:3000/</span><br></pre></td></tr></table></figure></div>
+
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*RKp-Y_Tet-mljSanTCKfcw.png"
+                      alt="run the server"
+                ><figcaption>run the server</figcaption></figure></p>
+<p>接著我們前往瀏覽器點開 <code>http://localhost:3000/</code>，就可以看到 <code>Hello World</code> 的字串啦！結果如下圖，如果有看到 <code>Hello World</code> 就代表我們完全成功啦！</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*1JkRsWl-n7Gex7hsnbb7xA.png"
+                      alt="Hello World !!!"
+                ><figcaption>Hello World !!!</figcaption></figure></p>
+<p>這樣就大功告成啦！祝大家開發順利！也祝大家新年快樂！</p>
+<p>同場加映如何在 MacOS 上撰寫 TypeScripts 的 React</p>
+<h4 id="Install-the-react-native-CLI"><a href="#Install-the-react-native-CLI" class="headerlink" title="Install the react-native CLI"></a>Install the react-native CLI</h4><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm i -g react-native-cli</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>DevEnv</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>npm</tag>
+        <tag>Mac</tag>
+        <tag>Install</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何解決 npm install 時報錯 - Error: EACCES: permission denied</title>
+    <url>/2024/05/15/dev-env/node-access-error/</url>
+    <content><![CDATA[<p>在我們安裝 npm 套件的時候，有時候會遇到 <code>EACCES: permission denied</code> 的錯誤，這是因為我們沒有權限寫入到指定的目錄，我們會看到以下錯誤（以安裝 aws-cdk 為例）：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g aws-cdk</span><br><span class="line"></span><br><span class="line">npm ERR! code EACCES</span><br><span class="line">npm ERR! syscall <span class="built_in">mkdir</span></span><br><span class="line">npm ERR! path /usr/local/lib/node_modules/aws-cdk</span><br><span class="line">npm ERR! errno -13</span><br><span class="line">npm ERR! Error: EACCES: permission denied, <span class="built_in">mkdir</span> <span class="string">&#x27;/usr/local/lib/node_modules/aws-cdk&#x27;</span></span><br><span class="line">npm ERR!  [Error: EACCES: permission denied, <span class="built_in">mkdir</span> <span class="string">&#x27;/usr/local/lib/node_modules/aws-cdk&#x27;</span>] &#123;</span><br><span class="line">npm ERR!   errno: -13,</span><br><span class="line">npm ERR!   code: <span class="string">&#x27;EACCES&#x27;</span>,</span><br><span class="line">npm ERR!   syscall: <span class="string">&#x27;mkdir&#x27;</span>,</span><br><span class="line">npm ERR!   path: <span class="string">&#x27;/usr/local/lib/node_modules/aws-cdk&#x27;</span></span><br><span class="line">npm ERR! &#125;</span><br><span class="line">npm ERR!</span><br><span class="line">npm ERR! The operation was rejected by your operating system.</span><br><span class="line">npm ERR! It is likely you <span class="keyword">do</span> not have the permissions to access this file as the current user</span><br><span class="line">npm ERR!</span><br><span class="line">npm ERR! If you believe this might be a permissions issue, please double-check the</span><br><span class="line">npm ERR! permissions of the file and its containing directories, or try running</span><br><span class="line">npm ERR! the <span class="built_in">command</span> again as root/Administrator.</span><br><span class="line"></span><br><span class="line">npm ERR! A complete <span class="built_in">log</span> of this run can be found <span class="keyword">in</span>: <span class="variable">$USER</span>/.npm/_logs/*.<span class="built_in">log</span></span><br></pre></td></tr></table></figure></div>
+
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-env/node-access-error/01.png"
+                      alt="EACCES: permission denied"
+                ><figcaption>EACCES: permission denied</figcaption></figure></p>
+<p>會發生的原因是因為我們沒有權限寫入到 <code>/usr/local/lib/node_modules</code> 目錄，這時候我們可以透過以下方式解決：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo <span class="built_in">chown</span> -R $(<span class="built_in">whoami</span>) /usr/local/lib/node_modules</span><br></pre></td></tr></table></figure></div>
+
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-env/node-access-error/02.png"
+                      alt="Add -R access"
+                ><figcaption>Add -R access</figcaption></figure></p>
+<p>我們在當前的 user 下，將 <code>/usr/local/lib/node_modules</code> 目錄的權限加上當前 user 的權限，這樣我們就可以在安裝 npm 套件的時候，不會遇到 <code>EACCES: permission denied</code> 的錯誤。</p>
+<p>如此我們再重新輸入 <code>npm install</code> 的指令，就可以正常安裝套件了。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g aws-cdk</span><br><span class="line"></span><br><span class="line">added 2 packages <span class="keyword">in</span> 1s</span><br></pre></td></tr></table></figure></div>
+
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-env/node-access-error/03.png"
+                      alt="Install npm package again. It WORKED !!!"
+                ><figcaption>Install npm package again. It WORKED !!!</figcaption></figure></p>
+<p>如果我們不是要安裝 global 的套件，而是解決該專案當前的權限問題，我們可以透過以下方式解決：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo <span class="built_in">chown</span> -R $(<span class="built_in">whoami</span>) ~/.npm</span><br></pre></td></tr></table></figure></div>
+
+<p>會導致這個問題是因為我們在安裝時 root 與 user 之間的權限問題，透過這個方式，我們就可以解決這個問題，祝大家在安裝 npm 套件的時候都能順利不衝突！</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a class="link"   href="https://segmentfault.com/a/1190000018660227" >npm 在安装的时候提示 没有权限操作的解决办法 Error: EACCES: permission denied <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DevEnv</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>npm</tag>
+        <tag>permission</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>五個 Python 好習慣</title>
     <url>/2024/03/16/coding-tips/python-5-tips/</url>
     <content><![CDATA[<p>在學習基礎程式語言中，我們往往只在乎程式能不能運行，會不會基礎語法，然而很多人沒有累積到專案中實際撰寫的好習慣，因此這篇文章中，我將會討論五個 Python 的好習慣，並且這些事我已經落實在專案中的 Coding Style 希望透過這次的分享能夠幫助看到這邊的你寫出更好的程式碼。</p>
@@ -284,226 +507,54 @@
       </tags>
   </entry>
   <entry>
-    <title>我在 Conda 常用的指令</title>
-    <url>/2023/07/30/dev-env/conda-dev-env/</url>
-    <content><![CDATA[<blockquote>
-<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
-</blockquote>
-<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
-<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
-<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
-
-<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
+    <title>演算法第一講——Euclid Algorithm 歐幾里得演算法</title>
+    <url>/2023/07/30/ds-alg/euclid/</url>
+    <content><![CDATA[<p>大家在過往學習的經驗中，可能都有聽過歐幾里德這名鼎鼎大名的人物，是位在希臘化時期的數學家，有著著名著作「幾何原本」，在數學領域中有著極大化的貢獻，為現今眾多數學家所認同。</p>
+<p>然而在古希臘的時代的數學家竟然能跟演算法畫上關係，畢竟演算法便是透過有限的步驟中，將給定的輸入做出最有效的解決，並且在執行玩這些有效的步驟中會有正當的終止，產生最後輸出結果，而歐幾里德演算法得以詮釋這些過程，歐幾里德演算法的問題是要在給定的兩個正整數 m 和 n 中找出兩束的最大公因數，因此我們可以列出以下解題步驟：</p>
+<ol>
+<li>找出餘數 (m % n)</li>
+<li>判斷餘數是否為零 (if (r &#x3D; 0) return n)</li>
+<li>被除數與餘數互換 (swap(m, n))</li>
+</ol>
+<p>那看到這邊可能人會有很多有很熟悉的感覺，畢竟我們曾經學習過求公因數的方法有：列舉法、質因數分解、短除法等⋯⋯那其中還有一個有趣的方法便是「輾轉相除法」，也就是我們今天要討論到的歐幾里德演算法，然而所謂的「輾轉」是什麼呢？可能是 Debug 睡不著的時候吧！哈！不過這樣也說得通，輾轉就是曲折的、不斷的過程，而我們正是透過這樣的特性來達成我們的演算法。</p>
 <p><figure class="image-caption"><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*HINgY65FwzLssf65NsA8tQ.png"
-                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
-                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
-<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
-<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
-<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
-<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
-<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#103;&#x6f;&#x39;&#x37;&#x30;&#x32;&#49;&#55;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#x6d;" >&#104;&#x75;&#103;&#x6f;&#x39;&#x37;&#x30;&#x32;&#49;&#55;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DevEnv</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>venv</tag>
-        <tag>conda</tag>
-        <tag>tips</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何在 Mac 安裝 Node.js &amp; NPM</title>
-    <url>/2024/01/03/dev-env/mac-install-nodejs-npm/</url>
-    <content><![CDATA[<p>新年剛好把 MacOS 重灌，讓這台老 macbook pro 2020 重獲新生，也藉此機會重新建置開發環境。</p>
-<p>因此我們將示範如何在 Mac 安裝 <code>Node.js</code> 以及 <code>NPM</code>，其實直接從官網安裝 <code>Node.js</code> 時就會同時安裝 <code>NPM</code>，因此我將以 Mac 作為示範如何在成功安裝 <code>Node.js</code>，並且展示成功結果！</p>
-<p>👉🏻 <a class="link"   href="https://nodejs.org/en?source=post_page-----3d7101d998f4--------------------------------" >Node.js 官網連結 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h4 id="下載-LTS-的版本"><a href="#下載-LTS-的版本" class="headerlink" title="下載 LTS 的版本"></a>下載 LTS 的版本</h4><p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*aREalwTkLM8kSMAokcCBvw.png"
-                      alt="選擇 LTS 版本"
-                ><figcaption>選擇 LTS 版本</figcaption></figure></p>
-<h4 id="點擊下載的-node-vx-x-x-pkg-檔安裝-Node-js"><a href="#點擊下載的-node-vx-x-x-pkg-檔安裝-Node-js" class="headerlink" title="點擊下載的 node-vx.x.x.pkg 檔安裝 Node.js"></a>點擊下載的 <code>node-vx.x.x.pkg</code> 檔安裝 <code>Node.js</code></h4><p>緊接著就是點擊 MacOS 安裝的一堆確認（建議安裝時可以看一下細節！）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*dAvr0F9ceBHDgU7PCeDGtA.png"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*62YZY321G_LxvvFvHNiblA.png"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*jpdJaKgGK14D8H1ypSuQ3g.png"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*PNhmDNjLvukKMrVKwQhjRg.png"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*F8rHXI-ZTIJkwpb9G6aGWw.png"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*IaKki0SZuybAVHPCev-G-g.png"
-                     
-                ></p>
-<h4 id="成功安裝後我們回到-Terminal"><a href="#成功安裝後我們回到-Terminal" class="headerlink" title="成功安裝後我們回到 Terminal"></a>成功安裝後我們回到 Terminal</h4><p>安裝成功後，我們可以透過 Terminal 使用 <code>which</code> 確認是否安裝成功，可以試著在 Terminal 輸入以下命令：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">which</span> npm</span><br><span class="line">/usr/local/bin/npm</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">which</span> node</span><br><span class="line">/usr/local/bin/node</span><br></pre></td></tr></table></figure></div>
-
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ZtKWx4DZ0FY6SBSctDWtUQ.png"
+                      alt="輾轉相除法直式"
+                ><figcaption>輾轉相除法直式</figcaption></figure></p>
 <p><figure class="image-caption"><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*wWCsxVfJS98KftYNcypWhg.png"
-                      alt="有成功回傳路徑就是成功！"
-                ><figcaption>有成功回傳路徑就是成功！</figcaption></figure></p>
-<h4 id="輸入-node-npm-Command"><a href="#輸入-node-npm-Command" class="headerlink" title="輸入 node &amp; npm Command"></a>輸入 node &amp; npm Command</h4><p>我們可以就在 Terminal 做 <code>node</code> &amp; <code>npm</code> 的 command 啦！</p>
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png"
+                      alt="輾轉過程"
+                ><figcaption>輾轉過程</figcaption></figure></p>
 <p><figure class="image-caption"><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*P_rTeMsh4tUrbfbdR4KkNw.png"
-                      alt="node command"
-                ><figcaption>node command</figcaption></figure></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*YGQ7GD9BDgk49o0Y14hItQ.png"
-                      alt="npm command"
-                ><figcaption>npm command</figcaption></figure></p>
-<h4 id="啟動一個-web-server"><a href="#啟動一個-web-server" class="headerlink" title="啟動一個 web server"></a>啟動一個 web server</h4><p>我們可以另外寫一個 web server 的 app 來測試一下，這邊我們使用 <code>http</code> 來啟動一個 web server，實作程式碼如下：</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// server.js</span></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="property">statusCode</span> = <span class="number">200</span>;</span><br><span class="line">  res.<span class="title function_">setHeader</span>(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;text/plain&#x27;</span>);</span><br><span class="line">  res.<span class="title function_">end</span>(<span class="string">&#x27;Hello World\n&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="string">&#x27;localhost&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Server running at http://localhost:3000/&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png"
+                      alt="過程以長方形圖是呈現"
+                ><figcaption>過程以長方形圖是呈現</figcaption></figure></p>
+<p>透過上方圖示我們便可看出輾轉的真正特性，透過互換且不斷地進行運算，已達到我們期望的結果，也可以從上圖中透過切割長方形的模式，在長方形中找出能切割的最大面積正方形，以此將整個長方形變成有正方形所組成的型態，這又可以回歸到上述所歸納的兩個解：</p>
+<ol>
+<li>餘數為 0 -&gt; 完整地切割</li>
+<li>餘數為 1 -&gt; 無法完整地切割</li>
+</ol>
+<p>想必讀到這裡一定更能理解輾轉相除法，接下來我們進行實作吧！</p>
+<h3 id="以下我們展示虛擬碼-Pseudocode"><a href="#以下我們展示虛擬碼-Pseudocode" class="headerlink" title="以下我們展示虛擬碼 (Pseudocode)"></a>以下我們展示虛擬碼 (Pseudocode)</h3><div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line">Algorithm: <span class="built_in">EuclidGCD</span>(m, n)</span><br><span class="line">Input: Two integer m <span class="keyword">and</span> n.</span><br><span class="line">Output: The greatest common factor of m <span class="keyword">and</span> n.</span><br><span class="line">r &lt;- m % n</span><br><span class="line"><span class="keyword">while</span> r != <span class="number">0</span> <span class="keyword">do</span></span><br><span class="line">    m &lt;- n</span><br><span class="line">    n &lt;- r</span><br><span class="line">    r &lt;- m % n</span><br><span class="line"><span class="keyword">return</span> n</span><br><span class="line">以下我們使用 cpp 實作</span><br><span class="line"><span class="type">int</span> <span class="built_in">EuclidGCD</span>(<span class="type">int</span> m, <span class="type">int</span> n) &#123;</span><br><span class="line">    <span class="type">int</span> r = m % n;</span><br><span class="line">    <span class="keyword">while</span> (r != <span class="number">0</span>) &#123;</span><br><span class="line">        m = n;</span><br><span class="line">        n = r;</span><br><span class="line">        r = m % n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<p>接著我們透過 <code>node</code> 來啟動這個 web server，輸入以下命令：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ node server.js</span><br><span class="line">Server running at http://localhost:3000/</span><br></pre></td></tr></table></figure></div>
-
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*RKp-Y_Tet-mljSanTCKfcw.png"
-                      alt="run the server"
-                ><figcaption>run the server</figcaption></figure></p>
-<p>接著我們前往瀏覽器點開 <code>http://localhost:3000/</code>，就可以看到 <code>Hello World</code> 的字串啦！結果如下圖，如果有看到 <code>Hello World</code> 就代表我們完全成功啦！</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*1JkRsWl-n7Gex7hsnbb7xA.png"
-                      alt="Hello World !!!"
-                ><figcaption>Hello World !!!</figcaption></figure></p>
-<p>這樣就大功告成啦！祝大家開發順利！也祝大家新年快樂！</p>
-<p>同場加映如何在 MacOS 上撰寫 TypeScripts 的 React</p>
-<h4 id="Install-the-react-native-CLI"><a href="#Install-the-react-native-CLI" class="headerlink" title="Install the react-native CLI"></a>Install the react-native CLI</h4><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm i -g react-native-cli</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>DevEnv</category>
-      </categories>
-      <tags>
-        <tag>Node</tag>
-        <tag>npm</tag>
-        <tag>Mac</tag>
-        <tag>Install</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何解決 npm install 時報錯 - Error: EACCES: permission denied</title>
-    <url>/2024/05/15/dev-env/node-access-error/</url>
-    <content><![CDATA[<p>在我們安裝 npm 套件的時候，有時候會遇到 <code>EACCES: permission denied</code> 的錯誤，這是因為我們沒有權限寫入到指定的目錄，我們會看到以下錯誤（以安裝 aws-cdk 為例）：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g aws-cdk</span><br><span class="line"></span><br><span class="line">npm ERR! code EACCES</span><br><span class="line">npm ERR! syscall <span class="built_in">mkdir</span></span><br><span class="line">npm ERR! path /usr/local/lib/node_modules/aws-cdk</span><br><span class="line">npm ERR! errno -13</span><br><span class="line">npm ERR! Error: EACCES: permission denied, <span class="built_in">mkdir</span> <span class="string">&#x27;/usr/local/lib/node_modules/aws-cdk&#x27;</span></span><br><span class="line">npm ERR!  [Error: EACCES: permission denied, <span class="built_in">mkdir</span> <span class="string">&#x27;/usr/local/lib/node_modules/aws-cdk&#x27;</span>] &#123;</span><br><span class="line">npm ERR!   errno: -13,</span><br><span class="line">npm ERR!   code: <span class="string">&#x27;EACCES&#x27;</span>,</span><br><span class="line">npm ERR!   syscall: <span class="string">&#x27;mkdir&#x27;</span>,</span><br><span class="line">npm ERR!   path: <span class="string">&#x27;/usr/local/lib/node_modules/aws-cdk&#x27;</span></span><br><span class="line">npm ERR! &#125;</span><br><span class="line">npm ERR!</span><br><span class="line">npm ERR! The operation was rejected by your operating system.</span><br><span class="line">npm ERR! It is likely you <span class="keyword">do</span> not have the permissions to access this file as the current user</span><br><span class="line">npm ERR!</span><br><span class="line">npm ERR! If you believe this might be a permissions issue, please double-check the</span><br><span class="line">npm ERR! permissions of the file and its containing directories, or try running</span><br><span class="line">npm ERR! the <span class="built_in">command</span> again as root/Administrator.</span><br><span class="line"></span><br><span class="line">npm ERR! A complete <span class="built_in">log</span> of this run can be found <span class="keyword">in</span>: <span class="variable">$USER</span>/.npm/_logs/*.<span class="built_in">log</span></span><br></pre></td></tr></table></figure></div>
-
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/dev-env/node-access-error/01.png"
-                      alt="EACCES: permission denied"
-                ><figcaption>EACCES: permission denied</figcaption></figure></p>
-<p>會發生的原因是因為我們沒有權限寫入到 <code>/usr/local/lib/node_modules</code> 目錄，這時候我們可以透過以下方式解決：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo <span class="built_in">chown</span> -R $(<span class="built_in">whoami</span>) /usr/local/lib/node_modules</span><br></pre></td></tr></table></figure></div>
-
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/dev-env/node-access-error/02.png"
-                      alt="Add -R access"
-                ><figcaption>Add -R access</figcaption></figure></p>
-<p>我們在當前的 user 下，將 <code>/usr/local/lib/node_modules</code> 目錄的權限加上當前 user 的權限，這樣我們就可以在安裝 npm 套件的時候，不會遇到 <code>EACCES: permission denied</code> 的錯誤。</p>
-<p>如此我們再重新輸入 <code>npm install</code> 的指令，就可以正常安裝套件了。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g aws-cdk</span><br><span class="line"></span><br><span class="line">added 2 packages <span class="keyword">in</span> 1s</span><br></pre></td></tr></table></figure></div>
-
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/dev-env/node-access-error/03.png"
-                      alt="Install npm package again. It WORKED !!!"
-                ><figcaption>Install npm package again. It WORKED !!!</figcaption></figure></p>
-<p>如果我們不是要安裝 global 的套件，而是解決該專案當前的權限問題，我們可以透過以下方式解決：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo <span class="built_in">chown</span> -R $(<span class="built_in">whoami</span>) ~/.npm</span><br></pre></td></tr></table></figure></div>
-
-<p>會導致這個問題是因為我們在安裝時 root 與 user 之間的權限問題，透過這個方式，我們就可以解決這個問題，祝大家在安裝 npm 套件的時候都能順利不衝突！</p>
+<p>那上面我們討論到歐幾里德演算法的範疇實屬理論，那實際用途到底可以實現什麼情形呢？在分析這道問號題之前，我們可以再回想一下此演算法，最核心的就是要找出最大公因數，並且在由大化小的過程中，可以達成更有效率地轉換，畢竟是透過一系列輾轉的過程，所以其實輾轉相除法的應用層面非常廣，可以在密碼學、數學、計算機科學等⋯⋯領域做使用，甚至在音樂方面都能有實際上的應用，若想知道更多，網路上其實還有更多有趣的範例等著你們去挖掘呢！（維基百科下方的參考連結有超多有趣的例子！）</p>
 <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a class="link"   href="https://segmentfault.com/a/1190000018660227" >npm 在安装的时候提示 没有权限操作的解决办法 Error: EACCES: permission denied <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://zhuanlan.zhihu.com/p/56528787" >欧几里得与《几何原本》(上篇） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://jason-chen-1992.weebly.com/home/-euclidean-algorithm" >【演算法】歐幾里得算法 Euclidean Algorithm <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
-        <category>DevEnv</category>
+        <category>Algorithm</category>
       </categories>
       <tags>
-        <tag>Node</tag>
-        <tag>npm</tag>
-        <tag>permission</tag>
+        <tag>algorithm</tag>
+        <tag>note</tag>
       </tags>
   </entry>
   <entry>
@@ -578,118 +629,6 @@
       </tags>
   </entry>
   <entry>
-    <title>AWS: Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)</title>
-    <url>/2024/03/22/dev-ops/aws-security-group-nacl/</url>
-    <content><![CDATA[<p>During a meeting, we explored a scenario: “If we disable the inbound rule of the Network Access Control List (NACL), the connection will be interrupted. However, if we turn off inbound traffic in the Security Group, would we still be able to connect?” Surprisingly, the answer is YES. The rationale behind this phenomenon will be elaborated on in this article.</p>
-<p>We can discuss the differences between Security Group and Network Access Control List (NACL) from various perspectives. The primary difference between the two is:</p>
-<blockquote>
-<p>The Security Group acts as the firewall for EC2 Instances. </p>
-<p>The Network ACL serves as the firewall for the VPC Subnets.</p>
-</blockquote>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/dev-ops/aws-security-group-nacl/arch.png"
-                      alt="Awesome Cloud — Security Groups and Network ACLs"
-                ><figcaption>Awesome Cloud — Security Groups and Network ACLs</figcaption></figure></p>
-<p>Next, we can discuss the differences between the two from the following perspectives:</p>
-<h3 id="Defense-Layers"><a href="#Defense-Layers" class="headerlink" title="Defense Layers"></a>Defense Layers</h3><p>Security Groups are associated with specific instances, which could be an EC2 instance, an ECS cluster, or an RDS database instance. On the other hand, Network Access Control Lists (NACLs) operate at the subnet level. This means that any instance within a subnet that has an associated NACL will automatically adhere to the NACL’s rules.</p>
-<h3 id="Application-Scope"><a href="#Application-Scope" class="headerlink" title="Application Scope"></a>Application Scope</h3><p>While Security Groups are tailored for individual instances, NACLs are designed to provide rules for the entire Subnet within a Virtual Private Cloud (VPC).</p>
-<h3 id="Statefulness"><a href="#Statefulness" class="headerlink" title="Statefulness"></a>Statefulness</h3><p>Security Group is stateful which means if you allow the inbound traffic, the response traffic is allowed automatically. No matter what the outbound rules are. However, NACL is stateless and do not track the state of a connection.</p>
-<h3 id="Default-Rules"><a href="#Default-Rules" class="headerlink" title="Default Rules"></a>Default Rules</h3><p>By default, Security Groups block all inbound traffic while allowing all outbound traffic. Conversely, Network Access Control Lists (NACLs) have a default rule at the subnet boundary that permits both inbound and outbound traffic. The application of these rules in NACLs is determined by Rule Numbers, with higher numbers indicating higher priority.</p>
-<h3 id="Rule-Application-Order"><a href="#Rule-Application-Order" class="headerlink" title="Rule Application Order"></a>Rule Application Order</h3><p>NACLs apply a numbered list of rules sequentially. However, Security Groups do not follow a specific order in rule application.</p>
-<h3 id="Traffic-Blocking-Capabilities"><a href="#Traffic-Blocking-Capabilities" class="headerlink" title="Traffic Blocking Capabilities"></a>Traffic Blocking Capabilities</h3><p>NACLs have the ability to block traffic at the subnet level. In contrast, Security Groups can only block traffic at the instance level.</p>
-<h3 id="Impact-on-Network-Performance"><a href="#Impact-on-Network-Performance" class="headerlink" title="Impact on Network Performance"></a>Impact on Network Performance</h3><p>Network Access Control Lists (NACLs) can potentially exert a significant impact on network performance. This is because they operate at the subnet level, applying their rules to all instances within the subnet. On the other hand, Security Groups operate at the instance level, applying their rules only to individual instances, thus having a more localized impact.</p>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>To sum up, let’s circle back to our main discussion. “If we disable the inbound rule of the Network Access Control List (NACL), the connection will be interrupted. Why is that?” Unlike Security Groups, NACLs are stateless. This means they do not keep track of the connection’s state, and each packet of data is treated independently. Therefore, if we disable the inbound rule of a NACL, it will not allow any incoming traffic, effectively breaking the connection.</p>
-<p>On the other hand, if we turn off inbound traffic in the Security Group, we can still connect. The absence of inbound rules does not disrupt the connection because the Security Group functions as a stateful firewall. Even with specific inbound traffic blocked, a connection can still be established as it originates from within the EC2 instance, and the returning traffic is allowed.</p>
-<p>This concept aligns with the TCP Three-way Handshake (SYN, SYN-ACK, ACK). The connection is initiated by the client, and the server responds to the client’s request. Once we create the tunnel between the server and client, the connection is established.</p>
-<p>Therefore, after disabling the Inbound Rule of the Security Group, we have a grace period to inform customers or other parties, preventing an immediate disruption of the service connection.</p>
-<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
-<li><a class="link"   href="https://www.mygreatlearning.com/aws/tutorials/nacl-vs-security-group" >NACL vs Security Group <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://www.knowledgehut.com/tutorials/aws/nacl-vs-security-groups" >Security groups vs Network ACLs - What is the Difference? <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://k21academy.com/amazon-web-services/aws-solutions-architect/aws-security-groups-vs-nacl/" >AWS Network Security: NACL vs Security Groups <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://digitalcloud.training/aws-security-group-vs-nacl-key-differences/" >AWS Security Group vs NACL – Key Differences <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://community.meraki.com/t5/Security-SD-WAN/Meraki-vMX-amp-AWS-security-group/m-p/222409#:~:text=Having%20no%20inbound%20rules%20does%20not%20cause%20the%20tunnel%20to,instance%20and%20returning%20traffic%20allowed" >Meraki vMX &amp; AWS security group <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://medium.com/awesome-cloud/aws-difference-between-security-groups-and-network-acls-adc632ea29ae" >AWS — Difference between Security Groups and Network Access Control List (NACL) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DevOps</category>
-      </categories>
-      <tags>
-        <tag>AWS</tag>
-        <tag>EC2</tag>
-        <tag>Cli</tag>
-        <tag>Security Group</tag>
-        <tag>NACL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git Commit Message 到底怎麼寫才優美？</title>
-    <url>/2024/03/26/dev-ops/git-good-commit-look-like/</url>
-    <content><![CDATA[<p>在團隊用 Git 協作中，Commit Message 是很重要的一環，好的 Commit 可以讓我們的專案更容易維護，讓我們更容易了解專案的開發過程，我們可以想像是程式碼的註解，不過是針對專案改動的註解。所以我們想要用這個篇幅來介紹一些寫 Commit 的技巧，讓我們的 Commit 更優美。</p>
-<h3 id="那到底甚麼是好的-Commit-Message？"><a href="#那到底甚麼是好的-Commit-Message？" class="headerlink" title="那到底甚麼是好的 Commit Message？"></a>那到底甚麼是好的 Commit Message？</h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">fix</span><br></pre></td></tr></table></figure></div>
-
-<p>V.S. </p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">fix: login error </span><br><span class="line"></span><br><span class="line">The past login router was being reused multiple times.</span><br><span class="line"></span><br><span class="line">Fixed it to use the correct route and extracted the duplicated parts.</span><br><span class="line"></span><br><span class="line">Issue: #1234</span><br></pre></td></tr></table></figure></div>
-
-<p>從上方的 Commit 案例中，如果都是一個月前的改動，甚至是一年前的改動，當我今天需要去了解這個改動的時候，我們可以發現第一個 Commit 是很難讓我們了解這個改動的目的，甚至是看不懂要做甚麼，而第二個 Commit 會讓我們更容易了解這個改動的目的，這就是好的 Commit Message 的重要性。</p>
-<p>常常軟體工程師中有個迷因 <a class="link"   href="https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months" >Is it normal if I can’t remember how my code works after just 6 months? <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 就是，大家回去看自己寫的程式都看不懂，甚至會覺得噁心，因此好的 Commit 可以讓我們更容易了解過去團隊做了甚麼事情，這樣我們就可以更容易地維護專案。</p>
-<p><figure class="image-caption"><img src="/images/post/dev-ops/git-good-commit-look-like/meme.JPG" alt="https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months"><figcaption>https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months</figcaption></figure></p>
-<h2 id="Commit-Message-的格式"><a href="#Commit-Message-的格式" class="headerlink" title="Commit Message 的格式"></a>Commit Message 的格式</h2><p>好的 Commit 應該要能夠一眼看出種類、工作內容的大鋼，更重要的是一致性，這樣我們可以更容易地追蹤開發過程。因此我們可以從以下幾個內容：我們做了甚麼努力（What）、又為什麼要做這件事情（Why）、還有是用什麼方法做到的（How）。</p>
-<p>我們可以參考以下的格式：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Header: &lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;</span><br><span class="line">    - TYPE: Represents the category of the commit.</span><br><span class="line">    - SCOPE: Represents the scope of the commit.</span><br><span class="line">    - (Required) SUBJECT: Represents a brief description of the commit, (limited to 50 characters and should not end with a period)</span><br><span class="line"></span><br><span class="line">Body: 72-character wrapped. This should answer:</span><br><span class="line">    - Provide a detailed description of the commit. (Can be <span class="built_in">split</span> into multiple lines, with each line limited to 72 characters.)</span><br><span class="line">    - Explain the changes made <span class="keyword">in</span> the code, and Why to <span class="keyword">do</span>?</span><br><span class="line"></span><br><span class="line">Footer:</span><br><span class="line">    - (<span class="keyword">if</span> applicable) Include the task number.</span><br><span class="line">    - (optional) BREAKING CHANGE: Record incompatible changes. It should start with <span class="string">&quot;BREAKING CHANGE:&quot;</span> followed by a description of the change, the reason <span class="keyword">for</span> the change, and migration instructions.</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="Commit-Message-Header"><a href="#Commit-Message-Header" class="headerlink" title="Commit Message Header: &lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;"></a>Commit Message Header: <code>&lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;</code></h3><ul>
-<li>TYPE: 代表 commit 的類別，如：feat, fix, docs, style, refactor, test, chore</li>
-<li>（可選）SCOPE：commit 影響的範圍，如：資料庫、控制層、模板層等，視專案不同改變</li>
-<li>（必要）SUBJECT：commit 的簡短描述，不超過 50 個字元，結尾不加句號，盡量讓 Commit 單一化，一次只更動一個主題</li>
-</ul>
-<h4 id="Type-的種類"><a href="#Type-的種類" class="headerlink" title="Type 的種類"></a>Type 的種類</h4><p>Type 有以下幾種的類別，每個都會是一個動作，代表提交 Commit 的類別，以下是一些我們使用慣例：</p>
-<ul>
-<li>feat: 對專案做了哪些新增、修改 (Feature)。</li>
-<li>fix: 修復了那些功能 (Bug Fix)。</li>
-<li>docs: 對專案撰寫文件 (Documentation)。</li>
-<li>style: 撰寫格式改動 (不影響程式碼運行的變動 white-space, formatting, missing semi colons, et.)。</li>
-<li>refactor: 重構 (既不是新增功能，也不是修補 bug 的程式碼變動)。</li>
-<li>perf: 改善效能 (A code change that improves performance)。</li>
-<li>test: 增加測試 (when adding missing tests)。</li>
-<li>chore: 建構程序或輔助工具的變動 (maintain)。</li>
-<li>revert: 撤銷回覆先前的 commit 例如：revert: type(scope): subject (回覆版本：xxxx)。</li>
-</ul>
-<h3 id="Commit-Message-Body"><a href="#Commit-Message-Body" class="headerlink" title="Commit Message Body"></a>Commit Message Body</h3><p>傳達「我們做了甚麼努力（What）、又為什麼要做這件事情（Why）、還有是用什麼方法做到的（How）」，描述詳細改動的內容，可以分成多行，每行不超過 72 個字元，也可以有前後改動差異的描述。</p>
-<h3 id="Commit-Message-Footer"><a href="#Commit-Message-Footer" class="headerlink" title="Commit Message Footer"></a>Commit Message Footer</h3><p>用來填寫相關聯 issue 的編號，像是 <code>Issue: #1234</code>。另外還有 BREAKING CHANGE（未必需要），記錄不相容的變動，應該以「BREAKING CHANGE:」開頭，後面是變動的描述、原因和遷移方法。</p>
-<h3 id="一些實際的例子"><a href="#一些實際的例子" class="headerlink" title="一些實際的例子"></a>一些實際的例子</h3><p>我們在現有的功能上加上了 email 驗證，我們可以使用 <code>feat</code> 來撰寫：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">feat: email validation</span><br><span class="line"></span><br><span class="line">We have implemented the following enhancements:</span><br><span class="line"></span><br><span class="line">1. Introduced email validation to the login form.</span><br><span class="line">2. The new feature verifies if the user&#x27;s input is in a valid email format.</span><br><span class="line">3. It checks if the entered email corresponds to an actual email account.</span><br><span class="line">4. This update aims to prevent users from entering incorrect email addresses.</span><br><span class="line">5. It improves overall user experience and data integrity.</span><br><span class="line"></span><br><span class="line">Issue: #1234</span><br></pre></td></tr></table></figure></div>
-
-<p>今天我們需要基於過去版本做開發，我們可以使用 <code>revert</code> 來回覆先前的 Commit：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">revert: feat: email validation</span><br><span class="line"></span><br><span class="line">To address the issue, we have decided to revert the email validation feature to the previous version.</span><br><span class="line"></span><br><span class="line">Issue: #2345</span><br></pre></td></tr></table></figure></div>
-
-<p>我們在準備將產品上線的時候，我們駔了幾個 unit test，我們可以使用 <code>test</code> 來撰寫：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">test: email validation</span><br><span class="line"></span><br><span class="line">There are several unit tests for the email validation feature:</span><br><span class="line">1. Test the email validation function with invalid email addresses.</span><br><span class="line">2. Test the email validation function with valid email addresses.</span><br><span class="line"></span><br><span class="line">Issue: #3456</span><br></pre></td></tr></table></figure></div>
-
-<p>今天我們已經將新功能做好了，我們希望加上文件的說明，我們可以使用 <code>docs</code> 來撰寫：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docs: email validation</span><br><span class="line"></span><br><span class="line">We have added documentation for the email validation feature:</span><br><span class="line">1. Add the Tech Stack documentation.</span><br><span class="line">2. Add the User Guide documentation.</span><br><span class="line">3. Add the API documentation.</span><br><span class="line"></span><br><span class="line">Issue: #4567</span><br></pre></td></tr></table></figure></div>
-
-<p>後來因為我們的用戶數量變多了，我們希望優化現有的架構提升驗證速度，我們可以使用 <code>perf</code> 來撰寫：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">perf: email validation</span><br><span class="line"></span><br><span class="line">We have optimized the email validation feature:</span><br><span class="line">1. Improved the email validation algorithm.</span><br><span class="line">2. Reduced the time required to validate email addresses.</span><br><span class="line">3. Enhanced the user experience by providing faster feedback.</span><br><span class="line"></span><br><span class="line">Issue: #5678</span><br></pre></td></tr></table></figure></div>
-
-
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>Commit Message 的撰寫會需要大量的練習，也需要時間讓團隊成員去實踐，如此可以讓我們追朔過去的努力，也可以幫助團隊成員更快速地餐與開發過程，這樣我們就可以更容易地維護專案。最後祝大家一切開發都順利，也希望大家的 Commit Message 越來越優美。</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a class="link"   href="https://wadehuanglearning.blogspot.com/2019/05/commit-commit-commit-why-what-commit.html" >Git Commit Message 這樣寫會更好，替專案引入規範與範例 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://heidiliu2020.github.io/git-commit-message/" >[學習筆記] 如何撰好的 Git Commit Message <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DevOps</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Commit</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</title>
     <url>/2023/09/08/dev-ops/git-ssh/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Git 是每位軟體工程師日常工作不可或缺的工具之一，畢竟軟體開發常常需要跟他人合作，甚至是維護、更新等⋯⋯可能都需要參照過去的成果，甚至需要快速與團隊同步，因此 Git 對大家而言都不陌生吧！<br>但是，有時候我們會遇到一些問題，例如：每次 push 都需要輸入帳號密碼，或是每次 push 都需要輸入密碼，這些都是可以透過 ssh 來解決的，接下來就讓我們一起來看看如何使用 ssh 與 GitHub 連線吧！</p>
@@ -755,6 +694,71 @@
         <tag>GitHub</tag>
         <tag>Git</tag>
         <tag>SSH Key</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git Commit Message 到底怎麼寫才優美？</title>
+    <url>/2024/03/26/dev-ops/git-good-commit-look-like/</url>
+    <content><![CDATA[<p>在團隊用 Git 協作中，Commit Message 是很重要的一環，好的 Commit 可以讓我們的專案更容易維護，讓我們更容易了解專案的開發過程，我們可以想像是程式碼的註解，不過是針對專案改動的註解。所以我們想要用這個篇幅來介紹一些寫 Commit 的技巧，讓我們的 Commit 更優美。</p>
+<h3 id="那到底甚麼是好的-Commit-Message？"><a href="#那到底甚麼是好的-Commit-Message？" class="headerlink" title="那到底甚麼是好的 Commit Message？"></a>那到底甚麼是好的 Commit Message？</h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">fix</span><br></pre></td></tr></table></figure></div>
+
+<p>V.S. </p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">fix: login error </span><br><span class="line"></span><br><span class="line">The past login router was being reused multiple times.</span><br><span class="line"></span><br><span class="line">Fixed it to use the correct route and extracted the duplicated parts.</span><br><span class="line"></span><br><span class="line">Issue: #1234</span><br></pre></td></tr></table></figure></div>
+
+<p>從上方的 Commit 案例中，如果都是一個月前的改動，甚至是一年前的改動，當我今天需要去了解這個改動的時候，我們可以發現第一個 Commit 是很難讓我們了解這個改動的目的，甚至是看不懂要做甚麼，而第二個 Commit 會讓我們更容易了解這個改動的目的，這就是好的 Commit Message 的重要性。</p>
+<p>常常軟體工程師中有個迷因 <a class="link"   href="https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months" >Is it normal if I can’t remember how my code works after just 6 months? <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 就是，大家回去看自己寫的程式都看不懂，甚至會覺得噁心，因此好的 Commit 可以讓我們更容易了解過去團隊做了甚麼事情，這樣我們就可以更容易地維護專案。</p>
+<p><figure class="image-caption"><img src="/images/post/dev-ops/git-good-commit-look-like/meme.JPG" alt="https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months"><figcaption>https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months</figcaption></figure></p>
+<h2 id="Commit-Message-的格式"><a href="#Commit-Message-的格式" class="headerlink" title="Commit Message 的格式"></a>Commit Message 的格式</h2><p>好的 Commit 應該要能夠一眼看出種類、工作內容的大鋼，更重要的是一致性，這樣我們可以更容易地追蹤開發過程。因此我們可以從以下幾個內容：我們做了甚麼努力（What）、又為什麼要做這件事情（Why）、還有是用什麼方法做到的（How）。</p>
+<p>我們可以參考以下的格式：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Header: &lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;</span><br><span class="line">    - TYPE: Represents the category of the commit.</span><br><span class="line">    - SCOPE: Represents the scope of the commit.</span><br><span class="line">    - (Required) SUBJECT: Represents a brief description of the commit, (limited to 50 characters and should not end with a period)</span><br><span class="line"></span><br><span class="line">Body: 72-character wrapped. This should answer:</span><br><span class="line">    - Provide a detailed description of the commit. (Can be <span class="built_in">split</span> into multiple lines, with each line limited to 72 characters.)</span><br><span class="line">    - Explain the changes made <span class="keyword">in</span> the code, and Why to <span class="keyword">do</span>?</span><br><span class="line"></span><br><span class="line">Footer:</span><br><span class="line">    - (<span class="keyword">if</span> applicable) Include the task number.</span><br><span class="line">    - (optional) BREAKING CHANGE: Record incompatible changes. It should start with <span class="string">&quot;BREAKING CHANGE:&quot;</span> followed by a description of the change, the reason <span class="keyword">for</span> the change, and migration instructions.</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Commit-Message-Header"><a href="#Commit-Message-Header" class="headerlink" title="Commit Message Header: &lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;"></a>Commit Message Header: <code>&lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;</code></h3><ul>
+<li>TYPE: 代表 commit 的類別，如：feat, fix, docs, style, refactor, test, chore</li>
+<li>（可選）SCOPE：commit 影響的範圍，如：資料庫、控制層、模板層等，視專案不同改變</li>
+<li>（必要）SUBJECT：commit 的簡短描述，不超過 50 個字元，結尾不加句號，盡量讓 Commit 單一化，一次只更動一個主題</li>
+</ul>
+<h4 id="Type-的種類"><a href="#Type-的種類" class="headerlink" title="Type 的種類"></a>Type 的種類</h4><p>Type 有以下幾種的類別，每個都會是一個動作，代表提交 Commit 的類別，以下是一些我們使用慣例：</p>
+<ul>
+<li>feat: 對專案做了哪些新增、修改 (Feature)。</li>
+<li>fix: 修復了那些功能 (Bug Fix)。</li>
+<li>docs: 對專案撰寫文件 (Documentation)。</li>
+<li>style: 撰寫格式改動 (不影響程式碼運行的變動 white-space, formatting, missing semi colons, et.)。</li>
+<li>refactor: 重構 (既不是新增功能，也不是修補 bug 的程式碼變動)。</li>
+<li>perf: 改善效能 (A code change that improves performance)。</li>
+<li>test: 增加測試 (when adding missing tests)。</li>
+<li>chore: 建構程序或輔助工具的變動 (maintain)。</li>
+<li>revert: 撤銷回覆先前的 commit 例如：revert: type(scope): subject (回覆版本：xxxx)。</li>
+</ul>
+<h3 id="Commit-Message-Body"><a href="#Commit-Message-Body" class="headerlink" title="Commit Message Body"></a>Commit Message Body</h3><p>傳達「我們做了甚麼努力（What）、又為什麼要做這件事情（Why）、還有是用什麼方法做到的（How）」，描述詳細改動的內容，可以分成多行，每行不超過 72 個字元，也可以有前後改動差異的描述。</p>
+<h3 id="Commit-Message-Footer"><a href="#Commit-Message-Footer" class="headerlink" title="Commit Message Footer"></a>Commit Message Footer</h3><p>用來填寫相關聯 issue 的編號，像是 <code>Issue: #1234</code>。另外還有 BREAKING CHANGE（未必需要），記錄不相容的變動，應該以「BREAKING CHANGE:」開頭，後面是變動的描述、原因和遷移方法。</p>
+<h3 id="一些實際的例子"><a href="#一些實際的例子" class="headerlink" title="一些實際的例子"></a>一些實際的例子</h3><p>我們在現有的功能上加上了 email 驗證，我們可以使用 <code>feat</code> 來撰寫：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">feat: email validation</span><br><span class="line"></span><br><span class="line">We have implemented the following enhancements:</span><br><span class="line"></span><br><span class="line">1. Introduced email validation to the login form.</span><br><span class="line">2. The new feature verifies if the user&#x27;s input is in a valid email format.</span><br><span class="line">3. It checks if the entered email corresponds to an actual email account.</span><br><span class="line">4. This update aims to prevent users from entering incorrect email addresses.</span><br><span class="line">5. It improves overall user experience and data integrity.</span><br><span class="line"></span><br><span class="line">Issue: #1234</span><br></pre></td></tr></table></figure></div>
+
+<p>今天我們需要基於過去版本做開發，我們可以使用 <code>revert</code> 來回覆先前的 Commit：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">revert: feat: email validation</span><br><span class="line"></span><br><span class="line">To address the issue, we have decided to revert the email validation feature to the previous version.</span><br><span class="line"></span><br><span class="line">Issue: #2345</span><br></pre></td></tr></table></figure></div>
+
+<p>我們在準備將產品上線的時候，我們駔了幾個 unit test，我們可以使用 <code>test</code> 來撰寫：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">test: email validation</span><br><span class="line"></span><br><span class="line">There are several unit tests for the email validation feature:</span><br><span class="line">1. Test the email validation function with invalid email addresses.</span><br><span class="line">2. Test the email validation function with valid email addresses.</span><br><span class="line"></span><br><span class="line">Issue: #3456</span><br></pre></td></tr></table></figure></div>
+
+<p>今天我們已經將新功能做好了，我們希望加上文件的說明，我們可以使用 <code>docs</code> 來撰寫：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docs: email validation</span><br><span class="line"></span><br><span class="line">We have added documentation for the email validation feature:</span><br><span class="line">1. Add the Tech Stack documentation.</span><br><span class="line">2. Add the User Guide documentation.</span><br><span class="line">3. Add the API documentation.</span><br><span class="line"></span><br><span class="line">Issue: #4567</span><br></pre></td></tr></table></figure></div>
+
+<p>後來因為我們的用戶數量變多了，我們希望優化現有的架構提升驗證速度，我們可以使用 <code>perf</code> 來撰寫：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">perf: email validation</span><br><span class="line"></span><br><span class="line">We have optimized the email validation feature:</span><br><span class="line">1. Improved the email validation algorithm.</span><br><span class="line">2. Reduced the time required to validate email addresses.</span><br><span class="line">3. Enhanced the user experience by providing faster feedback.</span><br><span class="line"></span><br><span class="line">Issue: #5678</span><br></pre></td></tr></table></figure></div>
+
+
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>Commit Message 的撰寫會需要大量的練習，也需要時間讓團隊成員去實踐，如此可以讓我們追朔過去的努力，也可以幫助團隊成員更快速地餐與開發過程，這樣我們就可以更容易地維護專案。最後祝大家一切開發都順利，也希望大家的 Commit Message 越來越優美。</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a class="link"   href="https://wadehuanglearning.blogspot.com/2019/05/commit-commit-commit-why-what-commit.html" >Git Commit Message 這樣寫會更好，替專案引入規範與範例 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://heidiliu2020.github.io/git-commit-message/" >[學習筆記] 如何撰好的 Git Commit Message <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DevOps</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Commit</tag>
       </tags>
   </entry>
   <entry>
@@ -1103,54 +1107,50 @@
       </tags>
   </entry>
   <entry>
-    <title>演算法第一講——Euclid Algorithm 歐幾里得演算法</title>
-    <url>/2023/07/30/ds-alg/euclid/</url>
-    <content><![CDATA[<p>大家在過往學習的經驗中，可能都有聽過歐幾里德這名鼎鼎大名的人物，是位在希臘化時期的數學家，有著著名著作「幾何原本」，在數學領域中有著極大化的貢獻，為現今眾多數學家所認同。</p>
-<p>然而在古希臘的時代的數學家竟然能跟演算法畫上關係，畢竟演算法便是透過有限的步驟中，將給定的輸入做出最有效的解決，並且在執行玩這些有效的步驟中會有正當的終止，產生最後輸出結果，而歐幾里德演算法得以詮釋這些過程，歐幾里德演算法的問題是要在給定的兩個正整數 m 和 n 中找出兩束的最大公因數，因此我們可以列出以下解題步驟：</p>
-<ol>
-<li>找出餘數 (m % n)</li>
-<li>判斷餘數是否為零 (if (r &#x3D; 0) return n)</li>
-<li>被除數與餘數互換 (swap(m, n))</li>
-</ol>
-<p>那看到這邊可能人會有很多有很熟悉的感覺，畢竟我們曾經學習過求公因數的方法有：列舉法、質因數分解、短除法等⋯⋯那其中還有一個有趣的方法便是「輾轉相除法」，也就是我們今天要討論到的歐幾里德演算法，然而所謂的「輾轉」是什麼呢？可能是 Debug 睡不著的時候吧！哈！不過這樣也說得通，輾轉就是曲折的、不斷的過程，而我們正是透過這樣的特性來達成我們的演算法。</p>
+    <title>AWS: Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)</title>
+    <url>/2024/03/22/dev-ops/aws-security-group-nacl/</url>
+    <content><![CDATA[<p>During a meeting, we explored a scenario: “If we disable the inbound rule of the Network Access Control List (NACL), the connection will be interrupted. However, if we turn off inbound traffic in the Security Group, would we still be able to connect?” Surprisingly, the answer is YES. The rationale behind this phenomenon will be elaborated on in this article.</p>
+<p>We can discuss the differences between Security Group and Network Access Control List (NACL) from various perspectives. The primary difference between the two is:</p>
+<blockquote>
+<p>The Security Group acts as the firewall for EC2 Instances. </p>
+<p>The Network ACL serves as the firewall for the VPC Subnets.</p>
+</blockquote>
 <p><figure class="image-caption"><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ZtKWx4DZ0FY6SBSctDWtUQ.png"
-                      alt="輾轉相除法直式"
-                ><figcaption>輾轉相除法直式</figcaption></figure></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png"
-                      alt="輾轉過程"
-                ><figcaption>輾轉過程</figcaption></figure></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png"
-                      alt="過程以長方形圖是呈現"
-                ><figcaption>過程以長方形圖是呈現</figcaption></figure></p>
-<p>透過上方圖示我們便可看出輾轉的真正特性，透過互換且不斷地進行運算，已達到我們期望的結果，也可以從上圖中透過切割長方形的模式，在長方形中找出能切割的最大面積正方形，以此將整個長方形變成有正方形所組成的型態，這又可以回歸到上述所歸納的兩個解：</p>
-<ol>
-<li>餘數為 0 -&gt; 完整地切割</li>
-<li>餘數為 1 -&gt; 無法完整地切割</li>
-</ol>
-<p>想必讀到這裡一定更能理解輾轉相除法，接下來我們進行實作吧！</p>
-<h3 id="以下我們展示虛擬碼-Pseudocode"><a href="#以下我們展示虛擬碼-Pseudocode" class="headerlink" title="以下我們展示虛擬碼 (Pseudocode)"></a>以下我們展示虛擬碼 (Pseudocode)</h3><div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line">Algorithm: <span class="built_in">EuclidGCD</span>(m, n)</span><br><span class="line">Input: Two integer m <span class="keyword">and</span> n.</span><br><span class="line">Output: The greatest common factor of m <span class="keyword">and</span> n.</span><br><span class="line">r &lt;- m % n</span><br><span class="line"><span class="keyword">while</span> r != <span class="number">0</span> <span class="keyword">do</span></span><br><span class="line">    m &lt;- n</span><br><span class="line">    n &lt;- r</span><br><span class="line">    r &lt;- m % n</span><br><span class="line"><span class="keyword">return</span> n</span><br><span class="line">以下我們使用 cpp 實作</span><br><span class="line"><span class="type">int</span> <span class="built_in">EuclidGCD</span>(<span class="type">int</span> m, <span class="type">int</span> n) &#123;</span><br><span class="line">    <span class="type">int</span> r = m % n;</span><br><span class="line">    <span class="keyword">while</span> (r != <span class="number">0</span>) &#123;</span><br><span class="line">        m = n;</span><br><span class="line">        n = r;</span><br><span class="line">        r = m % n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>那上面我們討論到歐幾里德演算法的範疇實屬理論，那實際用途到底可以實現什麼情形呢？在分析這道問號題之前，我們可以再回想一下此演算法，最核心的就是要找出最大公因數，並且在由大化小的過程中，可以達成更有效率地轉換，畢竟是透過一系列輾轉的過程，所以其實輾轉相除法的應用層面非常廣，可以在密碼學、數學、計算機科學等⋯⋯領域做使用，甚至在音樂方面都能有實際上的應用，若想知道更多，網路上其實還有更多有趣的範例等著你們去挖掘呢！（維基百科下方的參考連結有超多有趣的例子！）</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a class="link"   href="https://zhuanlan.zhihu.com/p/56528787" >欧几里得与《几何原本》(上篇） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://jason-chen-1992.weebly.com/home/-euclidean-algorithm" >【演算法】歐幾里得算法 Euclidean Algorithm <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+                     data-src="/images/post/dev-ops/aws-security-group-nacl/arch.png"
+                      alt="Awesome Cloud — Security Groups and Network ACLs"
+                ><figcaption>Awesome Cloud — Security Groups and Network ACLs</figcaption></figure></p>
+<p>Next, we can discuss the differences between the two from the following perspectives:</p>
+<h3 id="Defense-Layers"><a href="#Defense-Layers" class="headerlink" title="Defense Layers"></a>Defense Layers</h3><p>Security Groups are associated with specific instances, which could be an EC2 instance, an ECS cluster, or an RDS database instance. On the other hand, Network Access Control Lists (NACLs) operate at the subnet level. This means that any instance within a subnet that has an associated NACL will automatically adhere to the NACL’s rules.</p>
+<h3 id="Application-Scope"><a href="#Application-Scope" class="headerlink" title="Application Scope"></a>Application Scope</h3><p>While Security Groups are tailored for individual instances, NACLs are designed to provide rules for the entire Subnet within a Virtual Private Cloud (VPC).</p>
+<h3 id="Statefulness"><a href="#Statefulness" class="headerlink" title="Statefulness"></a>Statefulness</h3><p>Security Group is stateful which means if you allow the inbound traffic, the response traffic is allowed automatically. No matter what the outbound rules are. However, NACL is stateless and do not track the state of a connection.</p>
+<h3 id="Default-Rules"><a href="#Default-Rules" class="headerlink" title="Default Rules"></a>Default Rules</h3><p>By default, Security Groups block all inbound traffic while allowing all outbound traffic. Conversely, Network Access Control Lists (NACLs) have a default rule at the subnet boundary that permits both inbound and outbound traffic. The application of these rules in NACLs is determined by Rule Numbers, with higher numbers indicating higher priority.</p>
+<h3 id="Rule-Application-Order"><a href="#Rule-Application-Order" class="headerlink" title="Rule Application Order"></a>Rule Application Order</h3><p>NACLs apply a numbered list of rules sequentially. However, Security Groups do not follow a specific order in rule application.</p>
+<h3 id="Traffic-Blocking-Capabilities"><a href="#Traffic-Blocking-Capabilities" class="headerlink" title="Traffic Blocking Capabilities"></a>Traffic Blocking Capabilities</h3><p>NACLs have the ability to block traffic at the subnet level. In contrast, Security Groups can only block traffic at the instance level.</p>
+<h3 id="Impact-on-Network-Performance"><a href="#Impact-on-Network-Performance" class="headerlink" title="Impact on Network Performance"></a>Impact on Network Performance</h3><p>Network Access Control Lists (NACLs) can potentially exert a significant impact on network performance. This is because they operate at the subnet level, applying their rules to all instances within the subnet. On the other hand, Security Groups operate at the instance level, applying their rules only to individual instances, thus having a more localized impact.</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>To sum up, let’s circle back to our main discussion. “If we disable the inbound rule of the Network Access Control List (NACL), the connection will be interrupted. Why is that?” Unlike Security Groups, NACLs are stateless. This means they do not keep track of the connection’s state, and each packet of data is treated independently. Therefore, if we disable the inbound rule of a NACL, it will not allow any incoming traffic, effectively breaking the connection.</p>
+<p>On the other hand, if we turn off inbound traffic in the Security Group, we can still connect. The absence of inbound rules does not disrupt the connection because the Security Group functions as a stateful firewall. Even with specific inbound traffic blocked, a connection can still be established as it originates from within the EC2 instance, and the returning traffic is allowed.</p>
+<p>This concept aligns with the TCP Three-way Handshake (SYN, SYN-ACK, ACK). The connection is initiated by the client, and the server responds to the client’s request. Once we create the tunnel between the server and client, the connection is established.</p>
+<p>Therefore, after disabling the Inbound Rule of the Security Group, we have a grace period to inform customers or other parties, preventing an immediate disruption of the service connection.</p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li><a class="link"   href="https://www.mygreatlearning.com/aws/tutorials/nacl-vs-security-group" >NACL vs Security Group <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://www.knowledgehut.com/tutorials/aws/nacl-vs-security-groups" >Security groups vs Network ACLs - What is the Difference? <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://k21academy.com/amazon-web-services/aws-solutions-architect/aws-security-groups-vs-nacl/" >AWS Network Security: NACL vs Security Groups <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://digitalcloud.training/aws-security-group-vs-nacl-key-differences/" >AWS Security Group vs NACL – Key Differences <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://community.meraki.com/t5/Security-SD-WAN/Meraki-vMX-amp-AWS-security-group/m-p/222409#:~:text=Having%20no%20inbound%20rules%20does%20not%20cause%20the%20tunnel%20to,instance%20and%20returning%20traffic%20allowed" >Meraki vMX &amp; AWS security group <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://medium.com/awesome-cloud/aws-difference-between-security-groups-and-network-acls-adc632ea29ae" >AWS — Difference between Security Groups and Network Access Control List (NACL) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
-        <category>Algorithm</category>
+        <category>DevOps</category>
       </categories>
       <tags>
-        <tag>algorithm</tag>
-        <tag>note</tag>
+        <tag>AWS</tag>
+        <tag>EC2</tag>
+        <tag>Cli</tag>
+        <tag>Security Group</tag>
+        <tag>NACL</tag>
       </tags>
   </entry>
   <entry>
