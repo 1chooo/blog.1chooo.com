@@ -57,10 +57,10 @@ global:
     # English fonts
     english: 
       enable: false # Whether to enable custom chinese font
-      family:  # Font family
-      url:  # Font URL to CSS file
+      family:  Roboto # Font family
+      url:  https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap # Font URL to CSS file
   # Content max width
-  content_max_width: 1000px
+  content_max_width: 1200px
   # Sidebar width
   sidebar_width: 210px
   # Effects on mouse hover
@@ -183,10 +183,10 @@ navbar:
     Tags: 
       icon: fa-solid fa-tags 
       path: /tags/ 
-    About:
+    More:
       icon: fa-regular fa-user
       submenus:
-        Personal/CV: /about
+        About: /about
         GitHub: https://github.com/1chooo
         Linkedin: https://www.linkedin.com/in/1chooo/
         Portfolio: https://1chooo.com
@@ -213,7 +213,7 @@ home:
     enable: true # Whether to enable sidebar
     position: left # Sidebar position. left, right
     first_item: menu # First item in sidebar. menu, info
-    announcement: eCloudValley - Cloud Developer Intern | Ex AWS Educate, PEGATRON | ATM, CS at NCU
+    announcement: Software Engineering | B.S. in ATM, NCU | Ex AWS Educate, Pegatron, eCloudValley
     links:
       # Archives: 
       #   path: /archives 
@@ -302,7 +302,7 @@ comment:
   # Whether to enable comment
   enable: true
   # Comment system
-  system: gitalk # waline, gitalk, twikoo, giscus
+  system: giscus # waline, gitalk, twikoo, giscus
   # System configuration
   config:
     # Waline comment system. See https://waline.js.org/
@@ -311,8 +311,8 @@ comment:
       lang: zh-CN # Waline language. e.g. zh-CN, en-US. See https://waline.js.org/guide/client/i18n.html
     # Gitalk comment system. See https://github.com/gitalk/gitalk
     gitalk:
-      clientID: acaa0c618d0dc3ce3aa4
-      clientSecret: 365588687d838001351756d3f641ec3d6ef4314e
+      clientID: 
+      clientSecret: 
       repo: blog.1chooo.com
       owner: 1chooo
     # Twikoo comment system. See https://twikoo.js.org/
@@ -323,10 +323,10 @@ comment:
     # Giscus comment system. See https://giscus.app/
     giscus:
       repo: 1chooo/blog.1chooo.com
-      repo_id: # Github repository id
-      category: # Github discussion category
-      category_id: # Github discussion category id
-      mapping: pathname # Which value to use as the unique identifier for the page. e.g. pathname, url, title, og:title. DO NOT USE og:title WITH PJAX ENABLED since pjax will not update og:title when the page changes
+      repo_id: R_kgDOKBJLkQ # Github repository id
+      category: Announcements # Github discussion category
+      category_id: DIC_kwDOKBJLkc4CYNpa # Github discussion category id
+      mapping: title # Which value to use as the unique identifier for the page. e.g. pathname, url, title, og:title. DO NOT USE og:title WITH PJAX ENABLED since pjax will not update og:title when the page changes
       strict: 0 # Whether to enable strict mode. e.g. 0, 1
       reactions_enabled: 1 # Whether to enable reactions. e.g. 0, 1
       emit_metadata: 0 # Whether to emit metadata. e.g. 0, 1
