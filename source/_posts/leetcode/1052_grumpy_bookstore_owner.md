@@ -6,7 +6,9 @@ tags:
 - Go
 - Leetcode
 - Array
-cover: /images/cover/leetcode/1052_grumpy_bookstore_owner.png
+- Sliding Window
+cover: /images/cover/leetcode/cover.png
+mathjax: true
 ---
 
 ### Description
@@ -63,9 +65,9 @@ if i >= minutes && grumpy[i-minutes] == 1 {
 ```
 
 ### Complexity
-- Time complexity: `O(n)`
+- Time complexity: $O(n)$
 
-- Space complexity: `O(n)`
+- Space complexity: $O(n)$
 
 ### Code
 
