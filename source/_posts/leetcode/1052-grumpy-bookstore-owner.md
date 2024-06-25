@@ -1,5 +1,5 @@
 ---
-title: "[✅ Beats 💯] 1052. Grumpy Bookstore Owner - Easy Solution | Go"
+title: "[✅ Beats 💯] LeetCode 1052. Grumpy Bookstore Owner - Easy Solution | Go"
 categories: Leetcode
 date: 2024-06-20 00:00:00
 tags: 
@@ -7,13 +7,14 @@ tags:
 - Leetcode
 - Array
 - Sliding Window
-cover: /images/cover/leetcode/cover.png
+cover: /images/cover/leetcode/1052-grumpy-bookstore-owner.png
 mathjax: true
 ---
 
+Link 👉🏻 [1052. Grumpy Bookstore Owner](https://leetcode.com/problems/grumpy-bookstore-owner/)
+
 ### Description
 
-[1052. Grumpy Bookstore Owner](https://leetcode.com/problems/grumpy-bookstore-owner/)
 
 There is a bookstore owner that has a store open for `n` minutes. Every minute, some number of customers enter the store. You are given an integer array `customers` of length `n` where `customers[i]` is the number of the customer that enters the store at the start of the <code>i<sup>th</sup></code> minute and all those customers leave after the end of that minute.
 
