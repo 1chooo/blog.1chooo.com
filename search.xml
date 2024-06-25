@@ -340,7 +340,7 @@
 <li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#103;&#x6f;&#57;&#x37;&#x30;&#50;&#x31;&#x37;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;" >&#x68;&#x75;&#103;&#x6f;&#57;&#x37;&#x30;&#50;&#x31;&#x37;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#x67;&#x6f;&#57;&#55;&#x30;&#x32;&#49;&#55;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#109;" >&#x68;&#x75;&#x67;&#x6f;&#57;&#55;&#x30;&#x32;&#49;&#55;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -459,6 +459,99 @@
       </tags>
   </entry>
   <entry>
+    <title>LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++</title>
+    <url>/2024/06/25/leetcode/0001-two-sum/</url>
+    <content><![CDATA[<p>Link 👉🏻 <a class="link" href="https://leetcode.com/problems/two-sum/">1. Two Sum <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given an array of integers <code>nums</code> and an integer <code>target</code>, <em>return indices of the two numbers such that they add up to <code>target</code></em>.</p>
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+<p>You can return the answer in any order.</p>
+<p><strong>Example 1:</strong></p>
+<ul>
+<li>Input: <code>nums = [2,7,11,15], target = 9</code></li>
+<li>Output: <code>[0,1]</code></li>
+<li>Explanation: <code>Because nums[0] + nums[1] == 9, we return [0, 1].</code></li>
+</ul>
+<p><strong>Example 2:</strong></p>
+<ul>
+<li>Input: <code>nums = [3,2,4], target = 6</code></li>
+<li>Output: <code>[1,2]</code></li>
+</ul>
+<p><strong>Example 3:</strong></p>
+<ul>
+<li>Input: <code>nums = [3,3], target = 6</code></li>
+<li>Output: <code>[0,1]</code></li>
+</ul>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>2 &lt;= nums.length &lt;= 10<sup>4</sup></code></li>
+<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
+<li><code>-10<sup>9</sup> &lt;= target &lt;= 10<sup>9</sup></code></li>
+<li><code>Only one valid answer exists.</code></li>
+</ul>
+<p><strong>Follow-up:</strong> Can you come up with an algorithm that is less than <code>O(n<sup>2</sup>)</code> time complexity?</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition"></a>Intuition</h3><p>Use HashMap to keep numbers and their indices we found.</p>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>Note</p>
+
+    </div>
+    <div class="notel-content">
+      <p>Create a Hash Table in <code>GO</code> with <code>make</code> function <sup><a class="link" href="https://www.geeksforgeeks.org/golang-maps/">Golang Maps <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></sup>, and use <code>map[key] = value</code> to set the value of the key.</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line">numMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)</span><br></pre></td></tr></table></figure></div>
+
+    </div>
+  </div>
+
+
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>Note</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>How to Work with maps?</strong> <sup><a class="link" href="https://go.dev/blog/maps">Go maps in action#Working with maps <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></sup></p>
+<p>A two-value assignment tests for the existence of a key:</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line">i, ok := m[<span class="string">"route"</span>]</span><br></pre></td></tr></table></figure></div>
+
+<p>In this statement, the first <code>value (i)</code> is assigned the value stored under the key “route”. If that key doesn’t exist, i is the value type’s zero <code>value (0)</code>. The second <code>value (ok)</code> is a <code>bool</code> that is true if the key exists in the map, and false if not.</p>
+<p>To test for a key without retrieving the value, use an underscore in place of the first value:</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line">_, ok := m[<span class="string">"route"</span>] </span><br></pre></td></tr></table></figure></div>
+
+<p>To iterate over the contents of a map, use the range keyword:</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> key, value := <span class="keyword">range</span> m {</span><br><span class="line">    fmt.Println(<span class="string">"Key:"</span>, key, <span class="string">"Value:"</span>, value)</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+    </div>
+  </div>
+
+<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><ol>
+<li>Traverse the <code>nums</code> array and store the difference between the <code>target</code> and the current <code>number</code> as the <code>key</code> and the <code>index</code> as the <code>value</code> in the HashMap.</li>
+<li>If the current <code>number</code> is already in the HashMap, return the <code>index</code> of the current <code>number</code> and the <code>index</code> stored in the HashMap.</li>
+<li>We still need to return an empty array if there is no solution.</li>
+</ol>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><ul>
+<li><p>Time complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.844ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2141 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1752,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
+</li>
+<li><p>Space complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.844ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2141 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1752,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
+</li>
+</ul>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><div class="tabs" id="tab-first-unique-name"><ul class="nav-tabs"><li class="tab active"><a class="#first-unique-name-1">Go</a></li><li class="tab"><a class="#first-unique-name-2">Python</a></li><li class="tab"><a class="#first-unique-name-3">C++</a></li></ul><div class="tab-content"><div class="tab-pane active" id="first-unique-name-1"><div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">twoSum</span><span class="params">(nums []<span class="type">int</span>, target <span class="type">int</span>)</span></span> []<span class="type">int</span> {</span><br><span class="line">    hashMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, num := <span class="keyword">range</span> nums {</span><br><span class="line">        <span class="keyword">if</span> j, ok := hashMap[num]; ok {</span><br><span class="line">            <span class="keyword">return</span> []<span class="type">int</span>{j, i}</span><br><span class="line">        }</span><br><span class="line">        hashMap[target - num] = i</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> []<span class="type">int</span>{}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div></div><div class="tab-pane" id="first-unique-name-2"><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">twoSum</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], target: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        hMap = {}</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] <span class="keyword">in</span> hMap:</span><br><span class="line">                <span class="keyword">return</span> [hMap[nums[i]], i]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                hMap[target - nums[i]] = i</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> []</span><br></pre></td></tr></table></figure></div></div><div class="tab-pane" id="first-unique-name-3"><div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>{</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; hashMap;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); ++i) {</span><br><span class="line">            <span class="type">int</span> num = nums[i];</span><br><span class="line">            <span class="keyword">if</span> (hashMap.<span class="built_in">find</span>(num) != hashMap.<span class="built_in">end</span>()) {</span><br><span class="line">                <span class="keyword">return</span> {hashMap[num], i};</span><br><span class="line">            }</span><br><span class="line">            hashMap[target - num] = i;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> {};</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></table></figure></div></div></div></div>
+
+
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Go</tag>
+        <tag>Leetcode</tag>
+        <tag>Array</tag>
+        <tag>Hash Table</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何解決 npm install 時報錯 - Error: EACCES: permission denied</title>
     <url>/2024/05/15/dev-env/node-access-error/</url>
     <content><![CDATA[<p>在我們安裝 npm 套件的時候，有時候會遇到 <code>EACCES: permission denied</code> 的錯誤，這是因為我們沒有權限寫入到指定的目錄，我們會看到以下錯誤（以安裝 aws-cdk 為例）：</p>
@@ -504,6 +597,392 @@
         <tag>Node</tag>
         <tag>npm</tag>
         <tag>permission</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[✅ Beats 💯] LeetCode 1052. Grumpy Bookstore Owner - Easy Solution | Go</title>
+    <url>/2024/06/20/leetcode/1052-grumpy-bookstore-owner/</url>
+    <content><![CDATA[<p>Link 👉🏻 <a class="link" href="https://leetcode.com/problems/grumpy-bookstore-owner/">1052. Grumpy Bookstore Owner <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>There is a bookstore owner that has a store open for <code>n</code> minutes. Every minute, some number of customers enter the store. You are given an integer array <code>customers</code> of length <code>n</code> where <code>customers[i]</code> is the number of the customer that enters the store at the start of the <code>i<sup>th</sup></code> minute and all those customers leave after the end of that minute.</p>
+<p>On some minutes, the bookstore owner is grumpy. You are given a binary array grumpy where <code>grumpy[i]</code> is <code>1</code> if the bookstore owner is grumpy during the <code>i<sup>th</sup></code> minute, and is <code>0</code> otherwise.</p>
+<p>When the bookstore owner is grumpy, the customers of that minute are not satisfied, otherwise, they are satisfied.</p>
+<p>The bookstore owner knows a secret technique to keep themselves not grumpy for <code>minutes</code> consecutive minutes, but can only use it once.</p>
+<p>Return the maximum number of customers that can be satisfied throughout the day.</p>
+<p><strong>Example 1:</strong></p>
+<ul>
+<li>Input:<code> customers = [1,0,1,2,1,1,7,5], grumpy = [0,1,0,1,0,1,0,1], minutes = 3</code></li>
+<li>Output: <code>16</code></li>
+<li>Explanation: <code>The bookstore owner keeps themselves not grumpy for the last 3 minutes. The maximum number of customers that can be satisfied = 1 + 1 + 1 + 1 + 7 + 5 = 16.</code></li>
+</ul>
+<p><strong>Example 2:</strong></p>
+<ul>
+<li>Input: <code>customers = [1], grumpy = [0], minutes = 1</code></li>
+<li>Output: <code>1</code></li>
+</ul>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>n == customers.length == grumpy.length</code></li>
+<li><code>1 &lt;= minutes &lt;= n &lt;= 2 * 10<sup>4</sup></code></li>
+<li><code>0 &lt;= customers[i] &lt;= 1000</code></li>
+<li><code>grumpy[i]</code> is either <code>0</code> or <code>1</code>.</li>
+</ul>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition"></a>Intuition</h3><p>Not grumpy for minutes consecutive minutes, we need to subtract the previous satisfaction if they were grumpy.</p>
+<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><ol>
+<li>Add the satisfaction from non-grumpy as the base satisfaction.</li>
+<li>Compute the grumpy satisfaction then we have to make sure we can find the maximum satisfaction in the consecutive minutes.</li>
+<li>If the current iteration is greater than the minutes and the previous iteration was grumpy, we need to subtract the previous satisfaction.</li>
+<li>Make sure the satisfaction with Secret Technique is the maximum satisfaction.</li>
+<li>Return the sum of the base satisfaction and the maximum satisfaction with Secret Technique.</li>
+</ol>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> i &gt;= minutes &amp;&amp; grumpy[i-minutes] == <span class="number">1</span> {</span><br><span class="line">    satisfiedWithTech -= customers[i-minutes] </span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><ul>
+<li><p>Time complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.844ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2141 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1752,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
+</li>
+<li><p>Space complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.844ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2141 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1752,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
+</li>
+</ul>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxSatisfied</span><span class="params">(customers []<span class="type">int</span>, grumpy []<span class="type">int</span>, minutes <span class="type">int</span>)</span></span> <span class="type">int</span> {</span><br><span class="line">	baseSatisfied        := <span class="number">0</span></span><br><span class="line">	satisfiedWithTech    := <span class="number">0</span></span><br><span class="line">	maxSatisfiedWithTech := <span class="number">0</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(customers); i++ {</span><br><span class="line">		<span class="keyword">if</span> grumpy[i] == <span class="number">1</span> {</span><br><span class="line">			satisfiedWithTech += customers[i]</span><br><span class="line">		} <span class="keyword">else</span> {</span><br><span class="line">			baseSatisfied += customers[i]</span><br><span class="line">		}</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> i &gt;= minutes &amp;&amp; grumpy[i-minutes] == <span class="number">1</span> {</span><br><span class="line">			satisfiedWithTech -= customers[i-minutes] <span class="comment">// because not grumpy for minutes consecutive minutes</span></span><br><span class="line">		}</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> satisfiedWithTech &gt; maxSatisfiedWithTech {</span><br><span class="line">			maxSatisfiedWithTech = satisfiedWithTech</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> baseSatisfied + maxSatisfiedWithTech</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>Leetcode</tag>
+        <tag>Array</tag>
+        <tag>Sliding Window</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AWS: 如何在 AWS EC2 Amazon Linux 2 上安裝 Docker</title>
+    <url>/2024/04/11/dev-ops/amazon-linux-2-install-docker/</url>
+    <content><![CDATA[<p>在我們需要做 DevOps 時，我們常常會需要用到 Containerization 技術，而 Docker 是目前最為廣泛使用的 Containerization 技術之一。同時我們也可能會用到雲端的算力來幫助我們完成這些工作，因此我們今天將會介紹如何在 Amazon Linux 2 上安裝 Docker。</p>
+<h3 id="連線到-EC2"><a href="#連線到-EC2" class="headerlink" title="連線到 EC2"></a>連線到 EC2</h3><p>我們會需要透過 SSH 連線到 EC2，當然我們也可以直接透過 Console 連線到 Shell 來操作，我們將會以 SSH 的方式連線到 EC2 來操作，畢竟可以本地連上去操作會更加順手。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 把 &lt;ec2-public-ip&gt; 換成你的 EC2 的 Public IP</span></span><br><span class="line">$ ssh -i <span class="string">&quot;your.pem&quot;</span> ec2-user@&lt;ec2-public-ip&gt;.compute-1.amazonaws.com</span><br><span class="line">   ,     <span class="comment">#_</span></span><br><span class="line">   ~\_  <span class="comment">######_        Amazon Linux 2</span></span><br><span class="line">  ~~  \_<span class="comment">#######\</span></span><br><span class="line">  ~~     \<span class="comment">####|       AL2 End of Life is 2025-06-30.</span></span><br><span class="line">  ~~       \<span class="comment">#/ ___</span></span><br><span class="line">   ~~       V~<span class="string">&#x27; &#x27;</span>-&gt;</span><br><span class="line">    ~~~         /    A newer version of Amazon Linux is available!</span><br><span class="line">      ~~._.   _/</span><br><span class="line">         _/ _/       Amazon Linux 2023, GA and supported <span class="keyword">until</span> 2028-03-15.</span><br><span class="line">       _/m/<span class="string">&#x27;           https://aws.amazon.com/linux/amazon-linux-2023/</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[ec2-user]@your-ip ~ $</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="檢查安裝所需的-yum"><a href="#檢查安裝所需的-yum" class="headerlink" title="檢查安裝所需的 yum"></a>檢查安裝所需的 <a class="link"   href="https://en.wikipedia.org/wiki/Yum_(software)" >yum <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h3><p>透過 <a class="link"   href="https://en.wikipedia.org/wiki/Yum_(software)" >yum <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來檢查我們的版本，並且我們也會用作安裝 Docker 的套件。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 檢查 yum 的版本</span></span><br><span class="line">$ sudo yum update</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">No packages marked <span class="keyword">for</span> update</span><br></pre></td></tr></table></figure></div>
+
+
+<p>透過 yum 來搜尋 Docker 的套件，並且查看 Docker 的資訊。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 搜尋 Docker 的套件</span></span><br><span class="line">$ sudo yum search docker</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">===================================================== N/S matched: docker =====================================================</span><br><span class="line">pcp-pmda-docker.x86_64 : Performance Co-Pilot (PCP) metrics from the Docker daemon</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
+
+<p>使用 <code>yum info docker</code> 來查看 Docker 的資訊。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum info docker</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">Available Packages</span><br><span class="line">Name        : docker</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
+
+
+<h3 id="安裝-Docker-以及啟動-Docker-服務"><a href="#安裝-Docker-以及啟動-Docker-服務" class="headerlink" title="安裝 Docker 以及啟動 Docker 服務"></a>安裝 Docker 以及啟動 Docker 服務</h3><p>在查看完 Docker 的資訊後，我們可以透過 yum 來安裝 Docker。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum install docker</span><br><span class="line">...</span><br><span class="line">Installed:</span><br><span class="line">  docker.x86_64 0:20.10.25-1.amzn2.0.4</span><br><span class="line"></span><br><span class="line">Dependency Installed:</span><br><span class="line">  containerd.x86_64 0:1.7.11-1.amzn2.0.1        libcgroup.x86_64 0:0.41-21.amzn2        pigz.x86_64 0:2.3.4-1.amzn2.0.1</span><br><span class="line">  runc.x86_64 0:1.1.11-1.amzn2</span><br><span class="line"></span><br><span class="line">Complete!</span><br></pre></td></tr></table></figure></div>
+
+<p>檢查一下我們的 Docker 是否有安裝成功吧！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo docker version</span><br><span class="line">Client:</span><br><span class="line"> Version:           20.10.25</span><br><span class="line"> ...</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Engine:</span><br><span class="line">  Version:          20.10.25</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure></div>
+
+
+<p>啟動我們的 Docker 服務。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo service docker start</span><br><span class="line">Redirecting to /bin/systemctl start docker.service</span><br><span class="line"></span><br><span class="line">$ sudo systemctl <span class="built_in">enable</span> docker.service</span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.</span><br></pre></td></tr></table></figure></div>
+
+<p>我們可以透過 systemctl 來檢查 Docker 服務的狀態，當我們看到 <code>Active: active (running)</code> 時，就代表我們的 Docker 服務已經成功啟動。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo systemctl status docker.service</span><br><span class="line">● docker.service - Docker Application Container Engine</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; vendor preset: disabled)</span><br><span class="line">   Active: active (running) since Wed 2024-04-10 02:29:53 UTC; 1min 13s ago</span><br><span class="line">     Docs: https://docs.docker.com</span><br><span class="line"> Main PID: 3529 (dockerd)</span><br><span class="line">   CGroup: /system.slice/docker.service</span><br><span class="line">           └─3529 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --default-ulimit nofile=32768:65536...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
+
+<p>我們可以把 ec2-user 加入到 docker 群組中，這樣我們就不需要每次都要用 sudo 來執行 Docker 的指令。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo usermod -a -G docker ec2-user</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">id</span> ec2-user</span><br><span class="line">uid=1000(ec2-user) gid=1000(ec2-user) <span class="built_in">groups</span>=1000(ec2-user),4(adm),10(wheel),190(systemd-journal),992(docker)</span><br><span class="line"></span><br><span class="line">$ newgrp docker</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="安裝-docker-compose"><a href="#安裝-docker-compose" class="headerlink" title="安裝 docker-compose"></a>安裝 <code>docker-compose</code></h3><p>我們需要安裝 <code>docker-compose</code> 來幫助我們管理 Docker 的 Container，我們可以透過 pip3 來安裝 <code>docker-compose</code>。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. Get pip3</span></span><br><span class="line">$ sudo yum install python3-pip</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">amzn2-core                                                                                              | 3.6 kB  00:00:00</span><br><span class="line">Package python3-pip-20.2.2-1.amzn2.0.5.noarch already installed and latest version</span><br><span class="line">Nothing to <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. Then run any one of the following</span></span><br><span class="line">$ pip3 install --user docker-compose</span><br><span class="line">Collecting docker-compose</span><br><span class="line">  Downloading docker_compose-1.29.2-py2.py3-none-any.whl (114 kB)</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">Successfully installed ... docker-compose-1.29.2 ...</span><br></pre></td></tr></table></figure></div>
+
+
+  <div class="note p-4 mb-4 rounded-small warning">
+    <p><strong>⚠️ 注意</strong><br>如果在安裝 <code>docker-compose</code> 時出現錯誤，可能是因為 <code>urllib3</code> 的版本支援問題，我們可以透過 <code>pip3 install urllib3==1.26.15</code> 來安裝特定版本的 <code>urllib3</code>。</p>
+<p>可以參考 <a class="link"   href="https://github.com/explosion/spaCy/discussions/12750" >Persisting spaCy import error: NotOpenSSLWarning: urllib3 v2.0 only supports OpenSSL 1.1.1+ #12750 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來排除</p>
+
+  </div>
+
+<p>我們也可以使用 <code>wget</code> 來下載 <code>docker-compose</code> 並且安裝。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ wget https://github.com/docker/compose/releases/latest/download/docker-compose-$(<span class="built_in">uname</span> -s)-$(<span class="built_in">uname</span> -m) </span><br><span class="line">$ sudo <span class="built_in">mv</span> docker-compose-$(<span class="built_in">uname</span> -s)-$(<span class="built_in">uname</span> -m) /usr/local/bin/docker-compose</span><br><span class="line">$ sudo <span class="built_in">chmod</span> -v +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure></div>
+
+<p>我們可以透過 <code>docker-compose --version</code> 來檢查 <code>docker-compose</code> 是否有安裝成功。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker-compose version</span><br><span class="line">docker-compose version 1.29.2, build unknown</span><br><span class="line">docker-py version: &lt;module <span class="string">&#x27;docker.version&#x27;</span> from <span class="string">&#x27;/home/ec2-user/.local/lib/python3.7/site-packages/docker/version.py&#x27;</span>&gt;</span><br><span class="line">CPython version: 3.7.16</span><br><span class="line">OpenSSL version: OpenSSL 1.0.2k-fips  26 Jan 2017</span><br></pre></td></tr></table></figure></div>
+
+
+<p>這時我們就可以開始使用 Docker 來做 Containerization 的工作了。</p>
+<p>最後附上一些在使用 Docker 時可能會用到的指令。祝福大家都能順利使用 Docker 來完成自己的工作。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># start the service</span></span><br><span class="line">$ sudo systemctl start docker.service</span><br><span class="line"><span class="comment"># stop the service</span></span><br><span class="line">$ sudo systemctl stop docker.service</span><br><span class="line"><span class="comment"># restart the service</span></span><br><span class="line">$ sudo systemctl restart docker.service</span><br><span class="line"><span class="comment"># get the service status</span></span><br><span class="line">$ sudo systemctl status docker.service</span><br></pre></td></tr></table></figure></div>
+
+
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a class="link"   href="https://www.cyberciti.biz/faq/how-to-install-docker-on-amazon-linux-2/" >How to install Docker on Amazon Linux 2 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://swapnasagarpradhan.medium.com/how-to-install-docker-on-amazon-linux-2-8e5161ac5464" >How to install Docker on Amazon Linux 2 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DevOps</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>AWS</tag>
+        <tag>EC2</tag>
+        <tag>Amazon Linux 2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git Commit Message 到底怎麼寫才優美？</title>
+    <url>/2024/03/26/dev-ops/git-good-commit-look-like/</url>
+    <content><![CDATA[<p>在團隊用 Git 協作中，Commit Message 是很重要的一環，好的 Commit 可以讓我們的專案更容易維護，讓我們更容易了解專案的開發過程，我們可以想像是程式碼的註解，不過是針對專案改動的註解。所以我們想要用這個篇幅來介紹一些寫 Commit 的技巧，讓我們的 Commit 更優美。</p>
+<h3 id="那到底甚麼是好的-Commit-Message？"><a href="#那到底甚麼是好的-Commit-Message？" class="headerlink" title="那到底甚麼是好的 Commit Message？"></a>那到底甚麼是好的 Commit Message？</h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">fix</span><br></pre></td></tr></table></figure></div>
+
+<p>V.S. </p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">fix: login error </span><br><span class="line"></span><br><span class="line">The past login router was being reused multiple times.</span><br><span class="line"></span><br><span class="line">Fixed it to use the correct route and extracted the duplicated parts.</span><br><span class="line"></span><br><span class="line">Issue: #1234</span><br></pre></td></tr></table></figure></div>
+
+<p>從上方的 Commit 案例中，如果都是一個月前的改動，甚至是一年前的改動，當我今天需要去了解這個改動的時候，我們可以發現第一個 Commit 是很難讓我們了解這個改動的目的，甚至是看不懂要做甚麼，而第二個 Commit 會讓我們更容易了解這個改動的目的，這就是好的 Commit Message 的重要性。</p>
+<p>常常軟體工程師中有個迷因 <a class="link"   href="https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months" >Is it normal if I can’t remember how my code works after just 6 months? <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 就是，大家回去看自己寫的程式都看不懂，甚至會覺得噁心，因此好的 Commit 可以讓我們更容易了解過去團隊做了甚麼事情，這樣我們就可以更容易地維護專案。</p>
+<p><figure class="image-caption"><img src="/images/post/dev-ops/git-good-commit-look-like/meme.JPG" alt="https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months"><figcaption>https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months</figcaption></figure></p>
+<h2 id="Commit-Message-的格式"><a href="#Commit-Message-的格式" class="headerlink" title="Commit Message 的格式"></a>Commit Message 的格式</h2><p>好的 Commit 應該要能夠一眼看出種類、工作內容的大鋼，更重要的是一致性，這樣我們可以更容易地追蹤開發過程。因此我們可以從以下幾個內容：我們做了甚麼努力（What）、又為什麼要做這件事情（Why）、還有是用什麼方法做到的（How）。</p>
+<p>我們可以參考以下的格式：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Header: &lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;</span><br><span class="line">    - TYPE: Represents the category of the commit.</span><br><span class="line">    - SCOPE: Represents the scope of the commit.</span><br><span class="line">    - (Required) SUBJECT: Represents a brief description of the commit, (limited to 50 characters and should not end with a period)</span><br><span class="line"></span><br><span class="line">Body: 72-character wrapped. This should answer:</span><br><span class="line">    - Provide a detailed description of the commit. (Can be <span class="built_in">split</span> into multiple lines, with each line limited to 72 characters.)</span><br><span class="line">    - Explain the changes made <span class="keyword">in</span> the code, and Why to <span class="keyword">do</span>?</span><br><span class="line"></span><br><span class="line">Footer:</span><br><span class="line">    - (<span class="keyword">if</span> applicable) Include the task number.</span><br><span class="line">    - (optional) BREAKING CHANGE: Record incompatible changes. It should start with <span class="string">&quot;BREAKING CHANGE:&quot;</span> followed by a description of the change, the reason <span class="keyword">for</span> the change, and migration instructions.</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Commit-Message-Header"><a href="#Commit-Message-Header" class="headerlink" title="Commit Message Header: &lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;"></a>Commit Message Header: <code>&lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;</code></h3><ul>
+<li>TYPE: 代表 commit 的類別，如：feat, fix, docs, style, refactor, test, chore</li>
+<li>（可選）SCOPE：commit 影響的範圍，如：資料庫、控制層、模板層等，視專案不同改變</li>
+<li>（必要）SUBJECT：commit 的簡短描述，不超過 50 個字元，結尾不加句號，盡量讓 Commit 單一化，一次只更動一個主題</li>
+</ul>
+<h4 id="Type-的種類"><a href="#Type-的種類" class="headerlink" title="Type 的種類"></a>Type 的種類</h4><p>Type 有以下幾種的類別，每個都會是一個動作，代表提交 Commit 的類別，以下是一些我們使用慣例：</p>
+<ul>
+<li>feat: 對專案做了哪些新增、修改 (Feature)。</li>
+<li>fix: 修復了那些功能 (Bug Fix)。</li>
+<li>docs: 對專案撰寫文件 (Documentation)。</li>
+<li>style: 撰寫格式改動 (不影響程式碼運行的變動 white-space, formatting, missing semi colons, et.)。</li>
+<li>refactor: 重構 (既不是新增功能，也不是修補 bug 的程式碼變動)。</li>
+<li>perf: 改善效能 (A code change that improves performance)。</li>
+<li>test: 增加測試 (when adding missing tests)。</li>
+<li>chore: 建構程序或輔助工具的變動 (maintain)。</li>
+<li>revert: 撤銷回覆先前的 commit 例如：revert: type(scope): subject (回覆版本：xxxx)。</li>
+</ul>
+<h3 id="Commit-Message-Body"><a href="#Commit-Message-Body" class="headerlink" title="Commit Message Body"></a>Commit Message Body</h3><p>傳達「我們做了甚麼努力（What）、又為什麼要做這件事情（Why）、還有是用什麼方法做到的（How）」，描述詳細改動的內容，可以分成多行，每行不超過 72 個字元，也可以有前後改動差異的描述。</p>
+<h3 id="Commit-Message-Footer"><a href="#Commit-Message-Footer" class="headerlink" title="Commit Message Footer"></a>Commit Message Footer</h3><p>用來填寫相關聯 issue 的編號，像是 <code>Issue: #1234</code>。另外還有 BREAKING CHANGE（未必需要），記錄不相容的變動，應該以「BREAKING CHANGE:」開頭，後面是變動的描述、原因和遷移方法。</p>
+<h3 id="一些實際的例子"><a href="#一些實際的例子" class="headerlink" title="一些實際的例子"></a>一些實際的例子</h3><p>我們在現有的功能上加上了 email 驗證，我們可以使用 <code>feat</code> 來撰寫：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">feat: email validation</span><br><span class="line"></span><br><span class="line">We have implemented the following enhancements:</span><br><span class="line"></span><br><span class="line">1. Introduced email validation to the login form.</span><br><span class="line">2. The new feature verifies if the user&#x27;s input is in a valid email format.</span><br><span class="line">3. It checks if the entered email corresponds to an actual email account.</span><br><span class="line">4. This update aims to prevent users from entering incorrect email addresses.</span><br><span class="line">5. It improves overall user experience and data integrity.</span><br><span class="line"></span><br><span class="line">Issue: #1234</span><br></pre></td></tr></table></figure></div>
+
+<p>今天我們需要基於過去版本做開發，我們可以使用 <code>revert</code> 來回覆先前的 Commit：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">revert: feat: email validation</span><br><span class="line"></span><br><span class="line">To address the issue, we have decided to revert the email validation feature to the previous version.</span><br><span class="line"></span><br><span class="line">Issue: #2345</span><br></pre></td></tr></table></figure></div>
+
+<p>我們在準備將產品上線的時候，我們駔了幾個 unit test，我們可以使用 <code>test</code> 來撰寫：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">test: email validation</span><br><span class="line"></span><br><span class="line">There are several unit tests for the email validation feature:</span><br><span class="line">1. Test the email validation function with invalid email addresses.</span><br><span class="line">2. Test the email validation function with valid email addresses.</span><br><span class="line"></span><br><span class="line">Issue: #3456</span><br></pre></td></tr></table></figure></div>
+
+<p>今天我們已經將新功能做好了，我們希望加上文件的說明，我們可以使用 <code>docs</code> 來撰寫：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docs: email validation</span><br><span class="line"></span><br><span class="line">We have added documentation for the email validation feature:</span><br><span class="line">1. Add the Tech Stack documentation.</span><br><span class="line">2. Add the User Guide documentation.</span><br><span class="line">3. Add the API documentation.</span><br><span class="line"></span><br><span class="line">Issue: #4567</span><br></pre></td></tr></table></figure></div>
+
+<p>後來因為我們的用戶數量變多了，我們希望優化現有的架構提升驗證速度，我們可以使用 <code>perf</code> 來撰寫：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">perf: email validation</span><br><span class="line"></span><br><span class="line">We have optimized the email validation feature:</span><br><span class="line">1. Improved the email validation algorithm.</span><br><span class="line">2. Reduced the time required to validate email addresses.</span><br><span class="line">3. Enhanced the user experience by providing faster feedback.</span><br><span class="line"></span><br><span class="line">Issue: #5678</span><br></pre></td></tr></table></figure></div>
+
+
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>Commit Message 的撰寫會需要大量的練習，也需要時間讓團隊成員去實踐，如此可以讓我們追朔過去的努力，也可以幫助團隊成員更快速地餐與開發過程，這樣我們就可以更容易地維護專案。最後祝大家一切開發都順利，也希望大家的 Commit Message 越來越優美。</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a class="link"   href="https://wadehuanglearning.blogspot.com/2019/05/commit-commit-commit-why-what-commit.html" >Git Commit Message 這樣寫會更好，替專案引入規範與範例 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://heidiliu2020.github.io/git-commit-message/" >[學習筆記] 如何撰好的 Git Commit Message <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DevOps</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Commit</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</title>
+    <url>/2023/09/08/dev-ops/git-ssh/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Git 是每位軟體工程師日常工作不可或缺的工具之一，畢竟軟體開發常常需要跟他人合作，甚至是維護、更新等⋯⋯可能都需要參照過去的成果，甚至需要快速與團隊同步，因此 Git 對大家而言都不陌生吧！<br>但是，有時候我們會遇到一些問題，例如：每次 push 都需要輸入帳號密碼，或是每次 push 都需要輸入密碼，這些都是可以透過 ssh 來解決的，接下來就讓我們一起來看看如何使用 ssh 與 GitHub 連線吧！</p>
+<h3 id="1-產生-ssh-key"><a href="#1-產生-ssh-key" class="headerlink" title="1. 產生 ssh key"></a>1. 產生 ssh key</h3><p>首先，我們需要先產生 ssh key，這個 key 會被存在 <code>~/.ssh</code> 資料夾中，如果沒有的話，可以使用以下指令建立（記得要把 email 改成你自己的 email，否則永遠不會成功哦！）：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>上述操作 <code>ed25519</code> 其實是較新的演算法，如果電腦不支援的話也可以使用以下另一種演算法生成（同樣也要記得把 email 改成你自己的 email）：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>以下將使用 <code>id_rsa</code> 做示範，接下來將出現以下畫面，直接按 <strong>Enter</strong> 就會幫你把產生的 key 放在預設的地方 <code>~/.ssh/id_rsa</code> ，也就是下方括號內的位址。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ Enter a file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/you/.ssh/id_rsa):</span><br></pre></td></tr></table></figure></div>
+
+<p>接下來會出現以下畫面，若不想以後 push 都要輸入 <code>passphrase</code> 的話，就連續點擊兩次 <strong>Enter</strong> 這樣 <code>passphrase</code> 就會是空的，以後 push 就不用輸入了！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Click Enter Twice</span></span><br><span class="line">$ Enter passphrase (empty <span class="keyword">for</span> no passphrase): [Type a passphrase]</span><br><span class="line">$ Enter same passphrase again: [Type passphrase again]</span><br></pre></td></tr></table></figure></div>
+
+<p>這樣做 ssh key 就已經生成好了！</p>
+<p>總共會生成兩個 key，private and public key，接下來會帶大家如何找到這兩個 key。</p>
+<h3 id="2-取得-public-ssh-key"><a href="#2-取得-public-ssh-key" class="headerlink" title="2. 取得 public ssh key"></a>2. 取得 public ssh key</h3><p>接著我們要進到剛剛放置 key 的位置，因此我們照著以下流程，把 public 的 key 拿出（副檔名為 <code>.pub</code>），要特別注意 GitHub 只需要 public 的 key，private 要自己留好！千萬不要給任何人！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> .ssh</span><br><span class="line">$ <span class="built_in">ls</span></span><br><span class="line">id_rsa          id_rsa.pub</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cat</span> id_rsa.pub</span><br></pre></td></tr></table></figure></div>
+
+<p>接下來就把 <code>cat id_rsa.pub</code> 的內容複製下來，我們就可以回 GitHub 做最後一步設定了！</p>
+<h3 id="3-把-public-key-設定到-GitHub"><a href="#3-把-public-key-設定到-GitHub" class="headerlink" title="3. 把 public key 設定到 GitHub"></a>3. 把 public key 設定到 GitHub</h3><p>接下來我們要把 public key 設定到 GitHub，這樣 GitHub 才能辨識你的電腦，讓你可以透過 ssh 連線到 GitHub，這樣就可以真的達到不用每次 push 都要輸入帳號密碼了！接下來將用截圖畫面的方式展示步驟！</p>
+<h4 id="3-A-前往-GitHub-設定"><a href="#3-A-前往-GitHub-設定" class="headerlink" title="3-A. 前往 GitHub 設定"></a>3-A. 前往 GitHub 設定</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-ops/git-ssh/01.png"
+                     
+                ></p>
+<h4 id="3-B-點擊-“SSH-and-GPG-keys”"><a href="#3-B-點擊-“SSH-and-GPG-keys”" class="headerlink" title="3-B. 點擊 “SSH and GPG keys”"></a>3-B. 點擊 “SSH and GPG keys”</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-ops/git-ssh/02.png"
+                     
+                ></p>
+<h4 id="3-C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”"><a href="#3-C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”" class="headerlink" title="3-C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”"></a>3-C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-ops/git-ssh/03.png"
+                     
+                ></p>
+<h4 id="3-D-貼上-public-key-最後送出"><a href="#3-D-貼上-public-key-最後送出" class="headerlink" title="3-D. 貼上 public key 最後送出"></a>3-D. 貼上 public key 最後送出</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-ops/git-ssh/04.png"
+                     
+                ></p>
+<p>照著上述步驟就一切沒問題了，以後把專案 clone 到本地就選擇 ssh 的方式就搞定啦！ </p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-ops/git-ssh/05.png"
+                     
+                ></p>
+<p>如果原先專案是走 <code>http</code> 的方式 <code>clone</code> 下來的話只要做以下更改就可以換成 <code>ssh</code> 啦！</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote set-url origin &lt;your_project_ssh_url&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>如此以後專案 push 到 GitHub 就都會走 ssh 了也不需要每次都輸入帳號密碼了！最後祝大家以後都開發順利！可以開始進行更多遠端的 Git 操作了！</p>
+]]></content>
+      <categories>
+        <category>DevOps</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>Git</tag>
+        <tag>SSH Key</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>透過 Docker 打包 FastAPI 與 Redis 的服務串流</title>
+    <url>/2024/04/15/dev-ops/python-reddis-docker/</url>
+    <content><![CDATA[<p>當今天我們要自架一個服務的時候，我們會需要後端的 Server 以及需要 Database 來保存服務的內容，因此我們今天將透過 Docker 包裝 Redis 以及 Python FastAPI 來實作一個簡單的服務。</p>
+<h3 id="創建專案"><a href="#創建專案" class="headerlink" title="創建專案"></a>創建專案</h3><p>首先我們要開始撰寫 Python FastAPI 的程式碼，不過在開始之前我們要先建立我們的虛擬環境並且安裝我們所需的 dependencies。（我們的 Python 環境是 Python 3.11，以及所需的套件是 fastapi, uvicorn, redis, python-dotenv）</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> my-fastapi-redis    <span class="comment"># 建立專案資料夾</span></span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> my-fastapi-redis       <span class="comment"># 進入專案資料夾</span></span><br><span class="line"></span><br><span class="line">$ python3 -m venv venv      <span class="comment"># 建立虛擬環境</span></span><br><span class="line"></span><br><span class="line">$ <span class="built_in">source</span> venv/bin/activate  <span class="comment"># 啟動虛擬環境</span></span><br><span class="line"></span><br><span class="line">$ pip install fastapi uvicorn redis python-dotenv requests   <span class="comment"># 安裝所需套件</span></span><br></pre></td></tr></table></figure></div>
+
+<p>我們的專案結構會如以下：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">PROJECT_ROOT</span><br><span class="line">├── app/</span><br><span class="line">│   ├── __init__.py</span><br><span class="line">│   └── main.py</span><br><span class="line">├── scripts/</span><br><span class="line">│   ├── run.sh</span><br><span class="line">│   └── test.sh</span><br><span class="line">├── test/</span><br><span class="line">│   └── test_api.py</span><br><span class="line">├── .env</span><br><span class="line">├── docker-compose.yml</span><br><span class="line">├── Dockerfile</span><br><span class="line">└── README.md</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="實作-FastAPI-與-Redis"><a href="#實作-FastAPI-與-Redis" class="headerlink" title="實作 FastAPI 與 Redis"></a>實作 FastAPI 與 Redis</h3><p>再來我們可以透過 <a class="link"   href="https://www.docker.com/" >Docker <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來啟動 <a class="link"   href="https://redis.io/" >Redis <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 服務，這裡我們使用 <a class="link"   href="https://hub.docker.com/_/redis" >Redis 官方提供的 Docker Image <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來啟動 Redis 服務，我們會將預設的 6379 port 對應到本地端的 6379 port。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker run --name my-redis -p 6379:6379 -d redis</span><br></pre></td></tr></table></figure></div>
+
+<p>我們可以透過以下指令來確認 Redis 服務是否正常運作，我們先進入 Redis 的 Container 內部，再透過 <code>redis-cli</code> 來操作 Redis。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker <span class="built_in">exec</span> -it my-redis sh</span><br></pre></td></tr></table></figure></div>
+
+<p>查看 Redis 的 key，並且試著新增一個 key-value pair，以及刪除 key。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">127.0.0.1:6379&gt; keys *</span><br><span class="line">(empty array)</span><br><span class="line">127.0.0.1:6379&gt; SET key1 value1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; keys *</span><br><span class="line">1) <span class="string">&quot;key1&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; DEL key1</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure></div>
+
+<p>接著我們可以開始撰寫我們的 FastAPI 程式碼，我們會透過 FastAPI 來實作一個簡單的 API，這個 API 會透過 Redis 來儲存資料，我們的目的是能夠新增 Item、刪除 Item、以及列出所有的 Item。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 新增 item 至 Redis</span></span><br><span class="line"><span class="meta">@app.post(<span class="params"><span class="string">&quot;/items/&quot;</span>, status_code=status.HTTP_201_CREATED</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">create_item</span>(<span class="params">item: Item</span>):</span><br><span class="line">    <span class="comment"># Add item to the Redis list</span></span><br><span class="line">    redis_cli.rpush(<span class="string">&quot;items&quot;</span>, item.name)</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Item added successfully&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得 Redis 內的所有 items</span></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/items/&quot;</span>, status_code=status.HTTP_200_OK</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">get_items</span>():</span><br><span class="line">    <span class="comment"># Retrieve items from the Redis list</span></span><br><span class="line">    items = redis_cli.lrange(<span class="string">&quot;items&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;items&quot;</span>: items&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Redis 內的特定 item</span></span><br><span class="line"><span class="meta">@app.delete(<span class="params"><span class="string">&quot;/items/&#123;item_name&#125;&quot;</span>, status_code=status.HTTP_200_OK</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">delete_item</span>(<span class="params">item_name: <span class="built_in">str</span></span>):</span><br><span class="line">    <span class="comment"># Delete a specific item from the Redis list</span></span><br><span class="line">    <span class="keyword">if</span> item_name <span class="keyword">not</span> <span class="keyword">in</span> redis_cli.lrange(<span class="string">&quot;items&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">raise</span> HTTPException(status_code=<span class="number">404</span>, detail=<span class="string">&quot;Item not found&quot;</span>)</span><br><span class="line">    redis_cli.lrem(<span class="string">&quot;items&quot;</span>, <span class="number">0</span>, item_name)</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;message&quot;</span>: <span class="string">f&quot;Item &#x27;<span class="subst">&#123;item_name&#125;</span>&#x27; deleted successfully&quot;</span>&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>完整的程式碼如下，我們會需要 <code>.env</code> 檔案來設定 Redis 的 Host 以及 Port，預設是 <code>REDIS_HOST=localhost</code> 以及 <code>REDIS_PORT=6379</code>。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># app/main.py</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"><span class="keyword">from</span> dotenv <span class="keyword">import</span> find_dotenv, load_dotenv</span><br><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI, status</span><br><span class="line"><span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel</span><br><span class="line"><span class="keyword">from</span> fastapi.exceptions <span class="keyword">import</span> HTTPException</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Connect to Redis</span></span><br><span class="line">_ = load_dotenv(find_dotenv())</span><br><span class="line">REDIS_HOST = os.environ.get(<span class="string">&#x27;REDIS_HOST&#x27;</span>)</span><br><span class="line">REDIS_PORT = os.environ.get(<span class="string">&#x27;REDIS_PORT&#x27;</span>)</span><br><span class="line">redis_cli = redis.Redis(</span><br><span class="line">    host=REDIS_HOST, port=REDIS_PORT, </span><br><span class="line">    decode_responses=<span class="literal">True</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Item</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    name: <span class="built_in">str</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/&quot;</span>, status_code=status.HTTP_200_OK</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">root</span>():</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Hello World&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 新增 item 至 Redis</span></span><br><span class="line"><span class="meta">@app.post(<span class="params"><span class="string">&quot;/items/&quot;</span>, status_code=status.HTTP_201_CREATED</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">create_item</span>(<span class="params">item: Item</span>):</span><br><span class="line">    <span class="comment"># Add item to the Redis list</span></span><br><span class="line">    redis_cli.rpush(<span class="string">&quot;items&quot;</span>, item.name)</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Item added successfully&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得 Redis 內的所有 items</span></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/items/&quot;</span>, status_code=status.HTTP_200_OK</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">get_items</span>():</span><br><span class="line">    <span class="comment"># Retrieve items from the Redis list</span></span><br><span class="line">    items = redis_cli.lrange(<span class="string">&quot;items&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;items&quot;</span>: items&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Redis 內的特定 item</span></span><br><span class="line"><span class="meta">@app.delete(<span class="params"><span class="string">&quot;/items/&#123;item_name&#125;&quot;</span>, status_code=status.HTTP_200_OK</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">delete_item</span>(<span class="params">item_name: <span class="built_in">str</span></span>):</span><br><span class="line">    <span class="comment"># Delete a specific item from the Redis list</span></span><br><span class="line">    <span class="keyword">if</span> item_name <span class="keyword">not</span> <span class="keyword">in</span> redis_cli.lrange(<span class="string">&quot;items&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">raise</span> HTTPException(status_code=<span class="number">404</span>, detail=<span class="string">&quot;Item not found&quot;</span>)</span><br><span class="line">    redis_cli.lrem(<span class="string">&quot;items&quot;</span>, <span class="number">0</span>, item_name)</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;message&quot;</span>: <span class="string">f&quot;Item &#x27;<span class="subst">&#123;item_name&#125;</span>&#x27; deleted successfully&quot;</span>&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="測試-API"><a href="#測試-API" class="headerlink" title="測試 API"></a>測試 API</h3><p>接著我們要撰寫一些 unittest 去測試我們的 API，我們會透過 requests 來發送 HTTP request 並且驗證回傳的 response 是否符合預期。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># test/test_api.py</span></span><br><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TestItemEndpoint</span>(unittest.TestCase):</span><br><span class="line">    base_url = <span class="string">&quot;http://localhost:8080/items/&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_create_items</span>(<span class="params">self</span>):</span><br><span class="line">        data = &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;item1&quot;</span>&#125;</span><br><span class="line">        response = requests.post(self.base_url, headers=&#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>&#125;, data=json.dumps(data))</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">201</span>)</span><br><span class="line"></span><br><span class="line">        data = &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;item2&quot;</span>&#125;</span><br><span class="line">        response = requests.post(self.base_url, headers=&#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>&#125;, data=json.dumps(data))</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">201</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_get_items</span>(<span class="params">self</span>):</span><br><span class="line">        response = requests.get(self.base_url)</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_delete_item</span>(<span class="params">self</span>):</span><br><span class="line">        response = requests.delete(self.base_url + <span class="string">&quot;item1&quot;</span>)</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_get_items_after_deletion</span>(<span class="params">self</span>):</span><br><span class="line">        response = requests.get(self.base_url)</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">200</span>)</span><br><span class="line">        data = response.json()</span><br><span class="line">        self.assertEqual(<span class="built_in">len</span>(data), <span class="number">1</span>)  <span class="comment"># Assuming only one item left after deletion</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure></div>
+
+<p>當然我們也可以直接透過 <code>curl</code> 直接獲取 API 的 response。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -X POST <span class="string">&quot;http://localhost:8080/items/&quot;</span> -H <span class="string">&quot;Content-Type: application/json&quot;</span> -d <span class="string">&#x27;&#123;&quot;name&quot;: &quot;item1&quot;&#125;&#x27;</span></span><br><span class="line">$ curl -X POST <span class="string">&quot;http://localhost:8080/items/&quot;</span> -H <span class="string">&quot;Content-Type: application/json&quot;</span> -d <span class="string">&#x27;&#123;&quot;name&quot;: &quot;item2&quot;&#125;&#x27;</span></span><br><span class="line">$ curl -X GET <span class="string">&quot;http://localhost:8080/items/&quot;</span></span><br><span class="line">$ curl -X DELETE <span class="string">&quot;http://localhost:8080/items/item1&quot;</span></span><br><span class="line">$ curl -X GET <span class="string">&quot;http://localhost:8080/items/&quot;</span></span><br><span class="line">$ curl -X GET <span class="string">&quot;http://localhost:8080/items/&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>不過既然有 unittest 那我們就用 unittest 來測試我們的 API 吧。最後我們要加上 <code>run.sh</code> 以及 <code>test.sh</code> 來方便我們執行程式以及測試。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># scripts/run.sh</span></span><br><span class="line">uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># scripts/test.sh</span></span><br><span class="line">python <span class="built_in">test</span>/test_*.py</span><br></pre></td></tr></table></figure></div>
+
+<p>我們依序透過 <code>scripts/run.sh</code> 以及 <code>scripts/test.sh</code> 來啟動我們的服務以及測試我們的 API。完成會如下的畫面。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-ops/python-reddis-docker/python-reddis-docker-demo.png"
+                     
+                ></p>
+<h3 id="打包服務"><a href="#打包服務" class="headerlink" title="打包服務"></a>打包服務</h3><p>最後就是我們要把我們的所有服務打包啦！</p>
+<p>我們先將我們的 Dockerfile 寫好，這裡我們使用 Python 3.11 的 slim-buster 作為基底，並且安裝所需的套件，最後我們會將我們的程式碼複製到 Docker Container 內部，並且啟動 FastAPI 服務。</p>
+<div class="highlight-container" data-rel="Yaml"><figure class="iseeu highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Dockerfile</span></span><br><span class="line"><span class="string">FROM</span> <span class="string">python:3.11-slim-buster</span></span><br><span class="line"></span><br><span class="line"><span class="string">WORKDIR</span> <span class="string">/app</span></span><br><span class="line"></span><br><span class="line"><span class="string">RUN</span> <span class="string">pip</span> <span class="string">install</span> <span class="string">uvicorn</span> <span class="string">redis</span> <span class="string">python-dotenv</span> <span class="string">requests</span></span><br><span class="line"></span><br><span class="line"><span class="string">COPY</span> <span class="string">.</span> <span class="string">/app</span></span><br><span class="line"></span><br><span class="line"><span class="string">EXPOSE</span> <span class="number">8080</span></span><br><span class="line"></span><br><span class="line"><span class="string">CMD</span> [<span class="string">&quot;uvicorn&quot;</span>, <span class="string">&quot;app.main:app&quot;</span>, <span class="string">&quot;--host&quot;</span>, <span class="string">&quot;0.0.0.0&quot;</span>, <span class="string">&quot;--port&quot;</span>, <span class="string">&quot;8080&quot;</span>]</span><br></pre></td></tr></table></figure></div>
+
+<p>再來我們會使用到 <code>docker-compose</code> 來管理我們的服務，這裡我們會使用到 Redis 以及 FastAPI 兩個服務，我們會將 Redis 的 6379 port 對應到本地端的 6379 port，以及 FastAPI 的 8080 port 對應到本地端的 8080 port。並且會有個虛擬的網路 <code>hugo-network</code> 來連接兩個服務。</p>
+<div class="highlight-container" data-rel="Yaml"><figure class="iseeu highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">redis:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">redis:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">redis</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;6379:6379&quot;</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">hugo-network</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">server:</span></span><br><span class="line">    <span class="attr">build:</span> </span><br><span class="line">      <span class="attr">context:</span> <span class="string">.</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">backend</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;8080:8080&quot;</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">hugo-network</span></span><br><span class="line"></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">redis-data:</span></span><br><span class="line">   </span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">hugo-network:</span></span><br><span class="line">    <span class="attr">driver:</span> <span class="string">bridge</span></span><br></pre></td></tr></table></figure></div>
+
+<p>最後我們只要透過 <code>docker-compose up -d</code> 就可以達到我們開發所需的效果！</p>
+
+  <div class="note p-4 mb-4 rounded-small warning">
+    <p><strong>⚠️ 注意</strong></p>
+<p>因為我們的服務是把 server 跟 db 分開成不同的 container 因此我們需要注意我們的 <code>.env</code> 檔案，我們需要將 <code>REDIS_HOST</code> 設定為 <code>redis</code>，這樣我們的 FastAPI 才能連接到 Redis。</p>
+
+  </div>
+
+<p>今天的內容操作就到這邊完全結束，大家可以參考 <a class="link"   href="https://github.com/1chooo/python-redis-docker/tree/blog" >Source Code - python-redis-docker <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 也祝大家都能成功地打包自己的服務！</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a class="link"   href="https://developer.redis.com/develop/python/fastapi/" >Using Redis with FastAPI <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://github.com/seymaozler/card-application" >seymaozler&#x2F;card-application <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://medium.com/@seymaaozlerr/building-an-authentication-system-with-fastapi-redis-and-mysql-cc8b005b9c30" >Building an Authentication System with FastAPI, Redis and MySQL <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://python-dependency-injector.ets-labs.org/examples/fastapi-redis.html" >FastAPI + Redis example <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://medium.com/@vmbdeveloper/python-using-redis-with-docker-0400a5b2a735" >Python: Using Redis with Docker <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://www.docker.com/blog/how-to-use-the-redis-docker-official-image/" >How to Use the Redis Docker Official Image <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://medium.com/%E7%A8%8B%E5%BC%8F%E4%B9%BE%E8%B2%A8/python-redis-v-s-mysql-%E6%9F%A5%E8%A9%A2%E5%AF%A6%E4%BD%9C-9f0cc0d9b32b" >[Python] Redis v.s Mysql 查詢實作 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://medium.com/@bhupender.rawat4/python-redis-using-docker-45643af090db" >Python: Redis [ Using Docker ] <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://realpython.com/python-redis/" >How to Use Redis With Python <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DevOps</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Docker</tag>
+        <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AWS: Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)</title>
+    <url>/2024/03/22/dev-ops/aws-security-group-nacl/</url>
+    <content><![CDATA[<p>During a meeting, we explored a scenario: “If we disable the inbound rule of the Network Access Control List (NACL), the connection will be interrupted. However, if we turn off inbound traffic in the Security Group, would we still be able to connect?” Surprisingly, the answer is YES. The rationale behind this phenomenon will be elaborated on in this article.</p>
+<p>We can discuss the differences between Security Group and Network Access Control List (NACL) from various perspectives. The primary difference between the two is:</p>
+<blockquote>
+<p>The Security Group acts as the firewall for EC2 Instances. </p>
+<p>The Network ACL serves as the firewall for the VPC Subnets.</p>
+</blockquote>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-ops/aws-security-group-nacl/arch.png"
+                      alt="Awesome Cloud — Security Groups and Network ACLs"
+                ><figcaption>Awesome Cloud — Security Groups and Network ACLs</figcaption></figure></p>
+<p>Next, we can discuss the differences between the two from the following perspectives:</p>
+<h3 id="Defense-Layers"><a href="#Defense-Layers" class="headerlink" title="Defense Layers"></a>Defense Layers</h3><p>Security Groups are associated with specific instances, which could be an EC2 instance, an ECS cluster, or an RDS database instance. On the other hand, Network Access Control Lists (NACLs) operate at the subnet level. This means that any instance within a subnet that has an associated NACL will automatically adhere to the NACL’s rules.</p>
+<h3 id="Application-Scope"><a href="#Application-Scope" class="headerlink" title="Application Scope"></a>Application Scope</h3><p>While Security Groups are tailored for individual instances, NACLs are designed to provide rules for the entire Subnet within a Virtual Private Cloud (VPC).</p>
+<h3 id="Statefulness"><a href="#Statefulness" class="headerlink" title="Statefulness"></a>Statefulness</h3><p>Security Group is stateful which means if you allow the inbound traffic, the response traffic is allowed automatically. No matter what the outbound rules are. However, NACL is stateless and do not track the state of a connection.</p>
+<h3 id="Default-Rules"><a href="#Default-Rules" class="headerlink" title="Default Rules"></a>Default Rules</h3><p>By default, Security Groups block all inbound traffic while allowing all outbound traffic. Conversely, Network Access Control Lists (NACLs) have a default rule at the subnet boundary that permits both inbound and outbound traffic. The application of these rules in NACLs is determined by Rule Numbers, with higher numbers indicating higher priority.</p>
+<h3 id="Rule-Application-Order"><a href="#Rule-Application-Order" class="headerlink" title="Rule Application Order"></a>Rule Application Order</h3><p>NACLs apply a numbered list of rules sequentially. However, Security Groups do not follow a specific order in rule application.</p>
+<h3 id="Traffic-Blocking-Capabilities"><a href="#Traffic-Blocking-Capabilities" class="headerlink" title="Traffic Blocking Capabilities"></a>Traffic Blocking Capabilities</h3><p>NACLs have the ability to block traffic at the subnet level. In contrast, Security Groups can only block traffic at the instance level.</p>
+<h3 id="Impact-on-Network-Performance"><a href="#Impact-on-Network-Performance" class="headerlink" title="Impact on Network Performance"></a>Impact on Network Performance</h3><p>Network Access Control Lists (NACLs) can potentially exert a significant impact on network performance. This is because they operate at the subnet level, applying their rules to all instances within the subnet. On the other hand, Security Groups operate at the instance level, applying their rules only to individual instances, thus having a more localized impact.</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>To sum up, let’s circle back to our main discussion. “If we disable the inbound rule of the Network Access Control List (NACL), the connection will be interrupted. Why is that?” Unlike Security Groups, NACLs are stateless. This means they do not keep track of the connection’s state, and each packet of data is treated independently. Therefore, if we disable the inbound rule of a NACL, it will not allow any incoming traffic, effectively breaking the connection.</p>
+<p>On the other hand, if we turn off inbound traffic in the Security Group, we can still connect. The absence of inbound rules does not disrupt the connection because the Security Group functions as a stateful firewall. Even with specific inbound traffic blocked, a connection can still be established as it originates from within the EC2 instance, and the returning traffic is allowed.</p>
+<p>This concept aligns with the TCP Three-way Handshake (SYN, SYN-ACK, ACK). The connection is initiated by the client, and the server responds to the client’s request. Once we create the tunnel between the server and client, the connection is established.</p>
+<p>Therefore, after disabling the Inbound Rule of the Security Group, we have a grace period to inform customers or other parties, preventing an immediate disruption of the service connection.</p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li><a class="link"   href="https://www.mygreatlearning.com/aws/tutorials/nacl-vs-security-group" >NACL vs Security Group <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://www.knowledgehut.com/tutorials/aws/nacl-vs-security-groups" >Security groups vs Network ACLs - What is the Difference? <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://k21academy.com/amazon-web-services/aws-solutions-architect/aws-security-groups-vs-nacl/" >AWS Network Security: NACL vs Security Groups <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://digitalcloud.training/aws-security-group-vs-nacl-key-differences/" >AWS Security Group vs NACL – Key Differences <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://community.meraki.com/t5/Security-SD-WAN/Meraki-vMX-amp-AWS-security-group/m-p/222409#:~:text=Having%20no%20inbound%20rules%20does%20not%20cause%20the%20tunnel%20to,instance%20and%20returning%20traffic%20allowed" >Meraki vMX &amp; AWS security group <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://medium.com/awesome-cloud/aws-difference-between-security-groups-and-network-acls-adc632ea29ae" >AWS — Difference between Security Groups and Network Access Control List (NACL) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DevOps</category>
+      </categories>
+      <tags>
+        <tag>AWS</tag>
+        <tag>EC2</tag>
+        <tag>Cli</tag>
+        <tag>Security Group</tag>
+        <tag>NACL</tag>
       </tags>
   </entry>
   <entry>
@@ -772,154 +1251,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++</title>
-    <url>/2024/06/25/leetcode/0001-two-sum/</url>
-    <content><![CDATA[<p>Link 👉🏻 <a class="link" href="https://leetcode.com/problems/two-sum/">1. Two Sum <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given an array of integers <code>nums</code> and an integer <code>target</code>, <em>return indices of the two numbers such that they add up to <code>target</code></em>.</p>
-<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
-<p>You can return the answer in any order.</p>
-<p><strong>Example 1:</strong></p>
-<ul>
-<li>Input: <code>nums = [2,7,11,15], target = 9</code></li>
-<li>Output: <code>[0,1]</code></li>
-<li>Explanation: <code>Because nums[0] + nums[1] == 9, we return [0, 1].</code></li>
-</ul>
-<p><strong>Example 2:</strong></p>
-<ul>
-<li>Input: <code>nums = [3,2,4], target = 6</code></li>
-<li>Output: <code>[1,2]</code></li>
-</ul>
-<p><strong>Example 3:</strong></p>
-<ul>
-<li>Input: <code>nums = [3,3], target = 6</code></li>
-<li>Output: <code>[0,1]</code></li>
-</ul>
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><code>2 &lt;= nums.length &lt;= 10<sup>4</sup></code></li>
-<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
-<li><code>-10<sup>9</sup> &lt;= target &lt;= 10<sup>9</sup></code></li>
-<li><code>Only one valid answer exists.</code></li>
-</ul>
-<p><strong>Follow-up:</strong> Can you come up with an algorithm that is less than <code>O(n<sup>2</sup>)</code> time complexity?</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition"></a>Intuition</h3><p>Use HashMap to keep numbers and their indices we found.</p>
-
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>Note</p>
-
-    </div>
-    <div class="notel-content">
-      <p>Create a Hash Table in <code>GO</code> with <code>make</code> function <sup><a class="link" href="https://www.geeksforgeeks.org/golang-maps/">Golang Maps <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></sup>, and use <code>map[key] = value</code> to set the value of the key.</p>
-<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line">numMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)</span><br></pre></td></tr></table></figure></div>
-
-    </div>
-  </div>
-
-
-
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>Note</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>How to Work with maps?</strong> <sup><a class="link" href="https://go.dev/blog/maps">Go maps in action#Working with maps <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></sup></p>
-<p>A two-value assignment tests for the existence of a key:</p>
-<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line">i, ok := m[<span class="string">"route"</span>]</span><br></pre></td></tr></table></figure></div>
-
-<p>In this statement, the first <code>value (i)</code> is assigned the value stored under the key “route”. If that key doesn’t exist, i is the value type’s zero <code>value (0)</code>. The second <code>value (ok)</code> is a <code>bool</code> that is true if the key exists in the map, and false if not.</p>
-<p>To test for a key without retrieving the value, use an underscore in place of the first value:</p>
-<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line">_, ok := m[<span class="string">"route"</span>] </span><br></pre></td></tr></table></figure></div>
-
-<p>To iterate over the contents of a map, use the range keyword:</p>
-<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> key, value := <span class="keyword">range</span> m {</span><br><span class="line">    fmt.Println(<span class="string">"Key:"</span>, key, <span class="string">"Value:"</span>, value)</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
-
-    </div>
-  </div>
-
-<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><ol>
-<li>Traverse the <code>nums</code> array and store the difference between the <code>target</code> and the current <code>number</code> as the <code>key</code> and the <code>index</code> as the <code>value</code> in the HashMap.</li>
-<li>If the current <code>number</code> is already in the HashMap, return the <code>index</code> of the current <code>number</code> and the <code>index</code> stored in the HashMap.</li>
-<li>We still need to return an empty array if there is no solution.</li>
-</ol>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><ul>
-<li><p>Time complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.844ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2141 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1752,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
-</li>
-<li><p>Space complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.844ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2141 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1752,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
-</li>
-</ul>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><div class="tabs" id="tab-first-unique-name"><ul class="nav-tabs"><li class="tab active"><a class="#first-unique-name-1">Go</a></li><li class="tab"><a class="#first-unique-name-2">Python</a></li><li class="tab"><a class="#first-unique-name-3">C++</a></li></ul><div class="tab-content"><div class="tab-pane active" id="first-unique-name-1"><div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">twoSum</span><span class="params">(nums []<span class="type">int</span>, target <span class="type">int</span>)</span></span> []<span class="type">int</span> {</span><br><span class="line">    hashMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, num := <span class="keyword">range</span> nums {</span><br><span class="line">        <span class="keyword">if</span> j, ok := hashMap[num]; ok {</span><br><span class="line">            <span class="keyword">return</span> []<span class="type">int</span>{j, i}</span><br><span class="line">        }</span><br><span class="line">        hashMap[target - num] = i</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> []<span class="type">int</span>{}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div></div><div class="tab-pane" id="first-unique-name-2"><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">twoSum</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], target: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        hMap = {}</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] <span class="keyword">in</span> hMap:</span><br><span class="line">                <span class="keyword">return</span> [hMap[nums[i]], i]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                hMap[target - nums[i]] = i</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> []</span><br></pre></td></tr></table></figure></div></div><div class="tab-pane" id="first-unique-name-3"><div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>{</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; hashMap;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); ++i) {</span><br><span class="line">            <span class="type">int</span> num = nums[i];</span><br><span class="line">            <span class="keyword">if</span> (hashMap.<span class="built_in">find</span>(num) != hashMap.<span class="built_in">end</span>()) {</span><br><span class="line">                <span class="keyword">return</span> {hashMap[num], i};</span><br><span class="line">            }</span><br><span class="line">            hashMap[target - num] = i;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> {};</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></table></figure></div></div></div></div>
-
-
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Go</tag>
-        <tag>Leetcode</tag>
-        <tag>Array</tag>
-        <tag>Hash Table</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>[✅ Beats 💯] LeetCode 1052. Grumpy Bookstore Owner - Easy Solution | Go</title>
-    <url>/2024/06/20/leetcode/1052-grumpy-bookstore-owner/</url>
-    <content><![CDATA[<p>Link 👉🏻 <a class="link" href="https://leetcode.com/problems/grumpy-bookstore-owner/">1052. Grumpy Bookstore Owner <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>There is a bookstore owner that has a store open for <code>n</code> minutes. Every minute, some number of customers enter the store. You are given an integer array <code>customers</code> of length <code>n</code> where <code>customers[i]</code> is the number of the customer that enters the store at the start of the <code>i<sup>th</sup></code> minute and all those customers leave after the end of that minute.</p>
-<p>On some minutes, the bookstore owner is grumpy. You are given a binary array grumpy where <code>grumpy[i]</code> is <code>1</code> if the bookstore owner is grumpy during the <code>i<sup>th</sup></code> minute, and is <code>0</code> otherwise.</p>
-<p>When the bookstore owner is grumpy, the customers of that minute are not satisfied, otherwise, they are satisfied.</p>
-<p>The bookstore owner knows a secret technique to keep themselves not grumpy for <code>minutes</code> consecutive minutes, but can only use it once.</p>
-<p>Return the maximum number of customers that can be satisfied throughout the day.</p>
-<p><strong>Example 1:</strong></p>
-<ul>
-<li>Input:<code> customers = [1,0,1,2,1,1,7,5], grumpy = [0,1,0,1,0,1,0,1], minutes = 3</code></li>
-<li>Output: <code>16</code></li>
-<li>Explanation: <code>The bookstore owner keeps themselves not grumpy for the last 3 minutes. The maximum number of customers that can be satisfied = 1 + 1 + 1 + 1 + 7 + 5 = 16.</code></li>
-</ul>
-<p><strong>Example 2:</strong></p>
-<ul>
-<li>Input: <code>customers = [1], grumpy = [0], minutes = 1</code></li>
-<li>Output: <code>1</code></li>
-</ul>
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><code>n == customers.length == grumpy.length</code></li>
-<li><code>1 &lt;= minutes &lt;= n &lt;= 2 * 10<sup>4</sup></code></li>
-<li><code>0 &lt;= customers[i] &lt;= 1000</code></li>
-<li><code>grumpy[i]</code> is either <code>0</code> or <code>1</code>.</li>
-</ul>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition"></a>Intuition</h3><p>Not grumpy for minutes consecutive minutes, we need to subtract the previous satisfaction if they were grumpy.</p>
-<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><ol>
-<li>Add the satisfaction from non-grumpy as the base satisfaction.</li>
-<li>Compute the grumpy satisfaction then we have to make sure we can find the maximum satisfaction in the consecutive minutes.</li>
-<li>If the current iteration is greater than the minutes and the previous iteration was grumpy, we need to subtract the previous satisfaction.</li>
-<li>Make sure the satisfaction with Secret Technique is the maximum satisfaction.</li>
-<li>Return the sum of the base satisfaction and the maximum satisfaction with Secret Technique.</li>
-</ol>
-<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> i &gt;= minutes &amp;&amp; grumpy[i-minutes] == <span class="number">1</span> {</span><br><span class="line">    satisfiedWithTech -= customers[i-minutes] </span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><ul>
-<li><p>Time complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.844ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2141 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1752,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
-</li>
-<li><p>Space complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.844ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2141 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1752,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
-</li>
-</ul>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxSatisfied</span><span class="params">(customers []<span class="type">int</span>, grumpy []<span class="type">int</span>, minutes <span class="type">int</span>)</span></span> <span class="type">int</span> {</span><br><span class="line">	baseSatisfied        := <span class="number">0</span></span><br><span class="line">	satisfiedWithTech    := <span class="number">0</span></span><br><span class="line">	maxSatisfiedWithTech := <span class="number">0</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(customers); i++ {</span><br><span class="line">		<span class="keyword">if</span> grumpy[i] == <span class="number">1</span> {</span><br><span class="line">			satisfiedWithTech += customers[i]</span><br><span class="line">		} <span class="keyword">else</span> {</span><br><span class="line">			baseSatisfied += customers[i]</span><br><span class="line">		}</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> i &gt;= minutes &amp;&amp; grumpy[i-minutes] == <span class="number">1</span> {</span><br><span class="line">			satisfiedWithTech -= customers[i-minutes] <span class="comment">// because not grumpy for minutes consecutive minutes</span></span><br><span class="line">		}</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> satisfiedWithTech &gt; maxSatisfiedWithTech {</span><br><span class="line">			maxSatisfiedWithTech = satisfiedWithTech</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> baseSatisfied + maxSatisfiedWithTech</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>Leetcode</tag>
-        <tag>Array</tag>
-        <tag>Sliding Window</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>剛上大學的我如何挑到適合我的平板！？</title>
     <url>/2023/07/30/talks/freshman-pick-up-ipad/</url>
     <content><![CDATA[<p>疫情嚴峻的 2021 年中，所有戶外活動皆需要暫停，身為大一生，參與的校園活動被迫中止，連課程都改為遠距教學，學習方法勢必有所改變</p>
@@ -1067,337 +1398,6 @@
       <tags>
         <tag>algorithm</tag>
         <tag>note</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>AWS: 如何在 AWS EC2 Amazon Linux 2 上安裝 Docker</title>
-    <url>/2024/04/11/dev-ops/amazon-linux-2-install-docker/</url>
-    <content><![CDATA[<p>在我們需要做 DevOps 時，我們常常會需要用到 Containerization 技術，而 Docker 是目前最為廣泛使用的 Containerization 技術之一。同時我們也可能會用到雲端的算力來幫助我們完成這些工作，因此我們今天將會介紹如何在 Amazon Linux 2 上安裝 Docker。</p>
-<h3 id="連線到-EC2"><a href="#連線到-EC2" class="headerlink" title="連線到 EC2"></a>連線到 EC2</h3><p>我們會需要透過 SSH 連線到 EC2，當然我們也可以直接透過 Console 連線到 Shell 來操作，我們將會以 SSH 的方式連線到 EC2 來操作，畢竟可以本地連上去操作會更加順手。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 把 &lt;ec2-public-ip&gt; 換成你的 EC2 的 Public IP</span></span><br><span class="line">$ ssh -i <span class="string">&quot;your.pem&quot;</span> ec2-user@&lt;ec2-public-ip&gt;.compute-1.amazonaws.com</span><br><span class="line">   ,     <span class="comment">#_</span></span><br><span class="line">   ~\_  <span class="comment">######_        Amazon Linux 2</span></span><br><span class="line">  ~~  \_<span class="comment">#######\</span></span><br><span class="line">  ~~     \<span class="comment">####|       AL2 End of Life is 2025-06-30.</span></span><br><span class="line">  ~~       \<span class="comment">#/ ___</span></span><br><span class="line">   ~~       V~<span class="string">&#x27; &#x27;</span>-&gt;</span><br><span class="line">    ~~~         /    A newer version of Amazon Linux is available!</span><br><span class="line">      ~~._.   _/</span><br><span class="line">         _/ _/       Amazon Linux 2023, GA and supported <span class="keyword">until</span> 2028-03-15.</span><br><span class="line">       _/m/<span class="string">&#x27;           https://aws.amazon.com/linux/amazon-linux-2023/</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[ec2-user]@your-ip ~ $</span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="檢查安裝所需的-yum"><a href="#檢查安裝所需的-yum" class="headerlink" title="檢查安裝所需的 yum"></a>檢查安裝所需的 <a class="link"   href="https://en.wikipedia.org/wiki/Yum_(software)" >yum <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h3><p>透過 <a class="link"   href="https://en.wikipedia.org/wiki/Yum_(software)" >yum <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來檢查我們的版本，並且我們也會用作安裝 Docker 的套件。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 檢查 yum 的版本</span></span><br><span class="line">$ sudo yum update</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">No packages marked <span class="keyword">for</span> update</span><br></pre></td></tr></table></figure></div>
-
-
-<p>透過 yum 來搜尋 Docker 的套件，並且查看 Docker 的資訊。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 搜尋 Docker 的套件</span></span><br><span class="line">$ sudo yum search docker</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">===================================================== N/S matched: docker =====================================================</span><br><span class="line">pcp-pmda-docker.x86_64 : Performance Co-Pilot (PCP) metrics from the Docker daemon</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
-
-<p>使用 <code>yum info docker</code> 來查看 Docker 的資訊。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum info docker</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">Available Packages</span><br><span class="line">Name        : docker</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
-
-
-<h3 id="安裝-Docker-以及啟動-Docker-服務"><a href="#安裝-Docker-以及啟動-Docker-服務" class="headerlink" title="安裝 Docker 以及啟動 Docker 服務"></a>安裝 Docker 以及啟動 Docker 服務</h3><p>在查看完 Docker 的資訊後，我們可以透過 yum 來安裝 Docker。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum install docker</span><br><span class="line">...</span><br><span class="line">Installed:</span><br><span class="line">  docker.x86_64 0:20.10.25-1.amzn2.0.4</span><br><span class="line"></span><br><span class="line">Dependency Installed:</span><br><span class="line">  containerd.x86_64 0:1.7.11-1.amzn2.0.1        libcgroup.x86_64 0:0.41-21.amzn2        pigz.x86_64 0:2.3.4-1.amzn2.0.1</span><br><span class="line">  runc.x86_64 0:1.1.11-1.amzn2</span><br><span class="line"></span><br><span class="line">Complete!</span><br></pre></td></tr></table></figure></div>
-
-<p>檢查一下我們的 Docker 是否有安裝成功吧！</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo docker version</span><br><span class="line">Client:</span><br><span class="line"> Version:           20.10.25</span><br><span class="line"> ...</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Engine:</span><br><span class="line">  Version:          20.10.25</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure></div>
-
-
-<p>啟動我們的 Docker 服務。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo service docker start</span><br><span class="line">Redirecting to /bin/systemctl start docker.service</span><br><span class="line"></span><br><span class="line">$ sudo systemctl <span class="built_in">enable</span> docker.service</span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.</span><br></pre></td></tr></table></figure></div>
-
-<p>我們可以透過 systemctl 來檢查 Docker 服務的狀態，當我們看到 <code>Active: active (running)</code> 時，就代表我們的 Docker 服務已經成功啟動。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo systemctl status docker.service</span><br><span class="line">● docker.service - Docker Application Container Engine</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; vendor preset: disabled)</span><br><span class="line">   Active: active (running) since Wed 2024-04-10 02:29:53 UTC; 1min 13s ago</span><br><span class="line">     Docs: https://docs.docker.com</span><br><span class="line"> Main PID: 3529 (dockerd)</span><br><span class="line">   CGroup: /system.slice/docker.service</span><br><span class="line">           └─3529 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --default-ulimit nofile=32768:65536...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
-
-<p>我們可以把 ec2-user 加入到 docker 群組中，這樣我們就不需要每次都要用 sudo 來執行 Docker 的指令。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo usermod -a -G docker ec2-user</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">id</span> ec2-user</span><br><span class="line">uid=1000(ec2-user) gid=1000(ec2-user) <span class="built_in">groups</span>=1000(ec2-user),4(adm),10(wheel),190(systemd-journal),992(docker)</span><br><span class="line"></span><br><span class="line">$ newgrp docker</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="安裝-docker-compose"><a href="#安裝-docker-compose" class="headerlink" title="安裝 docker-compose"></a>安裝 <code>docker-compose</code></h3><p>我們需要安裝 <code>docker-compose</code> 來幫助我們管理 Docker 的 Container，我們可以透過 pip3 來安裝 <code>docker-compose</code>。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. Get pip3</span></span><br><span class="line">$ sudo yum install python3-pip</span><br><span class="line">Loaded plugins: extras_suggestions, langpacks, priorities, update-motd</span><br><span class="line">amzn2-core                                                                                              | 3.6 kB  00:00:00</span><br><span class="line">Package python3-pip-20.2.2-1.amzn2.0.5.noarch already installed and latest version</span><br><span class="line">Nothing to <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. Then run any one of the following</span></span><br><span class="line">$ pip3 install --user docker-compose</span><br><span class="line">Collecting docker-compose</span><br><span class="line">  Downloading docker_compose-1.29.2-py2.py3-none-any.whl (114 kB)</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">Successfully installed ... docker-compose-1.29.2 ...</span><br></pre></td></tr></table></figure></div>
-
-
-  <div class="note p-4 mb-4 rounded-small warning">
-    <p><strong>⚠️ 注意</strong><br>如果在安裝 <code>docker-compose</code> 時出現錯誤，可能是因為 <code>urllib3</code> 的版本支援問題，我們可以透過 <code>pip3 install urllib3==1.26.15</code> 來安裝特定版本的 <code>urllib3</code>。</p>
-<p>可以參考 <a class="link"   href="https://github.com/explosion/spaCy/discussions/12750" >Persisting spaCy import error: NotOpenSSLWarning: urllib3 v2.0 only supports OpenSSL 1.1.1+ #12750 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來排除</p>
-
-  </div>
-
-<p>我們也可以使用 <code>wget</code> 來下載 <code>docker-compose</code> 並且安裝。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ wget https://github.com/docker/compose/releases/latest/download/docker-compose-$(<span class="built_in">uname</span> -s)-$(<span class="built_in">uname</span> -m) </span><br><span class="line">$ sudo <span class="built_in">mv</span> docker-compose-$(<span class="built_in">uname</span> -s)-$(<span class="built_in">uname</span> -m) /usr/local/bin/docker-compose</span><br><span class="line">$ sudo <span class="built_in">chmod</span> -v +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure></div>
-
-<p>我們可以透過 <code>docker-compose --version</code> 來檢查 <code>docker-compose</code> 是否有安裝成功。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker-compose version</span><br><span class="line">docker-compose version 1.29.2, build unknown</span><br><span class="line">docker-py version: &lt;module <span class="string">&#x27;docker.version&#x27;</span> from <span class="string">&#x27;/home/ec2-user/.local/lib/python3.7/site-packages/docker/version.py&#x27;</span>&gt;</span><br><span class="line">CPython version: 3.7.16</span><br><span class="line">OpenSSL version: OpenSSL 1.0.2k-fips  26 Jan 2017</span><br></pre></td></tr></table></figure></div>
-
-
-<p>這時我們就可以開始使用 Docker 來做 Containerization 的工作了。</p>
-<p>最後附上一些在使用 Docker 時可能會用到的指令。祝福大家都能順利使用 Docker 來完成自己的工作。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># start the service</span></span><br><span class="line">$ sudo systemctl start docker.service</span><br><span class="line"><span class="comment"># stop the service</span></span><br><span class="line">$ sudo systemctl stop docker.service</span><br><span class="line"><span class="comment"># restart the service</span></span><br><span class="line">$ sudo systemctl restart docker.service</span><br><span class="line"><span class="comment"># get the service status</span></span><br><span class="line">$ sudo systemctl status docker.service</span><br></pre></td></tr></table></figure></div>
-
-
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a class="link"   href="https://www.cyberciti.biz/faq/how-to-install-docker-on-amazon-linux-2/" >How to install Docker on Amazon Linux 2 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://swapnasagarpradhan.medium.com/how-to-install-docker-on-amazon-linux-2-8e5161ac5464" >How to install Docker on Amazon Linux 2 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DevOps</category>
-      </categories>
-      <tags>
-        <tag>AWS</tag>
-        <tag>Docker</tag>
-        <tag>EC2</tag>
-        <tag>Amazon Linux 2</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>AWS: Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)</title>
-    <url>/2024/03/22/dev-ops/aws-security-group-nacl/</url>
-    <content><![CDATA[<p>During a meeting, we explored a scenario: “If we disable the inbound rule of the Network Access Control List (NACL), the connection will be interrupted. However, if we turn off inbound traffic in the Security Group, would we still be able to connect?” Surprisingly, the answer is YES. The rationale behind this phenomenon will be elaborated on in this article.</p>
-<p>We can discuss the differences between Security Group and Network Access Control List (NACL) from various perspectives. The primary difference between the two is:</p>
-<blockquote>
-<p>The Security Group acts as the firewall for EC2 Instances. </p>
-<p>The Network ACL serves as the firewall for the VPC Subnets.</p>
-</blockquote>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/dev-ops/aws-security-group-nacl/arch.png"
-                      alt="Awesome Cloud — Security Groups and Network ACLs"
-                ><figcaption>Awesome Cloud — Security Groups and Network ACLs</figcaption></figure></p>
-<p>Next, we can discuss the differences between the two from the following perspectives:</p>
-<h3 id="Defense-Layers"><a href="#Defense-Layers" class="headerlink" title="Defense Layers"></a>Defense Layers</h3><p>Security Groups are associated with specific instances, which could be an EC2 instance, an ECS cluster, or an RDS database instance. On the other hand, Network Access Control Lists (NACLs) operate at the subnet level. This means that any instance within a subnet that has an associated NACL will automatically adhere to the NACL’s rules.</p>
-<h3 id="Application-Scope"><a href="#Application-Scope" class="headerlink" title="Application Scope"></a>Application Scope</h3><p>While Security Groups are tailored for individual instances, NACLs are designed to provide rules for the entire Subnet within a Virtual Private Cloud (VPC).</p>
-<h3 id="Statefulness"><a href="#Statefulness" class="headerlink" title="Statefulness"></a>Statefulness</h3><p>Security Group is stateful which means if you allow the inbound traffic, the response traffic is allowed automatically. No matter what the outbound rules are. However, NACL is stateless and do not track the state of a connection.</p>
-<h3 id="Default-Rules"><a href="#Default-Rules" class="headerlink" title="Default Rules"></a>Default Rules</h3><p>By default, Security Groups block all inbound traffic while allowing all outbound traffic. Conversely, Network Access Control Lists (NACLs) have a default rule at the subnet boundary that permits both inbound and outbound traffic. The application of these rules in NACLs is determined by Rule Numbers, with higher numbers indicating higher priority.</p>
-<h3 id="Rule-Application-Order"><a href="#Rule-Application-Order" class="headerlink" title="Rule Application Order"></a>Rule Application Order</h3><p>NACLs apply a numbered list of rules sequentially. However, Security Groups do not follow a specific order in rule application.</p>
-<h3 id="Traffic-Blocking-Capabilities"><a href="#Traffic-Blocking-Capabilities" class="headerlink" title="Traffic Blocking Capabilities"></a>Traffic Blocking Capabilities</h3><p>NACLs have the ability to block traffic at the subnet level. In contrast, Security Groups can only block traffic at the instance level.</p>
-<h3 id="Impact-on-Network-Performance"><a href="#Impact-on-Network-Performance" class="headerlink" title="Impact on Network Performance"></a>Impact on Network Performance</h3><p>Network Access Control Lists (NACLs) can potentially exert a significant impact on network performance. This is because they operate at the subnet level, applying their rules to all instances within the subnet. On the other hand, Security Groups operate at the instance level, applying their rules only to individual instances, thus having a more localized impact.</p>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>To sum up, let’s circle back to our main discussion. “If we disable the inbound rule of the Network Access Control List (NACL), the connection will be interrupted. Why is that?” Unlike Security Groups, NACLs are stateless. This means they do not keep track of the connection’s state, and each packet of data is treated independently. Therefore, if we disable the inbound rule of a NACL, it will not allow any incoming traffic, effectively breaking the connection.</p>
-<p>On the other hand, if we turn off inbound traffic in the Security Group, we can still connect. The absence of inbound rules does not disrupt the connection because the Security Group functions as a stateful firewall. Even with specific inbound traffic blocked, a connection can still be established as it originates from within the EC2 instance, and the returning traffic is allowed.</p>
-<p>This concept aligns with the TCP Three-way Handshake (SYN, SYN-ACK, ACK). The connection is initiated by the client, and the server responds to the client’s request. Once we create the tunnel between the server and client, the connection is established.</p>
-<p>Therefore, after disabling the Inbound Rule of the Security Group, we have a grace period to inform customers or other parties, preventing an immediate disruption of the service connection.</p>
-<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
-<li><a class="link"   href="https://www.mygreatlearning.com/aws/tutorials/nacl-vs-security-group" >NACL vs Security Group <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://www.knowledgehut.com/tutorials/aws/nacl-vs-security-groups" >Security groups vs Network ACLs - What is the Difference? <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://k21academy.com/amazon-web-services/aws-solutions-architect/aws-security-groups-vs-nacl/" >AWS Network Security: NACL vs Security Groups <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://digitalcloud.training/aws-security-group-vs-nacl-key-differences/" >AWS Security Group vs NACL – Key Differences <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://community.meraki.com/t5/Security-SD-WAN/Meraki-vMX-amp-AWS-security-group/m-p/222409#:~:text=Having%20no%20inbound%20rules%20does%20not%20cause%20the%20tunnel%20to,instance%20and%20returning%20traffic%20allowed" >Meraki vMX &amp; AWS security group <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://medium.com/awesome-cloud/aws-difference-between-security-groups-and-network-acls-adc632ea29ae" >AWS — Difference between Security Groups and Network Access Control List (NACL) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DevOps</category>
-      </categories>
-      <tags>
-        <tag>AWS</tag>
-        <tag>EC2</tag>
-        <tag>Cli</tag>
-        <tag>Security Group</tag>
-        <tag>NACL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git Commit Message 到底怎麼寫才優美？</title>
-    <url>/2024/03/26/dev-ops/git-good-commit-look-like/</url>
-    <content><![CDATA[<p>在團隊用 Git 協作中，Commit Message 是很重要的一環，好的 Commit 可以讓我們的專案更容易維護，讓我們更容易了解專案的開發過程，我們可以想像是程式碼的註解，不過是針對專案改動的註解。所以我們想要用這個篇幅來介紹一些寫 Commit 的技巧，讓我們的 Commit 更優美。</p>
-<h3 id="那到底甚麼是好的-Commit-Message？"><a href="#那到底甚麼是好的-Commit-Message？" class="headerlink" title="那到底甚麼是好的 Commit Message？"></a>那到底甚麼是好的 Commit Message？</h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">fix</span><br></pre></td></tr></table></figure></div>
-
-<p>V.S. </p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">fix: login error </span><br><span class="line"></span><br><span class="line">The past login router was being reused multiple times.</span><br><span class="line"></span><br><span class="line">Fixed it to use the correct route and extracted the duplicated parts.</span><br><span class="line"></span><br><span class="line">Issue: #1234</span><br></pre></td></tr></table></figure></div>
-
-<p>從上方的 Commit 案例中，如果都是一個月前的改動，甚至是一年前的改動，當我今天需要去了解這個改動的時候，我們可以發現第一個 Commit 是很難讓我們了解這個改動的目的，甚至是看不懂要做甚麼，而第二個 Commit 會讓我們更容易了解這個改動的目的，這就是好的 Commit Message 的重要性。</p>
-<p>常常軟體工程師中有個迷因 <a class="link"   href="https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months" >Is it normal if I can’t remember how my code works after just 6 months? <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 就是，大家回去看自己寫的程式都看不懂，甚至會覺得噁心，因此好的 Commit 可以讓我們更容易了解過去團隊做了甚麼事情，這樣我們就可以更容易地維護專案。</p>
-<p><figure class="image-caption"><img src="/images/post/dev-ops/git-good-commit-look-like/meme.JPG" alt="https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months"><figcaption>https://www.quora.com/Is-it-normal-if-I-cant-remember-how-my-code-works-after-just-6-months</figcaption></figure></p>
-<h2 id="Commit-Message-的格式"><a href="#Commit-Message-的格式" class="headerlink" title="Commit Message 的格式"></a>Commit Message 的格式</h2><p>好的 Commit 應該要能夠一眼看出種類、工作內容的大鋼，更重要的是一致性，這樣我們可以更容易地追蹤開發過程。因此我們可以從以下幾個內容：我們做了甚麼努力（What）、又為什麼要做這件事情（Why）、還有是用什麼方法做到的（How）。</p>
-<p>我們可以參考以下的格式：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">Header: &lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;</span><br><span class="line">    - TYPE: Represents the category of the commit.</span><br><span class="line">    - SCOPE: Represents the scope of the commit.</span><br><span class="line">    - (Required) SUBJECT: Represents a brief description of the commit, (limited to 50 characters and should not end with a period)</span><br><span class="line"></span><br><span class="line">Body: 72-character wrapped. This should answer:</span><br><span class="line">    - Provide a detailed description of the commit. (Can be <span class="built_in">split</span> into multiple lines, with each line limited to 72 characters.)</span><br><span class="line">    - Explain the changes made <span class="keyword">in</span> the code, and Why to <span class="keyword">do</span>?</span><br><span class="line"></span><br><span class="line">Footer:</span><br><span class="line">    - (<span class="keyword">if</span> applicable) Include the task number.</span><br><span class="line">    - (optional) BREAKING CHANGE: Record incompatible changes. It should start with <span class="string">&quot;BREAKING CHANGE:&quot;</span> followed by a description of the change, the reason <span class="keyword">for</span> the change, and migration instructions.</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="Commit-Message-Header"><a href="#Commit-Message-Header" class="headerlink" title="Commit Message Header: &lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;"></a>Commit Message Header: <code>&lt;TYPE&gt;(&lt;SCOPE&gt;): &lt;SUBJECT&gt;</code></h3><ul>
-<li>TYPE: 代表 commit 的類別，如：feat, fix, docs, style, refactor, test, chore</li>
-<li>（可選）SCOPE：commit 影響的範圍，如：資料庫、控制層、模板層等，視專案不同改變</li>
-<li>（必要）SUBJECT：commit 的簡短描述，不超過 50 個字元，結尾不加句號，盡量讓 Commit 單一化，一次只更動一個主題</li>
-</ul>
-<h4 id="Type-的種類"><a href="#Type-的種類" class="headerlink" title="Type 的種類"></a>Type 的種類</h4><p>Type 有以下幾種的類別，每個都會是一個動作，代表提交 Commit 的類別，以下是一些我們使用慣例：</p>
-<ul>
-<li>feat: 對專案做了哪些新增、修改 (Feature)。</li>
-<li>fix: 修復了那些功能 (Bug Fix)。</li>
-<li>docs: 對專案撰寫文件 (Documentation)。</li>
-<li>style: 撰寫格式改動 (不影響程式碼運行的變動 white-space, formatting, missing semi colons, et.)。</li>
-<li>refactor: 重構 (既不是新增功能，也不是修補 bug 的程式碼變動)。</li>
-<li>perf: 改善效能 (A code change that improves performance)。</li>
-<li>test: 增加測試 (when adding missing tests)。</li>
-<li>chore: 建構程序或輔助工具的變動 (maintain)。</li>
-<li>revert: 撤銷回覆先前的 commit 例如：revert: type(scope): subject (回覆版本：xxxx)。</li>
-</ul>
-<h3 id="Commit-Message-Body"><a href="#Commit-Message-Body" class="headerlink" title="Commit Message Body"></a>Commit Message Body</h3><p>傳達「我們做了甚麼努力（What）、又為什麼要做這件事情（Why）、還有是用什麼方法做到的（How）」，描述詳細改動的內容，可以分成多行，每行不超過 72 個字元，也可以有前後改動差異的描述。</p>
-<h3 id="Commit-Message-Footer"><a href="#Commit-Message-Footer" class="headerlink" title="Commit Message Footer"></a>Commit Message Footer</h3><p>用來填寫相關聯 issue 的編號，像是 <code>Issue: #1234</code>。另外還有 BREAKING CHANGE（未必需要），記錄不相容的變動，應該以「BREAKING CHANGE:」開頭，後面是變動的描述、原因和遷移方法。</p>
-<h3 id="一些實際的例子"><a href="#一些實際的例子" class="headerlink" title="一些實際的例子"></a>一些實際的例子</h3><p>我們在現有的功能上加上了 email 驗證，我們可以使用 <code>feat</code> 來撰寫：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">feat: email validation</span><br><span class="line"></span><br><span class="line">We have implemented the following enhancements:</span><br><span class="line"></span><br><span class="line">1. Introduced email validation to the login form.</span><br><span class="line">2. The new feature verifies if the user&#x27;s input is in a valid email format.</span><br><span class="line">3. It checks if the entered email corresponds to an actual email account.</span><br><span class="line">4. This update aims to prevent users from entering incorrect email addresses.</span><br><span class="line">5. It improves overall user experience and data integrity.</span><br><span class="line"></span><br><span class="line">Issue: #1234</span><br></pre></td></tr></table></figure></div>
-
-<p>今天我們需要基於過去版本做開發，我們可以使用 <code>revert</code> 來回覆先前的 Commit：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">revert: feat: email validation</span><br><span class="line"></span><br><span class="line">To address the issue, we have decided to revert the email validation feature to the previous version.</span><br><span class="line"></span><br><span class="line">Issue: #2345</span><br></pre></td></tr></table></figure></div>
-
-<p>我們在準備將產品上線的時候，我們駔了幾個 unit test，我們可以使用 <code>test</code> 來撰寫：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">test: email validation</span><br><span class="line"></span><br><span class="line">There are several unit tests for the email validation feature:</span><br><span class="line">1. Test the email validation function with invalid email addresses.</span><br><span class="line">2. Test the email validation function with valid email addresses.</span><br><span class="line"></span><br><span class="line">Issue: #3456</span><br></pre></td></tr></table></figure></div>
-
-<p>今天我們已經將新功能做好了，我們希望加上文件的說明，我們可以使用 <code>docs</code> 來撰寫：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docs: email validation</span><br><span class="line"></span><br><span class="line">We have added documentation for the email validation feature:</span><br><span class="line">1. Add the Tech Stack documentation.</span><br><span class="line">2. Add the User Guide documentation.</span><br><span class="line">3. Add the API documentation.</span><br><span class="line"></span><br><span class="line">Issue: #4567</span><br></pre></td></tr></table></figure></div>
-
-<p>後來因為我們的用戶數量變多了，我們希望優化現有的架構提升驗證速度，我們可以使用 <code>perf</code> 來撰寫：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">perf: email validation</span><br><span class="line"></span><br><span class="line">We have optimized the email validation feature:</span><br><span class="line">1. Improved the email validation algorithm.</span><br><span class="line">2. Reduced the time required to validate email addresses.</span><br><span class="line">3. Enhanced the user experience by providing faster feedback.</span><br><span class="line"></span><br><span class="line">Issue: #5678</span><br></pre></td></tr></table></figure></div>
-
-
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>Commit Message 的撰寫會需要大量的練習，也需要時間讓團隊成員去實踐，如此可以讓我們追朔過去的努力，也可以幫助團隊成員更快速地餐與開發過程，這樣我們就可以更容易地維護專案。最後祝大家一切開發都順利，也希望大家的 Commit Message 越來越優美。</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a class="link"   href="https://wadehuanglearning.blogspot.com/2019/05/commit-commit-commit-why-what-commit.html" >Git Commit Message 這樣寫會更好，替專案引入規範與範例 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://heidiliu2020.github.io/git-commit-message/" >[學習筆記] 如何撰好的 Git Commit Message <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DevOps</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Commit</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</title>
-    <url>/2023/09/08/dev-ops/git-ssh/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Git 是每位軟體工程師日常工作不可或缺的工具之一，畢竟軟體開發常常需要跟他人合作，甚至是維護、更新等⋯⋯可能都需要參照過去的成果，甚至需要快速與團隊同步，因此 Git 對大家而言都不陌生吧！<br>但是，有時候我們會遇到一些問題，例如：每次 push 都需要輸入帳號密碼，或是每次 push 都需要輸入密碼，這些都是可以透過 ssh 來解決的，接下來就讓我們一起來看看如何使用 ssh 與 GitHub 連線吧！</p>
-<h3 id="1-產生-ssh-key"><a href="#1-產生-ssh-key" class="headerlink" title="1. 產生 ssh key"></a>1. 產生 ssh key</h3><p>首先，我們需要先產生 ssh key，這個 key 會被存在 <code>~/.ssh</code> 資料夾中，如果沒有的話，可以使用以下指令建立（記得要把 email 改成你自己的 email，否則永遠不會成功哦！）：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>上述操作 <code>ed25519</code> 其實是較新的演算法，如果電腦不支援的話也可以使用以下另一種演算法生成（同樣也要記得把 email 改成你自己的 email）：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>以下將使用 <code>id_rsa</code> 做示範，接下來將出現以下畫面，直接按 <strong>Enter</strong> 就會幫你把產生的 key 放在預設的地方 <code>~/.ssh/id_rsa</code> ，也就是下方括號內的位址。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ Enter a file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/you/.ssh/id_rsa):</span><br></pre></td></tr></table></figure></div>
-
-<p>接下來會出現以下畫面，若不想以後 push 都要輸入 <code>passphrase</code> 的話，就連續點擊兩次 <strong>Enter</strong> 這樣 <code>passphrase</code> 就會是空的，以後 push 就不用輸入了！</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Click Enter Twice</span></span><br><span class="line">$ Enter passphrase (empty <span class="keyword">for</span> no passphrase): [Type a passphrase]</span><br><span class="line">$ Enter same passphrase again: [Type passphrase again]</span><br></pre></td></tr></table></figure></div>
-
-<p>這樣做 ssh key 就已經生成好了！</p>
-<p>總共會生成兩個 key，private and public key，接下來會帶大家如何找到這兩個 key。</p>
-<h3 id="2-取得-public-ssh-key"><a href="#2-取得-public-ssh-key" class="headerlink" title="2. 取得 public ssh key"></a>2. 取得 public ssh key</h3><p>接著我們要進到剛剛放置 key 的位置，因此我們照著以下流程，把 public 的 key 拿出（副檔名為 <code>.pub</code>），要特別注意 GitHub 只需要 public 的 key，private 要自己留好！千萬不要給任何人！</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> .ssh</span><br><span class="line">$ <span class="built_in">ls</span></span><br><span class="line">id_rsa          id_rsa.pub</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cat</span> id_rsa.pub</span><br></pre></td></tr></table></figure></div>
-
-<p>接下來就把 <code>cat id_rsa.pub</code> 的內容複製下來，我們就可以回 GitHub 做最後一步設定了！</p>
-<h3 id="3-把-public-key-設定到-GitHub"><a href="#3-把-public-key-設定到-GitHub" class="headerlink" title="3. 把 public key 設定到 GitHub"></a>3. 把 public key 設定到 GitHub</h3><p>接下來我們要把 public key 設定到 GitHub，這樣 GitHub 才能辨識你的電腦，讓你可以透過 ssh 連線到 GitHub，這樣就可以真的達到不用每次 push 都要輸入帳號密碼了！接下來將用截圖畫面的方式展示步驟！</p>
-<h4 id="3-A-前往-GitHub-設定"><a href="#3-A-前往-GitHub-設定" class="headerlink" title="3-A. 前往 GitHub 設定"></a>3-A. 前往 GitHub 設定</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/dev-ops/git-ssh/01.png"
-                     
-                ></p>
-<h4 id="3-B-點擊-“SSH-and-GPG-keys”"><a href="#3-B-點擊-“SSH-and-GPG-keys”" class="headerlink" title="3-B. 點擊 “SSH and GPG keys”"></a>3-B. 點擊 “SSH and GPG keys”</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/dev-ops/git-ssh/02.png"
-                     
-                ></p>
-<h4 id="3-C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”"><a href="#3-C-進入-“SSH-and-GPG-keys”-頁面後點擊-“New-SSH-key”" class="headerlink" title="3-C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”"></a>3-C. 進入 “SSH and GPG keys” 頁面後點擊 “New SSH key”</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/dev-ops/git-ssh/03.png"
-                     
-                ></p>
-<h4 id="3-D-貼上-public-key-最後送出"><a href="#3-D-貼上-public-key-最後送出" class="headerlink" title="3-D. 貼上 public key 最後送出"></a>3-D. 貼上 public key 最後送出</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/dev-ops/git-ssh/04.png"
-                     
-                ></p>
-<p>照著上述步驟就一切沒問題了，以後把專案 clone 到本地就選擇 ssh 的方式就搞定啦！ </p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/dev-ops/git-ssh/05.png"
-                     
-                ></p>
-<p>如果原先專案是走 <code>http</code> 的方式 <code>clone</code> 下來的話只要做以下更改就可以換成 <code>ssh</code> 啦！</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote set-url origin &lt;your_project_ssh_url&gt;</span><br></pre></td></tr></table></figure></div>
-
-<p>如此以後專案 push 到 GitHub 就都會走 ssh 了也不需要每次都輸入帳號密碼了！最後祝大家以後都開發順利！可以開始進行更多遠端的 Git 操作了！</p>
-]]></content>
-      <categories>
-        <category>DevOps</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-        <tag>Git</tag>
-        <tag>SSH Key</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>透過 Docker 打包 FastAPI 與 Redis 的服務串流</title>
-    <url>/2024/04/15/dev-ops/python-reddis-docker/</url>
-    <content><![CDATA[<p>當今天我們要自架一個服務的時候，我們會需要後端的 Server 以及需要 Database 來保存服務的內容，因此我們今天將透過 Docker 包裝 Redis 以及 Python FastAPI 來實作一個簡單的服務。</p>
-<h3 id="創建專案"><a href="#創建專案" class="headerlink" title="創建專案"></a>創建專案</h3><p>首先我們要開始撰寫 Python FastAPI 的程式碼，不過在開始之前我們要先建立我們的虛擬環境並且安裝我們所需的 dependencies。（我們的 Python 環境是 Python 3.11，以及所需的套件是 fastapi, uvicorn, redis, python-dotenv）</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> my-fastapi-redis    <span class="comment"># 建立專案資料夾</span></span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> my-fastapi-redis       <span class="comment"># 進入專案資料夾</span></span><br><span class="line"></span><br><span class="line">$ python3 -m venv venv      <span class="comment"># 建立虛擬環境</span></span><br><span class="line"></span><br><span class="line">$ <span class="built_in">source</span> venv/bin/activate  <span class="comment"># 啟動虛擬環境</span></span><br><span class="line"></span><br><span class="line">$ pip install fastapi uvicorn redis python-dotenv requests   <span class="comment"># 安裝所需套件</span></span><br></pre></td></tr></table></figure></div>
-
-<p>我們的專案結構會如以下：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">PROJECT_ROOT</span><br><span class="line">├── app/</span><br><span class="line">│   ├── __init__.py</span><br><span class="line">│   └── main.py</span><br><span class="line">├── scripts/</span><br><span class="line">│   ├── run.sh</span><br><span class="line">│   └── test.sh</span><br><span class="line">├── test/</span><br><span class="line">│   └── test_api.py</span><br><span class="line">├── .env</span><br><span class="line">├── docker-compose.yml</span><br><span class="line">├── Dockerfile</span><br><span class="line">└── README.md</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="實作-FastAPI-與-Redis"><a href="#實作-FastAPI-與-Redis" class="headerlink" title="實作 FastAPI 與 Redis"></a>實作 FastAPI 與 Redis</h3><p>再來我們可以透過 <a class="link"   href="https://www.docker.com/" >Docker <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來啟動 <a class="link"   href="https://redis.io/" >Redis <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 服務，這裡我們使用 <a class="link"   href="https://hub.docker.com/_/redis" >Redis 官方提供的 Docker Image <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來啟動 Redis 服務，我們會將預設的 6379 port 對應到本地端的 6379 port。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker run --name my-redis -p 6379:6379 -d redis</span><br></pre></td></tr></table></figure></div>
-
-<p>我們可以透過以下指令來確認 Redis 服務是否正常運作，我們先進入 Redis 的 Container 內部，再透過 <code>redis-cli</code> 來操作 Redis。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker <span class="built_in">exec</span> -it my-redis sh</span><br></pre></td></tr></table></figure></div>
-
-<p>查看 Redis 的 key，並且試著新增一個 key-value pair，以及刪除 key。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">127.0.0.1:6379&gt; keys *</span><br><span class="line">(empty array)</span><br><span class="line">127.0.0.1:6379&gt; SET key1 value1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; keys *</span><br><span class="line">1) <span class="string">&quot;key1&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; DEL key1</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure></div>
-
-<p>接著我們可以開始撰寫我們的 FastAPI 程式碼，我們會透過 FastAPI 來實作一個簡單的 API，這個 API 會透過 Redis 來儲存資料，我們的目的是能夠新增 Item、刪除 Item、以及列出所有的 Item。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 新增 item 至 Redis</span></span><br><span class="line"><span class="meta">@app.post(<span class="params"><span class="string">&quot;/items/&quot;</span>, status_code=status.HTTP_201_CREATED</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">create_item</span>(<span class="params">item: Item</span>):</span><br><span class="line">    <span class="comment"># Add item to the Redis list</span></span><br><span class="line">    redis_cli.rpush(<span class="string">&quot;items&quot;</span>, item.name)</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Item added successfully&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得 Redis 內的所有 items</span></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/items/&quot;</span>, status_code=status.HTTP_200_OK</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">get_items</span>():</span><br><span class="line">    <span class="comment"># Retrieve items from the Redis list</span></span><br><span class="line">    items = redis_cli.lrange(<span class="string">&quot;items&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;items&quot;</span>: items&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Redis 內的特定 item</span></span><br><span class="line"><span class="meta">@app.delete(<span class="params"><span class="string">&quot;/items/&#123;item_name&#125;&quot;</span>, status_code=status.HTTP_200_OK</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">delete_item</span>(<span class="params">item_name: <span class="built_in">str</span></span>):</span><br><span class="line">    <span class="comment"># Delete a specific item from the Redis list</span></span><br><span class="line">    <span class="keyword">if</span> item_name <span class="keyword">not</span> <span class="keyword">in</span> redis_cli.lrange(<span class="string">&quot;items&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">raise</span> HTTPException(status_code=<span class="number">404</span>, detail=<span class="string">&quot;Item not found&quot;</span>)</span><br><span class="line">    redis_cli.lrem(<span class="string">&quot;items&quot;</span>, <span class="number">0</span>, item_name)</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;message&quot;</span>: <span class="string">f&quot;Item &#x27;<span class="subst">&#123;item_name&#125;</span>&#x27; deleted successfully&quot;</span>&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>完整的程式碼如下，我們會需要 <code>.env</code> 檔案來設定 Redis 的 Host 以及 Port，預設是 <code>REDIS_HOST=localhost</code> 以及 <code>REDIS_PORT=6379</code>。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># app/main.py</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"><span class="keyword">from</span> dotenv <span class="keyword">import</span> find_dotenv, load_dotenv</span><br><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI, status</span><br><span class="line"><span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel</span><br><span class="line"><span class="keyword">from</span> fastapi.exceptions <span class="keyword">import</span> HTTPException</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Connect to Redis</span></span><br><span class="line">_ = load_dotenv(find_dotenv())</span><br><span class="line">REDIS_HOST = os.environ.get(<span class="string">&#x27;REDIS_HOST&#x27;</span>)</span><br><span class="line">REDIS_PORT = os.environ.get(<span class="string">&#x27;REDIS_PORT&#x27;</span>)</span><br><span class="line">redis_cli = redis.Redis(</span><br><span class="line">    host=REDIS_HOST, port=REDIS_PORT, </span><br><span class="line">    decode_responses=<span class="literal">True</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Item</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    name: <span class="built_in">str</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/&quot;</span>, status_code=status.HTTP_200_OK</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">root</span>():</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Hello World&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 新增 item 至 Redis</span></span><br><span class="line"><span class="meta">@app.post(<span class="params"><span class="string">&quot;/items/&quot;</span>, status_code=status.HTTP_201_CREATED</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">create_item</span>(<span class="params">item: Item</span>):</span><br><span class="line">    <span class="comment"># Add item to the Redis list</span></span><br><span class="line">    redis_cli.rpush(<span class="string">&quot;items&quot;</span>, item.name)</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Item added successfully&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得 Redis 內的所有 items</span></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/items/&quot;</span>, status_code=status.HTTP_200_OK</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">get_items</span>():</span><br><span class="line">    <span class="comment"># Retrieve items from the Redis list</span></span><br><span class="line">    items = redis_cli.lrange(<span class="string">&quot;items&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;items&quot;</span>: items&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Redis 內的特定 item</span></span><br><span class="line"><span class="meta">@app.delete(<span class="params"><span class="string">&quot;/items/&#123;item_name&#125;&quot;</span>, status_code=status.HTTP_200_OK</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">delete_item</span>(<span class="params">item_name: <span class="built_in">str</span></span>):</span><br><span class="line">    <span class="comment"># Delete a specific item from the Redis list</span></span><br><span class="line">    <span class="keyword">if</span> item_name <span class="keyword">not</span> <span class="keyword">in</span> redis_cli.lrange(<span class="string">&quot;items&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">raise</span> HTTPException(status_code=<span class="number">404</span>, detail=<span class="string">&quot;Item not found&quot;</span>)</span><br><span class="line">    redis_cli.lrem(<span class="string">&quot;items&quot;</span>, <span class="number">0</span>, item_name)</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;message&quot;</span>: <span class="string">f&quot;Item &#x27;<span class="subst">&#123;item_name&#125;</span>&#x27; deleted successfully&quot;</span>&#125;</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="測試-API"><a href="#測試-API" class="headerlink" title="測試 API"></a>測試 API</h3><p>接著我們要撰寫一些 unittest 去測試我們的 API，我們會透過 requests 來發送 HTTP request 並且驗證回傳的 response 是否符合預期。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># test/test_api.py</span></span><br><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TestItemEndpoint</span>(unittest.TestCase):</span><br><span class="line">    base_url = <span class="string">&quot;http://localhost:8080/items/&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_create_items</span>(<span class="params">self</span>):</span><br><span class="line">        data = &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;item1&quot;</span>&#125;</span><br><span class="line">        response = requests.post(self.base_url, headers=&#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>&#125;, data=json.dumps(data))</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">201</span>)</span><br><span class="line"></span><br><span class="line">        data = &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;item2&quot;</span>&#125;</span><br><span class="line">        response = requests.post(self.base_url, headers=&#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>&#125;, data=json.dumps(data))</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">201</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_get_items</span>(<span class="params">self</span>):</span><br><span class="line">        response = requests.get(self.base_url)</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_delete_item</span>(<span class="params">self</span>):</span><br><span class="line">        response = requests.delete(self.base_url + <span class="string">&quot;item1&quot;</span>)</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_get_items_after_deletion</span>(<span class="params">self</span>):</span><br><span class="line">        response = requests.get(self.base_url)</span><br><span class="line">        self.assertEqual(response.status_code, <span class="number">200</span>)</span><br><span class="line">        data = response.json()</span><br><span class="line">        self.assertEqual(<span class="built_in">len</span>(data), <span class="number">1</span>)  <span class="comment"># Assuming only one item left after deletion</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure></div>
-
-<p>當然我們也可以直接透過 <code>curl</code> 直接獲取 API 的 response。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -X POST <span class="string">&quot;http://localhost:8080/items/&quot;</span> -H <span class="string">&quot;Content-Type: application/json&quot;</span> -d <span class="string">&#x27;&#123;&quot;name&quot;: &quot;item1&quot;&#125;&#x27;</span></span><br><span class="line">$ curl -X POST <span class="string">&quot;http://localhost:8080/items/&quot;</span> -H <span class="string">&quot;Content-Type: application/json&quot;</span> -d <span class="string">&#x27;&#123;&quot;name&quot;: &quot;item2&quot;&#125;&#x27;</span></span><br><span class="line">$ curl -X GET <span class="string">&quot;http://localhost:8080/items/&quot;</span></span><br><span class="line">$ curl -X DELETE <span class="string">&quot;http://localhost:8080/items/item1&quot;</span></span><br><span class="line">$ curl -X GET <span class="string">&quot;http://localhost:8080/items/&quot;</span></span><br><span class="line">$ curl -X GET <span class="string">&quot;http://localhost:8080/items/&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>不過既然有 unittest 那我們就用 unittest 來測試我們的 API 吧。最後我們要加上 <code>run.sh</code> 以及 <code>test.sh</code> 來方便我們執行程式以及測試。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># scripts/run.sh</span></span><br><span class="line">uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># scripts/test.sh</span></span><br><span class="line">python <span class="built_in">test</span>/test_*.py</span><br></pre></td></tr></table></figure></div>
-
-<p>我們依序透過 <code>scripts/run.sh</code> 以及 <code>scripts/test.sh</code> 來啟動我們的服務以及測試我們的 API。完成會如下的畫面。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/dev-ops/python-reddis-docker/python-reddis-docker-demo.png"
-                     
-                ></p>
-<h3 id="打包服務"><a href="#打包服務" class="headerlink" title="打包服務"></a>打包服務</h3><p>最後就是我們要把我們的所有服務打包啦！</p>
-<p>我們先將我們的 Dockerfile 寫好，這裡我們使用 Python 3.11 的 slim-buster 作為基底，並且安裝所需的套件，最後我們會將我們的程式碼複製到 Docker Container 內部，並且啟動 FastAPI 服務。</p>
-<div class="highlight-container" data-rel="Yaml"><figure class="iseeu highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Dockerfile</span></span><br><span class="line"><span class="string">FROM</span> <span class="string">python:3.11-slim-buster</span></span><br><span class="line"></span><br><span class="line"><span class="string">WORKDIR</span> <span class="string">/app</span></span><br><span class="line"></span><br><span class="line"><span class="string">RUN</span> <span class="string">pip</span> <span class="string">install</span> <span class="string">uvicorn</span> <span class="string">redis</span> <span class="string">python-dotenv</span> <span class="string">requests</span></span><br><span class="line"></span><br><span class="line"><span class="string">COPY</span> <span class="string">.</span> <span class="string">/app</span></span><br><span class="line"></span><br><span class="line"><span class="string">EXPOSE</span> <span class="number">8080</span></span><br><span class="line"></span><br><span class="line"><span class="string">CMD</span> [<span class="string">&quot;uvicorn&quot;</span>, <span class="string">&quot;app.main:app&quot;</span>, <span class="string">&quot;--host&quot;</span>, <span class="string">&quot;0.0.0.0&quot;</span>, <span class="string">&quot;--port&quot;</span>, <span class="string">&quot;8080&quot;</span>]</span><br></pre></td></tr></table></figure></div>
-
-<p>再來我們會使用到 <code>docker-compose</code> 來管理我們的服務，這裡我們會使用到 Redis 以及 FastAPI 兩個服務，我們會將 Redis 的 6379 port 對應到本地端的 6379 port，以及 FastAPI 的 8080 port 對應到本地端的 8080 port。並且會有個虛擬的網路 <code>hugo-network</code> 來連接兩個服務。</p>
-<div class="highlight-container" data-rel="Yaml"><figure class="iseeu highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">redis:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">redis:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">redis</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;6379:6379&quot;</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">hugo-network</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">server:</span></span><br><span class="line">    <span class="attr">build:</span> </span><br><span class="line">      <span class="attr">context:</span> <span class="string">.</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">backend</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;8080:8080&quot;</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">hugo-network</span></span><br><span class="line"></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">redis-data:</span></span><br><span class="line">   </span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">hugo-network:</span></span><br><span class="line">    <span class="attr">driver:</span> <span class="string">bridge</span></span><br></pre></td></tr></table></figure></div>
-
-<p>最後我們只要透過 <code>docker-compose up -d</code> 就可以達到我們開發所需的效果！</p>
-
-  <div class="note p-4 mb-4 rounded-small warning">
-    <p><strong>⚠️ 注意</strong></p>
-<p>因為我們的服務是把 server 跟 db 分開成不同的 container 因此我們需要注意我們的 <code>.env</code> 檔案，我們需要將 <code>REDIS_HOST</code> 設定為 <code>redis</code>，這樣我們的 FastAPI 才能連接到 Redis。</p>
-
-  </div>
-
-<p>今天的內容操作就到這邊完全結束，大家可以參考 <a class="link"   href="https://github.com/1chooo/python-redis-docker/tree/blog" >Source Code - python-redis-docker <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 也祝大家都能成功地打包自己的服務！</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a class="link"   href="https://developer.redis.com/develop/python/fastapi/" >Using Redis with FastAPI <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://github.com/seymaozler/card-application" >seymaozler&#x2F;card-application <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://medium.com/@seymaaozlerr/building-an-authentication-system-with-fastapi-redis-and-mysql-cc8b005b9c30" >Building an Authentication System with FastAPI, Redis and MySQL <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://python-dependency-injector.ets-labs.org/examples/fastapi-redis.html" >FastAPI + Redis example <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://medium.com/@vmbdeveloper/python-using-redis-with-docker-0400a5b2a735" >Python: Using Redis with Docker <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://www.docker.com/blog/how-to-use-the-redis-docker-official-image/" >How to Use the Redis Docker Official Image <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://medium.com/%E7%A8%8B%E5%BC%8F%E4%B9%BE%E8%B2%A8/python-redis-v-s-mysql-%E6%9F%A5%E8%A9%A2%E5%AF%A6%E4%BD%9C-9f0cc0d9b32b" >[Python] Redis v.s Mysql 查詢實作 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://medium.com/@bhupender.rawat4/python-redis-using-docker-45643af090db" >Python: Redis [ Using Docker ] <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://realpython.com/python-redis/" >How to Use Redis With Python <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DevOps</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Docker</tag>
-        <tag>Redis</tag>
       </tags>
   </entry>
 </search>
