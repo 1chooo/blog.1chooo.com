@@ -177,14 +177,17 @@ navbar:
     # Masonry: 
     #   icon: fa-solid fa-image 
     #   path: /masonry/
+    Archives: 
+      icon: fa-solid fa-archive 
+      path: /archives/ 
     Categories: 
       icon: fa-solid fa-folder 
       path: /categories/ 
-    Tags: 
-      icon: fa-solid fa-tags 
-      path: /tags/ 
-    More:
-      icon: fa-regular fa-user
+    # Tags: 
+    #   icon: fa-solid fa-tags 
+    #   path: /tags/ 
+    Link:
+      icon: fa-regular fa-link
       submenus:
         About: /about
         GitHub: https://github.com/1chooo
@@ -221,6 +224,9 @@ home:
       About:
         path: /about
         icon: fa-regular fa-user
+      Portfolio:
+        path: https://1chooo.com
+        icon: fa-regular fa-link
       Github: 
         path: https://github.com/1chooo
         icon: fa-brands fa-github
@@ -260,7 +266,7 @@ articles:
   author_label: 
     enable: true # Whether to enable
     auto: false # Whether to automatically add author label, e.g. Lv1, Lv2, Lv3...
-    list: ["he/him"]
+    list: ["Day ONE ⚡️"]
   # Code block settings
   code_block:
     copy: true # Whether to enable code block copy button
@@ -389,8 +395,8 @@ plugins:
       #   cover: # audio cover url
       # .... you can add more audios here
   # Mermaid JS. Requires hexo-filter-mermaid-diagrams (npm i hexo-filter-mermaid-diagrams). See https://mermaid.js.org/
-  mermaid:
-    enable: false # enable mermaid or not
+  mermaid: # Mermaid JS
+    enable: true # enable mermaid or not
     version: "9.3.0" # default v9.3.0
 # PLUGINS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
