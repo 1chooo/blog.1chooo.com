@@ -284,6 +284,76 @@
       </tags>
   </entry>
   <entry>
+    <title>我在 Conda 常用的指令</title>
+    <url>/2023/07/30/dev-env/conda-dev-env/</url>
+    <content><![CDATA[<blockquote>
+<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
+</blockquote>
+<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
+<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
+<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
+
+<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*HINgY65FwzLssf65NsA8tQ.png"
+                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
+                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
+<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
+<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
+<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
+<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
+<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#104;&#x75;&#x67;&#111;&#x39;&#55;&#48;&#x32;&#49;&#x37;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#x6d;" >&#104;&#x75;&#x67;&#111;&#x39;&#55;&#48;&#x32;&#49;&#x37;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DevEnv</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>venv</tag>
+        <tag>conda</tag>
+        <tag>tips</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何在 Mac 安裝 Node.js &amp; NPM</title>
     <url>/2024/01/03/dev-env/mac-install-nodejs-npm/</url>
     <content><![CDATA[<p>新年剛好把 MacOS 重灌，讓這台老 macbook pro 2020 重獲新生，也藉此機會重新建置開發環境。</p>
@@ -389,76 +459,6 @@
       </tags>
   </entry>
   <entry>
-    <title>我在 Conda 常用的指令</title>
-    <url>/2023/07/30/dev-env/conda-dev-env/</url>
-    <content><![CDATA[<blockquote>
-<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
-</blockquote>
-<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
-<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
-<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
-
-<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*HINgY65FwzLssf65NsA8tQ.png"
-                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
-                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
-<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
-<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
-<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
-<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
-<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#103;&#111;&#x39;&#x37;&#48;&#x32;&#x31;&#x37;&#x40;&#x67;&#109;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#x6d;" >&#x68;&#x75;&#103;&#111;&#x39;&#x37;&#48;&#x32;&#x31;&#x37;&#x40;&#x67;&#109;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DevEnv</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>venv</tag>
-        <tag>conda</tag>
-        <tag>tips</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何解決 npm install 時報錯 - Error: EACCES: permission denied</title>
     <url>/2024/05/15/dev-env/node-access-error/</url>
     <content><![CDATA[<p>在我們安裝 npm 套件的時候，有時候會遇到 <code>EACCES: permission denied</code> 的錯誤，這是因為我們沒有權限寫入到指定的目錄，我們會看到以下錯誤（以安裝 aws-cdk 為例）：</p>
@@ -504,322 +504,6 @@
         <tag>Node</tag>
         <tag>npm</tag>
         <tag>permission</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>演算法第一講——Euclid Algorithm 歐幾里得演算法</title>
-    <url>/2023/07/30/ds-alg/euclid/</url>
-    <content><![CDATA[<p>大家在過往學習的經驗中，可能都有聽過歐幾里德這名鼎鼎大名的人物，是位在希臘化時期的數學家，有著著名著作「幾何原本」，在數學領域中有著極大化的貢獻，為現今眾多數學家所認同。</p>
-<p>然而在古希臘的時代的數學家竟然能跟演算法畫上關係，畢竟演算法便是透過有限的步驟中，將給定的輸入做出最有效的解決，並且在執行玩這些有效的步驟中會有正當的終止，產生最後輸出結果，而歐幾里德演算法得以詮釋這些過程，歐幾里德演算法的問題是要在給定的兩個正整數 m 和 n 中找出兩束的最大公因數，因此我們可以列出以下解題步驟：</p>
-<ol>
-<li>找出餘數 (m % n)</li>
-<li>判斷餘數是否為零 (if (r &#x3D; 0) return n)</li>
-<li>被除數與餘數互換 (swap(m, n))</li>
-</ol>
-<p>那看到這邊可能人會有很多有很熟悉的感覺，畢竟我們曾經學習過求公因數的方法有：列舉法、質因數分解、短除法等⋯⋯那其中還有一個有趣的方法便是「輾轉相除法」，也就是我們今天要討論到的歐幾里德演算法，然而所謂的「輾轉」是什麼呢？可能是 Debug 睡不著的時候吧！哈！不過這樣也說得通，輾轉就是曲折的、不斷的過程，而我們正是透過這樣的特性來達成我們的演算法。</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ZtKWx4DZ0FY6SBSctDWtUQ.png"
-                      alt="輾轉相除法直式"
-                ><figcaption>輾轉相除法直式</figcaption></figure></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png"
-                      alt="輾轉過程"
-                ><figcaption>輾轉過程</figcaption></figure></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png"
-                      alt="過程以長方形圖是呈現"
-                ><figcaption>過程以長方形圖是呈現</figcaption></figure></p>
-<p>透過上方圖示我們便可看出輾轉的真正特性，透過互換且不斷地進行運算，已達到我們期望的結果，也可以從上圖中透過切割長方形的模式，在長方形中找出能切割的最大面積正方形，以此將整個長方形變成有正方形所組成的型態，這又可以回歸到上述所歸納的兩個解：</p>
-<ol>
-<li>餘數為 0 -&gt; 完整地切割</li>
-<li>餘數為 1 -&gt; 無法完整地切割</li>
-</ol>
-<p>想必讀到這裡一定更能理解輾轉相除法，接下來我們進行實作吧！</p>
-<h3 id="以下我們展示虛擬碼-Pseudocode"><a href="#以下我們展示虛擬碼-Pseudocode" class="headerlink" title="以下我們展示虛擬碼 (Pseudocode)"></a>以下我們展示虛擬碼 (Pseudocode)</h3><div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line">Algorithm: <span class="built_in">EuclidGCD</span>(m, n)</span><br><span class="line">Input: Two integer m <span class="keyword">and</span> n.</span><br><span class="line">Output: The greatest common factor of m <span class="keyword">and</span> n.</span><br><span class="line">r &lt;- m % n</span><br><span class="line"><span class="keyword">while</span> r != <span class="number">0</span> <span class="keyword">do</span></span><br><span class="line">    m &lt;- n</span><br><span class="line">    n &lt;- r</span><br><span class="line">    r &lt;- m % n</span><br><span class="line"><span class="keyword">return</span> n</span><br><span class="line">以下我們使用 cpp 實作</span><br><span class="line"><span class="type">int</span> <span class="built_in">EuclidGCD</span>(<span class="type">int</span> m, <span class="type">int</span> n) &#123;</span><br><span class="line">    <span class="type">int</span> r = m % n;</span><br><span class="line">    <span class="keyword">while</span> (r != <span class="number">0</span>) &#123;</span><br><span class="line">        m = n;</span><br><span class="line">        n = r;</span><br><span class="line">        r = m % n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>那上面我們討論到歐幾里德演算法的範疇實屬理論，那實際用途到底可以實現什麼情形呢？在分析這道問號題之前，我們可以再回想一下此演算法，最核心的就是要找出最大公因數，並且在由大化小的過程中，可以達成更有效率地轉換，畢竟是透過一系列輾轉的過程，所以其實輾轉相除法的應用層面非常廣，可以在密碼學、數學、計算機科學等⋯⋯領域做使用，甚至在音樂方面都能有實際上的應用，若想知道更多，網路上其實還有更多有趣的範例等著你們去挖掘呢！（維基百科下方的參考連結有超多有趣的例子！）</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a class="link"   href="https://zhuanlan.zhihu.com/p/56528787" >欧几里得与《几何原本》(上篇） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://jason-chen-1992.weebly.com/home/-euclidean-algorithm" >【演算法】歐幾里得算法 Euclidean Algorithm <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Algorithm</category>
-      </categories>
-      <tags>
-        <tag>algorithm</tag>
-        <tag>note</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>AWS: 用 AWS Lambda Function 開發 Serverless Line Bot - 1</title>
-    <url>/2024/04/23/projects/line-bot-with-aws-lambda-functions-1/</url>
-    <content><![CDATA[<p>過去在撰寫 Line Bot 我都是使用 Python 並且搭配後端框架，使用過 FastAPI 以及 Flask 做開發，都需要架起一個 Server 才能讓我們的 Line Bot 成功運行，此外還需要一台機器不斷地去幫我們運作才能處理 Line Bot 的請求，因此我轉向思考 Line Bot 的特性，Line Bot 就是透過用戶的傳遞訊息加以觸發回應，我們可以總結成三大要素：「用戶」、「觸發」、「回應」這三個關鍵字，因此我就想到了 AWS Lambda + API Gateway 的特性，當今天有用戶傳遞訊息給 Line Bot 時，透過 AWS Lambda Function 來觸發回應，這樣不就不需要架設 Server 了，還可以達成 Serverless 的概念，使用者用多少付多少，不用讓 Server 一直運作著。</p>
-<p>我們將使用 <code>linebot.v3</code> 用以開發，並且使用 AWS Lambda Function 部署 Line Bot。以 AWS 作為範例，本篇將以 echo Bot 作為 Serverless Line Bot 的 Demo 講述設計原理以及 AWS 的使用，接著我們將介紹如何在 Serverless 的 Line Bot。</p>
-<h3 id="使用-Flask-建構-Line-Bot"><a href="#使用-Flask-建構-Line-Bot" class="headerlink" title="使用 Flask 建構 Line Bot"></a>使用 Flask 建構 Line Bot</h3><p>我們需要先觀察，過去我們使用 Flask 建構一個 Line Bot 會需要的程式碼 (參考 <a class="link"   href="https://github.com/line/line-bot-sdk-python" >line-bot-sdk <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> example - <a class="link"   href="https://github.com/line/line-bot-sdk-python/tree/master/examples/flask-echo" >flask-echo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>)</p>
-<h4 id="Flask-app"><a href="#Flask-app" class="headerlink" title="Flask app"></a>Flask app</h4><p>透過 Flask 建立一個 Line Bot 的 Server，並且設定一個 <code>/callback</code> 的路由，當 Line Bot 收到用戶的訊息時，會透過 <code>/callback</code> 這個路由去承接 POST 請求。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, abort, request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/callback&quot;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">callback</span>():</span><br><span class="line">    <span class="comment"># get X-Line-Signature header value</span></span><br><span class="line">    signature = request.headers[<span class="string">&#x27;X-Line-Signature&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># get request body as text</span></span><br><span class="line">    body = request.get_data(as_text=<span class="literal">True</span>)</span><br><span class="line">    app.logger.info(<span class="string">&quot;Request body: &quot;</span> + body)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># handle webhook body</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        handler.handle(body, signature)</span><br><span class="line">    <span class="keyword">except</span> InvalidSignatureError:</span><br><span class="line">        app.logger.info(<span class="string">&quot;Invalid signature. Please check your channel access token/channel secret.&quot;</span>)</span><br><span class="line">        abort(<span class="number">400</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;OK&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app.run(port=<span class="number">8080</span>)</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="Line-Bot-WebhookHandler"><a href="#Line-Bot-WebhookHandler" class="headerlink" title="Line Bot WebhookHandler"></a>Line Bot WebhookHandler</h4><p>有了 Flask app 的 <code>callback</code> 路由，我們就可以透過 Line Bot SDK 的 <code>WebhookHandler</code> 來處理用戶的訊息，並且回應給用戶。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, abort, request</span><br><span class="line"><span class="keyword">from</span> linebot.v3 <span class="keyword">import</span> WebhookHandler</span><br><span class="line"><span class="keyword">from</span> linebot.v3.exceptions <span class="keyword">import</span> InvalidSignatureError</span><br><span class="line"><span class="keyword">from</span> linebot.v3.messaging <span class="keyword">import</span> (ApiClient, Configuration, MessagingApi,</span><br><span class="line">                                  ReplyMessageRequest, TextMessage)</span><br><span class="line"><span class="keyword">from</span> linebot.v3.webhooks <span class="keyword">import</span> MessageEvent, TextMessageContent</span><br><span class="line"></span><br><span class="line">configuration = Configuration(access_token=os.environ[<span class="string">&quot;CHANNEL_ACCESS_TOKEN&quot;</span>])</span><br><span class="line">handler = WebhookHandler(os.environ[<span class="string">&quot;CHANNEL_SECRET&quot;</span>])</span><br><span class="line"></span><br><span class="line"><span class="meta">@handler.add(<span class="params">MessageEvent, message=TextMessageContent</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">handle_message</span>(<span class="params">event</span>):</span><br><span class="line">    <span class="keyword">with</span> ApiClient(configuration) <span class="keyword">as</span> api_client:</span><br><span class="line">        line_bot_api = MessagingApi(api_client)</span><br><span class="line">        line_bot_api.reply_message_with_http_info(</span><br><span class="line">            ReplyMessageRequest(</span><br><span class="line">                reply_token=event.reply_token,</span><br><span class="line">                messages=[TextMessage(text=event.message.text)]</span><br><span class="line">            )</span><br><span class="line">        )</span><br></pre></td></tr></table></figure></div>
-
-<p>看完了上述範例程式的原理之後，發 呼叫 <code>/callback</code> 這個路由就使使用 Web API 去完成我們要的動作！也就是這個關鍵，其實我們可以直接用 AWS Lambda + API Gateway 來取代 flask 的 Web Server，這樣就不需要架設 Server 了，接下來我們就來看看如何使用 AWS Lambda Function 部署 Line Bot。</p>
-<h3 id="使用-AWS-Lambda-Function-部署-Line-Bot"><a href="#使用-AWS-Lambda-Function-部署-Line-Bot" class="headerlink" title="使用 AWS Lambda Function 部署 Line Bot"></a>使用 AWS Lambda Function 部署 Line Bot</h3><p>因為 Line Bot 會需要 <code>line-bot-sdk</code> 進行開發，這對 AWS Function 來說需要第三方函式庫，我們便需要將需要的函示庫打包成 Lambda Layer 形式上傳，以此讓我們的 Lambda Function 可以引用這些函式庫。</p>
-<p>我們這次選用的 Python Runtime 是 Python3.12，<a class="link"   href="https://repost.aws/knowledge-center/lambda-import-module-error-python" >運行在 Amazon Linux 2023 Amazon Machine Image (AMI) 上。因此我們要確保 Layer 是可以在 Amazon Linux 2023 操作系統上運行的 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，因此我們打包第三方套件的方式會跟從前不一樣。</p>
-<p>以下是我們打包 <code>line-bot-sdk</code> 的方式：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p lambda-layer/python</span><br><span class="line">$ <span class="built_in">cd</span> lambda-layer/python</span><br><span class="line">$ pip3 install --platform manylinux2014_x86_64 --target . --python-version 3.12 --only-binary=:all: line-bot-sdk</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> ..</span><br><span class="line">$ zip -r ./lambda_layers/linebot_lambda_layer.zip python</span><br></pre></td></tr></table></figure></div>
-
-<p>製作好後，我們就可以上傳 Layer 到 AWS Lambda Function，接著我們就可以開始撰寫 Line Bot 的 Lambda Function。</p>
-<h4 id="lambda-handler"><a href="#lambda-handler" class="headerlink" title="lambda_handler"></a>lambda_handler</h4><p>我們可以把 lambda_handler 想成當初的 <code>callback/</code> 路由，負責將承接從 Line Bot 過來的請求，並且可以透過 <code>WebhookHandler</code> 來處理用戶的訊息，可以想像成我們的主程式運行的地方。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">lambda_handler</span>(<span class="params">event, context</span>):</span><br><span class="line">    <span class="keyword">try</span>: </span><br><span class="line">        body = event[<span class="string">&#x27;body&#x27;</span>]</span><br><span class="line">        signature = event[<span class="string">&#x27;headers&#x27;</span>][<span class="string">&#x27;x-line-signature&#x27;</span>]</span><br><span class="line">        handler.handle(body, signature)</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;statusCode&#x27;</span>: <span class="number">201</span>,</span><br><span class="line">            <span class="string">&#x27;body&#x27;</span>: json.dumps(<span class="string">&#x27;Hello from Lambda!&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;statusCode&#x27;</span>: <span class="number">500</span>,</span><br><span class="line">            <span class="string">&#x27;body&#x27;</span>: json.dumps(<span class="built_in">str</span>(e))</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="Line-Bot-WebhookHandler-1"><a href="#Line-Bot-WebhookHandler-1" class="headerlink" title="Line Bot WebhookHandler"></a>Line Bot WebhookHandler</h4><p>有了可以承接請求的 <code>lambda_handler</code>，我們就可以透過 Line Bot SDK 的 <code>WebhookHandler</code> 來處理用戶的訊息，並且回應給用戶。我們做的是將 Text 相關的訊息做處理，並且回傳給用戶。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> linebot.v3 <span class="keyword">import</span> WebhookHandler</span><br><span class="line"><span class="keyword">from</span> linebot.v3.messaging <span class="keyword">import</span> (ApiClient, Configuration, MessagingApi,</span><br><span class="line">                                  ReplyMessageRequest, TextMessage)</span><br><span class="line"><span class="keyword">from</span> linebot.v3.webhooks <span class="keyword">import</span> MessageEvent, TextMessageContent</span><br><span class="line"></span><br><span class="line">configuration = Configuration(</span><br><span class="line">    access_token=os.getenv(<span class="string">&#x27;CHANNEL_ACCESS_TOKEN&#x27;</span>))</span><br><span class="line">handler = WebhookHandler(os.getenv(<span class="string">&#x27;CHANNEL_SECRET&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">@handler.add(<span class="params">MessageEvent, message=TextMessageContent</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">handle_message</span>(<span class="params">event</span>):</span><br><span class="line">    <span class="keyword">with</span> ApiClient(configuration) <span class="keyword">as</span> api_client:</span><br><span class="line">        line_bot_api = MessagingApi(api_client)</span><br><span class="line">        </span><br><span class="line">        line_bot_api.reply_message_with_http_info(</span><br><span class="line">            ReplyMessageRequest(</span><br><span class="line">                reply_token=event.reply_token,</span><br><span class="line">                messages=[TextMessage(text=event.message.text)]</span><br><span class="line">            )</span><br><span class="line">        )</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="實作流程與細節"><a href="#實作流程與細節" class="headerlink" title="實作流程與細節"></a>實作流程與細節</h3><p>在我們了解到如何使用 AWS Lambda Function 部署 Line Bot 之後，我們就可以開始實作了，以下是我們的實作流程與細節以及架構圖：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/arch.png"
-                     
-                ></p>
-<h4 id="建立-Line-Bot"><a href="#建立-Line-Bot" class="headerlink" title="建立 Line Bot"></a>建立 Line Bot</h4><p>前往 <a class="link"   href="https://account.line.biz/login?redirectUri=https://manager.line.biz/" >Line Business 登入管理頁面 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，登入後直接點擊建立</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/01.png"
-                     
-                ></p>
-<p>進到 「聊天」前往回應設定頁面</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/02.png"
-                     
-                ></p>
-<p>接著點擊「Messaging API」</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/03.png"
-                     
-                ></p>
-<p>進入設定頁面，並且向下滑找到 <a class="link"   href="https://developers.line.biz/" >Line Developers <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 點擊後找到 <a class="link"   href="https://developers.line.biz/console/" >Console <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 進入，我們要拿到 Channel Secrets 以及 Channel Access Token 可以想像我們要拿到 Line Bot 的鑰匙。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/04.png"
-                     
-                ></p>
-<p>我們進去 Console 後直接往下就可以找到 Channel Secrets，可以先複製起來我們待會需要用。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/05.png"
-                     
-                ></p>
-<p>再來我們去 Messaging API 頁面滑到最下面找到 Channel Access Token，這是我們的 Line Bot 的身份證，我們待會也需要用。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/06.png"
-                     
-                ></p>
-<h4 id="建立-AWS-Lambda-Function"><a href="#建立-AWS-Lambda-Function" class="headerlink" title="建立 AWS Lambda Function"></a>建立 AWS Lambda Function</h4><p>前往 <a class="link"   href="https://aws.amazon.com/tw/console/" >AWS Console <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 登陸，並且進到 Lambda 頁面（可自行選擇 Region），點擊建立函式</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/07.png"
-                     
-                ></p>
-<p>可自行命名 <code>function-name</code> Runtime 選擇 <code>Python3.12</code> Architecture 選擇 <code>x86_64</code>，並且點擊建立函式。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/08.png"
-                     
-                ></p>
-<h4 id="連結-Layer"><a href="#連結-Layer" class="headerlink" title="連結 Layer"></a>連結 Layer</h4><p>建立好 Lambda Function 後我們需要為我們的 Function 加上裝備，也就是我們要能夠支援第三的函式庫，因此我們要前往 Layer 頁面，點擊建立 Layer。</p>
-<p>可以透過以下腳本建立 <code>linebot_lambda_layer.zip</code> 的 Layer</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p lambda-layer/python</span><br><span class="line">$ <span class="built_in">cd</span> lambda-layer/python</span><br><span class="line">$ pip3 install --platform manylinux2014_x86_64 --target . --python-version 3.12 --only-binary=:all: line-bot-sdk</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> ..</span><br><span class="line">$ zip -r ./lambda_layers/linebot_lambda_layer.zip python</span><br></pre></td></tr></table></figure></div>
-
-<p>也可以直接透過 👉🏻 <a class="link"   href="https://raw.githubusercontent.com/1chooo/aws-educate-101-line-bot/main/lambda_layers/linebot_lambda_layer.zip" >Download linebot_lambda_layer <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 直接下載</p>
-
-  <div class="note p-4 mb-4 rounded-small warning">
-    <p><strong>⚠️ 注意</strong></p>
-<p>我們是用 <code>x86_64</code> 作為 Architect，如果當初選 arm 可能會出現 error</p>
-
-  </div>
-
-<p>可自行設定名稱、描述，直接透過上傳 <code>.zip</code> 的方式，Architecture 選擇 <code>x86_64</code>，Runtime 選擇 <code>Python3.12</code>，並且點擊建立 Layer。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/09.png"
-                     
-                ></p>
-<p>最後幫我回到 Lambda Function 拉到最下面點擊新增 Layer，並且選擇 <code>Custom Layer</code> 即可連結 Layer。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/10.png"
-                     
-                ></p>
-<h4 id="編輯-Lambda-Function"><a href="#編輯-Lambda-Function" class="headerlink" title="編輯 Lambda Function"></a>編輯 Lambda Function</h4><p>有了以上的設定之後我們就可以把之前所寫好的 lambda_handler 貼上去，記得要點擊 <code>Deploy</code> 否則不會生效。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> linebot.v3 <span class="keyword">import</span> WebhookHandler</span><br><span class="line"><span class="keyword">from</span> linebot.v3.messaging <span class="keyword">import</span> (ApiClient, Configuration, MessagingApi,</span><br><span class="line">                                  ReplyMessageRequest, TextMessage)</span><br><span class="line"><span class="keyword">from</span> linebot.v3.webhooks <span class="keyword">import</span> MessageEvent, TextMessageContent</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">configuration = Configuration(</span><br><span class="line">    access_token=os.getenv(<span class="string">&#x27;CHANNEL_ACCESS_TOKEN&#x27;</span>))</span><br><span class="line">handler = WebhookHandler(os.getenv(<span class="string">&#x27;CHANNEL_SECRET&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">@handler.add(<span class="params">MessageEvent, message=TextMessageContent</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">handle_message</span>(<span class="params">event</span>):</span><br><span class="line">    <span class="keyword">with</span> ApiClient(configuration) <span class="keyword">as</span> api_client:</span><br><span class="line">        line_bot_api = MessagingApi(api_client)</span><br><span class="line">        </span><br><span class="line">        line_bot_api.reply_message_with_http_info(</span><br><span class="line">            ReplyMessageRequest(</span><br><span class="line">                reply_token=event.reply_token,</span><br><span class="line">                messages=[TextMessage(text=event.message.text)]</span><br><span class="line">            )</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lambda_handler</span>(<span class="params">event, context</span>):</span><br><span class="line">    <span class="keyword">try</span>: </span><br><span class="line">        body = event[<span class="string">&#x27;body&#x27;</span>]</span><br><span class="line">        signature = event[<span class="string">&#x27;headers&#x27;</span>][<span class="string">&#x27;x-line-signature&#x27;</span>]</span><br><span class="line">        handler.handle(body, signature)</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;statusCode&#x27;</span>: <span class="number">200</span>,</span><br><span class="line">            <span class="string">&#x27;body&#x27;</span>: json.dumps(<span class="string">&#x27;Hello from Lambda!&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;statusCode&#x27;</span>: <span class="number">500</span>,</span><br><span class="line">            <span class="string">&#x27;body&#x27;</span>: json.dumps(<span class="built_in">str</span>(e))</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>再來我們要把之前從 Line 拿到的鑰匙 <code>CHANNEL_ACCESS_TOKEN</code> 以及 <code>CHANNEL_SECRET</code>，設定成為環境變數。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/11.png"
-                     
-                ></p>
-<h4 id="設定-API-Gateway"><a href="#設定-API-Gateway" class="headerlink" title="設定 API Gateway"></a>設定 API Gateway</h4><p>前往 API Gateway 頁面，點擊建立 API，並且選擇 <code>REST API</code>，點擊建立 API，可行命名 API 的名稱。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/12.png"
-                     
-                ></p>
-<p>創建好後我們要 Create Method 並且選擇 <code>POST</code>，並且點擊建立。</p>
-<p>Method Type 選擇 <code>POST</code>，Integration Type 選擇 <code>Lambda function</code>，勾選 <code>Use Lambda Proxy integration</code>，並且選擇剛剛建立的 Lambda Function，並且點擊建立。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/13.png"
-                     
-                ></p>
-
-  <div class="note p-4 mb-4 rounded-small warning">
-    <p><strong>⚠️ 注意</strong></p>
-<p>一定要勾選 Use Lambda Proxy integration，如果勾選起來的話，會將其他 Http request Header 中的資訊也帶入 AWS Lambda，如果沒勾選 AWS Lambda 只會收到 Body tag 中的值。因為 Line Bot 會需要用到在 header 中的 <strong>x-line-signature</strong>，所以會需要勾選此選項。</p>
-
-  </div>
-
-<p>建立好後，回到 API Gateway 頁面，點擊 Deploy API，並且選擇 New Stage，輸入 <code>prod</code> 點擊 Deploy，我們會拿到一個連結，這個連結就是我們的 API Gateway 的 Endpoint，我們要把這個 Endpoint 貼到 Line Bot 的 Webhook URL。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/14.png"
-                     
-                ></p>
-<h4 id="設定-Line-Bot-Webhook-URL"><a href="#設定-Line-Bot-Webhook-URL" class="headerlink" title="設定 Line Bot Webhook URL"></a>設定 Line Bot Webhook URL</h4><p>我們將剛剛拿到的 API Gateway 的 Endpoint 貼到 Line Bot 的 Webhook URL，就可以開始使用 Line Bot 了。我們需要回到<a class="link"   href="https://developers.line.biz/console/" >Line Developers Console <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 進入，前往到 Messaging API 分頁，貼上我們的 Webhook URL 並且要點擊 <code>Allow Webhook</code>，這樣我們的 Line Bot 就可以開始運作了。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/15.png"
-                     
-                ></p>
-<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><p>最後我們看 Demo 吧！</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/demo.jpg"
-                     
-                ></p>
-<p>恭喜大家完成了 Serverless Line Bot 的部署，這樣就不需要架設 Server 了，也可以達成 Serverless 的概念，使用者用多少付多少，不用讓 Server 一直運作著。不過大家會不會覺得機器人只會回應我們傳的內容有點太單調，下一篇我們將會介紹如何在我們的 Line Bot 中加入 Large Language Model 達到更高的互動性。</p>
-<h3 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h3><p>這篇真的花了非常多的時間，讓我想起了之前在 AWS 擔任校園大使準備技術工作坊的時光，希望這篇文章能夠帶給大家認識雲的開發，並且也能成功完成一個 Line Bot 的小 project。另外工商一下這屆大使正在籌辦 證照的計畫，如果有對於最入門的 <a class="link"   href="https://aws.amazon.com/certification/certified-cloud-practitioner/" >AWS Certified Cloud Practitioner（CCP） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>和技術相關的 <a class="link"   href="https://aws.amazon.com/tw/certification/certified-solutions-architect-associate/" >AWS Certified Solutions Architect - Associate（SAA） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>有興趣的朋友都可以透過 👉🏻 <a class="link"   href="https://www.surveycake.com/s/6dWGq" >報名連結 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，加入證照陪跑計劃！</p>
-]]></content>
-      <categories>
-        <category>Project</category>
-      </categories>
-      <tags>
-        <tag>AWS</tag>
-        <tag>Lambda Function</tag>
-        <tag>Serverless</tag>
-        <tag>API Gateway</tag>
-        <tag>Line Bot</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>做個小貪吃蛇來玩吧！</title>
-    <url>/2023/07/30/projects/snake-game/</url>
-    <content><![CDATA[<p>還記得當時剛學習程式語言的時候，對於什麼知識都不懂，連搜尋能力也沒有，常常搜不到關鍵字，問題也解決不了，不過當時懵懂無知的狀態，完成了基礎貪吃蛇的小遊戲，所以決定撰寫一篇文章來記錄當時的過程。</p>
-<p><strong>本文綱要</strong></p>
-<ul>
-<li><a href="#%E7%92%B0%E5%A2%83%E5%BB%BA%E7%BD%AE">環境建置</a><ul>
-<li><a href="#%E5%AE%98%E7%B6%B2%E9%80%A3%E7%B5%90">官網連結：</a></li>
-</ul>
-</li>
-<li><a href="#%E6%8E%A5%E8%91%97%E5%B0%B1%E9%96%8B%E5%A7%8B%E5%BB%BA%E7%AB%8B%E7%92%B0%E5%A2%83%E5%90%A7">接著就開始建立環境吧！</a></li>
-<li><a href="#%E5%AF%A6%E4%BD%9C%E8%AA%AA%E6%98%8E">實作說明</a></li>
-<li><a href="#%E5%AF%A6%E4%BD%9C%E6%84%9F%E6%83%B3">實作感想</a></li>
-<li><a href="#%E6%9B%B4%E6%96%B0%E5%B0%88%E6%A1%88%E5%BE%8C%E7%BA%8C%E7%99%BC%E5%B1%95">（更新）專案後續發展</a></li>
-<li><a href="#%E9%87%8D%E6%A7%8B%E5%BF%83%E5%BE%97">重構心得</a><ul>
-<li><a href="#source-code-in-github-python_snake_game">Source Code in GitHub: python_snake_game</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="環境建置"><a href="#環境建置" class="headerlink" title="環境建置"></a>環境建置</h2><p>實作這次的小遊戲是透過 Python 語言的套件：Pygame 來實現的，不過途中會遇到很多的版本問題，起源於 Pygame 本身版本相容性，因此我們要測試出能夠正常執行的版本，過程中不斷地嘗試，也不斷地失敗，最後才找出了解決方案，那就是透過 Conda 的環境來建置。</p>
-<p>選擇安裝 Conda 版本，這邊選擇的是 MiniConda，因為本身不太需要原本 Conda 如此龐大的功能，因此選擇瘦身版的，再加上 Mac 的儲存空間著實珍貴啊！選用的版本為 <code>conda 4.12.0</code>，直接前往官網安裝相對應作業系統版本即可。</p>
-<h4 id="官網連結："><a href="#官網連結：" class="headerlink" title="官網連結："></a>官網連結：</h4><p><a class="link"   href="https://docs.conda.io/en/latest/miniconda.html" >Miniconda Docs <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h2 id="接著就開始建立環境吧！"><a href="#接著就開始建立環境吧！" class="headerlink" title="接著就開始建立環境吧！"></a>接著就開始建立環境吧！</h2><p>我們先確認 Conda 版本，在終端機輸入 <code>conda --version</code>。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/max/1400/1*1uDdGsxFlihzmPfLP6Mo4A.webp"
-                     
-                ></p>
-<p>接著透過 Conda 建立名為 pygame 的虛擬環境，Python 的版本選用 <code>3.16.13</code> 並且激活執行該環境。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create --name pygame python=3.6.13</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate pygame</span></span><br></pre></td></tr></table></figure></div>
-
-<p>確認 Python 版本，並且開始安裝我們需要的套件，如果把–user 省略，會直接安裝至 Conda 的環境。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python --version</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 -m pip install -U pygame --user</span></span><br></pre></td></tr></table></figure></div>
-
-<p>最後已經到了最後一步了，我們只要測試 pygame 能否正常運作便大功告成了，所以我們要執行 pygame 可以直接呼叫的小遊戲。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 -m pygame.examples.aliens</span></span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/max/1400/1*xRYWm3kCCimYkrsHfh88KA.webp"
-                     
-                ></p>
-<h2 id="實作說明"><a href="#實作說明" class="headerlink" title="實作說明"></a>實作說明</h2><p>前面做了這麼多的前置作業，那我們就開始進行實作吧！我們的順序會先引入套件，設定鍵盤方向鍵的接收，最後進行一連串的遊戲玩法設定，就大功告成啦！完整程式碼都放在 GitHub 給大家參考啦！畢竟全部放進文章，會變成流水帳，最後只要在終端機輸入 python main.py ，就可以正常執行貪吃蛇小遊戲囉！</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/max/1400/1*okV2P3qTibFMO1NWbaRBJQ.webp"
-                     
-                ></p>
-<h2 id="實作感想"><a href="#實作感想" class="headerlink" title="實作感想"></a>實作感想</h2><p>當下實作程式碼，說真的也不完全是自己的東西，大多數的東西都要透過參考他人的實作來完成，不過在程式碼實作初期，環境崩掉的時候真的很讓人崩潰，只能不斷 conda remove -n env_name -all ，一直 rebuild，不過這過程中真的可以學到很多內容，可以更了解 python 語言的版本相應關係，以及要如何管理自己電腦環境（雖然現在環境依舊混亂～嘿嘿～）。</p>
-<p>那在程式語言方面，練習到了物件導向的概念，可以把很多東西看成是一個個的物件，並且有分類的關係，即便當時看不太懂，但還是很有成就感，畢竟這是第一個小專案，能夠感受到不斷學習的狀態，這已經夠讓我珍惜了！未來也還會繼續分享專案實作，並且做更多深入地探究，繼續在電腦科學的道路上前行、突破！</p>
-<hr>
-<h2 id="（更新）專案後續發展"><a href="#（更新）專案後續發展" class="headerlink" title="（更新）專案後續發展"></a>（更新）專案後續發展</h2><p>現在時間是 2023 年初，過新年便有項恆年不變的傳統，那就是要「除舊佈新」，想當然爾過往的專案在此刻便會重出江湖，況且現在距離上次改動專案也隔了半年以上，寫程式碼的習慣也會因為參考了更多人的寫法而有所改動，因此在原有程式架構不變的情景下，將原本的程式碼重構，寫成呼叫物件的形式，以下便會直接透過程式碼說明，另外撰寫這段文字的時候也發現 Medium 改動了嵌入程式碼的方式，現在無需上傳到 GitHub Gist 也可以將程式碼顯示有 Syntax 的樣貌了，那我們就開始展開說明吧！</p>
-<ul>
-<li><p>將貪吃蛇的移動獨立成 <code>Direction.py</code></p>
-  <div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Direction</span>(<span class="title class_ inherited__">Enum</span>):</span><br><span class="line"></span><br><span class="line">    RIGHT = <span class="number">1</span></span><br><span class="line">    LEFT = <span class="number">2</span></span><br><span class="line">    UP = <span class="number">3</span></span><br><span class="line">    DOWN = <span class="number">4</span></span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>將遊戲的主要規則程式寫入 <code>SnakeGame.py</code></p>
-  <div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> Direction <span class="keyword">import</span> Direction</span><br><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line">font = pygame.font.Font(<span class="string">&#x27;../src/arial.ttf&#x27;</span>, <span class="number">25</span>)</span><br><span class="line">Point = namedtuple(<span class="string">&#x27;Point&#x27;</span>, <span class="string">&#x27;x, y&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># rgb colors</span></span><br><span class="line">WHITE = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line">RED = (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">BLUE1 = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>)</span><br><span class="line">BLUE2 = (<span class="number">0</span>, <span class="number">100</span>, <span class="number">255</span>)</span><br><span class="line">BLACK = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">BLOCK_SIZE = <span class="number">20</span></span><br><span class="line">SPEED = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SnakeGame</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, w=<span class="number">640</span>, h=<span class="number">480</span></span>):</span><br><span class="line">        self.w = w</span><br><span class="line">        self.h = h</span><br><span class="line">        <span class="comment"># init display</span></span><br><span class="line">        self.display = pygame.display.set_mode((self.w, self.h))</span><br><span class="line">        pygame.display.set_caption(<span class="string">&#x27;Snake&#x27;</span>)</span><br><span class="line">        self.clock = pygame.time.Clock()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># init game state</span></span><br><span class="line">        self.direction = Direction.RIGHT</span><br><span class="line"></span><br><span class="line">        self.head = Point(self.w / <span class="number">2</span>, self.h / <span class="number">2</span>)</span><br><span class="line">        self.snake = [self.head, Point(self.head.x - BLOCK_SIZE, self.head.y),</span><br><span class="line">                    Point(self.head.x - (<span class="number">2</span> * BLOCK_SIZE), self.head.y)]</span><br><span class="line"></span><br><span class="line">        self.score = <span class="number">0</span></span><br><span class="line">        self.food = <span class="literal">None</span></span><br><span class="line">        self._place_food()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_place_food</span>(<span class="params">self</span>):</span><br><span class="line">        x = random.randint(<span class="number">0</span>, (self.w - BLOCK_SIZE) // BLOCK_SIZE) * BLOCK_SIZE</span><br><span class="line">        y = random.randint(<span class="number">0</span>, (self.h - BLOCK_SIZE) // BLOCK_SIZE) * BLOCK_SIZE</span><br><span class="line"></span><br><span class="line">        self.food = Point(x, y)</span><br><span class="line">        <span class="keyword">if</span> self.food <span class="keyword">in</span> self.snake:</span><br><span class="line">            self._place_food()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">play_step</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 1. collect user input</span></span><br><span class="line">        <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">            <span class="keyword">if</span> event.<span class="built_in">type</span> == pygame.QUIT:</span><br><span class="line">                pygame.quit()</span><br><span class="line">                quit()</span><br><span class="line">            <span class="keyword">if</span> event.<span class="built_in">type</span> == pygame.KEYDOWN:</span><br><span class="line">                <span class="keyword">if</span> event.key == pygame.K_LEFT:</span><br><span class="line">                    self.direction = Direction.LEFT</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_RIGHT:</span><br><span class="line">                    self.direction = Direction.RIGHT</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_UP:</span><br><span class="line">                    self.direction = Direction.UP</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_DOWN:</span><br><span class="line">                    self.direction = Direction.DOWN</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 2. move</span></span><br><span class="line">        self._move(self.direction)  <span class="comment"># update the head</span></span><br><span class="line">        self.snake.insert(<span class="number">0</span>, self.head)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 3. check if game over</span></span><br><span class="line">        gameOver = <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> self._is_collision():</span><br><span class="line">            gameOver = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">return</span> gameOver, self.score</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 4. pace new food or just move</span></span><br><span class="line">        <span class="keyword">if</span> self.head == self.food:</span><br><span class="line">            self.score += <span class="number">1</span></span><br><span class="line">            self._place_food()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.snake.pop()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 5. update ui and clock</span></span><br><span class="line">        self._update_ui()</span><br><span class="line">        self.clock.tick(SPEED)</span><br><span class="line">        <span class="comment"># 6. return gameOver and score</span></span><br><span class="line">        <span class="keyword">return</span> gameOver, self.score</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_is_collision</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># hits boundary</span></span><br><span class="line">        <span class="keyword">if</span> self.head.x &gt; self.w - BLOCK_SIZE <span class="keyword">or</span> self.head.x &lt; <span class="number">0</span> <span class="keyword">or</span> self.head.y &gt; self.h - BLOCK_SIZE <span class="keyword">or</span> self.head.y &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="comment"># hits itself</span></span><br><span class="line">        <span class="keyword">if</span> self.head <span class="keyword">in</span> self.snake[<span class="number">1</span>:]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_update_ui</span>(<span class="params">self</span>):</span><br><span class="line">        self.display.fill(BLACK)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> pt <span class="keyword">in</span> self.snake:</span><br><span class="line">            pygame.draw.rect(self.display, BLUE1, pygame.Rect(pt.x, pt.y, BLOCK_SIZE, BLOCK_SIZE))  <span class="comment"># 東西南北</span></span><br><span class="line">            pygame.draw.rect(self.display, BLUE2, pygame.Rect(pt.x + <span class="number">4</span>, pt.y + <span class="number">4</span>, <span class="number">12</span>, <span class="number">12</span>))</span><br><span class="line"></span><br><span class="line">        pygame.draw.rect(self.display, RED, pygame.Rect(self.food.x, self.food.y, BLOCK_SIZE, BLOCK_SIZE))</span><br><span class="line"></span><br><span class="line">        text = font.render(<span class="string">&quot;Score: &quot;</span> + <span class="built_in">str</span>(self.score), <span class="literal">True</span>, WHITE)</span><br><span class="line">        self.display.blit(text, (<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">        pygame.display.flip()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_move</span>(<span class="params">self, direction</span>):</span><br><span class="line">        x = self.head.x</span><br><span class="line">        y = self.head.y</span><br><span class="line">        <span class="keyword">if</span> direction == Direction.RIGHT:</span><br><span class="line">            x += BLOCK_SIZE</span><br><span class="line">        <span class="keyword">elif</span> direction == Direction.LEFT:</span><br><span class="line">            x -= BLOCK_SIZE</span><br><span class="line">        <span class="keyword">elif</span> direction == Direction.DOWN:</span><br><span class="line">            y += BLOCK_SIZE</span><br><span class="line">        <span class="keyword">elif</span> direction == Direction.UP:</span><br><span class="line">            y -= BLOCK_SIZE</span><br><span class="line"></span><br><span class="line">        self.head = Point(x, y)</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>最後創建 <code>main.py</code> 呼叫所有內容，便可向原先依樣正常執行啦！</p>
-  <div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> SnakeGame <span class="keyword">import</span> SnakeGame</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    game = SnakeGame()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># game loop</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        gameOver, score = game.play_step()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> gameOver == <span class="literal">True</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Final Score&#x27;</span>, score)</span><br><span class="line"></span><br><span class="line">    pygame.quit()</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>此時在終端機執行 <code>python3 main.py</code> 也會出現相同的畫面呢！</p>
-</li>
-</ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/max/1400/1*okV2P3qTibFMO1NWbaRBJQ.webp"
-                     
-                ></p>
-<h2 id="重構心得"><a href="#重構心得" class="headerlink" title="重構心得"></a>重構心得</h2><p>這次會想要重構程式碼，便是因為 2022 後半年使用 python3 完成了一個新的專案，也在過程中才更認識 python3 類別的應用以及開發所需注意的小細節，所以才回想起曾經做過的小專案，嘗試將後續所學到的內容更應用在程式碼撰寫上，也增加自己多一次的經驗累積。</p>
-<h3 id="Source-Code-in-GitHub-python-snake-game"><a href="#Source-Code-in-GitHub-python-snake-game" class="headerlink" title="Source Code in GitHub: python_snake_game"></a>Source Code in GitHub: <a class="link"   href="https://github.com/1chooo/junk-project/tree/main/python_snake_game" >python_snake_game <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h3>]]></content>
-      <categories>
-        <category>Project</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>pygame</tag>
       </tags>
   </entry>
   <entry>
@@ -887,8 +571,8 @@
         <category>DevOps</category>
       </categories>
       <tags>
-        <tag>AWS</tag>
         <tag>Docker</tag>
+        <tag>AWS</tag>
         <tag>EC2</tag>
         <tag>Amazon Linux 2</tag>
       </tags>
@@ -1154,6 +838,57 @@
       </tags>
   </entry>
   <entry>
+    <title>演算法第一講——Euclid Algorithm 歐幾里得演算法</title>
+    <url>/2023/07/30/ds-alg/euclid/</url>
+    <content><![CDATA[<p>大家在過往學習的經驗中，可能都有聽過歐幾里德這名鼎鼎大名的人物，是位在希臘化時期的數學家，有著著名著作「幾何原本」，在數學領域中有著極大化的貢獻，為現今眾多數學家所認同。</p>
+<p>然而在古希臘的時代的數學家竟然能跟演算法畫上關係，畢竟演算法便是透過有限的步驟中，將給定的輸入做出最有效的解決，並且在執行玩這些有效的步驟中會有正當的終止，產生最後輸出結果，而歐幾里德演算法得以詮釋這些過程，歐幾里德演算法的問題是要在給定的兩個正整數 m 和 n 中找出兩束的最大公因數，因此我們可以列出以下解題步驟：</p>
+<ol>
+<li>找出餘數 (m % n)</li>
+<li>判斷餘數是否為零 (if (r &#x3D; 0) return n)</li>
+<li>被除數與餘數互換 (swap(m, n))</li>
+</ol>
+<p>那看到這邊可能人會有很多有很熟悉的感覺，畢竟我們曾經學習過求公因數的方法有：列舉法、質因數分解、短除法等⋯⋯那其中還有一個有趣的方法便是「輾轉相除法」，也就是我們今天要討論到的歐幾里德演算法，然而所謂的「輾轉」是什麼呢？可能是 Debug 睡不著的時候吧！哈！不過這樣也說得通，輾轉就是曲折的、不斷的過程，而我們正是透過這樣的特性來達成我們的演算法。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ZtKWx4DZ0FY6SBSctDWtUQ.png"
+                      alt="輾轉相除法直式"
+                ><figcaption>輾轉相除法直式</figcaption></figure></p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png"
+                      alt="輾轉過程"
+                ><figcaption>輾轉過程</figcaption></figure></p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png"
+                      alt="過程以長方形圖是呈現"
+                ><figcaption>過程以長方形圖是呈現</figcaption></figure></p>
+<p>透過上方圖示我們便可看出輾轉的真正特性，透過互換且不斷地進行運算，已達到我們期望的結果，也可以從上圖中透過切割長方形的模式，在長方形中找出能切割的最大面積正方形，以此將整個長方形變成有正方形所組成的型態，這又可以回歸到上述所歸納的兩個解：</p>
+<ol>
+<li>餘數為 0 -&gt; 完整地切割</li>
+<li>餘數為 1 -&gt; 無法完整地切割</li>
+</ol>
+<p>想必讀到這裡一定更能理解輾轉相除法，接下來我們進行實作吧！</p>
+<h3 id="以下我們展示虛擬碼-Pseudocode"><a href="#以下我們展示虛擬碼-Pseudocode" class="headerlink" title="以下我們展示虛擬碼 (Pseudocode)"></a>以下我們展示虛擬碼 (Pseudocode)</h3><div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line">Algorithm: <span class="built_in">EuclidGCD</span>(m, n)</span><br><span class="line">Input: Two integer m <span class="keyword">and</span> n.</span><br><span class="line">Output: The greatest common factor of m <span class="keyword">and</span> n.</span><br><span class="line">r &lt;- m % n</span><br><span class="line"><span class="keyword">while</span> r != <span class="number">0</span> <span class="keyword">do</span></span><br><span class="line">    m &lt;- n</span><br><span class="line">    n &lt;- r</span><br><span class="line">    r &lt;- m % n</span><br><span class="line"><span class="keyword">return</span> n</span><br><span class="line">以下我們使用 cpp 實作</span><br><span class="line"><span class="type">int</span> <span class="built_in">EuclidGCD</span>(<span class="type">int</span> m, <span class="type">int</span> n) &#123;</span><br><span class="line">    <span class="type">int</span> r = m % n;</span><br><span class="line">    <span class="keyword">while</span> (r != <span class="number">0</span>) &#123;</span><br><span class="line">        m = n;</span><br><span class="line">        n = r;</span><br><span class="line">        r = m % n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>那上面我們討論到歐幾里德演算法的範疇實屬理論，那實際用途到底可以實現什麼情形呢？在分析這道問號題之前，我們可以再回想一下此演算法，最核心的就是要找出最大公因數，並且在由大化小的過程中，可以達成更有效率地轉換，畢竟是透過一系列輾轉的過程，所以其實輾轉相除法的應用層面非常廣，可以在密碼學、數學、計算機科學等⋯⋯領域做使用，甚至在音樂方面都能有實際上的應用，若想知道更多，網路上其實還有更多有趣的範例等著你們去挖掘呢！（維基百科下方的參考連結有超多有趣的例子！）</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a class="link"   href="https://zhuanlan.zhihu.com/p/56528787" >欧几里得与《几何原本》(上篇） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://jason-chen-1992.weebly.com/home/-euclidean-algorithm" >【演算法】歐幾里得算法 Euclidean Algorithm <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>algorithm</tag>
+        <tag>note</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++</title>
     <url>/2024/06/25/leetcode/0001-two-sum/</url>
     <content><![CDATA[<p>Link 👉🏻 <a class="link" href="https://leetcode.com/problems/two-sum/">1. Two Sum <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
@@ -1299,6 +1034,318 @@
         <tag>Leetcode</tag>
         <tag>Array</tag>
         <tag>Sliding Window</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[O(1) Time and Space] LeetCode 1791. Find Center of Star Graph - Easy Solution | Go</title>
+    <url>/2024/06/27/leetcode/1791-find-center-of-star-graph/</url>
+    <content><![CDATA[<p>Link 👉🏻 <a class="link" href="https://leetcode.com/problems/find-center-of-star-graph/">1791. Find Center of Star Graph <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>There is an undirected star graph consisting of <code>n</code> nodes labeled from <code>1</code> to <code>n</code>. A star graph is a graph where there is one center node and exactly <code>n - 1</code> edges that connect the center node with every other node.</p>
+<p>You are given a 2D integer array <code>edges</code> where each <code>edges[i] = [u<sub>i</sub>, v<sub>i</sub>]</code> indicates that there is an edge between the nodes ui and vi. Return the center of the given star graph.</p>
+<p><strong>Example 1:</strong></p>
+<p><figure class="image-caption"><img lazyload="" src="/images/loading.svg" data-src="https://assets.leetcode.com/uploads/2021/02/24/star_graph.png" alt="LeetCode 1791. Find Center of Star Graph -- Example 1"><figcaption>LeetCode 1791. Find Center of Star Graph -- Example 1</figcaption></figure></p>
+<ul>
+<li>Input: <code>edges = [[1,2],[2,3],[4,2]]</code></li>
+<li>Output: <code>2</code></li>
+<li>Explanation: <code>As shown in the figure above, node 2 is connected to every other node, so 2 is the center.</code></li>
+</ul>
+<p><strong>Example 2:</strong></p>
+<ul>
+<li>Input: <code>edges = [[1,2],[5,1],[1,3],[1,4]]</code></li>
+<li>Output: <code>1</code></li>
+</ul>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>3 &lt;= n &lt;= 10<sup>5</sup></code></li>
+<li><code>edges.length == n - 1</code></li>
+<li><code>edges[i].length == 2</code></li>
+<li><code>1 &lt;= u<sub>i</sub>, v<sub>i</sub> &lt;= n</code></li>
+<li><code>u<sub>i</sub> != v<sub>i</sub></code></li>
+<li><code>The given edges represent a valid star graph.</code></li>
+</ul>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition"></a>Intuition</h3><p>In a star ⭐️ graph, the center node will appear in each of the edges which means every node will contain the center node. So, we just need to find the common node in the first two edges. ✨</p>
+<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><ol>
+<li>Check if the first node of the first edge is equal to the first node of the second edge or the second node of the second edge. If true, return the first node of the first edge.</li>
+<li>Otherwise, return the second node of the first edge.</li>
+</ol>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><ul>
+<li>Time complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2041 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mn" transform="translate(1152,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(1652,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></li>
+<li>Space complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2041 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mn" transform="translate(1152,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(1652,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></li>
+</ul>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findCenter</span><span class="params">(edges [][]<span class="type">int</span>)</span></span> <span class="type">int</span> {</span><br><span class="line">	<span class="keyword">if</span> edges[<span class="number">0</span>][<span class="number">0</span>] == edges[<span class="number">1</span>][<span class="number">0</span>] || edges[<span class="number">0</span>][<span class="number">0</span>] == edges[<span class="number">1</span>][<span class="number">1</span>] {</span><br><span class="line">		<span class="keyword">return</span> edges[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> edges[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>Leetcode</tag>
+        <tag>Graph</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AWS: 用 AWS Lambda Function 開發 Serverless Line Bot - 1</title>
+    <url>/2024/04/23/projects/line-bot-with-aws-lambda-functions-1/</url>
+    <content><![CDATA[<p>過去在撰寫 Line Bot 我都是使用 Python 並且搭配後端框架，使用過 FastAPI 以及 Flask 做開發，都需要架起一個 Server 才能讓我們的 Line Bot 成功運行，此外還需要一台機器不斷地去幫我們運作才能處理 Line Bot 的請求，因此我轉向思考 Line Bot 的特性，Line Bot 就是透過用戶的傳遞訊息加以觸發回應，我們可以總結成三大要素：「用戶」、「觸發」、「回應」這三個關鍵字，因此我就想到了 AWS Lambda + API Gateway 的特性，當今天有用戶傳遞訊息給 Line Bot 時，透過 AWS Lambda Function 來觸發回應，這樣不就不需要架設 Server 了，還可以達成 Serverless 的概念，使用者用多少付多少，不用讓 Server 一直運作著。</p>
+<p>我們將使用 <code>linebot.v3</code> 用以開發，並且使用 AWS Lambda Function 部署 Line Bot。以 AWS 作為範例，本篇將以 echo Bot 作為 Serverless Line Bot 的 Demo 講述設計原理以及 AWS 的使用，接著我們將介紹如何在 Serverless 的 Line Bot。</p>
+<h3 id="使用-Flask-建構-Line-Bot"><a href="#使用-Flask-建構-Line-Bot" class="headerlink" title="使用 Flask 建構 Line Bot"></a>使用 Flask 建構 Line Bot</h3><p>我們需要先觀察，過去我們使用 Flask 建構一個 Line Bot 會需要的程式碼 (參考 <a class="link"   href="https://github.com/line/line-bot-sdk-python" >line-bot-sdk <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> example - <a class="link"   href="https://github.com/line/line-bot-sdk-python/tree/master/examples/flask-echo" >flask-echo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>)</p>
+<h4 id="Flask-app"><a href="#Flask-app" class="headerlink" title="Flask app"></a>Flask app</h4><p>透過 Flask 建立一個 Line Bot 的 Server，並且設定一個 <code>/callback</code> 的路由，當 Line Bot 收到用戶的訊息時，會透過 <code>/callback</code> 這個路由去承接 POST 請求。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, abort, request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/callback&quot;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">callback</span>():</span><br><span class="line">    <span class="comment"># get X-Line-Signature header value</span></span><br><span class="line">    signature = request.headers[<span class="string">&#x27;X-Line-Signature&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># get request body as text</span></span><br><span class="line">    body = request.get_data(as_text=<span class="literal">True</span>)</span><br><span class="line">    app.logger.info(<span class="string">&quot;Request body: &quot;</span> + body)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># handle webhook body</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        handler.handle(body, signature)</span><br><span class="line">    <span class="keyword">except</span> InvalidSignatureError:</span><br><span class="line">        app.logger.info(<span class="string">&quot;Invalid signature. Please check your channel access token/channel secret.&quot;</span>)</span><br><span class="line">        abort(<span class="number">400</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;OK&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app.run(port=<span class="number">8080</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="Line-Bot-WebhookHandler"><a href="#Line-Bot-WebhookHandler" class="headerlink" title="Line Bot WebhookHandler"></a>Line Bot WebhookHandler</h4><p>有了 Flask app 的 <code>callback</code> 路由，我們就可以透過 Line Bot SDK 的 <code>WebhookHandler</code> 來處理用戶的訊息，並且回應給用戶。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, abort, request</span><br><span class="line"><span class="keyword">from</span> linebot.v3 <span class="keyword">import</span> WebhookHandler</span><br><span class="line"><span class="keyword">from</span> linebot.v3.exceptions <span class="keyword">import</span> InvalidSignatureError</span><br><span class="line"><span class="keyword">from</span> linebot.v3.messaging <span class="keyword">import</span> (ApiClient, Configuration, MessagingApi,</span><br><span class="line">                                  ReplyMessageRequest, TextMessage)</span><br><span class="line"><span class="keyword">from</span> linebot.v3.webhooks <span class="keyword">import</span> MessageEvent, TextMessageContent</span><br><span class="line"></span><br><span class="line">configuration = Configuration(access_token=os.environ[<span class="string">&quot;CHANNEL_ACCESS_TOKEN&quot;</span>])</span><br><span class="line">handler = WebhookHandler(os.environ[<span class="string">&quot;CHANNEL_SECRET&quot;</span>])</span><br><span class="line"></span><br><span class="line"><span class="meta">@handler.add(<span class="params">MessageEvent, message=TextMessageContent</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">handle_message</span>(<span class="params">event</span>):</span><br><span class="line">    <span class="keyword">with</span> ApiClient(configuration) <span class="keyword">as</span> api_client:</span><br><span class="line">        line_bot_api = MessagingApi(api_client)</span><br><span class="line">        line_bot_api.reply_message_with_http_info(</span><br><span class="line">            ReplyMessageRequest(</span><br><span class="line">                reply_token=event.reply_token,</span><br><span class="line">                messages=[TextMessage(text=event.message.text)]</span><br><span class="line">            )</span><br><span class="line">        )</span><br></pre></td></tr></table></figure></div>
+
+<p>看完了上述範例程式的原理之後，發 呼叫 <code>/callback</code> 這個路由就使使用 Web API 去完成我們要的動作！也就是這個關鍵，其實我們可以直接用 AWS Lambda + API Gateway 來取代 flask 的 Web Server，這樣就不需要架設 Server 了，接下來我們就來看看如何使用 AWS Lambda Function 部署 Line Bot。</p>
+<h3 id="使用-AWS-Lambda-Function-部署-Line-Bot"><a href="#使用-AWS-Lambda-Function-部署-Line-Bot" class="headerlink" title="使用 AWS Lambda Function 部署 Line Bot"></a>使用 AWS Lambda Function 部署 Line Bot</h3><p>因為 Line Bot 會需要 <code>line-bot-sdk</code> 進行開發，這對 AWS Function 來說需要第三方函式庫，我們便需要將需要的函示庫打包成 Lambda Layer 形式上傳，以此讓我們的 Lambda Function 可以引用這些函式庫。</p>
+<p>我們這次選用的 Python Runtime 是 Python3.12，<a class="link"   href="https://repost.aws/knowledge-center/lambda-import-module-error-python" >運行在 Amazon Linux 2023 Amazon Machine Image (AMI) 上。因此我們要確保 Layer 是可以在 Amazon Linux 2023 操作系統上運行的 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，因此我們打包第三方套件的方式會跟從前不一樣。</p>
+<p>以下是我們打包 <code>line-bot-sdk</code> 的方式：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p lambda-layer/python</span><br><span class="line">$ <span class="built_in">cd</span> lambda-layer/python</span><br><span class="line">$ pip3 install --platform manylinux2014_x86_64 --target . --python-version 3.12 --only-binary=:all: line-bot-sdk</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> ..</span><br><span class="line">$ zip -r ./lambda_layers/linebot_lambda_layer.zip python</span><br></pre></td></tr></table></figure></div>
+
+<p>製作好後，我們就可以上傳 Layer 到 AWS Lambda Function，接著我們就可以開始撰寫 Line Bot 的 Lambda Function。</p>
+<h4 id="lambda-handler"><a href="#lambda-handler" class="headerlink" title="lambda_handler"></a>lambda_handler</h4><p>我們可以把 lambda_handler 想成當初的 <code>callback/</code> 路由，負責將承接從 Line Bot 過來的請求，並且可以透過 <code>WebhookHandler</code> 來處理用戶的訊息，可以想像成我們的主程式運行的地方。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">lambda_handler</span>(<span class="params">event, context</span>):</span><br><span class="line">    <span class="keyword">try</span>: </span><br><span class="line">        body = event[<span class="string">&#x27;body&#x27;</span>]</span><br><span class="line">        signature = event[<span class="string">&#x27;headers&#x27;</span>][<span class="string">&#x27;x-line-signature&#x27;</span>]</span><br><span class="line">        handler.handle(body, signature)</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;statusCode&#x27;</span>: <span class="number">201</span>,</span><br><span class="line">            <span class="string">&#x27;body&#x27;</span>: json.dumps(<span class="string">&#x27;Hello from Lambda!&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;statusCode&#x27;</span>: <span class="number">500</span>,</span><br><span class="line">            <span class="string">&#x27;body&#x27;</span>: json.dumps(<span class="built_in">str</span>(e))</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="Line-Bot-WebhookHandler-1"><a href="#Line-Bot-WebhookHandler-1" class="headerlink" title="Line Bot WebhookHandler"></a>Line Bot WebhookHandler</h4><p>有了可以承接請求的 <code>lambda_handler</code>，我們就可以透過 Line Bot SDK 的 <code>WebhookHandler</code> 來處理用戶的訊息，並且回應給用戶。我們做的是將 Text 相關的訊息做處理，並且回傳給用戶。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> linebot.v3 <span class="keyword">import</span> WebhookHandler</span><br><span class="line"><span class="keyword">from</span> linebot.v3.messaging <span class="keyword">import</span> (ApiClient, Configuration, MessagingApi,</span><br><span class="line">                                  ReplyMessageRequest, TextMessage)</span><br><span class="line"><span class="keyword">from</span> linebot.v3.webhooks <span class="keyword">import</span> MessageEvent, TextMessageContent</span><br><span class="line"></span><br><span class="line">configuration = Configuration(</span><br><span class="line">    access_token=os.getenv(<span class="string">&#x27;CHANNEL_ACCESS_TOKEN&#x27;</span>))</span><br><span class="line">handler = WebhookHandler(os.getenv(<span class="string">&#x27;CHANNEL_SECRET&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">@handler.add(<span class="params">MessageEvent, message=TextMessageContent</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">handle_message</span>(<span class="params">event</span>):</span><br><span class="line">    <span class="keyword">with</span> ApiClient(configuration) <span class="keyword">as</span> api_client:</span><br><span class="line">        line_bot_api = MessagingApi(api_client)</span><br><span class="line">        </span><br><span class="line">        line_bot_api.reply_message_with_http_info(</span><br><span class="line">            ReplyMessageRequest(</span><br><span class="line">                reply_token=event.reply_token,</span><br><span class="line">                messages=[TextMessage(text=event.message.text)]</span><br><span class="line">            )</span><br><span class="line">        )</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="實作流程與細節"><a href="#實作流程與細節" class="headerlink" title="實作流程與細節"></a>實作流程與細節</h3><p>在我們了解到如何使用 AWS Lambda Function 部署 Line Bot 之後，我們就可以開始實作了，以下是我們的實作流程與細節以及架構圖：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/arch.png"
+                     
+                ></p>
+<h4 id="建立-Line-Bot"><a href="#建立-Line-Bot" class="headerlink" title="建立 Line Bot"></a>建立 Line Bot</h4><p>前往 <a class="link"   href="https://account.line.biz/login?redirectUri=https://manager.line.biz/" >Line Business 登入管理頁面 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，登入後直接點擊建立</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/01.png"
+                     
+                ></p>
+<p>進到 「聊天」前往回應設定頁面</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/02.png"
+                     
+                ></p>
+<p>接著點擊「Messaging API」</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/03.png"
+                     
+                ></p>
+<p>進入設定頁面，並且向下滑找到 <a class="link"   href="https://developers.line.biz/" >Line Developers <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 點擊後找到 <a class="link"   href="https://developers.line.biz/console/" >Console <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 進入，我們要拿到 Channel Secrets 以及 Channel Access Token 可以想像我們要拿到 Line Bot 的鑰匙。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/04.png"
+                     
+                ></p>
+<p>我們進去 Console 後直接往下就可以找到 Channel Secrets，可以先複製起來我們待會需要用。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/05.png"
+                     
+                ></p>
+<p>再來我們去 Messaging API 頁面滑到最下面找到 Channel Access Token，這是我們的 Line Bot 的身份證，我們待會也需要用。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/06.png"
+                     
+                ></p>
+<h4 id="建立-AWS-Lambda-Function"><a href="#建立-AWS-Lambda-Function" class="headerlink" title="建立 AWS Lambda Function"></a>建立 AWS Lambda Function</h4><p>前往 <a class="link"   href="https://aws.amazon.com/tw/console/" >AWS Console <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 登陸，並且進到 Lambda 頁面（可自行選擇 Region），點擊建立函式</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/07.png"
+                     
+                ></p>
+<p>可自行命名 <code>function-name</code> Runtime 選擇 <code>Python3.12</code> Architecture 選擇 <code>x86_64</code>，並且點擊建立函式。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/08.png"
+                     
+                ></p>
+<h4 id="連結-Layer"><a href="#連結-Layer" class="headerlink" title="連結 Layer"></a>連結 Layer</h4><p>建立好 Lambda Function 後我們需要為我們的 Function 加上裝備，也就是我們要能夠支援第三的函式庫，因此我們要前往 Layer 頁面，點擊建立 Layer。</p>
+<p>可以透過以下腳本建立 <code>linebot_lambda_layer.zip</code> 的 Layer</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p lambda-layer/python</span><br><span class="line">$ <span class="built_in">cd</span> lambda-layer/python</span><br><span class="line">$ pip3 install --platform manylinux2014_x86_64 --target . --python-version 3.12 --only-binary=:all: line-bot-sdk</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> ..</span><br><span class="line">$ zip -r ./lambda_layers/linebot_lambda_layer.zip python</span><br></pre></td></tr></table></figure></div>
+
+<p>也可以直接透過 👉🏻 <a class="link"   href="https://raw.githubusercontent.com/1chooo/aws-educate-101-line-bot/main/lambda_layers/linebot_lambda_layer.zip" >Download linebot_lambda_layer <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 直接下載</p>
+
+  <div class="note p-4 mb-4 rounded-small warning">
+    <p><strong>⚠️ 注意</strong></p>
+<p>我們是用 <code>x86_64</code> 作為 Architect，如果當初選 arm 可能會出現 error</p>
+
+  </div>
+
+<p>可自行設定名稱、描述，直接透過上傳 <code>.zip</code> 的方式，Architecture 選擇 <code>x86_64</code>，Runtime 選擇 <code>Python3.12</code>，並且點擊建立 Layer。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/09.png"
+                     
+                ></p>
+<p>最後幫我回到 Lambda Function 拉到最下面點擊新增 Layer，並且選擇 <code>Custom Layer</code> 即可連結 Layer。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/10.png"
+                     
+                ></p>
+<h4 id="編輯-Lambda-Function"><a href="#編輯-Lambda-Function" class="headerlink" title="編輯 Lambda Function"></a>編輯 Lambda Function</h4><p>有了以上的設定之後我們就可以把之前所寫好的 lambda_handler 貼上去，記得要點擊 <code>Deploy</code> 否則不會生效。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> linebot.v3 <span class="keyword">import</span> WebhookHandler</span><br><span class="line"><span class="keyword">from</span> linebot.v3.messaging <span class="keyword">import</span> (ApiClient, Configuration, MessagingApi,</span><br><span class="line">                                  ReplyMessageRequest, TextMessage)</span><br><span class="line"><span class="keyword">from</span> linebot.v3.webhooks <span class="keyword">import</span> MessageEvent, TextMessageContent</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">configuration = Configuration(</span><br><span class="line">    access_token=os.getenv(<span class="string">&#x27;CHANNEL_ACCESS_TOKEN&#x27;</span>))</span><br><span class="line">handler = WebhookHandler(os.getenv(<span class="string">&#x27;CHANNEL_SECRET&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">@handler.add(<span class="params">MessageEvent, message=TextMessageContent</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">handle_message</span>(<span class="params">event</span>):</span><br><span class="line">    <span class="keyword">with</span> ApiClient(configuration) <span class="keyword">as</span> api_client:</span><br><span class="line">        line_bot_api = MessagingApi(api_client)</span><br><span class="line">        </span><br><span class="line">        line_bot_api.reply_message_with_http_info(</span><br><span class="line">            ReplyMessageRequest(</span><br><span class="line">                reply_token=event.reply_token,</span><br><span class="line">                messages=[TextMessage(text=event.message.text)]</span><br><span class="line">            )</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lambda_handler</span>(<span class="params">event, context</span>):</span><br><span class="line">    <span class="keyword">try</span>: </span><br><span class="line">        body = event[<span class="string">&#x27;body&#x27;</span>]</span><br><span class="line">        signature = event[<span class="string">&#x27;headers&#x27;</span>][<span class="string">&#x27;x-line-signature&#x27;</span>]</span><br><span class="line">        handler.handle(body, signature)</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;statusCode&#x27;</span>: <span class="number">200</span>,</span><br><span class="line">            <span class="string">&#x27;body&#x27;</span>: json.dumps(<span class="string">&#x27;Hello from Lambda!&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;statusCode&#x27;</span>: <span class="number">500</span>,</span><br><span class="line">            <span class="string">&#x27;body&#x27;</span>: json.dumps(<span class="built_in">str</span>(e))</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>再來我們要把之前從 Line 拿到的鑰匙 <code>CHANNEL_ACCESS_TOKEN</code> 以及 <code>CHANNEL_SECRET</code>，設定成為環境變數。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/11.png"
+                     
+                ></p>
+<h4 id="設定-API-Gateway"><a href="#設定-API-Gateway" class="headerlink" title="設定 API Gateway"></a>設定 API Gateway</h4><p>前往 API Gateway 頁面，點擊建立 API，並且選擇 <code>REST API</code>，點擊建立 API，可行命名 API 的名稱。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/12.png"
+                     
+                ></p>
+<p>創建好後我們要 Create Method 並且選擇 <code>POST</code>，並且點擊建立。</p>
+<p>Method Type 選擇 <code>POST</code>，Integration Type 選擇 <code>Lambda function</code>，勾選 <code>Use Lambda Proxy integration</code>，並且選擇剛剛建立的 Lambda Function，並且點擊建立。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/13.png"
+                     
+                ></p>
+
+  <div class="note p-4 mb-4 rounded-small warning">
+    <p><strong>⚠️ 注意</strong></p>
+<p>一定要勾選 Use Lambda Proxy integration，如果勾選起來的話，會將其他 Http request Header 中的資訊也帶入 AWS Lambda，如果沒勾選 AWS Lambda 只會收到 Body tag 中的值。因為 Line Bot 會需要用到在 header 中的 <strong>x-line-signature</strong>，所以會需要勾選此選項。</p>
+
+  </div>
+
+<p>建立好後，回到 API Gateway 頁面，點擊 Deploy API，並且選擇 New Stage，輸入 <code>prod</code> 點擊 Deploy，我們會拿到一個連結，這個連結就是我們的 API Gateway 的 Endpoint，我們要把這個 Endpoint 貼到 Line Bot 的 Webhook URL。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/14.png"
+                     
+                ></p>
+<h4 id="設定-Line-Bot-Webhook-URL"><a href="#設定-Line-Bot-Webhook-URL" class="headerlink" title="設定 Line Bot Webhook URL"></a>設定 Line Bot Webhook URL</h4><p>我們將剛剛拿到的 API Gateway 的 Endpoint 貼到 Line Bot 的 Webhook URL，就可以開始使用 Line Bot 了。我們需要回到<a class="link"   href="https://developers.line.biz/console/" >Line Developers Console <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 進入，前往到 Messaging API 分頁，貼上我們的 Webhook URL 並且要點擊 <code>Allow Webhook</code>，這樣我們的 Line Bot 就可以開始運作了。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/15.png"
+                     
+                ></p>
+<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><p>最後我們看 Demo 吧！</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/projects/line-bot-with-aws-lambda-functions-1/demo.jpg"
+                     
+                ></p>
+<p>恭喜大家完成了 Serverless Line Bot 的部署，這樣就不需要架設 Server 了，也可以達成 Serverless 的概念，使用者用多少付多少，不用讓 Server 一直運作著。不過大家會不會覺得機器人只會回應我們傳的內容有點太單調，下一篇我們將會介紹如何在我們的 Line Bot 中加入 Large Language Model 達到更高的互動性。</p>
+<h3 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h3><p>這篇真的花了非常多的時間，讓我想起了之前在 AWS 擔任校園大使準備技術工作坊的時光，希望這篇文章能夠帶給大家認識雲的開發，並且也能成功完成一個 Line Bot 的小 project。另外工商一下這屆大使正在籌辦 證照的計畫，如果有對於最入門的 <a class="link"   href="https://aws.amazon.com/certification/certified-cloud-practitioner/" >AWS Certified Cloud Practitioner（CCP） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>和技術相關的 <a class="link"   href="https://aws.amazon.com/tw/certification/certified-solutions-architect-associate/" >AWS Certified Solutions Architect - Associate（SAA） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>有興趣的朋友都可以透過 👉🏻 <a class="link"   href="https://www.surveycake.com/s/6dWGq" >報名連結 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，加入證照陪跑計劃！</p>
+]]></content>
+      <categories>
+        <category>Project</category>
+      </categories>
+      <tags>
+        <tag>AWS</tag>
+        <tag>Lambda Function</tag>
+        <tag>Serverless</tag>
+        <tag>API Gateway</tag>
+        <tag>Line Bot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>做個小貪吃蛇來玩吧！</title>
+    <url>/2023/07/30/projects/snake-game/</url>
+    <content><![CDATA[<p>還記得當時剛學習程式語言的時候，對於什麼知識都不懂，連搜尋能力也沒有，常常搜不到關鍵字，問題也解決不了，不過當時懵懂無知的狀態，完成了基礎貪吃蛇的小遊戲，所以決定撰寫一篇文章來記錄當時的過程。</p>
+<p><strong>本文綱要</strong></p>
+<ul>
+<li><a href="#%E7%92%B0%E5%A2%83%E5%BB%BA%E7%BD%AE">環境建置</a><ul>
+<li><a href="#%E5%AE%98%E7%B6%B2%E9%80%A3%E7%B5%90">官網連結：</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8E%A5%E8%91%97%E5%B0%B1%E9%96%8B%E5%A7%8B%E5%BB%BA%E7%AB%8B%E7%92%B0%E5%A2%83%E5%90%A7">接著就開始建立環境吧！</a></li>
+<li><a href="#%E5%AF%A6%E4%BD%9C%E8%AA%AA%E6%98%8E">實作說明</a></li>
+<li><a href="#%E5%AF%A6%E4%BD%9C%E6%84%9F%E6%83%B3">實作感想</a></li>
+<li><a href="#%E6%9B%B4%E6%96%B0%E5%B0%88%E6%A1%88%E5%BE%8C%E7%BA%8C%E7%99%BC%E5%B1%95">（更新）專案後續發展</a></li>
+<li><a href="#%E9%87%8D%E6%A7%8B%E5%BF%83%E5%BE%97">重構心得</a><ul>
+<li><a href="#source-code-in-github-python_snake_game">Source Code in GitHub: python_snake_game</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="環境建置"><a href="#環境建置" class="headerlink" title="環境建置"></a>環境建置</h2><p>實作這次的小遊戲是透過 Python 語言的套件：Pygame 來實現的，不過途中會遇到很多的版本問題，起源於 Pygame 本身版本相容性，因此我們要測試出能夠正常執行的版本，過程中不斷地嘗試，也不斷地失敗，最後才找出了解決方案，那就是透過 Conda 的環境來建置。</p>
+<p>選擇安裝 Conda 版本，這邊選擇的是 MiniConda，因為本身不太需要原本 Conda 如此龐大的功能，因此選擇瘦身版的，再加上 Mac 的儲存空間著實珍貴啊！選用的版本為 <code>conda 4.12.0</code>，直接前往官網安裝相對應作業系統版本即可。</p>
+<h4 id="官網連結："><a href="#官網連結：" class="headerlink" title="官網連結："></a>官網連結：</h4><p><a class="link"   href="https://docs.conda.io/en/latest/miniconda.html" >Miniconda Docs <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h2 id="接著就開始建立環境吧！"><a href="#接著就開始建立環境吧！" class="headerlink" title="接著就開始建立環境吧！"></a>接著就開始建立環境吧！</h2><p>我們先確認 Conda 版本，在終端機輸入 <code>conda --version</code>。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/max/1400/1*1uDdGsxFlihzmPfLP6Mo4A.webp"
+                     
+                ></p>
+<p>接著透過 Conda 建立名為 pygame 的虛擬環境，Python 的版本選用 <code>3.16.13</code> 並且激活執行該環境。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create --name pygame python=3.6.13</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate pygame</span></span><br></pre></td></tr></table></figure></div>
+
+<p>確認 Python 版本，並且開始安裝我們需要的套件，如果把–user 省略，會直接安裝至 Conda 的環境。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python --version</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 -m pip install -U pygame --user</span></span><br></pre></td></tr></table></figure></div>
+
+<p>最後已經到了最後一步了，我們只要測試 pygame 能否正常運作便大功告成了，所以我們要執行 pygame 可以直接呼叫的小遊戲。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 -m pygame.examples.aliens</span></span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/max/1400/1*xRYWm3kCCimYkrsHfh88KA.webp"
+                     
+                ></p>
+<h2 id="實作說明"><a href="#實作說明" class="headerlink" title="實作說明"></a>實作說明</h2><p>前面做了這麼多的前置作業，那我們就開始進行實作吧！我們的順序會先引入套件，設定鍵盤方向鍵的接收，最後進行一連串的遊戲玩法設定，就大功告成啦！完整程式碼都放在 GitHub 給大家參考啦！畢竟全部放進文章，會變成流水帳，最後只要在終端機輸入 python main.py ，就可以正常執行貪吃蛇小遊戲囉！</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/max/1400/1*okV2P3qTibFMO1NWbaRBJQ.webp"
+                     
+                ></p>
+<h2 id="實作感想"><a href="#實作感想" class="headerlink" title="實作感想"></a>實作感想</h2><p>當下實作程式碼，說真的也不完全是自己的東西，大多數的東西都要透過參考他人的實作來完成，不過在程式碼實作初期，環境崩掉的時候真的很讓人崩潰，只能不斷 conda remove -n env_name -all ，一直 rebuild，不過這過程中真的可以學到很多內容，可以更了解 python 語言的版本相應關係，以及要如何管理自己電腦環境（雖然現在環境依舊混亂～嘿嘿～）。</p>
+<p>那在程式語言方面，練習到了物件導向的概念，可以把很多東西看成是一個個的物件，並且有分類的關係，即便當時看不太懂，但還是很有成就感，畢竟這是第一個小專案，能夠感受到不斷學習的狀態，這已經夠讓我珍惜了！未來也還會繼續分享專案實作，並且做更多深入地探究，繼續在電腦科學的道路上前行、突破！</p>
+<hr>
+<h2 id="（更新）專案後續發展"><a href="#（更新）專案後續發展" class="headerlink" title="（更新）專案後續發展"></a>（更新）專案後續發展</h2><p>現在時間是 2023 年初，過新年便有項恆年不變的傳統，那就是要「除舊佈新」，想當然爾過往的專案在此刻便會重出江湖，況且現在距離上次改動專案也隔了半年以上，寫程式碼的習慣也會因為參考了更多人的寫法而有所改動，因此在原有程式架構不變的情景下，將原本的程式碼重構，寫成呼叫物件的形式，以下便會直接透過程式碼說明，另外撰寫這段文字的時候也發現 Medium 改動了嵌入程式碼的方式，現在無需上傳到 GitHub Gist 也可以將程式碼顯示有 Syntax 的樣貌了，那我們就開始展開說明吧！</p>
+<ul>
+<li><p>將貪吃蛇的移動獨立成 <code>Direction.py</code></p>
+  <div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Direction</span>(<span class="title class_ inherited__">Enum</span>):</span><br><span class="line"></span><br><span class="line">    RIGHT = <span class="number">1</span></span><br><span class="line">    LEFT = <span class="number">2</span></span><br><span class="line">    UP = <span class="number">3</span></span><br><span class="line">    DOWN = <span class="number">4</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>將遊戲的主要規則程式寫入 <code>SnakeGame.py</code></p>
+  <div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> Direction <span class="keyword">import</span> Direction</span><br><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line">font = pygame.font.Font(<span class="string">&#x27;../src/arial.ttf&#x27;</span>, <span class="number">25</span>)</span><br><span class="line">Point = namedtuple(<span class="string">&#x27;Point&#x27;</span>, <span class="string">&#x27;x, y&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># rgb colors</span></span><br><span class="line">WHITE = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line">RED = (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">BLUE1 = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>)</span><br><span class="line">BLUE2 = (<span class="number">0</span>, <span class="number">100</span>, <span class="number">255</span>)</span><br><span class="line">BLACK = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">BLOCK_SIZE = <span class="number">20</span></span><br><span class="line">SPEED = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SnakeGame</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, w=<span class="number">640</span>, h=<span class="number">480</span></span>):</span><br><span class="line">        self.w = w</span><br><span class="line">        self.h = h</span><br><span class="line">        <span class="comment"># init display</span></span><br><span class="line">        self.display = pygame.display.set_mode((self.w, self.h))</span><br><span class="line">        pygame.display.set_caption(<span class="string">&#x27;Snake&#x27;</span>)</span><br><span class="line">        self.clock = pygame.time.Clock()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># init game state</span></span><br><span class="line">        self.direction = Direction.RIGHT</span><br><span class="line"></span><br><span class="line">        self.head = Point(self.w / <span class="number">2</span>, self.h / <span class="number">2</span>)</span><br><span class="line">        self.snake = [self.head, Point(self.head.x - BLOCK_SIZE, self.head.y),</span><br><span class="line">                    Point(self.head.x - (<span class="number">2</span> * BLOCK_SIZE), self.head.y)]</span><br><span class="line"></span><br><span class="line">        self.score = <span class="number">0</span></span><br><span class="line">        self.food = <span class="literal">None</span></span><br><span class="line">        self._place_food()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_place_food</span>(<span class="params">self</span>):</span><br><span class="line">        x = random.randint(<span class="number">0</span>, (self.w - BLOCK_SIZE) // BLOCK_SIZE) * BLOCK_SIZE</span><br><span class="line">        y = random.randint(<span class="number">0</span>, (self.h - BLOCK_SIZE) // BLOCK_SIZE) * BLOCK_SIZE</span><br><span class="line"></span><br><span class="line">        self.food = Point(x, y)</span><br><span class="line">        <span class="keyword">if</span> self.food <span class="keyword">in</span> self.snake:</span><br><span class="line">            self._place_food()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">play_step</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 1. collect user input</span></span><br><span class="line">        <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">            <span class="keyword">if</span> event.<span class="built_in">type</span> == pygame.QUIT:</span><br><span class="line">                pygame.quit()</span><br><span class="line">                quit()</span><br><span class="line">            <span class="keyword">if</span> event.<span class="built_in">type</span> == pygame.KEYDOWN:</span><br><span class="line">                <span class="keyword">if</span> event.key == pygame.K_LEFT:</span><br><span class="line">                    self.direction = Direction.LEFT</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_RIGHT:</span><br><span class="line">                    self.direction = Direction.RIGHT</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_UP:</span><br><span class="line">                    self.direction = Direction.UP</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_DOWN:</span><br><span class="line">                    self.direction = Direction.DOWN</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 2. move</span></span><br><span class="line">        self._move(self.direction)  <span class="comment"># update the head</span></span><br><span class="line">        self.snake.insert(<span class="number">0</span>, self.head)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 3. check if game over</span></span><br><span class="line">        gameOver = <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> self._is_collision():</span><br><span class="line">            gameOver = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">return</span> gameOver, self.score</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 4. pace new food or just move</span></span><br><span class="line">        <span class="keyword">if</span> self.head == self.food:</span><br><span class="line">            self.score += <span class="number">1</span></span><br><span class="line">            self._place_food()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.snake.pop()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 5. update ui and clock</span></span><br><span class="line">        self._update_ui()</span><br><span class="line">        self.clock.tick(SPEED)</span><br><span class="line">        <span class="comment"># 6. return gameOver and score</span></span><br><span class="line">        <span class="keyword">return</span> gameOver, self.score</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_is_collision</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># hits boundary</span></span><br><span class="line">        <span class="keyword">if</span> self.head.x &gt; self.w - BLOCK_SIZE <span class="keyword">or</span> self.head.x &lt; <span class="number">0</span> <span class="keyword">or</span> self.head.y &gt; self.h - BLOCK_SIZE <span class="keyword">or</span> self.head.y &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="comment"># hits itself</span></span><br><span class="line">        <span class="keyword">if</span> self.head <span class="keyword">in</span> self.snake[<span class="number">1</span>:]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_update_ui</span>(<span class="params">self</span>):</span><br><span class="line">        self.display.fill(BLACK)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> pt <span class="keyword">in</span> self.snake:</span><br><span class="line">            pygame.draw.rect(self.display, BLUE1, pygame.Rect(pt.x, pt.y, BLOCK_SIZE, BLOCK_SIZE))  <span class="comment"># 東西南北</span></span><br><span class="line">            pygame.draw.rect(self.display, BLUE2, pygame.Rect(pt.x + <span class="number">4</span>, pt.y + <span class="number">4</span>, <span class="number">12</span>, <span class="number">12</span>))</span><br><span class="line"></span><br><span class="line">        pygame.draw.rect(self.display, RED, pygame.Rect(self.food.x, self.food.y, BLOCK_SIZE, BLOCK_SIZE))</span><br><span class="line"></span><br><span class="line">        text = font.render(<span class="string">&quot;Score: &quot;</span> + <span class="built_in">str</span>(self.score), <span class="literal">True</span>, WHITE)</span><br><span class="line">        self.display.blit(text, (<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">        pygame.display.flip()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_move</span>(<span class="params">self, direction</span>):</span><br><span class="line">        x = self.head.x</span><br><span class="line">        y = self.head.y</span><br><span class="line">        <span class="keyword">if</span> direction == Direction.RIGHT:</span><br><span class="line">            x += BLOCK_SIZE</span><br><span class="line">        <span class="keyword">elif</span> direction == Direction.LEFT:</span><br><span class="line">            x -= BLOCK_SIZE</span><br><span class="line">        <span class="keyword">elif</span> direction == Direction.DOWN:</span><br><span class="line">            y += BLOCK_SIZE</span><br><span class="line">        <span class="keyword">elif</span> direction == Direction.UP:</span><br><span class="line">            y -= BLOCK_SIZE</span><br><span class="line"></span><br><span class="line">        self.head = Point(x, y)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>最後創建 <code>main.py</code> 呼叫所有內容，便可向原先依樣正常執行啦！</p>
+  <div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> SnakeGame <span class="keyword">import</span> SnakeGame</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    game = SnakeGame()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># game loop</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        gameOver, score = game.play_step()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> gameOver == <span class="literal">True</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Final Score&#x27;</span>, score)</span><br><span class="line"></span><br><span class="line">    pygame.quit()</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>此時在終端機執行 <code>python3 main.py</code> 也會出現相同的畫面呢！</p>
+</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/max/1400/1*okV2P3qTibFMO1NWbaRBJQ.webp"
+                     
+                ></p>
+<h2 id="重構心得"><a href="#重構心得" class="headerlink" title="重構心得"></a>重構心得</h2><p>這次會想要重構程式碼，便是因為 2022 後半年使用 python3 完成了一個新的專案，也在過程中才更認識 python3 類別的應用以及開發所需注意的小細節，所以才回想起曾經做過的小專案，嘗試將後續所學到的內容更應用在程式碼撰寫上，也增加自己多一次的經驗累積。</p>
+<h3 id="Source-Code-in-GitHub-python-snake-game"><a href="#Source-Code-in-GitHub-python-snake-game" class="headerlink" title="Source Code in GitHub: python_snake_game"></a>Source Code in GitHub: <a class="link"   href="https://github.com/1chooo/junk-project/tree/main/python_snake_game" >python_snake_game <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h3>]]></content>
+      <categories>
+        <category>Project</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>pygame</tag>
       </tags>
   </entry>
   <entry>

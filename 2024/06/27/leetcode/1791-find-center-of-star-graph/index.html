@@ -13,29 +13,27 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://blog.1chooo.com/2023/07/30/projects/snake-game/"/>
+    <link rel="canonical" href="https://blog.1chooo.com/2024/06/27/leetcode/1791-find-center-of-star-graph/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="還記得當時剛學習程式語言的時候，對於什麼知識都不懂，連搜尋能力也沒有，常常搜不到關鍵字，問題也解決不了，不過當時懵懂無知的狀態，完成了基礎貪吃蛇的小遊戲，所以決定撰寫一篇文章來記錄當時的過程。 本文綱要  環境建置 官網連結：   接著就開始建立環境吧！ 實作說明 實作感想 （更新）專案後續發展 重構心得 Source Code in GitHub: python_snake_game    環境">
+        <meta name="description" content="Link 👉🏻 1791. Find Center of Star Graph  DescriptionThere is an undirected star graph consisting of n nodes labeled from 1 to n. A star graph is a graph where there is one center node and exactly n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="做個小貪吃蛇來玩吧！">
-<meta property="og:url" content="https://blog.1chooo.com/2023/07/30/projects/snake-game/index.html">
+<meta property="og:title" content="[O(1) Time and Space] LeetCode 1791. Find Center of Star Graph - Easy Solution | Go">
+<meta property="og:url" content="https://blog.1chooo.com/2024/06/27/leetcode/1791-find-center-of-star-graph/index.html">
 <meta property="og:site_name" content="Hugo&#39;s Blog">
-<meta property="og:description" content="還記得當時剛學習程式語言的時候，對於什麼知識都不懂，連搜尋能力也沒有，常常搜不到關鍵字，問題也解決不了，不過當時懵懂無知的狀態，完成了基礎貪吃蛇的小遊戲，所以決定撰寫一篇文章來記錄當時的過程。 本文綱要  環境建置 官網連結：   接著就開始建立環境吧！ 實作說明 實作感想 （更新）專案後續發展 重構心得 Source Code in GitHub: python_snake_game    環境">
+<meta property="og:description" content="Link 👉🏻 1791. Find Center of Star Graph  DescriptionThere is an undirected star graph consisting of n nodes labeled from 1 to n. A star graph is a graph where there is one center node and exactly n">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://miro.medium.com/max/1400/1*1uDdGsxFlihzmPfLP6Mo4A.webp">
-<meta property="og:image" content="https://miro.medium.com/max/1400/1*xRYWm3kCCimYkrsHfh88KA.webp">
-<meta property="og:image" content="https://miro.medium.com/max/1400/1*okV2P3qTibFMO1NWbaRBJQ.webp">
-<meta property="og:image" content="https://miro.medium.com/max/1400/1*okV2P3qTibFMO1NWbaRBJQ.webp">
-<meta property="article:published_time" content="2023-07-30T07:00:00.000Z">
-<meta property="article:modified_time" content="2024-05-20T01:38:24.896Z">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2021/02/24/star_graph.png">
+<meta property="article:published_time" content="2024-06-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-06-27T11:30:25.408Z">
 <meta property="article:author" content="Hugo ChunHo Lin (1chooo)">
-<meta property="article:tag" content="python">
-<meta property="article:tag" content="pygame">
+<meta property="article:tag" content="Go">
+<meta property="article:tag" content="Leetcode">
+<meta property="article:tag" content="Graph">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://miro.medium.com/max/1400/1*1uDdGsxFlihzmPfLP6Mo4A.webp">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2021/02/24/star_graph.png">
     
     
     <!--- Icon Part-->
@@ -47,7 +45,7 @@
     
     <title>
         
-            做個小貪吃蛇來玩吧！ -
+            [O(1) Time and Space] LeetCode 1791. Find Center of Star Graph - Easy Solution | Go -
         
         Hugo&#39;s Blog
     </title>
@@ -111,7 +109,119 @@
     
     
     
-<meta name="generator" content="Hexo 7.2.0"></head>
+<meta name="generator" content="Hexo 7.2.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -610,10 +720,10 @@
             
                 
                 
-                <img src="/images/cover/projects/snake-game/snake-game.png" alt="做個小貪吃蛇來玩吧！" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                <img src="/images/cover/leetcode/1791-find-center-of-star-graph.png" alt="[O(1) Time and Space] LeetCode 1791. Find Center of Star Graph - Easy Solution | Go" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
                 
                 <div class="w-full flex items-center absolute bottom-0 justify-start">
-                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-semibold backdrop-blur-lg rounded-xl border border-border-color ">做個小貪吃蛇來玩吧！</h1>
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-semibold backdrop-blur-lg rounded-xl border border-border-color ">[O(1) Time and Space] LeetCode 1791. Find Center of Star Graph - Easy Solution | Go</h1>
                 </div>
             
             </div>
@@ -634,15 +744,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2023-07-30 15:00</span>
-        <span class="mobile">2023-07-30 15:00</span>
+        <span class="desktop">2024-06-27</span>
+        <span class="mobile">2024-06-27</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-05-20 09:38:24</span>
-            <span class="mobile">2024-05-20 09:38:24</span>
+            <span class="desktop">2024-06-27 19:30:25</span>
+            <span class="mobile">2024-06-27 19:30:25</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -656,7 +766,7 @@
                     
                         
                         <li>
-                            <a href="/categories/Project/">Project</a>&nbsp;
+                            <a href="/categories/Leetcode/">Leetcode</a>&nbsp;
                         </li>
                     
                     
@@ -670,11 +780,15 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/python/">python</a>&nbsp;
+                        <a href="/tags/Go/">Go</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/pygame/">pygame</a>&nbsp;
+                        | <a href="/tags/Leetcode/">Leetcode</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Graph/">Graph</a>&nbsp;
                     </li>
                 
             </ul>
@@ -684,12 +798,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.8k Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>282 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>7 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>1 Mins</span>
         </span>
     
     
@@ -708,79 +822,41 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <p>還記得當時剛學習程式語言的時候，對於什麼知識都不懂，連搜尋能力也沒有，常常搜不到關鍵字，問題也解決不了，不過當時懵懂無知的狀態，完成了基礎貪吃蛇的小遊戲，所以決定撰寫一篇文章來記錄當時的過程。</p>
-<p><strong>本文綱要</strong></p>
+            <p>Link 👉🏻 <a class="link" target="_blank" rel="noopener" href="https://leetcode.com/problems/find-center-of-star-graph/">1791. Find Center of Star Graph <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>There is an undirected star graph consisting of <code>n</code> nodes labeled from <code>1</code> to <code>n</code>. A star graph is a graph where there is one center node and exactly <code>n - 1</code> edges that connect the center node with every other node.</p>
+<p>You are given a 2D integer array <code>edges</code> where each <code>edges[i] = [u<sub>i</sub>, v<sub>i</sub>]</code> indicates that there is an edge between the nodes ui and vi. Return the center of the given star graph.</p>
+<p><strong>Example 1:</strong></p>
+<p><figure class="image-caption"><img lazyload="" src="/images/loading.svg" data-src="https://assets.leetcode.com/uploads/2021/02/24/star_graph.png" alt="LeetCode 1791. Find Center of Star Graph -- Example 1"><figcaption>LeetCode 1791. Find Center of Star Graph -- Example 1</figcaption></figure></p>
 <ul>
-<li><a href="#%E7%92%B0%E5%A2%83%E5%BB%BA%E7%BD%AE">環境建置</a><ul>
-<li><a href="#%E5%AE%98%E7%B6%B2%E9%80%A3%E7%B5%90">官網連結：</a></li>
+<li>Input: <code>edges = [[1,2],[2,3],[4,2]]</code></li>
+<li>Output: <code>2</code></li>
+<li>Explanation: <code>As shown in the figure above, node 2 is connected to every other node, so 2 is the center.</code></li>
 </ul>
-</li>
-<li><a href="#%E6%8E%A5%E8%91%97%E5%B0%B1%E9%96%8B%E5%A7%8B%E5%BB%BA%E7%AB%8B%E7%92%B0%E5%A2%83%E5%90%A7">接著就開始建立環境吧！</a></li>
-<li><a href="#%E5%AF%A6%E4%BD%9C%E8%AA%AA%E6%98%8E">實作說明</a></li>
-<li><a href="#%E5%AF%A6%E4%BD%9C%E6%84%9F%E6%83%B3">實作感想</a></li>
-<li><a href="#%E6%9B%B4%E6%96%B0%E5%B0%88%E6%A1%88%E5%BE%8C%E7%BA%8C%E7%99%BC%E5%B1%95">（更新）專案後續發展</a></li>
-<li><a href="#%E9%87%8D%E6%A7%8B%E5%BF%83%E5%BE%97">重構心得</a><ul>
-<li><a href="#source-code-in-github-python_snake_game">Source Code in GitHub: python_snake_game</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="環境建置"><a href="#環境建置" class="headerlink" title="環境建置"></a>環境建置</h2><p>實作這次的小遊戲是透過 Python 語言的套件：Pygame 來實現的，不過途中會遇到很多的版本問題，起源於 Pygame 本身版本相容性，因此我們要測試出能夠正常執行的版本，過程中不斷地嘗試，也不斷地失敗，最後才找出了解決方案，那就是透過 Conda 的環境來建置。</p>
-<p>選擇安裝 Conda 版本，這邊選擇的是 MiniConda，因為本身不太需要原本 Conda 如此龐大的功能，因此選擇瘦身版的，再加上 Mac 的儲存空間著實珍貴啊！選用的版本為 <code>conda 4.12.0</code>，直接前往官網安裝相對應作業系統版本即可。</p>
-<h4 id="官網連結："><a href="#官網連結：" class="headerlink" title="官網連結："></a>官網連結：</h4><p><a class="link"   target="_blank" rel="noopener" href="https://docs.conda.io/en/latest/miniconda.html" >Miniconda Docs <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h2 id="接著就開始建立環境吧！"><a href="#接著就開始建立環境吧！" class="headerlink" title="接著就開始建立環境吧！"></a>接著就開始建立環境吧！</h2><p>我們先確認 Conda 版本，在終端機輸入 <code>conda --version</code>。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/max/1400/1*1uDdGsxFlihzmPfLP6Mo4A.webp"
-                     
-                ></p>
-<p>接著透過 Conda 建立名為 pygame 的虛擬環境，Python 的版本選用 <code>3.16.13</code> 並且激活執行該環境。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create --name pygame python=3.6.13</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate pygame</span></span><br></pre></td></tr></table></figure></div>
-
-<p>確認 Python 版本，並且開始安裝我們需要的套件，如果把–user 省略，會直接安裝至 Conda 的環境。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python --version</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 -m pip install -U pygame --user</span></span><br></pre></td></tr></table></figure></div>
-
-<p>最後已經到了最後一步了，我們只要測試 pygame 能否正常運作便大功告成了，所以我們要執行 pygame 可以直接呼叫的小遊戲。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 -m pygame.examples.aliens</span></span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/max/1400/1*xRYWm3kCCimYkrsHfh88KA.webp"
-                     
-                ></p>
-<h2 id="實作說明"><a href="#實作說明" class="headerlink" title="實作說明"></a>實作說明</h2><p>前面做了這麼多的前置作業，那我們就開始進行實作吧！我們的順序會先引入套件，設定鍵盤方向鍵的接收，最後進行一連串的遊戲玩法設定，就大功告成啦！完整程式碼都放在 GitHub 給大家參考啦！畢竟全部放進文章，會變成流水帳，最後只要在終端機輸入 python main.py ，就可以正常執行貪吃蛇小遊戲囉！</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/max/1400/1*okV2P3qTibFMO1NWbaRBJQ.webp"
-                     
-                ></p>
-<h2 id="實作感想"><a href="#實作感想" class="headerlink" title="實作感想"></a>實作感想</h2><p>當下實作程式碼，說真的也不完全是自己的東西，大多數的東西都要透過參考他人的實作來完成，不過在程式碼實作初期，環境崩掉的時候真的很讓人崩潰，只能不斷 conda remove -n env_name -all ，一直 rebuild，不過這過程中真的可以學到很多內容，可以更了解 python 語言的版本相應關係，以及要如何管理自己電腦環境（雖然現在環境依舊混亂～嘿嘿～）。</p>
-<p>那在程式語言方面，練習到了物件導向的概念，可以把很多東西看成是一個個的物件，並且有分類的關係，即便當時看不太懂，但還是很有成就感，畢竟這是第一個小專案，能夠感受到不斷學習的狀態，這已經夠讓我珍惜了！未來也還會繼續分享專案實作，並且做更多深入地探究，繼續在電腦科學的道路上前行、突破！</p>
-<hr>
-<h2 id="（更新）專案後續發展"><a href="#（更新）專案後續發展" class="headerlink" title="（更新）專案後續發展"></a>（更新）專案後續發展</h2><p>現在時間是 2023 年初，過新年便有項恆年不變的傳統，那就是要「除舊佈新」，想當然爾過往的專案在此刻便會重出江湖，況且現在距離上次改動專案也隔了半年以上，寫程式碼的習慣也會因為參考了更多人的寫法而有所改動，因此在原有程式架構不變的情景下，將原本的程式碼重構，寫成呼叫物件的形式，以下便會直接透過程式碼說明，另外撰寫這段文字的時候也發現 Medium 改動了嵌入程式碼的方式，現在無需上傳到 GitHub Gist 也可以將程式碼顯示有 Syntax 的樣貌了，那我們就開始展開說明吧！</p>
+<p><strong>Example 2:</strong></p>
 <ul>
-<li><p>將貪吃蛇的移動獨立成 <code>Direction.py</code></p>
-  <div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Direction</span>(<span class="title class_ inherited__">Enum</span>):</span><br><span class="line"></span><br><span class="line">    RIGHT = <span class="number">1</span></span><br><span class="line">    LEFT = <span class="number">2</span></span><br><span class="line">    UP = <span class="number">3</span></span><br><span class="line">    DOWN = <span class="number">4</span></span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>將遊戲的主要規則程式寫入 <code>SnakeGame.py</code></p>
-  <div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> Direction <span class="keyword">import</span> Direction</span><br><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line">font = pygame.font.Font(<span class="string">&#x27;../src/arial.ttf&#x27;</span>, <span class="number">25</span>)</span><br><span class="line">Point = namedtuple(<span class="string">&#x27;Point&#x27;</span>, <span class="string">&#x27;x, y&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># rgb colors</span></span><br><span class="line">WHITE = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line">RED = (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">BLUE1 = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>)</span><br><span class="line">BLUE2 = (<span class="number">0</span>, <span class="number">100</span>, <span class="number">255</span>)</span><br><span class="line">BLACK = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">BLOCK_SIZE = <span class="number">20</span></span><br><span class="line">SPEED = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SnakeGame</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, w=<span class="number">640</span>, h=<span class="number">480</span></span>):</span><br><span class="line">        self.w = w</span><br><span class="line">        self.h = h</span><br><span class="line">        <span class="comment"># init display</span></span><br><span class="line">        self.display = pygame.display.set_mode((self.w, self.h))</span><br><span class="line">        pygame.display.set_caption(<span class="string">&#x27;Snake&#x27;</span>)</span><br><span class="line">        self.clock = pygame.time.Clock()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># init game state</span></span><br><span class="line">        self.direction = Direction.RIGHT</span><br><span class="line"></span><br><span class="line">        self.head = Point(self.w / <span class="number">2</span>, self.h / <span class="number">2</span>)</span><br><span class="line">        self.snake = [self.head, Point(self.head.x - BLOCK_SIZE, self.head.y),</span><br><span class="line">                    Point(self.head.x - (<span class="number">2</span> * BLOCK_SIZE), self.head.y)]</span><br><span class="line"></span><br><span class="line">        self.score = <span class="number">0</span></span><br><span class="line">        self.food = <span class="literal">None</span></span><br><span class="line">        self._place_food()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_place_food</span>(<span class="params">self</span>):</span><br><span class="line">        x = random.randint(<span class="number">0</span>, (self.w - BLOCK_SIZE) // BLOCK_SIZE) * BLOCK_SIZE</span><br><span class="line">        y = random.randint(<span class="number">0</span>, (self.h - BLOCK_SIZE) // BLOCK_SIZE) * BLOCK_SIZE</span><br><span class="line"></span><br><span class="line">        self.food = Point(x, y)</span><br><span class="line">        <span class="keyword">if</span> self.food <span class="keyword">in</span> self.snake:</span><br><span class="line">            self._place_food()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">play_step</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 1. collect user input</span></span><br><span class="line">        <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">            <span class="keyword">if</span> event.<span class="built_in">type</span> == pygame.QUIT:</span><br><span class="line">                pygame.quit()</span><br><span class="line">                quit()</span><br><span class="line">            <span class="keyword">if</span> event.<span class="built_in">type</span> == pygame.KEYDOWN:</span><br><span class="line">                <span class="keyword">if</span> event.key == pygame.K_LEFT:</span><br><span class="line">                    self.direction = Direction.LEFT</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_RIGHT:</span><br><span class="line">                    self.direction = Direction.RIGHT</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_UP:</span><br><span class="line">                    self.direction = Direction.UP</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_DOWN:</span><br><span class="line">                    self.direction = Direction.DOWN</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 2. move</span></span><br><span class="line">        self._move(self.direction)  <span class="comment"># update the head</span></span><br><span class="line">        self.snake.insert(<span class="number">0</span>, self.head)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 3. check if game over</span></span><br><span class="line">        gameOver = <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> self._is_collision():</span><br><span class="line">            gameOver = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">return</span> gameOver, self.score</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 4. pace new food or just move</span></span><br><span class="line">        <span class="keyword">if</span> self.head == self.food:</span><br><span class="line">            self.score += <span class="number">1</span></span><br><span class="line">            self._place_food()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.snake.pop()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 5. update ui and clock</span></span><br><span class="line">        self._update_ui()</span><br><span class="line">        self.clock.tick(SPEED)</span><br><span class="line">        <span class="comment"># 6. return gameOver and score</span></span><br><span class="line">        <span class="keyword">return</span> gameOver, self.score</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_is_collision</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># hits boundary</span></span><br><span class="line">        <span class="keyword">if</span> self.head.x &gt; self.w - BLOCK_SIZE <span class="keyword">or</span> self.head.x &lt; <span class="number">0</span> <span class="keyword">or</span> self.head.y &gt; self.h - BLOCK_SIZE <span class="keyword">or</span> self.head.y &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="comment"># hits itself</span></span><br><span class="line">        <span class="keyword">if</span> self.head <span class="keyword">in</span> self.snake[<span class="number">1</span>:]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_update_ui</span>(<span class="params">self</span>):</span><br><span class="line">        self.display.fill(BLACK)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> pt <span class="keyword">in</span> self.snake:</span><br><span class="line">            pygame.draw.rect(self.display, BLUE1, pygame.Rect(pt.x, pt.y, BLOCK_SIZE, BLOCK_SIZE))  <span class="comment"># 東西南北</span></span><br><span class="line">            pygame.draw.rect(self.display, BLUE2, pygame.Rect(pt.x + <span class="number">4</span>, pt.y + <span class="number">4</span>, <span class="number">12</span>, <span class="number">12</span>))</span><br><span class="line"></span><br><span class="line">        pygame.draw.rect(self.display, RED, pygame.Rect(self.food.x, self.food.y, BLOCK_SIZE, BLOCK_SIZE))</span><br><span class="line"></span><br><span class="line">        text = font.render(<span class="string">&quot;Score: &quot;</span> + <span class="built_in">str</span>(self.score), <span class="literal">True</span>, WHITE)</span><br><span class="line">        self.display.blit(text, (<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">        pygame.display.flip()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_move</span>(<span class="params">self, direction</span>):</span><br><span class="line">        x = self.head.x</span><br><span class="line">        y = self.head.y</span><br><span class="line">        <span class="keyword">if</span> direction == Direction.RIGHT:</span><br><span class="line">            x += BLOCK_SIZE</span><br><span class="line">        <span class="keyword">elif</span> direction == Direction.LEFT:</span><br><span class="line">            x -= BLOCK_SIZE</span><br><span class="line">        <span class="keyword">elif</span> direction == Direction.DOWN:</span><br><span class="line">            y += BLOCK_SIZE</span><br><span class="line">        <span class="keyword">elif</span> direction == Direction.UP:</span><br><span class="line">            y -= BLOCK_SIZE</span><br><span class="line"></span><br><span class="line">        self.head = Point(x, y)</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>最後創建 <code>main.py</code> 呼叫所有內容，便可向原先依樣正常執行啦！</p>
-  <div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> SnakeGame <span class="keyword">import</span> SnakeGame</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    game = SnakeGame()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># game loop</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        gameOver, score = game.play_step()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> gameOver == <span class="literal">True</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Final Score&#x27;</span>, score)</span><br><span class="line"></span><br><span class="line">    pygame.quit()</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>此時在終端機執行 <code>python3 main.py</code> 也會出現相同的畫面呢！</p>
-</li>
+<li>Input: <code>edges = [[1,2],[5,1],[1,3],[1,4]]</code></li>
+<li>Output: <code>1</code></li>
 </ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/max/1400/1*okV2P3qTibFMO1NWbaRBJQ.webp"
-                     
-                ></p>
-<h2 id="重構心得"><a href="#重構心得" class="headerlink" title="重構心得"></a>重構心得</h2><p>這次會想要重構程式碼，便是因為 2022 後半年使用 python3 完成了一個新的專案，也在過程中才更認識 python3 類別的應用以及開發所需注意的小細節，所以才回想起曾經做過的小專案，嘗試將後續所學到的內容更應用在程式碼撰寫上，也增加自己多一次的經驗累積。</p>
-<h3 id="Source-Code-in-GitHub-python-snake-game"><a href="#Source-Code-in-GitHub-python-snake-game" class="headerlink" title="Source Code in GitHub: python_snake_game"></a>Source Code in GitHub: <a class="link"   target="_blank" rel="noopener" href="https://github.com/1chooo/junk-project/tree/main/python_snake_game" >python_snake_game <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h3>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>3 &lt;= n &lt;= 10<sup>5</sup></code></li>
+<li><code>edges.length == n - 1</code></li>
+<li><code>edges[i].length == 2</code></li>
+<li><code>1 &lt;= u<sub>i</sub>, v<sub>i</sub> &lt;= n</code></li>
+<li><code>u<sub>i</sub> != v<sub>i</sub></code></li>
+<li><code>The given edges represent a valid star graph.</code></li>
+</ul>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition"></a>Intuition</h3><p>In a star ⭐️ graph, the center node will appear in each of the edges which means every node will contain the center node. So, we just need to find the common node in the first two edges. ✨</p>
+<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><ol>
+<li>Check if the first node of the first edge is equal to the first node of the second edge or the second node of the second edge. If true, return the first node of the first edge.</li>
+<li>Otherwise, return the second node of the first edge.</li>
+</ol>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><ul>
+<li>Time complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2041 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mn" transform="translate(1152,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(1652,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></li>
+<li>Space complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2041 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mn" transform="translate(1152,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(1652,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></li>
+</ul>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findCenter</span><span class="params">(edges [][]<span class="type">int</span>)</span></span> <span class="type">int</span> {</span><br><span class="line">	<span class="keyword">if</span> edges[<span class="number">0</span>][<span class="number">0</span>] == edges[<span class="number">1</span>][<span class="number">0</span>] || edges[<span class="number">0</span>][<span class="number">0</span>] == edges[<span class="number">1</span>][<span class="number">1</span>] {</span><br><span class="line">		<span class="keyword">return</span> edges[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> edges[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
         </div>
 
         
@@ -789,11 +865,15 @@
             <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/python/">#python</a>&nbsp;
+                        <a href="/tags/Go/">#Go</a>&nbsp;
                     </li>
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/pygame/">#pygame</a>&nbsp;
+                        <a href="/tags/Leetcode/">#Leetcode</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Graph/">#Graph</a>&nbsp;
                     </li>
                 
             </ul>
@@ -805,27 +885,27 @@
     <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>Recommendation</span>
     </div>
-    <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/07/30/dev-env/conda-dev-env/" title="我在 Conda 常用的指令" rel="bookmark">
-  <img src="/images/wallhaven-wqery6-light.webp" alt="我在 Conda 常用的指令" class="!max-w-none">
-  <span class="title">我在 Conda 常用的指令</span>
-</a><a class="recommended-article-item" href="/2024/03/16/coding-tips/python-5-tips/" title="五個 Python 好習慣" rel="bookmark">
-  <img src="/images/cover/coding-style/python-5-tips.png" alt="五個 Python 好習慣" class="!max-w-none">
-  <span class="title">五個 Python 好習慣</span>
-</a><a class="recommended-article-item" href="/2024/04/15/dev-ops/python-reddis-docker/" title="透過 Docker 打包 FastAPI 與 Redis 的服務串流" rel="bookmark">
-  <img src="/images/cover/dev-ops/python-reddis-docker.png" alt="透過 Docker 打包 FastAPI 與 Redis 的服務串流" class="!max-w-none">
-  <span class="title">透過 Docker 打包 FastAPI 與 Redis 的服務串流</span>
+    <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/06/25/leetcode/0001-two-sum/" title="LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++" rel="bookmark">
+  <img src="/images/cover/leetcode/0001-two-sum.png" alt="LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++" class="!max-w-none">
+  <span class="title">LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++</span>
+</a><a class="recommended-article-item" href="/2024/06/20/leetcode/1052-grumpy-bookstore-owner/" title="[✅ Beats 💯] LeetCode 1052. Grumpy Bookstore Owner - Easy Solution | Go" rel="bookmark">
+  <img src="/images/cover/leetcode/1052-grumpy-bookstore-owner.png" alt="[✅ Beats 💯] LeetCode 1052. Grumpy Bookstore Owner - Easy Solution | Go" class="!max-w-none">
+  <span class="title">[✅ Beats 💯] LeetCode 1052. Grumpy Bookstore Owner - Easy Solution | Go</span>
+</a><a class="recommended-article-item" href="/2024/01/03/dev-env/mac-install-nodejs-npm/" title="如何在 Mac 安裝 Node.js & NPM" rel="bookmark">
+  <img src="/images/cover/dev-env/mac-install-nodejs-npm/mac-install-nodejs-npm.png" alt="如何在 Mac 安裝 Node.js & NPM" class="!max-w-none">
+  <span class="title">如何在 Mac 安裝 Node.js & NPM</span>
 </a></div>
    </div>
    <div class="recommended-mobile">
    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>Recommendation</span>
    </div>
-   <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/07/30/dev-env/conda-dev-env/" title="我在 Conda 常用的指令" rel="bookmark">
-  <img src="/images/wallhaven-wqery6-light.webp" alt="我在 Conda 常用的指令" class="!max-w-none">
-  <span class="title">我在 Conda 常用的指令</span>
-</a><a class="recommended-article-item" href="/2024/03/16/coding-tips/python-5-tips/" title="五個 Python 好習慣" rel="bookmark">
-  <img src="/images/cover/coding-style/python-5-tips.png" alt="五個 Python 好習慣" class="!max-w-none">
-  <span class="title">五個 Python 好習慣</span>
+   <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/06/25/leetcode/0001-two-sum/" title="LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++" rel="bookmark">
+  <img src="/images/cover/leetcode/0001-two-sum.png" alt="LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++" class="!max-w-none">
+  <span class="title">LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++</span>
+</a><a class="recommended-article-item" href="/2024/06/20/leetcode/1052-grumpy-bookstore-owner/" title="[✅ Beats 💯] LeetCode 1052. Grumpy Bookstore Owner - Easy Solution | Go" rel="bookmark">
+  <img src="/images/cover/leetcode/1052-grumpy-bookstore-owner.png" alt="[✅ Beats 💯] LeetCode 1052. Grumpy Bookstore Owner - Easy Solution | Go" class="!max-w-none">
+  <span class="title">[✅ Beats 💯] LeetCode 1052. Grumpy Bookstore Owner - Easy Solution | Go</span>
 </a></div>
    </div>
   </div>
@@ -833,29 +913,14 @@
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2023/07/30/ds-alg/euclid/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">演算法第一講——Euclid Algorithm 歐幾里得演算法</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2023/07/30/talks/freshman-pick-up-ipad/"
+                        href="/2024/06/25/leetcode/0001-two-sum/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">剛上大學的我如何挑到適合我的平板！？</span>
+                                <span class="post-nav-title-item">LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -930,8 +995,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">做個小貪吃蛇來玩吧！</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%92%B0%E5%A2%83%E5%BB%BA%E7%BD%AE"><span class="nav-text">環境建置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E8%91%97%E5%B0%B1%E9%96%8B%E5%A7%8B%E5%BB%BA%E7%AB%8B%E7%92%B0%E5%A2%83%E5%90%A7%EF%BC%81"><span class="nav-text">接著就開始建立環境吧！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C%E8%AA%AA%E6%98%8E"><span class="nav-text">實作說明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C%E6%84%9F%E6%83%B3"><span class="nav-text">實作感想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%88%E6%9B%B4%E6%96%B0%EF%BC%89%E5%B0%88%E6%A1%88%E5%BE%8C%E7%BA%8C%E7%99%BC%E5%B1%95"><span class="nav-text">（更新）專案後續發展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E6%A7%8B%E5%BF%83%E5%BE%97"><span class="nav-text">重構心得</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Source-Code-in-GitHub-python-snake-game"><span class="nav-text">Source Code in GitHub: python_snake_game </span></a></li></ol></li></ol>
+        <div class="page-title">[O(1) Time and Space] LeetCode 1791. Find Center of Star Graph - Easy Solution | Go</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intuition"><span class="nav-text">Intuition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach"><span class="nav-text">Approach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Complexity"><span class="nav-text">Complexity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-text">Code</span></a></li></ol>
 
     </div>
 </div>
