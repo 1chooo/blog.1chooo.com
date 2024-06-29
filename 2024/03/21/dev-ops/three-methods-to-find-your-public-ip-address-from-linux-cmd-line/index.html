@@ -13,24 +13,24 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://blog.1chooo.com/tags/nacl/"/>
+    <link rel="canonical" href="https://blog.1chooo.com/2024/03/21/dev-ops/three-methods-to-find-your-public-ip-address-from-linux-cmd-line/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="I am Hugo ChunHo Lin (1chooo), a 4th-year student at National Central University (NCU), driven by a genuine passion for the field of Software Engineering 💻.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hugo&#39;s Blog">
-<meta property="og:url" content="https://blog.1chooo.com/tags/NACL/index.html">
+        <meta name="description" content="When we want to connect a remote host through SSH today, sometimes we need to know our public IP address so that we can identify the IP address we are connecting from to the remote host. This article">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Three Methods to Find Your Public IP Address From Linux Command Line">
+<meta property="og:url" content="https://blog.1chooo.com/2024/03/21/dev-ops/three-methods-to-find-your-public-ip-address-from-linux-cmd-line/index.html">
 <meta property="og:site_name" content="Hugo&#39;s Blog">
-<meta property="og:description" content="I am Hugo ChunHo Lin (1chooo), a 4th-year student at National Central University (NCU), driven by a genuine passion for the field of Software Engineering 💻.">
+<meta property="og:description" content="When we want to connect a remote host through SSH today, sometimes we need to know our public IP address so that we can identify the IP address we are connecting from to the remote host. This article">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-06-29T14:58:26.530Z">
 <meta property="article:author" content="Hugo ChunHo Lin (1chooo)">
-<meta property="article:tag" content="Hugo">
-<meta property="article:tag" content="Hugo ChunHo Lin">
-<meta property="article:tag" content="Hugo Lin">
-<meta property="article:tag" content="1chooo">
-<meta property="article:tag" content="林群賀">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="IP">
+<meta property="article:tag" content="Command Line">
 <meta name="twitter:card" content="summary">
     
     
@@ -43,7 +43,7 @@
     
     <title>
         
-            Tag: NACL -
+            Three Methods to Find Your Public IP Address From Linux Command Line -
         
         Hugo&#39;s Blog
     </title>
@@ -599,47 +599,310 @@
             <div class="main-content">
 
                 
-                    <div class="tag-container">
-	<div class="tag-name">
-		<i class="fa-solid fa-tag"></i>&nbsp;NACL
-	</div>
-	<div class="tag-post-list">
-		
-<div class="archive-list-container">
-    
-        <section class="archive-item mb-spacing-unit last:mb-0">
-            <div class="archive-item-header flex flex-row items-center mb-2">
-                <span class="archive-year font-semibold text-3xl mr-2">2024</span>
-                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">1</span>
-            </div>
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
             
-            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                
+                <img src="/images/cover/dev-ops/three-methods-to-find-your-public-ip-address-from-linux-cmd-line.png" alt="Three Methods to Find Your Public IP Address From Linux Command Line" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-semibold backdrop-blur-lg rounded-xl border border-border-color ">Three Methods to Find Your Public IP Address From Linux Command Line</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/profile.jpg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Hugo ChunHo Lin (1chooo)</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Day ONE ⚡️</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-03-21</span>
+        <span class="mobile">2024-03-21</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-06-29 22:58:26</span>
+            <span class="mobile">2024-06-29 22:58:26</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
                 
                     
+                        
+                        <li>
+                            <a href="/categories/DevOps/">DevOps</a>&nbsp;
+                        </li>
                     
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-22'>
-                    
-                    <a href="/2024/03/22/dev-ops/aws-security-group-nacl/" class="block overflow-hidden w-fit">
-                        <span class="article-title my-0.5 text-2xl">AWS: Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)</span>
-                    </a>
                     
                 
-                </li> <!-- Ensure the last item is properly closed -->
             </ul>
-        </section>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Linux/">Linux</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/IP/">IP</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Command-Line/">Command Line</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>476 Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
     
 </div>
 
-	</div>
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <p>When we want to connect a remote host through SSH today, sometimes we need to know our public IP address so that we can identify the IP address we are connecting from to the remote host. This article will teach you how to find your public IP address on a Linux system using commands.</p>
+<h3 id="Method-1-Find-Public-IP-address-using-curl-Command"><a href="#Method-1-Find-Public-IP-address-using-curl-Command" class="headerlink" title="Method 1: Find Public IP address using curl Command"></a>Method 1: Find Public IP address using curl Command</h3><p>To retrieve your public IP address, you can use external web services like <code>ifconfig.me</code>, <code>ifconfig.io</code>, or <code>ipinfo.io</code>. These services provide your public IP address through a simple HTTP request. Here’s how you can use the curl command to fetch your public IP:</p>
+<ol>
+<li><p>Open your terminal application. You can do this by searching for “Terminal” in the application launcher or by pressing “Ctrl + Alt + T “(depending on your Linux distribution).</p>
+</li>
+<li><p>Type the following command and hit Enter:</p>
+</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl ifconfig.me</span><br><span class="line">YOUR_PUBLIC_IP_ADDRESS</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl ifconfig.io</span><br><span class="line">YOUR_PUBLIC_IP_ADDRESS</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ curl ipinfo.io.</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;ip&quot;</span>: <span class="string">&quot;YOUR_PUBLIC_IP_ADDRESS&quot;</span>,</span><br><span class="line">  <span class="string">&quot;hostname&quot;</span>: <span class="string">&quot;YOUR_PUBLIC_IP_ADDRESS&quot;</span>,</span><br><span class="line">  <span class="string">&quot;city&quot;</span>: <span class="string">&quot;YOUR_CITY&quot;</span>,</span><br><span class="line">  <span class="string">&quot;region&quot;</span>: <span class="string">&quot;YOUR_REGION&quot;</span>,</span><br><span class="line">  <span class="string">&quot;country&quot;</span>: <span class="string">&quot;YOUR_COUNTRY&quot;</span>,</span><br><span class="line">  <span class="string">&quot;loc&quot;</span>: <span class="string">&quot;YOUR_LATITUDE,YOUR_LONGITUDE&quot;</span>,</span><br><span class="line">  <span class="string">&quot;org&quot;</span>: <span class="string">&quot;YOUR_ISP&quot;</span>,</span><br><span class="line">  <span class="string">&quot;postal&quot;</span>: <span class="string">&quot;YOUR_POSTAL_CODE&quot;</span>,</span><br><span class="line">  <span class="string">&quot;timezone&quot;</span>: <span class="string">&quot;YOUR_TIMEZONE&quot;</span>,</span><br><span class="line">  <span class="string">&quot;readme&quot;</span>: <span class="string">&quot;https://ipinfo.io/missingauth&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Method-2-Download-Public-IP-Address-via-wget-and-ipinfo-io"><a href="#Method-2-Download-Public-IP-Address-via-wget-and-ipinfo-io" class="headerlink" title="Method 2: Download Public IP Address via wget and ipinfo.io"></a>Method 2: Download Public IP Address via wget and ipinfo.io</h3><p>In this method, we will use the <code>wget</code> command to download our IP address information from the <code>ipinfo.io</code> service. Here are the steps:</p>
+<ol>
+<li>Open your terminal application. You can do this by searching for “Terminal” in the application launcher or by pressing “Ctrl + Alt + T” (depending on your Linux distribution).</li>
+<li>Type the following command and press Enter:</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO - https://ipinfo.io/ip --<span class="built_in">timeout</span>=20</span><br><span class="line">YOUR_PUBLIC_IP_ADDRESS</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ PUBLIC_IP=$(wget http://ipinfo.io/ip -qO - --<span class="built_in">timeout</span>=20)</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$PUBLIC_IP</span></span><br><span class="line">YOUR_PUBLIC_IP_ADDRESS</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Method-3-Get-Public-IP-Address-via-dig-Command"><a href="#Method-3-Get-Public-IP-Address-via-dig-Command" class="headerlink" title="Method 3: Get Public IP Address via dig Command"></a>Method 3: Get Public IP Address via dig Command</h3><p>The dig command is another valuable tool for querying DNS-related information, including your public IP address. Here’s how you can use dig to find your public IP address:</p>
+<ol>
+<li>Open your terminal application. You can do this by searching for “Terminal” in the application launcher or by pressing “Ctrl + Alt + T” (depending on your Linux distribution).</li>
+<li>Type the following command and hit Enter:</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ dig +short myip.opendns.com @resolver1.opendns.com</span><br><span class="line">YOUR_PUBLIC_IP_ADDRESS</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>Finding your public IP address in Linux using the command line is an important skill for Linux users. Whether you’re a system administrator, developer, or everyday user, these methods will help you quickly retrieve your public IP address. This information is valuable for troubleshooting network issues and securing your connections. Remember these command-line techniques for swift access to your public IP address!</p>
+<p>Hope You Guys connect to the remote host successfully. If you have any questions, feel free to ask in the comments below.</p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Linux/">#Linux</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/IP/">#IP</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Command-Line/">#Command Line</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+  <div class="recommended-article px-2 sm:px-6 md:px-8">
+   <div class="recommended-desktop">
+    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
+     <i aria-hidden="true"></i><span>Recommendation</span>
+    </div>
+    <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/06/06/coding-tips/your-life-need-to-be-md/" title="Your life need to be MARKDOWNED: Essential Tips for Exceptional GitHub Writing" rel="bookmark">
+  <img src="/images/cover/coding-tips/your-life-need-to-be-md.png" alt="Your life need to be MARKDOWNED: Essential Tips for Exceptional GitHub Writing" class="!max-w-none">
+  <span class="title">Your life need to be MARKDOWNED: Essential Tips for Exceptional GitHub Writing</span>
+</a><a class="recommended-article-item" href="/2024/04/11/dev-ops/amazon-linux-2-install-docker/" title="AWS: 如何在 AWS EC2 Amazon Linux 2 上安裝 Docker" rel="bookmark">
+  <img src="/images/cover/dev-ops/amazon-linux-2-install-docker.png" alt="AWS: 如何在 AWS EC2 Amazon Linux 2 上安裝 Docker" class="!max-w-none">
+  <span class="title">AWS: 如何在 AWS EC2 Amazon Linux 2 上安裝 Docker</span>
+</a><a class="recommended-article-item" href="/2023/09/08/dev-ops/git-ssh/" title="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻" rel="bookmark">
+  <img src="/images/cover/dev-ops/git-ssh.png" alt="踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻" class="!max-w-none">
+  <span class="title">踏入 Git 的世界：使用 ssh 與 GitHub 連線 👨🏻‍💻</span>
+</a></div>
+   </div>
+   <div class="recommended-mobile">
+   <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
+     <i aria-hidden="true"></i><span>Recommendation</span>
+   </div>
+   <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/06/06/coding-tips/your-life-need-to-be-md/" title="Your life need to be MARKDOWNED: Essential Tips for Exceptional GitHub Writing" rel="bookmark">
+  <img src="/images/cover/coding-tips/your-life-need-to-be-md.png" alt="Your life need to be MARKDOWNED: Essential Tips for Exceptional GitHub Writing" class="!max-w-none">
+  <span class="title">Your life need to be MARKDOWNED: Essential Tips for Exceptional GitHub Writing</span>
+</a><a class="recommended-article-item" href="/2024/04/11/dev-ops/amazon-linux-2-install-docker/" title="AWS: 如何在 AWS EC2 Amazon Linux 2 上安裝 Docker" rel="bookmark">
+  <img src="/images/cover/dev-ops/amazon-linux-2-install-docker.png" alt="AWS: 如何在 AWS EC2 Amazon Linux 2 上安裝 Docker" class="!max-w-none">
+  <span class="title">AWS: 如何在 AWS EC2 Amazon Linux 2 上安裝 Docker</span>
+</a></div>
+   </div>
+  </div>
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2024/03/22/dev-ops/aws-security-group-nacl/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">AWS: Comparing Inbound Rules: AWS Security Group vs. Network Access Control List (NACL)</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/03/16/coding-tips/python-5-tips/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">五個 Python 好習慣</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="giscus-container"></div>
+    <script data-swup-reload-script defer>
+        async function loadGiscus() {
+            const giscusConfig = {
+                'src': 'https://giscus.app/client.js',
+                'data-repo': '1chooo/blog.1chooo.com',
+                'data-repo-id': 'R_kgDOKBJLkQ',
+                'data-category': 'Announcements',
+                'data-category-id': 'DIC_kwDOKBJLkc4CYNpa',
+                'data-mapping': 'title',
+                'data-strict': '0',
+                'data-reactions-enabled': '1',
+                'data-emit-metadata': '1',
+                'data-theme': 'preferred_color_scheme',
+                'data-lang': 'en',
+                'data-input-position': 'bottom',
+                'data-loading': 'lazy',
+                'crossorigin': 'anonymous',
+                'async': true
+            }
+            const giscusScript = document.createElement('script');
+            for (const key in giscusConfig) {
+                giscusScript.setAttribute(key, giscusConfig[key]);
+            }
+            document.getElementById('giscus-container').appendChild(giscusScript);
+        }
+        if ('true') {
+            let loadGiscusTimeout = setTimeout(() => {
+                loadGiscus();
+                clearTimeout(loadGiscusTimeout);
+            }, 1000);
+        } else {
+            document.addEventListener('DOMContentLoaded', loadGiscus);
+        }
+    </script>
+
+
+        
+        
+    
 </div>
 
-<div class="tag-paginator">
-	<div class="paginator">
-    <span class="page-number current">1</span>
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">Three Methods to Find Your Public IP Address From Linux Command Line</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-1-Find-Public-IP-address-using-curl-Command"><span class="nav-text">Method 1: Find Public IP address using curl Command</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-2-Download-Public-IP-Address-via-wget-and-ipinfo-io"><span class="nav-text">Method 2: Download Public IP Address via wget and ipinfo.io</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-3-Get-Public-IP-Address-via-dig-Command"><span class="nav-text">Method 3: Get Public IP Address via dig Command</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conclusion"><span class="nav-text">Conclusion</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
 </div>
 
-</div>
 
 
                 
@@ -726,6 +989,27 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-side-tools-container">
