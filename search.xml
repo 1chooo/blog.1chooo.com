@@ -1,344 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>我在 Conda 常用的指令</title>
-    <url>/2023/07/30/dev-env/conda-dev-env/</url>
-    <content><![CDATA[<blockquote>
-<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
-</blockquote>
-<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
-<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
-<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
-<ul>
-<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
-</ul>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
-
-<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*HINgY65FwzLssf65NsA8tQ.png"
-                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
-                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
-<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
-<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
-<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
-<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
-<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#103;&#111;&#x39;&#x37;&#x30;&#x32;&#49;&#x37;&#64;&#103;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;" >&#x68;&#x75;&#103;&#111;&#x39;&#x37;&#x30;&#x32;&#49;&#x37;&#64;&#103;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DevEnv</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>venv</tag>
-        <tag>conda</tag>
-        <tag>tips</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何在 Mac 安裝 Node.js &amp; NPM</title>
-    <url>/2024/01/03/dev-env/mac-install-nodejs-npm/</url>
-    <content><![CDATA[<p>新年剛好把 MacOS 重灌，讓這台老 macbook pro 2020 重獲新生，也藉此機會重新建置開發環境。</p>
-<p>因此我們將示範如何在 Mac 安裝 <code>Node.js</code> 以及 <code>NPM</code>，其實直接從官網安裝 <code>Node.js</code> 時就會同時安裝 <code>NPM</code>，因此我將以 Mac 作為示範如何在成功安裝 <code>Node.js</code>，並且展示成功結果！</p>
-<p>👉🏻 <a class="link"   href="https://nodejs.org/en?source=post_page-----3d7101d998f4--------------------------------" >Node.js 官網連結 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h4 id="下載-LTS-的版本"><a href="#下載-LTS-的版本" class="headerlink" title="下載 LTS 的版本"></a>下載 LTS 的版本</h4><p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*aREalwTkLM8kSMAokcCBvw.png"
-                      alt="選擇 LTS 版本"
-                ><figcaption>選擇 LTS 版本</figcaption></figure></p>
-<h4 id="點擊下載的-node-vx-x-x-pkg-檔安裝-Node-js"><a href="#點擊下載的-node-vx-x-x-pkg-檔安裝-Node-js" class="headerlink" title="點擊下載的 node-vx.x.x.pkg 檔安裝 Node.js"></a>點擊下載的 <code>node-vx.x.x.pkg</code> 檔安裝 <code>Node.js</code></h4><p>緊接著就是點擊 MacOS 安裝的一堆確認（建議安裝時可以看一下細節！）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*dAvr0F9ceBHDgU7PCeDGtA.png"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*62YZY321G_LxvvFvHNiblA.png"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*jpdJaKgGK14D8H1ypSuQ3g.png"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*PNhmDNjLvukKMrVKwQhjRg.png"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*F8rHXI-ZTIJkwpb9G6aGWw.png"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*IaKki0SZuybAVHPCev-G-g.png"
-                     
-                ></p>
-<h4 id="成功安裝後我們回到-Terminal"><a href="#成功安裝後我們回到-Terminal" class="headerlink" title="成功安裝後我們回到 Terminal"></a>成功安裝後我們回到 Terminal</h4><p>安裝成功後，我們可以透過 Terminal 使用 <code>which</code> 確認是否安裝成功，可以試著在 Terminal 輸入以下命令：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">which</span> npm</span><br><span class="line">/usr/local/bin/npm</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">which</span> node</span><br><span class="line">/usr/local/bin/node</span><br></pre></td></tr></table></figure></div>
-
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*wWCsxVfJS98KftYNcypWhg.png"
-                      alt="有成功回傳路徑就是成功！"
-                ><figcaption>有成功回傳路徑就是成功！</figcaption></figure></p>
-<h4 id="輸入-node-npm-Command"><a href="#輸入-node-npm-Command" class="headerlink" title="輸入 node &amp; npm Command"></a>輸入 node &amp; npm Command</h4><p>我們可以就在 Terminal 做 <code>node</code> &amp; <code>npm</code> 的 command 啦！</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*P_rTeMsh4tUrbfbdR4KkNw.png"
-                      alt="node command"
-                ><figcaption>node command</figcaption></figure></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*YGQ7GD9BDgk49o0Y14hItQ.png"
-                      alt="npm command"
-                ><figcaption>npm command</figcaption></figure></p>
-<h4 id="啟動一個-web-server"><a href="#啟動一個-web-server" class="headerlink" title="啟動一個 web server"></a>啟動一個 web server</h4><p>我們可以另外寫一個 web server 的 app 來測試一下，這邊我們使用 <code>http</code> 來啟動一個 web server，實作程式碼如下：</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// server.js</span></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="property">statusCode</span> = <span class="number">200</span>;</span><br><span class="line">  res.<span class="title function_">setHeader</span>(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;text/plain&#x27;</span>);</span><br><span class="line">  res.<span class="title function_">end</span>(<span class="string">&#x27;Hello World\n&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="string">&#x27;localhost&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Server running at http://localhost:3000/&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
-
-<p>接著我們透過 <code>node</code> 來啟動這個 web server，輸入以下命令：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ node server.js</span><br><span class="line">Server running at http://localhost:3000/</span><br></pre></td></tr></table></figure></div>
-
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*RKp-Y_Tet-mljSanTCKfcw.png"
-                      alt="run the server"
-                ><figcaption>run the server</figcaption></figure></p>
-<p>接著我們前往瀏覽器點開 <code>http://localhost:3000/</code>，就可以看到 <code>Hello World</code> 的字串啦！結果如下圖，如果有看到 <code>Hello World</code> 就代表我們完全成功啦！</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*1JkRsWl-n7Gex7hsnbb7xA.png"
-                      alt="Hello World !!!"
-                ><figcaption>Hello World !!!</figcaption></figure></p>
-<p>這樣就大功告成啦！祝大家開發順利！也祝大家新年快樂！</p>
-<p>同場加映如何在 MacOS 上撰寫 TypeScripts 的 React</p>
-<h4 id="Install-the-react-native-CLI"><a href="#Install-the-react-native-CLI" class="headerlink" title="Install the react-native CLI"></a>Install the react-native CLI</h4><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm i -g react-native-cli</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>DevEnv</category>
-      </categories>
-      <tags>
-        <tag>Node</tag>
-        <tag>npm</tag>
-        <tag>Mac</tag>
-        <tag>Install</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何解決 npm install 時報錯 - Error: EACCES: permission denied</title>
-    <url>/2024/05/15/dev-env/node-access-error/</url>
-    <content><![CDATA[<p>在我們安裝 npm 套件的時候，有時候會遇到 <code>EACCES: permission denied</code> 的錯誤，這是因為我們沒有權限寫入到指定的目錄，我們會看到以下錯誤（以安裝 aws-cdk 為例）：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g aws-cdk</span><br><span class="line"></span><br><span class="line">npm ERR! code EACCES</span><br><span class="line">npm ERR! syscall <span class="built_in">mkdir</span></span><br><span class="line">npm ERR! path /usr/local/lib/node_modules/aws-cdk</span><br><span class="line">npm ERR! errno -13</span><br><span class="line">npm ERR! Error: EACCES: permission denied, <span class="built_in">mkdir</span> <span class="string">&#x27;/usr/local/lib/node_modules/aws-cdk&#x27;</span></span><br><span class="line">npm ERR!  [Error: EACCES: permission denied, <span class="built_in">mkdir</span> <span class="string">&#x27;/usr/local/lib/node_modules/aws-cdk&#x27;</span>] &#123;</span><br><span class="line">npm ERR!   errno: -13,</span><br><span class="line">npm ERR!   code: <span class="string">&#x27;EACCES&#x27;</span>,</span><br><span class="line">npm ERR!   syscall: <span class="string">&#x27;mkdir&#x27;</span>,</span><br><span class="line">npm ERR!   path: <span class="string">&#x27;/usr/local/lib/node_modules/aws-cdk&#x27;</span></span><br><span class="line">npm ERR! &#125;</span><br><span class="line">npm ERR!</span><br><span class="line">npm ERR! The operation was rejected by your operating system.</span><br><span class="line">npm ERR! It is likely you <span class="keyword">do</span> not have the permissions to access this file as the current user</span><br><span class="line">npm ERR!</span><br><span class="line">npm ERR! If you believe this might be a permissions issue, please double-check the</span><br><span class="line">npm ERR! permissions of the file and its containing directories, or try running</span><br><span class="line">npm ERR! the <span class="built_in">command</span> again as root/Administrator.</span><br><span class="line"></span><br><span class="line">npm ERR! A complete <span class="built_in">log</span> of this run can be found <span class="keyword">in</span>: <span class="variable">$USER</span>/.npm/_logs/*.<span class="built_in">log</span></span><br></pre></td></tr></table></figure></div>
-
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/dev-env/node-access-error/01.png"
-                      alt="EACCES: permission denied"
-                ><figcaption>EACCES: permission denied</figcaption></figure></p>
-<p>會發生的原因是因為我們沒有權限寫入到 <code>/usr/local/lib/node_modules</code> 目錄，這時候我們可以透過以下方式解決：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo <span class="built_in">chown</span> -R $(<span class="built_in">whoami</span>) /usr/local/lib/node_modules</span><br></pre></td></tr></table></figure></div>
-
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/dev-env/node-access-error/02.png"
-                      alt="Add -R access"
-                ><figcaption>Add -R access</figcaption></figure></p>
-<p>我們在當前的 user 下，將 <code>/usr/local/lib/node_modules</code> 目錄的權限加上當前 user 的權限，這樣我們就可以在安裝 npm 套件的時候，不會遇到 <code>EACCES: permission denied</code> 的錯誤。</p>
-<p>如此我們再重新輸入 <code>npm install</code> 的指令，就可以正常安裝套件了。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g aws-cdk</span><br><span class="line"></span><br><span class="line">added 2 packages <span class="keyword">in</span> 1s</span><br></pre></td></tr></table></figure></div>
-
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/post/dev-env/node-access-error/03.png"
-                      alt="Install npm package again. It WORKED !!!"
-                ><figcaption>Install npm package again. It WORKED !!!</figcaption></figure></p>
-<p>如果我們不是要安裝 global 的套件，而是解決該專案當前的權限問題，我們可以透過以下方式解決：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo <span class="built_in">chown</span> -R $(<span class="built_in">whoami</span>) ~/.npm</span><br></pre></td></tr></table></figure></div>
-
-<p>會導致這個問題是因為我們在安裝時 root 與 user 之間的權限問題，透過這個方式，我們就可以解決這個問題，祝大家在安裝 npm 套件的時候都能順利不衝突！</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a class="link"   href="https://segmentfault.com/a/1190000018660227" >npm 在安装的时候提示 没有权限操作的解决办法 Error: EACCES: permission denied <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DevEnv</category>
-      </categories>
-      <tags>
-        <tag>Node</tag>
-        <tag>npm</tag>
-        <tag>permission</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何在 MacOS 安裝 Java + VS Code 開發組合環境</title>
-    <url>/2024/03/11/dev-env/macos-java-dev-env-with-vscode/</url>
-    <content><![CDATA[
-  <div class="note p-4 mb-4 rounded-small default">
-    <p>“探索如何利用 Visual Studio Code 在 MacOS 上進行 Java 開發，體驗遠離 Eclipse，更簡潔、更高效的 Coding 之旅！”</p>
-
-  </div>
-
-
-<p>在這篇文章中，我們會示範如何在 MacOS 上安裝 Java 開發環境，並且透過 Visual Studio Code 來開發 Java 程式，這樣我們可以脫離過去 eclipse 的開發環境，並且可以使用更簡潔的 vscode 來開發 Java 程式。</p>
-<h3 id="下載-Oracle-JDK-Development-Kit"><a href="#下載-Oracle-JDK-Development-Kit" class="headerlink" title="下載 Oracle JDK Development Kit"></a>下載 Oracle JDK Development Kit</h3><p>這次示範的是透過 Oracle JDK 來安裝 Java 開發環境，我們目前最新的 LTS 版本是 <code>21.0.2</code>，因為 LTS 至少會維護五年，所以我們選擇 LTS 版本來安裝。</p>
-<p>可以透過以下連結來下載 Oracle JDK Development Kit 👉🏻 <a class="link"   href="https://www.oracle.com/java/technologies/downloads/" >https://www.oracle.com/java/technologies/downloads/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/format:webp/1*m-D0Dm_rYpkNuuLAtETveQ.png"
-                     
-                ></p>
-
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>Important</p>
-
-    </div>
-    <div class="notel-content">
-      <p>大家要挑選適合自己的版本，這裡我們選擇的是 macOS 版本。並且是 intel 版本的 (x64)，如果你的電腦是 M1 芯片的話，請選擇 M1 版本 (ARM64)。</p>
-
-    </div>
-  </div>
-
-
-<h3 id="安裝-Oracle-JDK-Development-Kit"><a href="#安裝-Oracle-JDK-Development-Kit" class="headerlink" title="安裝 Oracle JDK Development Kit"></a>安裝 Oracle JDK Development Kit</h3><p>我是透過 DMG Installer 的方式來安裝 Oracle JDK Development Kit，接著就是一連串的點擊下一步，直到安裝完成。</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/format:webp/1*NoW0w3MdWnRqe5gdfruUCQ.png"
-                      alt="點擊下載的 .dmg"
-                ><figcaption>點擊下載的 .dmg</figcaption></figure></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/format:webp/1*_m_BxInSy3589TonF7F-lQ.png"
-                      alt="開始安裝！"
-                ><figcaption>開始安裝！</figcaption></figure></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/format:webp/1*XRXzfRUHn7luJ-Hcf7ynUw.png"
-                      alt="選擇安裝路徑"
-                ><figcaption>選擇安裝路徑</figcaption></figure></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/format:webp/1*2F3Bz6LIV1RxE4c8Z_q-yg.png"
-                      alt="安裝所需的儲存空間"
-                ><figcaption>安裝所需的儲存空間</figcaption></figure></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/format:webp/1*4_WWUDxJDwCKVjc1Igy5KQ.png"
-                      alt="開始寫入"
-                ><figcaption>開始寫入</figcaption></figure></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/format:webp/1*W94f_V59RehZjRpF6sNBww.png"
-                      alt="安裝完成啦！"
-                ><figcaption>安裝完成啦！</figcaption></figure></p>
-<p>在我們做了一連串的安裝動作後，我們可以在終端機中檢查我們的 Java 開發環境是否安裝成功，可以輸入以下指令來檢查：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">which</span> java</span><br><span class="line">/usr/bin/java</span><br><span class="line"></span><br><span class="line">$ java -version</span><br><span class="line">java 21.0.2 2024-01-16 LTS</span><br><span class="line">Java(TM) SE Runtime Environment (build 21.0.2+13-LTS-58)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 21.0.2+13-LTS-58, mixed mode, sharing)</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">which</span> javac</span><br><span class="line">/usr/bin/javac</span><br><span class="line"></span><br><span class="line">$ javac -version</span><br><span class="line">javac 21.0.2</span><br></pre></td></tr></table></figure></div>
-
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/format:webp/1*uw5KJj8vqxLj69eaVOhPmA.png"
-                      alt="Java 路徑回傳結果"
-                ><figcaption>Java 路徑回傳結果</figcaption></figure></p>
-<h3 id="安裝-Visual-Studio-Code-Extension"><a href="#安裝-Visual-Studio-Code-Extension" class="headerlink" title="安裝 Visual Studio Code Extension"></a>安裝 Visual Studio Code Extension</h3><p>我們在 Visual Studio Code 的 Extensions 中搜尋 Java 並安裝 Extension Pack for Java，同時會連帶把 debugger 的套件也一併安裝，這樣我們就可以在 vscode 中開發 Java 程式了。</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/format:webp/1*zZbJTnDGu3yD8jOWt85-Sg.png"
-                      alt="Java 在 Visual Studio Code 搜尋出的 extension"
-                ><figcaption>Java 在 Visual Studio Code 搜尋出的 extension</figcaption></figure></p>
-<p>在安裝好後我們就可以簡單測試 Java 是否可以正常運作，我們可以建立一個簡單的 <code>HelloWorld.java</code> 程式，並且執行看看。</p>
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorld</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello, World!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>我們可以透過右上角的 <code>Run</code> 按鈕來執行我們的程式，也可以在 <code>main</code> function 前面點擊 ‘Run’ 按鈕來執行。</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/format:webp/1*FL6Wmfnh-3o81ipdYv2-5Q.png"
-                      alt="點擊執行！"
-                ><figcaption>點擊執行！</figcaption></figure></p>
-<p>能看到 <code>Hello, World!</code> 的字串印出來，代表我們的 Java 開發環境已經安裝完成了。</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/format:webp/1*4mmXpFVgj5EZNPKX3F6--A.png"
-                      alt="確認可以在電腦寫 Java 啦！"
-                ><figcaption>確認可以在電腦寫 Java 啦！</figcaption></figure></p>
-<p>後續還可以隨著自己的需求來安裝其他的套件，例如 <code>Spring Boot</code>, <code>Maven</code>, <code>Gradle</code> 等等，也是同樣可以設定到 VSCode 的 path 中，讓 VSCode 可以正確的找到這些套件。</p>
-<p>☕️ 祝大家都可以順利的安裝 Java 開發環境，並且可以順利的開發 Java 程式。</p>
-]]></content>
-      <categories>
-        <category>DevEnv</category>
-      </categories>
-      <tags>
-        <tag>Install</tag>
-        <tag>MacOS</tag>
-        <tag>Java</tag>
-        <tag>VSCode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何編輯 /var/www/html 中的檔案</title>
     <url>/2024/03/18/coding-tips/edit-server-html/</url>
     <content><![CDATA[<p>首先為甚麼我們會需要編輯 <code>/var/www/html</code> 中的檔案呢？這是因為我們如果要在 Linux 中架設屬於我們的伺服器，像是 Apache 或是 Nginx，我們需要將我們的網頁檔案放在 <code>/var/www/html</code> 中。因此，如果我們要修改我們的網頁檔案，我們就需要進入這個資料夾中進行修改。</p>
@@ -638,6 +300,647 @@
         <tag>Markdown</tag>
         <tag>GitHub</tag>
         <tag>Technical Writing</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我在 Conda 常用的指令</title>
+    <url>/2023/07/30/dev-env/conda-dev-env/</url>
+    <content><![CDATA[<blockquote>
+<p>每次用 Conda 都要在搜尋一次嗎？以後就看這篇吧！</p>
+</blockquote>
+<p>相信有在透過 Python 開發的朋友，對 Python 環境的設置各有喜好，而有些時候相對應的專案會需要不同的環境需求，而這時 Conda 會是很好的夥伴，不過常常在使用 Conda 的時候，常常會不知道指令是什麼，因此每次需要使用的時候必須要上網查詢，如此便多了一些步驟，如此在日常工作流程便會受到限制，因此本篇會介紹一些 Conda 常被使用的 Command 指令，讓日常的工作更為順暢。</p>
+<h3 id="建立、刪除和複製虛擬環境"><a href="#建立、刪除和複製虛擬環境" class="headerlink" title="建立、刪除和複製虛擬環境"></a>建立、刪除和複製虛擬環境</h3><h4 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name python=x.x.x                    <span class="comment"># 直接建立 python 版本為 x.x.x 的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create -n your_env_name matplotlib numpy python=x.x.x   <span class="comment"># 建立虛擬環境同時一併安裝想要的 package (ex: numpy, matplotlib)</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="comment"># 首先必須先退出虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name --all               <span class="comment"># 再來得以完整刪除虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove --name your_env_name package_name    <span class="comment"># 只刪除虛擬環境特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="複製虛擬環境"><a href="#複製虛擬環境" class="headerlink" title="複製虛擬環境"></a>複製虛擬環境</h4><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_name    <span class="comment"># 透過舊環境名稱，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda create new_env_name --<span class="built_in">clone</span> old_env_path    <span class="comment"># 透過舊環境路徑，將原有虛擬環境的內容複製，進而生成新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="激活與退出虛擬環境"><a href="#激活與退出虛擬環境" class="headerlink" title="激活與退出虛擬環境"></a>激活與退出虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name    <span class="comment"># 激活目標虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda deactivate                <span class="comment"># 退出目標虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="安裝及刪除需要的-package-至虛擬環境"><a href="#安裝及刪除需要的-package-至虛擬環境" class="headerlink" title="安裝及刪除需要的 package 至虛擬環境"></a>安裝及刪除需要的 package 至虛擬環境</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda install -n your_env_name package_name   <span class="comment"># 在目標的虛擬環境中安裝特定 package</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda remove -n your_env_name package_name    <span class="comment"># 在目標的虛擬環境中刪除特定 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="查詢虛擬環境資訊"><a href="#查詢虛擬環境資訊" class="headerlink" title="查詢虛擬環境資訊"></a>查詢虛擬環境資訊</h3><ul>
+<li><h4 id="若想要更新-conda-之版本"><a href="#若想要更新-conda-之版本" class="headerlink" title="若想要更新 conda 之版本"></a>若想要更新 conda 之版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda update conda    <span class="comment"># 升級當前 conda 之版本</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看已安裝的-Conda-版本"><a href="#查看已安裝的-Conda-版本" class="headerlink" title="查看已安裝的 Conda 版本"></a>查看已安裝的 Conda 版本</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version   <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda -V          <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li><h4 id="查看當前已建立環境列表"><a href="#查看當前已建立環境列表" class="headerlink" title="查看當前已建立環境列表"></a>查看當前已建立環境列表</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list    <span class="comment"># 第一種方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda info -e     <span class="comment"># 第二種方法</span></span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><h4 id="查看在當前環境已安裝的-package"><a href="#查看在當前環境已安裝的-package" class="headerlink" title="查看在當前環境已安裝的 package"></a>查看在當前環境已安裝的 package</h4></li>
+</ul>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list  <span class="comment"># 顯示當前虛擬環境已安裝的 package</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="導出虛擬環境"><a href="#導出虛擬環境" class="headerlink" title="導出虛擬環境"></a>導出虛擬環境</h3><p>透過 conda 的 export 導出 .yaml 的檔案格式，將虛擬環境名稱、位址、已安裝的 package 記錄下來。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; ~/env.yaml                       <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至 ~/env.yaml</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; your_goal_path/environment.yaml  <span class="comment"># 將虛擬環境名稱、位址、已安裝的 package，輸出至目標的路徑中</span></span></span><br></pre></td></tr></table></figure></div>
+
+<p>接著也可以透過導出的 <code>.yaml</code> 創建新虛擬環境</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f ~/env.yaml                      <span class="comment"># 透過 ~/env.yaml 的資訊，建立新虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> create -f your_goal_path/environment.yaml <span class="comment"># 透過目標的路徑中的 environment.yaml 的資訊，建立新虛擬環境</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="文末小結"><a href="#文末小結" class="headerlink" title="文末小結"></a>文末小結</h3><p>上述大多為平常使用 conda 虛擬環境常用之操作，而在文末，為不讓本篇文章看似單就普通說明書，接下來就來分享自己平時在使用 conda 虛擬環境的一些小習慣吧！我們話不多說，先上一張圖片吧！</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*HINgY65FwzLssf65NsA8tQ.png"
+                      alt="每次激活環境時的操作" title="每次激活環境時的操作"
+                ><figcaption>每次激活環境時的操作</figcaption></figure></p>
+<p>雖然是虛擬環境，可以隨時建立查看，發生錯誤也能立馬砍掉不影響其他操作進行，不過有些時候常常就因為存在太多已建立的環境，而導致混亂而發生錯誤，導致又要多花時間 Debug，所以每次我在使用虛擬環境前都會先檢查一些基本的資訊。</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda --version               <span class="comment"># 檢查當前 conda 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda <span class="built_in">env</span> list                <span class="comment"># 查看當前已建立的所有虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda activate your_env_name  <span class="comment"># 激活目標的虛擬環境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">which</span> python                  <span class="comment"># 檢查 python 的路徑是否存在虛擬環境下</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version             <span class="comment"># 檢查當前虛擬環境下的 python 版本</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">conda list                    <span class="comment"># 檢查當前虛擬環境下的 package</span></span></span><br></pre></td></tr></table></figure></div>
+<p>搭配了這些小習慣，讓我在使用虛擬環境時，比較不容易發生 call 錯環境的情形發生，也讓我在使用虛擬環境時更為順手。相信大家有了這些 conda 的常用 command，無論是工作中、研究中、日常興趣中，使用虛擬環境都能更為順手，增加工作效率。</p>
+<p>若是還想要我再補充更多 conda 的操作，或是其他開發環境的建立，都歡迎留言一起討論哦～</p>
+<h3 id="How-to-reach-out-to-me"><a href="#How-to-reach-out-to-me" class="headerlink" title="How to reach out to me"></a>How to reach out to me</h3><ul>
+<li>Ins: <a class="link"   href="https://www.instagram.com/lcho____/" >@lcho____ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Linkedin: <a class="link"   href="https://www.linkedin.com/in/1chooo/" >Hugo ChunHo Lin <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>GitHub: <a class="link"   href="https://github.com/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>About me: <a class="link"   href="https://sites.google.com/g.ncu.edu.tw/1chooo" >1chooo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Email: <a class="link"   href="mailto:&#x68;&#x75;&#103;&#111;&#x39;&#55;&#x30;&#50;&#49;&#55;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;" >&#x68;&#x75;&#103;&#111;&#x39;&#55;&#x30;&#50;&#49;&#55;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DevEnv</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>venv</tag>
+        <tag>conda</tag>
+        <tag>tips</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在 Mac 安裝 Node.js &amp; NPM</title>
+    <url>/2024/01/03/dev-env/mac-install-nodejs-npm/</url>
+    <content><![CDATA[<p>新年剛好把 MacOS 重灌，讓這台老 macbook pro 2020 重獲新生，也藉此機會重新建置開發環境。</p>
+<p>因此我們將示範如何在 Mac 安裝 <code>Node.js</code> 以及 <code>NPM</code>，其實直接從官網安裝 <code>Node.js</code> 時就會同時安裝 <code>NPM</code>，因此我將以 Mac 作為示範如何在成功安裝 <code>Node.js</code>，並且展示成功結果！</p>
+<p>👉🏻 <a class="link"   href="https://nodejs.org/en?source=post_page-----3d7101d998f4--------------------------------" >Node.js 官網連結 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h4 id="下載-LTS-的版本"><a href="#下載-LTS-的版本" class="headerlink" title="下載 LTS 的版本"></a>下載 LTS 的版本</h4><p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*aREalwTkLM8kSMAokcCBvw.png"
+                      alt="選擇 LTS 版本"
+                ><figcaption>選擇 LTS 版本</figcaption></figure></p>
+<h4 id="點擊下載的-node-vx-x-x-pkg-檔安裝-Node-js"><a href="#點擊下載的-node-vx-x-x-pkg-檔安裝-Node-js" class="headerlink" title="點擊下載的 node-vx.x.x.pkg 檔安裝 Node.js"></a>點擊下載的 <code>node-vx.x.x.pkg</code> 檔安裝 <code>Node.js</code></h4><p>緊接著就是點擊 MacOS 安裝的一堆確認（建議安裝時可以看一下細節！）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*dAvr0F9ceBHDgU7PCeDGtA.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*62YZY321G_LxvvFvHNiblA.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*jpdJaKgGK14D8H1ypSuQ3g.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*PNhmDNjLvukKMrVKwQhjRg.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*F8rHXI-ZTIJkwpb9G6aGWw.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*IaKki0SZuybAVHPCev-G-g.png"
+                     
+                ></p>
+<h4 id="成功安裝後我們回到-Terminal"><a href="#成功安裝後我們回到-Terminal" class="headerlink" title="成功安裝後我們回到 Terminal"></a>成功安裝後我們回到 Terminal</h4><p>安裝成功後，我們可以透過 Terminal 使用 <code>which</code> 確認是否安裝成功，可以試著在 Terminal 輸入以下命令：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">which</span> npm</span><br><span class="line">/usr/local/bin/npm</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">which</span> node</span><br><span class="line">/usr/local/bin/node</span><br></pre></td></tr></table></figure></div>
+
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*wWCsxVfJS98KftYNcypWhg.png"
+                      alt="有成功回傳路徑就是成功！"
+                ><figcaption>有成功回傳路徑就是成功！</figcaption></figure></p>
+<h4 id="輸入-node-npm-Command"><a href="#輸入-node-npm-Command" class="headerlink" title="輸入 node &amp; npm Command"></a>輸入 node &amp; npm Command</h4><p>我們可以就在 Terminal 做 <code>node</code> &amp; <code>npm</code> 的 command 啦！</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*P_rTeMsh4tUrbfbdR4KkNw.png"
+                      alt="node command"
+                ><figcaption>node command</figcaption></figure></p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1000/format:webp/1*YGQ7GD9BDgk49o0Y14hItQ.png"
+                      alt="npm command"
+                ><figcaption>npm command</figcaption></figure></p>
+<h4 id="啟動一個-web-server"><a href="#啟動一個-web-server" class="headerlink" title="啟動一個 web server"></a>啟動一個 web server</h4><p>我們可以另外寫一個 web server 的 app 來測試一下，這邊我們使用 <code>http</code> 來啟動一個 web server，實作程式碼如下：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// server.js</span></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="property">statusCode</span> = <span class="number">200</span>;</span><br><span class="line">  res.<span class="title function_">setHeader</span>(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;text/plain&#x27;</span>);</span><br><span class="line">  res.<span class="title function_">end</span>(<span class="string">&#x27;Hello World\n&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="string">&#x27;localhost&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Server running at http://localhost:3000/&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+
+<p>接著我們透過 <code>node</code> 來啟動這個 web server，輸入以下命令：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ node server.js</span><br><span class="line">Server running at http://localhost:3000/</span><br></pre></td></tr></table></figure></div>
+
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*RKp-Y_Tet-mljSanTCKfcw.png"
+                      alt="run the server"
+                ><figcaption>run the server</figcaption></figure></p>
+<p>接著我們前往瀏覽器點開 <code>http://localhost:3000/</code>，就可以看到 <code>Hello World</code> 的字串啦！結果如下圖，如果有看到 <code>Hello World</code> 就代表我們完全成功啦！</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*1JkRsWl-n7Gex7hsnbb7xA.png"
+                      alt="Hello World !!!"
+                ><figcaption>Hello World !!!</figcaption></figure></p>
+<p>這樣就大功告成啦！祝大家開發順利！也祝大家新年快樂！</p>
+<p>同場加映如何在 MacOS 上撰寫 TypeScripts 的 React</p>
+<h4 id="Install-the-react-native-CLI"><a href="#Install-the-react-native-CLI" class="headerlink" title="Install the react-native CLI"></a>Install the react-native CLI</h4><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm i -g react-native-cli</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>DevEnv</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>npm</tag>
+        <tag>Mac</tag>
+        <tag>Install</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在 MacOS 安裝 Java + VS Code 開發組合環境</title>
+    <url>/2024/03/11/dev-env/macos-java-dev-env-with-vscode/</url>
+    <content><![CDATA[
+  <div class="note p-4 mb-4 rounded-small default">
+    <p>“探索如何利用 Visual Studio Code 在 MacOS 上進行 Java 開發，體驗遠離 Eclipse，更簡潔、更高效的 Coding 之旅！”</p>
+
+  </div>
+
+
+<p>在這篇文章中，我們會示範如何在 MacOS 上安裝 Java 開發環境，並且透過 Visual Studio Code 來開發 Java 程式，這樣我們可以脫離過去 eclipse 的開發環境，並且可以使用更簡潔的 vscode 來開發 Java 程式。</p>
+<h3 id="下載-Oracle-JDK-Development-Kit"><a href="#下載-Oracle-JDK-Development-Kit" class="headerlink" title="下載 Oracle JDK Development Kit"></a>下載 Oracle JDK Development Kit</h3><p>這次示範的是透過 Oracle JDK 來安裝 Java 開發環境，我們目前最新的 LTS 版本是 <code>21.0.2</code>，因為 LTS 至少會維護五年，所以我們選擇 LTS 版本來安裝。</p>
+<p>可以透過以下連結來下載 Oracle JDK Development Kit 👉🏻 <a class="link"   href="https://www.oracle.com/java/technologies/downloads/" >https://www.oracle.com/java/technologies/downloads/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/format:webp/1*m-D0Dm_rYpkNuuLAtETveQ.png"
+                     
+                ></p>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>Important</p>
+
+    </div>
+    <div class="notel-content">
+      <p>大家要挑選適合自己的版本，這裡我們選擇的是 macOS 版本。並且是 intel 版本的 (x64)，如果你的電腦是 M1 芯片的話，請選擇 M1 版本 (ARM64)。</p>
+
+    </div>
+  </div>
+
+
+<h3 id="安裝-Oracle-JDK-Development-Kit"><a href="#安裝-Oracle-JDK-Development-Kit" class="headerlink" title="安裝 Oracle JDK Development Kit"></a>安裝 Oracle JDK Development Kit</h3><p>我是透過 DMG Installer 的方式來安裝 Oracle JDK Development Kit，接著就是一連串的點擊下一步，直到安裝完成。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/format:webp/1*NoW0w3MdWnRqe5gdfruUCQ.png"
+                      alt="點擊下載的 .dmg"
+                ><figcaption>點擊下載的 .dmg</figcaption></figure></p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/format:webp/1*_m_BxInSy3589TonF7F-lQ.png"
+                      alt="開始安裝！"
+                ><figcaption>開始安裝！</figcaption></figure></p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/format:webp/1*XRXzfRUHn7luJ-Hcf7ynUw.png"
+                      alt="選擇安裝路徑"
+                ><figcaption>選擇安裝路徑</figcaption></figure></p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/format:webp/1*2F3Bz6LIV1RxE4c8Z_q-yg.png"
+                      alt="安裝所需的儲存空間"
+                ><figcaption>安裝所需的儲存空間</figcaption></figure></p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/format:webp/1*4_WWUDxJDwCKVjc1Igy5KQ.png"
+                      alt="開始寫入"
+                ><figcaption>開始寫入</figcaption></figure></p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/format:webp/1*W94f_V59RehZjRpF6sNBww.png"
+                      alt="安裝完成啦！"
+                ><figcaption>安裝完成啦！</figcaption></figure></p>
+<p>在我們做了一連串的安裝動作後，我們可以在終端機中檢查我們的 Java 開發環境是否安裝成功，可以輸入以下指令來檢查：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">which</span> java</span><br><span class="line">/usr/bin/java</span><br><span class="line"></span><br><span class="line">$ java -version</span><br><span class="line">java 21.0.2 2024-01-16 LTS</span><br><span class="line">Java(TM) SE Runtime Environment (build 21.0.2+13-LTS-58)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 21.0.2+13-LTS-58, mixed mode, sharing)</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">which</span> javac</span><br><span class="line">/usr/bin/javac</span><br><span class="line"></span><br><span class="line">$ javac -version</span><br><span class="line">javac 21.0.2</span><br></pre></td></tr></table></figure></div>
+
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/format:webp/1*uw5KJj8vqxLj69eaVOhPmA.png"
+                      alt="Java 路徑回傳結果"
+                ><figcaption>Java 路徑回傳結果</figcaption></figure></p>
+<h3 id="安裝-Visual-Studio-Code-Extension"><a href="#安裝-Visual-Studio-Code-Extension" class="headerlink" title="安裝 Visual Studio Code Extension"></a>安裝 Visual Studio Code Extension</h3><p>我們在 Visual Studio Code 的 Extensions 中搜尋 Java 並安裝 Extension Pack for Java，同時會連帶把 debugger 的套件也一併安裝，這樣我們就可以在 vscode 中開發 Java 程式了。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/format:webp/1*zZbJTnDGu3yD8jOWt85-Sg.png"
+                      alt="Java 在 Visual Studio Code 搜尋出的 extension"
+                ><figcaption>Java 在 Visual Studio Code 搜尋出的 extension</figcaption></figure></p>
+<p>在安裝好後我們就可以簡單測試 Java 是否可以正常運作，我們可以建立一個簡單的 <code>HelloWorld.java</code> 程式，並且執行看看。</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorld</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello, World!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>我們可以透過右上角的 <code>Run</code> 按鈕來執行我們的程式，也可以在 <code>main</code> function 前面點擊 ‘Run’ 按鈕來執行。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/format:webp/1*FL6Wmfnh-3o81ipdYv2-5Q.png"
+                      alt="點擊執行！"
+                ><figcaption>點擊執行！</figcaption></figure></p>
+<p>能看到 <code>Hello, World!</code> 的字串印出來，代表我們的 Java 開發環境已經安裝完成了。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/format:webp/1*4mmXpFVgj5EZNPKX3F6--A.png"
+                      alt="確認可以在電腦寫 Java 啦！"
+                ><figcaption>確認可以在電腦寫 Java 啦！</figcaption></figure></p>
+<p>後續還可以隨著自己的需求來安裝其他的套件，例如 <code>Spring Boot</code>, <code>Maven</code>, <code>Gradle</code> 等等，也是同樣可以設定到 VSCode 的 path 中，讓 VSCode 可以正確的找到這些套件。</p>
+<p>☕️ 祝大家都可以順利的安裝 Java 開發環境，並且可以順利的開發 Java 程式。</p>
+]]></content>
+      <categories>
+        <category>DevEnv</category>
+      </categories>
+      <tags>
+        <tag>Install</tag>
+        <tag>MacOS</tag>
+        <tag>Java</tag>
+        <tag>VSCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何解決 npm install 時報錯 - Error: EACCES: permission denied</title>
+    <url>/2024/05/15/dev-env/node-access-error/</url>
+    <content><![CDATA[<p>在我們安裝 npm 套件的時候，有時候會遇到 <code>EACCES: permission denied</code> 的錯誤，這是因為我們沒有權限寫入到指定的目錄，我們會看到以下錯誤（以安裝 aws-cdk 為例）：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g aws-cdk</span><br><span class="line"></span><br><span class="line">npm ERR! code EACCES</span><br><span class="line">npm ERR! syscall <span class="built_in">mkdir</span></span><br><span class="line">npm ERR! path /usr/local/lib/node_modules/aws-cdk</span><br><span class="line">npm ERR! errno -13</span><br><span class="line">npm ERR! Error: EACCES: permission denied, <span class="built_in">mkdir</span> <span class="string">&#x27;/usr/local/lib/node_modules/aws-cdk&#x27;</span></span><br><span class="line">npm ERR!  [Error: EACCES: permission denied, <span class="built_in">mkdir</span> <span class="string">&#x27;/usr/local/lib/node_modules/aws-cdk&#x27;</span>] &#123;</span><br><span class="line">npm ERR!   errno: -13,</span><br><span class="line">npm ERR!   code: <span class="string">&#x27;EACCES&#x27;</span>,</span><br><span class="line">npm ERR!   syscall: <span class="string">&#x27;mkdir&#x27;</span>,</span><br><span class="line">npm ERR!   path: <span class="string">&#x27;/usr/local/lib/node_modules/aws-cdk&#x27;</span></span><br><span class="line">npm ERR! &#125;</span><br><span class="line">npm ERR!</span><br><span class="line">npm ERR! The operation was rejected by your operating system.</span><br><span class="line">npm ERR! It is likely you <span class="keyword">do</span> not have the permissions to access this file as the current user</span><br><span class="line">npm ERR!</span><br><span class="line">npm ERR! If you believe this might be a permissions issue, please double-check the</span><br><span class="line">npm ERR! permissions of the file and its containing directories, or try running</span><br><span class="line">npm ERR! the <span class="built_in">command</span> again as root/Administrator.</span><br><span class="line"></span><br><span class="line">npm ERR! A complete <span class="built_in">log</span> of this run can be found <span class="keyword">in</span>: <span class="variable">$USER</span>/.npm/_logs/*.<span class="built_in">log</span></span><br></pre></td></tr></table></figure></div>
+
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-env/node-access-error/01.png"
+                      alt="EACCES: permission denied"
+                ><figcaption>EACCES: permission denied</figcaption></figure></p>
+<p>會發生的原因是因為我們沒有權限寫入到 <code>/usr/local/lib/node_modules</code> 目錄，這時候我們可以透過以下方式解決：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo <span class="built_in">chown</span> -R $(<span class="built_in">whoami</span>) /usr/local/lib/node_modules</span><br></pre></td></tr></table></figure></div>
+
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-env/node-access-error/02.png"
+                      alt="Add -R access"
+                ><figcaption>Add -R access</figcaption></figure></p>
+<p>我們在當前的 user 下，將 <code>/usr/local/lib/node_modules</code> 目錄的權限加上當前 user 的權限，這樣我們就可以在安裝 npm 套件的時候，不會遇到 <code>EACCES: permission denied</code> 的錯誤。</p>
+<p>如此我們再重新輸入 <code>npm install</code> 的指令，就可以正常安裝套件了。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g aws-cdk</span><br><span class="line"></span><br><span class="line">added 2 packages <span class="keyword">in</span> 1s</span><br></pre></td></tr></table></figure></div>
+
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/dev-env/node-access-error/03.png"
+                      alt="Install npm package again. It WORKED !!!"
+                ><figcaption>Install npm package again. It WORKED !!!</figcaption></figure></p>
+<p>如果我們不是要安裝 global 的套件，而是解決該專案當前的權限問題，我們可以透過以下方式解決：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo <span class="built_in">chown</span> -R $(<span class="built_in">whoami</span>) ~/.npm</span><br></pre></td></tr></table></figure></div>
+
+<p>會導致這個問題是因為我們在安裝時 root 與 user 之間的權限問題，透過這個方式，我們就可以解決這個問題，祝大家在安裝 npm 套件的時候都能順利不衝突！</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a class="link"   href="https://segmentfault.com/a/1190000018660227" >npm 在安装的时候提示 没有权限操作的解决办法 Error: EACCES: permission denied <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DevEnv</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>npm</tag>
+        <tag>permission</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++</title>
+    <url>/2024/06/25/leetcode/0001-two-sum/</url>
+    <content><![CDATA[<p>Link 👉🏻 <a class="link" href="https://leetcode.com/problems/two-sum/">1. Two Sum <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given an array of integers <code>nums</code> and an integer <code>target</code>, <em>return indices of the two numbers such that they add up to <code>target</code></em>.</p>
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+<p>You can return the answer in any order.</p>
+<p><strong>Example 1:</strong></p>
+<ul>
+<li>Input: <code>nums = [2,7,11,15], target = 9</code></li>
+<li>Output: <code>[0,1]</code></li>
+<li>Explanation: <code>Because nums[0] + nums[1] == 9, we return [0, 1].</code></li>
+</ul>
+<p><strong>Example 2:</strong></p>
+<ul>
+<li>Input: <code>nums = [3,2,4], target = 6</code></li>
+<li>Output: <code>[1,2]</code></li>
+</ul>
+<p><strong>Example 3:</strong></p>
+<ul>
+<li>Input: <code>nums = [3,3], target = 6</code></li>
+<li>Output: <code>[0,1]</code></li>
+</ul>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>2 &lt;= nums.length &lt;= 10<sup>4</sup></code></li>
+<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
+<li><code>-10<sup>9</sup> &lt;= target &lt;= 10<sup>9</sup></code></li>
+<li><code>Only one valid answer exists.</code></li>
+</ul>
+<p><strong>Follow-up:</strong> Can you come up with an algorithm that is less than <code>O(n<sup>2</sup>)</code> time complexity?</p>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition"></a>Intuition</h3><p>Use HashMap to keep numbers and their indices we found.</p>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>Note</p>
+
+    </div>
+    <div class="notel-content">
+      <p>Create a Hash Table in <code>GO</code> with <code>make</code> function <sup><a class="link" href="https://www.geeksforgeeks.org/golang-maps/">Golang Maps <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></sup>, and use <code>map[key] = value</code> to set the value of the key.</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line">numMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)</span><br></pre></td></tr></table></figure></div>
+
+    </div>
+  </div>
+
+
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>Note</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>How to Work with maps?</strong> <sup><a class="link" href="https://go.dev/blog/maps">Go maps in action#Working with maps <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></sup></p>
+<p>A two-value assignment tests for the existence of a key:</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line">i, ok := m[<span class="string">"route"</span>]</span><br></pre></td></tr></table></figure></div>
+
+<p>In this statement, the first <code>value (i)</code> is assigned the value stored under the key “route”. If that key doesn’t exist, i is the value type’s zero <code>value (0)</code>. The second <code>value (ok)</code> is a <code>bool</code> that is true if the key exists in the map, and false if not.</p>
+<p>To test for a key without retrieving the value, use an underscore in place of the first value:</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line">_, ok := m[<span class="string">"route"</span>] </span><br></pre></td></tr></table></figure></div>
+
+<p>To iterate over the contents of a map, use the range keyword:</p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> key, value := <span class="keyword">range</span> m {</span><br><span class="line">    fmt.Println(<span class="string">"Key:"</span>, key, <span class="string">"Value:"</span>, value)</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+    </div>
+  </div>
+
+<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><ol>
+<li>Traverse the <code>nums</code> array and store the difference between the <code>target</code> and the current <code>number</code> as the <code>key</code> and the <code>index</code> as the <code>value</code> in the HashMap.</li>
+<li>If the current <code>number</code> is already in the HashMap, return the <code>index</code> of the current <code>number</code> and the <code>index</code> stored in the HashMap.</li>
+<li>We still need to return an empty array if there is no solution.</li>
+</ol>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><ul>
+<li><p>Time complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.844ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2141 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1752,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
+</li>
+<li><p>Space complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.844ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2141 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1752,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
+</li>
+</ul>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><div class="tabs" id="tab-first-unique-name"><ul class="nav-tabs"><li class="tab active"><a class="#first-unique-name-1">Go</a></li><li class="tab"><a class="#first-unique-name-2">Python</a></li><li class="tab"><a class="#first-unique-name-3">C++</a></li></ul><div class="tab-content"><div class="tab-pane active" id="first-unique-name-1"><div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">twoSum</span><span class="params">(nums []<span class="type">int</span>, target <span class="type">int</span>)</span></span> []<span class="type">int</span> {</span><br><span class="line">    hashMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, num := <span class="keyword">range</span> nums {</span><br><span class="line">        <span class="keyword">if</span> j, ok := hashMap[num]; ok {</span><br><span class="line">            <span class="keyword">return</span> []<span class="type">int</span>{j, i}</span><br><span class="line">        }</span><br><span class="line">        hashMap[target - num] = i</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> []<span class="type">int</span>{}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div></div><div class="tab-pane" id="first-unique-name-2"><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">twoSum</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], target: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        hMap = {}</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] <span class="keyword">in</span> hMap:</span><br><span class="line">                <span class="keyword">return</span> [hMap[nums[i]], i]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                hMap[target - nums[i]] = i</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> []</span><br></pre></td></tr></table></figure></div></div><div class="tab-pane" id="first-unique-name-3"><div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>{</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; hashMap;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); ++i) {</span><br><span class="line">            <span class="type">int</span> num = nums[i];</span><br><span class="line">            <span class="keyword">if</span> (hashMap.<span class="built_in">find</span>(num) != hashMap.<span class="built_in">end</span>()) {</span><br><span class="line">                <span class="keyword">return</span> {hashMap[num], i};</span><br><span class="line">            }</span><br><span class="line">            hashMap[target - num] = i;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> {};</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></table></figure></div></div></div></div>
+
+
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Go</tag>
+        <tag>Leetcode</tag>
+        <tag>Array</tag>
+        <tag>Hash Table</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[✅ Beats 💯] LeetCode 1052. Grumpy Bookstore Owner - Easy Solution | Go</title>
+    <url>/2024/06/20/leetcode/1052-grumpy-bookstore-owner/</url>
+    <content><![CDATA[<p>Link 👉🏻 <a class="link" href="https://leetcode.com/problems/grumpy-bookstore-owner/">1052. Grumpy Bookstore Owner <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>There is a bookstore owner that has a store open for <code>n</code> minutes. Every minute, some number of customers enter the store. You are given an integer array <code>customers</code> of length <code>n</code> where <code>customers[i]</code> is the number of the customer that enters the store at the start of the <code>i<sup>th</sup></code> minute and all those customers leave after the end of that minute.</p>
+<p>On some minutes, the bookstore owner is grumpy. You are given a binary array grumpy where <code>grumpy[i]</code> is <code>1</code> if the bookstore owner is grumpy during the <code>i<sup>th</sup></code> minute, and is <code>0</code> otherwise.</p>
+<p>When the bookstore owner is grumpy, the customers of that minute are not satisfied, otherwise, they are satisfied.</p>
+<p>The bookstore owner knows a secret technique to keep themselves not grumpy for <code>minutes</code> consecutive minutes, but can only use it once.</p>
+<p>Return the maximum number of customers that can be satisfied throughout the day.</p>
+<p><strong>Example 1:</strong></p>
+<ul>
+<li>Input:<code> customers = [1,0,1,2,1,1,7,5], grumpy = [0,1,0,1,0,1,0,1], minutes = 3</code></li>
+<li>Output: <code>16</code></li>
+<li>Explanation: <code>The bookstore owner keeps themselves not grumpy for the last 3 minutes. The maximum number of customers that can be satisfied = 1 + 1 + 1 + 1 + 7 + 5 = 16.</code></li>
+</ul>
+<p><strong>Example 2:</strong></p>
+<ul>
+<li>Input: <code>customers = [1], grumpy = [0], minutes = 1</code></li>
+<li>Output: <code>1</code></li>
+</ul>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>n == customers.length == grumpy.length</code></li>
+<li><code>1 &lt;= minutes &lt;= n &lt;= 2 * 10<sup>4</sup></code></li>
+<li><code>0 &lt;= customers[i] &lt;= 1000</code></li>
+<li><code>grumpy[i]</code> is either <code>0</code> or <code>1</code>.</li>
+</ul>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition"></a>Intuition</h3><p>Not grumpy for minutes consecutive minutes, we need to subtract the previous satisfaction if they were grumpy.</p>
+<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><ol>
+<li>Add the satisfaction from non-grumpy as the base satisfaction.</li>
+<li>Compute the grumpy satisfaction then we have to make sure we can find the maximum satisfaction in the consecutive minutes.</li>
+<li>If the current iteration is greater than the minutes and the previous iteration was grumpy, we need to subtract the previous satisfaction.</li>
+<li>Make sure the satisfaction with Secret Technique is the maximum satisfaction.</li>
+<li>Return the sum of the base satisfaction and the maximum satisfaction with Secret Technique.</li>
+</ol>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> i &gt;= minutes &amp;&amp; grumpy[i-minutes] == <span class="number">1</span> {</span><br><span class="line">    satisfiedWithTech -= customers[i-minutes] </span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><ul>
+<li><p>Time complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.844ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2141 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1752,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
+</li>
+<li><p>Space complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.844ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2141 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1752,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
+</li>
+</ul>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxSatisfied</span><span class="params">(customers []<span class="type">int</span>, grumpy []<span class="type">int</span>, minutes <span class="type">int</span>)</span></span> <span class="type">int</span> {</span><br><span class="line">	baseSatisfied        := <span class="number">0</span></span><br><span class="line">	satisfiedWithTech    := <span class="number">0</span></span><br><span class="line">	maxSatisfiedWithTech := <span class="number">0</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(customers); i++ {</span><br><span class="line">		<span class="keyword">if</span> grumpy[i] == <span class="number">1</span> {</span><br><span class="line">			satisfiedWithTech += customers[i]</span><br><span class="line">		} <span class="keyword">else</span> {</span><br><span class="line">			baseSatisfied += customers[i]</span><br><span class="line">		}</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> i &gt;= minutes &amp;&amp; grumpy[i-minutes] == <span class="number">1</span> {</span><br><span class="line">			satisfiedWithTech -= customers[i-minutes] <span class="comment">// because not grumpy for minutes consecutive minutes</span></span><br><span class="line">		}</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> satisfiedWithTech &gt; maxSatisfiedWithTech {</span><br><span class="line">			maxSatisfiedWithTech = satisfiedWithTech</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> baseSatisfied + maxSatisfiedWithTech</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>Leetcode</tag>
+        <tag>Array</tag>
+        <tag>Sliding Window</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode 1382. Balance a Binary Search Tree - Easy Solution | Go</title>
+    <url>/2024/06/30/leetcode/1382-balance-a-binary-search-tree/</url>
+    <content><![CDATA[<p>Link 👉🏻 <a class="link" href="https://leetcode.com/problems/balance-a-binary-search-tree/">1382. Balance a Binary Search Tree <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given the <code>root</code> of a binary search tree, return a balanced binary search tree with the same node values. If there is more than one answer, return any of them.</p>
+<p>A binary search tree is balanced if the depth of the two subtrees of every node never differs by more than <code>1</code>.</p>
+<p><strong>Example 1:</strong></p>
+<p><figure class="image-caption"><img lazyload="" src="/images/loading.svg" data-src="https://assets.leetcode.com/uploads/2021/08/10/balance1-tree.jpg" alt="1382. Balance a Binary Search Tree -- Example 1"><figcaption>1382. Balance a Binary Search Tree -- Example 1</figcaption></figure></p>
+<ul>
+<li>Input: <code>root = [1,null,2,null,3,null,4,null,null]</code></li>
+<li>Output: <code>[2,1,3,null,null,null,4]</code></li>
+<li><code>Explanation: This is not the only correct answer, [3,1,4,null,2] is also correct.</code></li>
+</ul>
+<p><strong>Example 2:</strong></p>
+<p><figure class="image-caption"><img lazyload="" src="/images/loading.svg" data-src="https://assets.leetcode.com/uploads/2021/08/10/balanced2-tree.jpg" alt="1382. Balance a Binary Search Tree -- Example 2"><figcaption>1382. Balance a Binary Search Tree -- Example 2</figcaption></figure></p>
+<ul>
+<li>Input: <code>root = [2,1,3]</code></li>
+<li>Output: <code>[2,1,3]</code></li>
+</ul>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>The number of nodes in the tree is in the range <code>[1, 10<sup>4</sup>]</code>.</li>
+<li><code>1 &lt;= Node.val &lt;= 10<sup>5</sup></code></li>
+</ul>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition"></a>Intuition</h3><p>With Depth-First Search (DFS), we can traverse a tree and store its nodes in an array. Once we have this array, we can construct a new tree using <code>in-order</code> traversal. This is done by dividing the array in half and recursively building the left and right subtrees from the respective halves.</p>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>Note</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>How to implement slicing in Go?</strong> <sup><a class="link" href="https://yushuanhsieh.github.io/post/2021-12-29-golang-slice-append/" target="_blank">Golang slice append 實作細節 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></sup></p>
+<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> nums []<span class="type">int</span></span><br><span class="line">nums = <span class="built_in">append</span>(nums, <span class="number">1</span>)		<span class="comment">// append 1 to the slice</span></span><br></pre></td></tr></table></figure></div>
+
+    </div>
+  </div>
+
+<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><ol>
+<li>Traverse the tree using Depth-First Search (DFS) and store the nodes in an array.</li>
+<li>Construct a new tree using the array from step 1.</li>
+<li>Recursively build the left and right subtrees from the respective halves of the array.</li>
+<li>Return the root of the new tree.</li>
+</ol>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><ul>
+<li>Time complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="5.495ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2429 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></g><g data-mml-node="mo" transform="translate(2040,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></li>
+<li>Space complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="5.495ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2429 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></g><g data-mml-node="mo" transform="translate(2040,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></li>
+</ul>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct {</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * }</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">balanceBST</span><span class="params">(root *TreeNode)</span></span> *TreeNode {</span><br><span class="line">	<span class="keyword">var</span> arr []*TreeNode</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> dfs <span class="function"><span class="keyword">func</span><span class="params">(*TreeNode)</span></span></span><br><span class="line">	dfs = <span class="function"><span class="keyword">func</span><span class="params">(n *TreeNode)</span></span> {</span><br><span class="line">		<span class="keyword">if</span> n.Left != <span class="literal">nil</span> {</span><br><span class="line">			dfs(n.Left)</span><br><span class="line">		}</span><br><span class="line">		arr = <span class="built_in">append</span>(arr, n)</span><br><span class="line">		<span class="keyword">if</span> n.Right != <span class="literal">nil</span> {</span><br><span class="line">			dfs(n.Right)</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	dfs(root)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> build <span class="function"><span class="keyword">func</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span></span> *TreeNode</span><br><span class="line">	build = <span class="function"><span class="keyword">func</span><span class="params">(l, r <span class="type">int</span>)</span></span> *TreeNode {</span><br><span class="line">		<span class="keyword">if</span> l &gt;= r {</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">		}</span><br><span class="line">		mid := (l + r) / <span class="number">2</span></span><br><span class="line">		n := arr[mid]		<span class="comment">// root</span></span><br><span class="line">		n.Left = build(l, mid)</span><br><span class="line">		n.Right = build(mid+<span class="number">1</span>, r)</span><br><span class="line">		<span class="keyword">return</span> n</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> build(<span class="number">0</span>, <span class="built_in">len</span>(arr))</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>Leetcode</tag>
+        <tag>Tree</tag>
+        <tag>Divide and Conquer</tag>
+        <tag>Greedy</tag>
+        <tag>Depth-First Search</tag>
+        <tag>Binary Search Tree</tag>
+        <tag>Binary Tree</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>💯✅ LeetCode 1550. Three Consecutive Odds | Go</title>
+    <url>/2024/07/02/leetcode/1550-three-consecutive-odds/</url>
+    <content><![CDATA[<p>Link 👉🏻 <a class="link" href="https://leetcode.com/problems/three-consecutive-odds">1550. Three Consecutive Odds <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given an integer array <code>arr</code>, return <code>true</code> if there are three consecutive odd numbers in the array. Otherwise, return <code>false</code>.</p>
+<p><strong>Example 1:</strong></p>
+<ul>
+<li>Input: <code>arr = [2,6,4,1]</code></li>
+<li>Output: <code>false</code></li>
+<li>Explanation: <code>There are no three consecutive odds.</code></li>
+</ul>
+<p><strong>Example 2:</strong></p>
+<ul>
+<li>Input: <code>arr = [1,2,34,3,4,5,7,23,12]</code></li>
+<li>Output: <code>true</code></li>
+<li>Explanation: <code>[5,7,23] are three consecutive odds.</code></li>
+</ul>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= arr.length &lt;= 1000</code></li>
+<li><code>1 &lt;= arr[i] &lt;= 1000</code></li>
+</ul>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition"></a>Intuition</h3><p>We have to check if there are “three consecutive odd numbers” in the array. We can iterate over the array and check if the current number and the two previous numbers are odd. If they are, we return <code>true</code>. If we reach the end of the array without finding three consecutive odd numbers, we return <code>false</code>.</p>
+<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><ol>
+<li>Iterate over the array from index <code>2</code> to <code>len(arr)</code>.</li>
+<li>Check if the current number and the two previous numbers are odd. (with bitwise <code>AND</code> operation)</li>
+<li>Once we find three consecutive odd numbers, return <code>true</code>.</li>
+<li>If we reach the end of the array without finding three consecutive odd numbers, return <code>false</code>.</li>
+</ol>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><ul>
+<li>Time Complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="5.495ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2429 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></g><g data-mml-node="mo" transform="translate(2040,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></li>
+<li>Space Complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2041 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mn" transform="translate(1152,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(1652,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></li>
+</ul>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">threeConsecutiveOdds</span><span class="params">(arr []<span class="type">int</span>)</span></span> <span class="type">bool</span> {</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">2</span>; i &lt; <span class="built_in">len</span>(arr); i++ {</span><br><span class="line">		<span class="keyword">if</span> (arr[i] &amp; <span class="number">1</span>) == <span class="number">1</span> &amp;&amp; (arr[i - <span class="number">1</span>] &amp; <span class="number">1</span>) == <span class="number">1</span> &amp;&amp; (arr[i - <span class="number">2</span>] &amp; <span class="number">1</span>) == <span class="number">1</span> {</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>Leetcode</tag>
+        <tag>Array</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[O(1) Time and Space] LeetCode 1791. Find Center of Star Graph - Easy Solution | Go</title>
+    <url>/2024/06/27/leetcode/1791-find-center-of-star-graph/</url>
+    <content><![CDATA[<p>Link 👉🏻 <a class="link" href="https://leetcode.com/problems/find-center-of-star-graph/">1791. Find Center of Star Graph <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>There is an undirected star graph consisting of <code>n</code> nodes labeled from <code>1</code> to <code>n</code>. A star graph is a graph where there is one center node and exactly <code>n - 1</code> edges that connect the center node with every other node.</p>
+<p>You are given a 2D integer array <code>edges</code> where each <code>edges[i] = [u<sub>i</sub>, v<sub>i</sub>]</code> indicates that there is an edge between the nodes ui and vi. Return the center of the given star graph.</p>
+<p><strong>Example 1:</strong></p>
+<p><figure class="image-caption"><img lazyload="" src="/images/loading.svg" data-src="https://assets.leetcode.com/uploads/2021/02/24/star_graph.png" alt="LeetCode 1791. Find Center of Star Graph -- Example 1"><figcaption>LeetCode 1791. Find Center of Star Graph -- Example 1</figcaption></figure></p>
+<ul>
+<li>Input: <code>edges = [[1,2],[2,3],[4,2]]</code></li>
+<li>Output: <code>2</code></li>
+<li>Explanation: <code>As shown in the figure above, node 2 is connected to every other node, so 2 is the center.</code></li>
+</ul>
+<p><strong>Example 2:</strong></p>
+<ul>
+<li>Input: <code>edges = [[1,2],[5,1],[1,3],[1,4]]</code></li>
+<li>Output: <code>1</code></li>
+</ul>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>3 &lt;= n &lt;= 10<sup>5</sup></code></li>
+<li><code>edges.length == n - 1</code></li>
+<li><code>edges[i].length == 2</code></li>
+<li><code>1 &lt;= u<sub>i</sub>, v<sub>i</sub> &lt;= n</code></li>
+<li><code>u<sub>i</sub> != v<sub>i</sub></code></li>
+<li><code>The given edges represent a valid star graph.</code></li>
+</ul>
+<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition"></a>Intuition</h3><p>In a star ⭐️ graph, the center node will appear in each of the edges which means every node will contain the center node. So, we just need to find the common node in the first two edges. ✨</p>
+<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><ol>
+<li>Check if the first node of the first edge is equal to the first node of the second edge or the second node of the second edge. If true, return the first node of the first edge.</li>
+<li>Otherwise, return the second node of the first edge.</li>
+</ol>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><ul>
+<li>Time complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2041 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mn" transform="translate(1152,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(1652,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></li>
+<li>Space complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2041 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mn" transform="translate(1152,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(1652,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></li>
+</ul>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findCenter</span><span class="params">(edges [][]<span class="type">int</span>)</span></span> <span class="type">int</span> {</span><br><span class="line">	<span class="keyword">if</span> edges[<span class="number">0</span>][<span class="number">0</span>] == edges[<span class="number">1</span>][<span class="number">0</span>] || edges[<span class="number">0</span>][<span class="number">0</span>] == edges[<span class="number">1</span>][<span class="number">1</span>] {</span><br><span class="line">		<span class="keyword">return</span> edges[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> edges[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>Leetcode</tag>
+        <tag>Graph</tag>
       </tags>
   </entry>
   <entry>
@@ -1017,57 +1320,6 @@
       </tags>
   </entry>
   <entry>
-    <title>演算法第一講——Euclid Algorithm 歐幾里得演算法</title>
-    <url>/2023/07/30/ds-alg/euclid/</url>
-    <content><![CDATA[<p>大家在過往學習的經驗中，可能都有聽過歐幾里德這名鼎鼎大名的人物，是位在希臘化時期的數學家，有著著名著作「幾何原本」，在數學領域中有著極大化的貢獻，為現今眾多數學家所認同。</p>
-<p>然而在古希臘的時代的數學家竟然能跟演算法畫上關係，畢竟演算法便是透過有限的步驟中，將給定的輸入做出最有效的解決，並且在執行玩這些有效的步驟中會有正當的終止，產生最後輸出結果，而歐幾里德演算法得以詮釋這些過程，歐幾里德演算法的問題是要在給定的兩個正整數 m 和 n 中找出兩束的最大公因數，因此我們可以列出以下解題步驟：</p>
-<ol>
-<li>找出餘數 (m % n)</li>
-<li>判斷餘數是否為零 (if (r &#x3D; 0) return n)</li>
-<li>被除數與餘數互換 (swap(m, n))</li>
-</ol>
-<p>那看到這邊可能人會有很多有很熟悉的感覺，畢竟我們曾經學習過求公因數的方法有：列舉法、質因數分解、短除法等⋯⋯那其中還有一個有趣的方法便是「輾轉相除法」，也就是我們今天要討論到的歐幾里德演算法，然而所謂的「輾轉」是什麼呢？可能是 Debug 睡不著的時候吧！哈！不過這樣也說得通，輾轉就是曲折的、不斷的過程，而我們正是透過這樣的特性來達成我們的演算法。</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ZtKWx4DZ0FY6SBSctDWtUQ.png"
-                      alt="輾轉相除法直式"
-                ><figcaption>輾轉相除法直式</figcaption></figure></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png"
-                      alt="輾轉過程"
-                ><figcaption>輾轉過程</figcaption></figure></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png"
-                      alt="過程以長方形圖是呈現"
-                ><figcaption>過程以長方形圖是呈現</figcaption></figure></p>
-<p>透過上方圖示我們便可看出輾轉的真正特性，透過互換且不斷地進行運算，已達到我們期望的結果，也可以從上圖中透過切割長方形的模式，在長方形中找出能切割的最大面積正方形，以此將整個長方形變成有正方形所組成的型態，這又可以回歸到上述所歸納的兩個解：</p>
-<ol>
-<li>餘數為 0 -&gt; 完整地切割</li>
-<li>餘數為 1 -&gt; 無法完整地切割</li>
-</ol>
-<p>想必讀到這裡一定更能理解輾轉相除法，接下來我們進行實作吧！</p>
-<h3 id="以下我們展示虛擬碼-Pseudocode"><a href="#以下我們展示虛擬碼-Pseudocode" class="headerlink" title="以下我們展示虛擬碼 (Pseudocode)"></a>以下我們展示虛擬碼 (Pseudocode)</h3><div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line">Algorithm: <span class="built_in">EuclidGCD</span>(m, n)</span><br><span class="line">Input: Two integer m <span class="keyword">and</span> n.</span><br><span class="line">Output: The greatest common factor of m <span class="keyword">and</span> n.</span><br><span class="line">r &lt;- m % n</span><br><span class="line"><span class="keyword">while</span> r != <span class="number">0</span> <span class="keyword">do</span></span><br><span class="line">    m &lt;- n</span><br><span class="line">    n &lt;- r</span><br><span class="line">    r &lt;- m % n</span><br><span class="line"><span class="keyword">return</span> n</span><br><span class="line">以下我們使用 cpp 實作</span><br><span class="line"><span class="type">int</span> <span class="built_in">EuclidGCD</span>(<span class="type">int</span> m, <span class="type">int</span> n) &#123;</span><br><span class="line">    <span class="type">int</span> r = m % n;</span><br><span class="line">    <span class="keyword">while</span> (r != <span class="number">0</span>) &#123;</span><br><span class="line">        m = n;</span><br><span class="line">        n = r;</span><br><span class="line">        r = m % n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>那上面我們討論到歐幾里德演算法的範疇實屬理論，那實際用途到底可以實現什麼情形呢？在分析這道問號題之前，我們可以再回想一下此演算法，最核心的就是要找出最大公因數，並且在由大化小的過程中，可以達成更有效率地轉換，畢竟是透過一系列輾轉的過程，所以其實輾轉相除法的應用層面非常廣，可以在密碼學、數學、計算機科學等⋯⋯領域做使用，甚至在音樂方面都能有實際上的應用，若想知道更多，網路上其實還有更多有趣的範例等著你們去挖掘呢！（維基百科下方的參考連結有超多有趣的例子！）</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a class="link"   href="https://zhuanlan.zhihu.com/p/56528787" >欧几里得与《几何原本》(上篇） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://jason-chen-1992.weebly.com/home/-euclidean-algorithm" >【演算法】歐幾里得算法 Euclidean Algorithm <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Algorithm</category>
-      </categories>
-      <tags>
-        <tag>algorithm</tag>
-        <tag>note</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>AWS: 用 AWS Lambda Function 開發 Serverless Line Bot - 1</title>
     <url>/2024/04/23/projects/line-bot-with-aws-lambda-functions-1/</url>
     <content><![CDATA[<p>過去在撰寫 Line Bot 我都是使用 Python 並且搭配後端框架，使用過 FastAPI 以及 Flask 做開發，都需要架起一個 Server 才能讓我們的 Line Bot 成功運行，此外還需要一台機器不斷地去幫我們運作才能處理 Line Bot 的請求，因此我轉向思考 Line Bot 的特性，Line Bot 就是透過用戶的傳遞訊息加以觸發回應，我們可以總結成三大要素：「用戶」、「觸發」、「回應」這三個關鍵字，因此我就想到了 AWS Lambda + API Gateway 的特性，當今天有用戶傳遞訊息給 Line Bot 時，透過 AWS Lambda Function 來觸發回應，這樣不就不需要架設 Server 了，還可以達成 Serverless 的概念，使用者用多少付多少，不用讓 Server 一直運作著。</p>
@@ -1249,6 +1501,57 @@
       </tags>
   </entry>
   <entry>
+    <title>演算法第一講——Euclid Algorithm 歐幾里得演算法</title>
+    <url>/2023/07/30/ds-alg/euclid/</url>
+    <content><![CDATA[<p>大家在過往學習的經驗中，可能都有聽過歐幾里德這名鼎鼎大名的人物，是位在希臘化時期的數學家，有著著名著作「幾何原本」，在數學領域中有著極大化的貢獻，為現今眾多數學家所認同。</p>
+<p>然而在古希臘的時代的數學家竟然能跟演算法畫上關係，畢竟演算法便是透過有限的步驟中，將給定的輸入做出最有效的解決，並且在執行玩這些有效的步驟中會有正當的終止，產生最後輸出結果，而歐幾里德演算法得以詮釋這些過程，歐幾里德演算法的問題是要在給定的兩個正整數 m 和 n 中找出兩束的最大公因數，因此我們可以列出以下解題步驟：</p>
+<ol>
+<li>找出餘數 (m % n)</li>
+<li>判斷餘數是否為零 (if (r &#x3D; 0) return n)</li>
+<li>被除數與餘數互換 (swap(m, n))</li>
+</ol>
+<p>那看到這邊可能人會有很多有很熟悉的感覺，畢竟我們曾經學習過求公因數的方法有：列舉法、質因數分解、短除法等⋯⋯那其中還有一個有趣的方法便是「輾轉相除法」，也就是我們今天要討論到的歐幾里德演算法，然而所謂的「輾轉」是什麼呢？可能是 Debug 睡不著的時候吧！哈！不過這樣也說得通，輾轉就是曲折的、不斷的過程，而我們正是透過這樣的特性來達成我們的演算法。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ZtKWx4DZ0FY6SBSctDWtUQ.png"
+                      alt="輾轉相除法直式"
+                ><figcaption>輾轉相除法直式</figcaption></figure></p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png"
+                      alt="輾轉過程"
+                ><figcaption>輾轉過程</figcaption></figure></p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GLbMrGYdxAAT-3Vee-vXDA.png"
+                      alt="過程以長方形圖是呈現"
+                ><figcaption>過程以長方形圖是呈現</figcaption></figure></p>
+<p>透過上方圖示我們便可看出輾轉的真正特性，透過互換且不斷地進行運算，已達到我們期望的結果，也可以從上圖中透過切割長方形的模式，在長方形中找出能切割的最大面積正方形，以此將整個長方形變成有正方形所組成的型態，這又可以回歸到上述所歸納的兩個解：</p>
+<ol>
+<li>餘數為 0 -&gt; 完整地切割</li>
+<li>餘數為 1 -&gt; 無法完整地切割</li>
+</ol>
+<p>想必讀到這裡一定更能理解輾轉相除法，接下來我們進行實作吧！</p>
+<h3 id="以下我們展示虛擬碼-Pseudocode"><a href="#以下我們展示虛擬碼-Pseudocode" class="headerlink" title="以下我們展示虛擬碼 (Pseudocode)"></a>以下我們展示虛擬碼 (Pseudocode)</h3><div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line">Algorithm: <span class="built_in">EuclidGCD</span>(m, n)</span><br><span class="line">Input: Two integer m <span class="keyword">and</span> n.</span><br><span class="line">Output: The greatest common factor of m <span class="keyword">and</span> n.</span><br><span class="line">r &lt;- m % n</span><br><span class="line"><span class="keyword">while</span> r != <span class="number">0</span> <span class="keyword">do</span></span><br><span class="line">    m &lt;- n</span><br><span class="line">    n &lt;- r</span><br><span class="line">    r &lt;- m % n</span><br><span class="line"><span class="keyword">return</span> n</span><br><span class="line">以下我們使用 cpp 實作</span><br><span class="line"><span class="type">int</span> <span class="built_in">EuclidGCD</span>(<span class="type">int</span> m, <span class="type">int</span> n) &#123;</span><br><span class="line">    <span class="type">int</span> r = m % n;</span><br><span class="line">    <span class="keyword">while</span> (r != <span class="number">0</span>) &#123;</span><br><span class="line">        m = n;</span><br><span class="line">        n = r;</span><br><span class="line">        r = m % n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>那上面我們討論到歐幾里德演算法的範疇實屬理論，那實際用途到底可以實現什麼情形呢？在分析這道問號題之前，我們可以再回想一下此演算法，最核心的就是要找出最大公因數，並且在由大化小的過程中，可以達成更有效率地轉換，畢竟是透過一系列輾轉的過程，所以其實輾轉相除法的應用層面非常廣，可以在密碼學、數學、計算機科學等⋯⋯領域做使用，甚至在音樂方面都能有實際上的應用，若想知道更多，網路上其實還有更多有趣的範例等著你們去挖掘呢！（維基百科下方的參考連結有超多有趣的例子！）</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a class="link"   href="https://zhuanlan.zhihu.com/p/56528787" >欧几里得与《几何原本》(上篇） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://jason-chen-1992.weebly.com/home/-euclidean-algorithm" >【演算法】歐幾里得算法 Euclidean Algorithm <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>algorithm</tag>
+        <tag>note</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>做個小貪吃蛇來玩吧！</title>
     <url>/2023/07/30/projects/snake-game/</url>
     <content><![CDATA[<p>還記得當時剛學習程式語言的時候，對於什麼知識都不懂，連搜尋能力也沒有，常常搜不到關鍵字，問題也解決不了，不過當時懵懂無知的狀態，完成了基礎貪吃蛇的小遊戲，所以決定撰寫一篇文章來記錄當時的過程。</p>
@@ -1330,265 +1633,6 @@
       <tags>
         <tag>python</tag>
         <tag>pygame</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>[✅ Beats 💯] LeetCode 1052. Grumpy Bookstore Owner - Easy Solution | Go</title>
-    <url>/2024/06/20/leetcode/1052-grumpy-bookstore-owner/</url>
-    <content><![CDATA[<p>Link 👉🏻 <a class="link" href="https://leetcode.com/problems/grumpy-bookstore-owner/">1052. Grumpy Bookstore Owner <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>There is a bookstore owner that has a store open for <code>n</code> minutes. Every minute, some number of customers enter the store. You are given an integer array <code>customers</code> of length <code>n</code> where <code>customers[i]</code> is the number of the customer that enters the store at the start of the <code>i<sup>th</sup></code> minute and all those customers leave after the end of that minute.</p>
-<p>On some minutes, the bookstore owner is grumpy. You are given a binary array grumpy where <code>grumpy[i]</code> is <code>1</code> if the bookstore owner is grumpy during the <code>i<sup>th</sup></code> minute, and is <code>0</code> otherwise.</p>
-<p>When the bookstore owner is grumpy, the customers of that minute are not satisfied, otherwise, they are satisfied.</p>
-<p>The bookstore owner knows a secret technique to keep themselves not grumpy for <code>minutes</code> consecutive minutes, but can only use it once.</p>
-<p>Return the maximum number of customers that can be satisfied throughout the day.</p>
-<p><strong>Example 1:</strong></p>
-<ul>
-<li>Input:<code> customers = [1,0,1,2,1,1,7,5], grumpy = [0,1,0,1,0,1,0,1], minutes = 3</code></li>
-<li>Output: <code>16</code></li>
-<li>Explanation: <code>The bookstore owner keeps themselves not grumpy for the last 3 minutes. The maximum number of customers that can be satisfied = 1 + 1 + 1 + 1 + 7 + 5 = 16.</code></li>
-</ul>
-<p><strong>Example 2:</strong></p>
-<ul>
-<li>Input: <code>customers = [1], grumpy = [0], minutes = 1</code></li>
-<li>Output: <code>1</code></li>
-</ul>
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><code>n == customers.length == grumpy.length</code></li>
-<li><code>1 &lt;= minutes &lt;= n &lt;= 2 * 10<sup>4</sup></code></li>
-<li><code>0 &lt;= customers[i] &lt;= 1000</code></li>
-<li><code>grumpy[i]</code> is either <code>0</code> or <code>1</code>.</li>
-</ul>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition"></a>Intuition</h3><p>Not grumpy for minutes consecutive minutes, we need to subtract the previous satisfaction if they were grumpy.</p>
-<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><ol>
-<li>Add the satisfaction from non-grumpy as the base satisfaction.</li>
-<li>Compute the grumpy satisfaction then we have to make sure we can find the maximum satisfaction in the consecutive minutes.</li>
-<li>If the current iteration is greater than the minutes and the previous iteration was grumpy, we need to subtract the previous satisfaction.</li>
-<li>Make sure the satisfaction with Secret Technique is the maximum satisfaction.</li>
-<li>Return the sum of the base satisfaction and the maximum satisfaction with Secret Technique.</li>
-</ol>
-<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> i &gt;= minutes &amp;&amp; grumpy[i-minutes] == <span class="number">1</span> {</span><br><span class="line">    satisfiedWithTech -= customers[i-minutes] </span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><ul>
-<li><p>Time complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.844ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2141 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1752,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
-</li>
-<li><p>Space complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.844ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2141 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1752,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
-</li>
-</ul>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxSatisfied</span><span class="params">(customers []<span class="type">int</span>, grumpy []<span class="type">int</span>, minutes <span class="type">int</span>)</span></span> <span class="type">int</span> {</span><br><span class="line">	baseSatisfied        := <span class="number">0</span></span><br><span class="line">	satisfiedWithTech    := <span class="number">0</span></span><br><span class="line">	maxSatisfiedWithTech := <span class="number">0</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(customers); i++ {</span><br><span class="line">		<span class="keyword">if</span> grumpy[i] == <span class="number">1</span> {</span><br><span class="line">			satisfiedWithTech += customers[i]</span><br><span class="line">		} <span class="keyword">else</span> {</span><br><span class="line">			baseSatisfied += customers[i]</span><br><span class="line">		}</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> i &gt;= minutes &amp;&amp; grumpy[i-minutes] == <span class="number">1</span> {</span><br><span class="line">			satisfiedWithTech -= customers[i-minutes] <span class="comment">// because not grumpy for minutes consecutive minutes</span></span><br><span class="line">		}</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> satisfiedWithTech &gt; maxSatisfiedWithTech {</span><br><span class="line">			maxSatisfiedWithTech = satisfiedWithTech</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> baseSatisfied + maxSatisfiedWithTech</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>Leetcode</tag>
-        <tag>Array</tag>
-        <tag>Sliding Window</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++</title>
-    <url>/2024/06/25/leetcode/0001-two-sum/</url>
-    <content><![CDATA[<p>Link 👉🏻 <a class="link" href="https://leetcode.com/problems/two-sum/">1. Two Sum <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given an array of integers <code>nums</code> and an integer <code>target</code>, <em>return indices of the two numbers such that they add up to <code>target</code></em>.</p>
-<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
-<p>You can return the answer in any order.</p>
-<p><strong>Example 1:</strong></p>
-<ul>
-<li>Input: <code>nums = [2,7,11,15], target = 9</code></li>
-<li>Output: <code>[0,1]</code></li>
-<li>Explanation: <code>Because nums[0] + nums[1] == 9, we return [0, 1].</code></li>
-</ul>
-<p><strong>Example 2:</strong></p>
-<ul>
-<li>Input: <code>nums = [3,2,4], target = 6</code></li>
-<li>Output: <code>[1,2]</code></li>
-</ul>
-<p><strong>Example 3:</strong></p>
-<ul>
-<li>Input: <code>nums = [3,3], target = 6</code></li>
-<li>Output: <code>[0,1]</code></li>
-</ul>
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><code>2 &lt;= nums.length &lt;= 10<sup>4</sup></code></li>
-<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
-<li><code>-10<sup>9</sup> &lt;= target &lt;= 10<sup>9</sup></code></li>
-<li><code>Only one valid answer exists.</code></li>
-</ul>
-<p><strong>Follow-up:</strong> Can you come up with an algorithm that is less than <code>O(n<sup>2</sup>)</code> time complexity?</p>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition"></a>Intuition</h3><p>Use HashMap to keep numbers and their indices we found.</p>
-
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>Note</p>
-
-    </div>
-    <div class="notel-content">
-      <p>Create a Hash Table in <code>GO</code> with <code>make</code> function <sup><a class="link" href="https://www.geeksforgeeks.org/golang-maps/">Golang Maps <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></sup>, and use <code>map[key] = value</code> to set the value of the key.</p>
-<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line">numMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)</span><br></pre></td></tr></table></figure></div>
-
-    </div>
-  </div>
-
-
-
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>Note</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>How to Work with maps?</strong> <sup><a class="link" href="https://go.dev/blog/maps">Go maps in action#Working with maps <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></sup></p>
-<p>A two-value assignment tests for the existence of a key:</p>
-<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line">i, ok := m[<span class="string">"route"</span>]</span><br></pre></td></tr></table></figure></div>
-
-<p>In this statement, the first <code>value (i)</code> is assigned the value stored under the key “route”. If that key doesn’t exist, i is the value type’s zero <code>value (0)</code>. The second <code>value (ok)</code> is a <code>bool</code> that is true if the key exists in the map, and false if not.</p>
-<p>To test for a key without retrieving the value, use an underscore in place of the first value:</p>
-<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line">_, ok := m[<span class="string">"route"</span>] </span><br></pre></td></tr></table></figure></div>
-
-<p>To iterate over the contents of a map, use the range keyword:</p>
-<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> key, value := <span class="keyword">range</span> m {</span><br><span class="line">    fmt.Println(<span class="string">"Key:"</span>, key, <span class="string">"Value:"</span>, value)</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
-
-    </div>
-  </div>
-
-<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><ol>
-<li>Traverse the <code>nums</code> array and store the difference between the <code>target</code> and the current <code>number</code> as the <code>key</code> and the <code>index</code> as the <code>value</code> in the HashMap.</li>
-<li>If the current <code>number</code> is already in the HashMap, return the <code>index</code> of the current <code>number</code> and the <code>index</code> stored in the HashMap.</li>
-<li>We still need to return an empty array if there is no solution.</li>
-</ol>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><ul>
-<li><p>Time complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.844ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2141 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1752,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
-</li>
-<li><p>Space complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.844ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2141 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1752,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
-</li>
-</ul>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><div class="tabs" id="tab-first-unique-name"><ul class="nav-tabs"><li class="tab active"><a class="#first-unique-name-1">Go</a></li><li class="tab"><a class="#first-unique-name-2">Python</a></li><li class="tab"><a class="#first-unique-name-3">C++</a></li></ul><div class="tab-content"><div class="tab-pane active" id="first-unique-name-1"><div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">twoSum</span><span class="params">(nums []<span class="type">int</span>, target <span class="type">int</span>)</span></span> []<span class="type">int</span> {</span><br><span class="line">    hashMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, num := <span class="keyword">range</span> nums {</span><br><span class="line">        <span class="keyword">if</span> j, ok := hashMap[num]; ok {</span><br><span class="line">            <span class="keyword">return</span> []<span class="type">int</span>{j, i}</span><br><span class="line">        }</span><br><span class="line">        hashMap[target - num] = i</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> []<span class="type">int</span>{}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div></div><div class="tab-pane" id="first-unique-name-2"><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">twoSum</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], target: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        hMap = {}</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] <span class="keyword">in</span> hMap:</span><br><span class="line">                <span class="keyword">return</span> [hMap[nums[i]], i]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                hMap[target - nums[i]] = i</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> []</span><br></pre></td></tr></table></figure></div></div><div class="tab-pane" id="first-unique-name-3"><div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>{</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; hashMap;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); ++i) {</span><br><span class="line">            <span class="type">int</span> num = nums[i];</span><br><span class="line">            <span class="keyword">if</span> (hashMap.<span class="built_in">find</span>(num) != hashMap.<span class="built_in">end</span>()) {</span><br><span class="line">                <span class="keyword">return</span> {hashMap[num], i};</span><br><span class="line">            }</span><br><span class="line">            hashMap[target - num] = i;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> {};</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></table></figure></div></div></div></div>
-
-
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Go</tag>
-        <tag>Leetcode</tag>
-        <tag>Array</tag>
-        <tag>Hash Table</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode 1382. Balance a Binary Search Tree - Easy Solution | Go</title>
-    <url>/2024/06/30/leetcode/1382-balance-a-binary-search-tree/</url>
-    <content><![CDATA[<p>Link 👉🏻 <a class="link" href="https://leetcode.com/problems/balance-a-binary-search-tree/">1382. Balance a Binary Search Tree <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given the <code>root</code> of a binary search tree, return a balanced binary search tree with the same node values. If there is more than one answer, return any of them.</p>
-<p>A binary search tree is balanced if the depth of the two subtrees of every node never differs by more than <code>1</code>.</p>
-<p><strong>Example 1:</strong></p>
-<p><figure class="image-caption"><img lazyload="" src="/images/loading.svg" data-src="https://assets.leetcode.com/uploads/2021/08/10/balance1-tree.jpg" alt="1382. Balance a Binary Search Tree -- Example 1"><figcaption>1382. Balance a Binary Search Tree -- Example 1</figcaption></figure></p>
-<ul>
-<li>Input: <code>root = [1,null,2,null,3,null,4,null,null]</code></li>
-<li>Output: <code>[2,1,3,null,null,null,4]</code></li>
-<li><code>Explanation: This is not the only correct answer, [3,1,4,null,2] is also correct.</code></li>
-</ul>
-<p><strong>Example 2:</strong></p>
-<p><figure class="image-caption"><img lazyload="" src="/images/loading.svg" data-src="https://assets.leetcode.com/uploads/2021/08/10/balanced2-tree.jpg" alt="1382. Balance a Binary Search Tree -- Example 2"><figcaption>1382. Balance a Binary Search Tree -- Example 2</figcaption></figure></p>
-<ul>
-<li>Input: <code>root = [2,1,3]</code></li>
-<li>Output: <code>[2,1,3]</code></li>
-</ul>
-<p><strong>Constraints:</strong></p>
-<ul>
-<li>The number of nodes in the tree is in the range <code>[1, 10<sup>4</sup>]</code>.</li>
-<li><code>1 &lt;= Node.val &lt;= 10<sup>5</sup></code></li>
-</ul>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition"></a>Intuition</h3><p>With Depth-First Search (DFS), we can traverse a tree and store its nodes in an array. Once we have this array, we can construct a new tree using <code>in-order</code> traversal. This is done by dividing the array in half and recursively building the left and right subtrees from the respective halves.</p>
-
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>Note</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>How to implement slicing in Go?</strong> <sup><a class="link" href="https://yushuanhsieh.github.io/post/2021-12-29-golang-slice-append/" target="_blank">Golang slice append 實作細節 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></sup></p>
-<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> nums []<span class="type">int</span></span><br><span class="line">nums = <span class="built_in">append</span>(nums, <span class="number">1</span>)		<span class="comment">// append 1 to the slice</span></span><br></pre></td></tr></table></figure></div>
-
-    </div>
-  </div>
-
-<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><ol>
-<li>Traverse the tree using Depth-First Search (DFS) and store the nodes in an array.</li>
-<li>Construct a new tree using the array from step 1.</li>
-<li>Recursively build the left and right subtrees from the respective halves of the array.</li>
-<li>Return the root of the new tree.</li>
-</ol>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><ul>
-<li>Time complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="5.495ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2429 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></g><g data-mml-node="mo" transform="translate(2040,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></li>
-<li>Space complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="5.495ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2429 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></g><g data-mml-node="mo" transform="translate(2040,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></li>
-</ul>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct {</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * }</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">balanceBST</span><span class="params">(root *TreeNode)</span></span> *TreeNode {</span><br><span class="line">	<span class="keyword">var</span> arr []*TreeNode</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> dfs <span class="function"><span class="keyword">func</span><span class="params">(*TreeNode)</span></span></span><br><span class="line">	dfs = <span class="function"><span class="keyword">func</span><span class="params">(n *TreeNode)</span></span> {</span><br><span class="line">		<span class="keyword">if</span> n.Left != <span class="literal">nil</span> {</span><br><span class="line">			dfs(n.Left)</span><br><span class="line">		}</span><br><span class="line">		arr = <span class="built_in">append</span>(arr, n)</span><br><span class="line">		<span class="keyword">if</span> n.Right != <span class="literal">nil</span> {</span><br><span class="line">			dfs(n.Right)</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	dfs(root)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> build <span class="function"><span class="keyword">func</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span></span> *TreeNode</span><br><span class="line">	build = <span class="function"><span class="keyword">func</span><span class="params">(l, r <span class="type">int</span>)</span></span> *TreeNode {</span><br><span class="line">		<span class="keyword">if</span> l &gt;= r {</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">		}</span><br><span class="line">		mid := (l + r) / <span class="number">2</span></span><br><span class="line">		n := arr[mid]		<span class="comment">// root</span></span><br><span class="line">		n.Left = build(l, mid)</span><br><span class="line">		n.Right = build(mid+<span class="number">1</span>, r)</span><br><span class="line">		<span class="keyword">return</span> n</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> build(<span class="number">0</span>, <span class="built_in">len</span>(arr))</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>Leetcode</tag>
-        <tag>Tree</tag>
-        <tag>Divide and Conquer</tag>
-        <tag>Greedy</tag>
-        <tag>Depth-First Search</tag>
-        <tag>Binary Search Tree</tag>
-        <tag>Binary Tree</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>[O(1) Time and Space] LeetCode 1791. Find Center of Star Graph - Easy Solution | Go</title>
-    <url>/2024/06/27/leetcode/1791-find-center-of-star-graph/</url>
-    <content><![CDATA[<p>Link 👉🏻 <a class="link" href="https://leetcode.com/problems/find-center-of-star-graph/">1791. Find Center of Star Graph <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>There is an undirected star graph consisting of <code>n</code> nodes labeled from <code>1</code> to <code>n</code>. A star graph is a graph where there is one center node and exactly <code>n - 1</code> edges that connect the center node with every other node.</p>
-<p>You are given a 2D integer array <code>edges</code> where each <code>edges[i] = [u<sub>i</sub>, v<sub>i</sub>]</code> indicates that there is an edge between the nodes ui and vi. Return the center of the given star graph.</p>
-<p><strong>Example 1:</strong></p>
-<p><figure class="image-caption"><img lazyload="" src="/images/loading.svg" data-src="https://assets.leetcode.com/uploads/2021/02/24/star_graph.png" alt="LeetCode 1791. Find Center of Star Graph -- Example 1"><figcaption>LeetCode 1791. Find Center of Star Graph -- Example 1</figcaption></figure></p>
-<ul>
-<li>Input: <code>edges = [[1,2],[2,3],[4,2]]</code></li>
-<li>Output: <code>2</code></li>
-<li>Explanation: <code>As shown in the figure above, node 2 is connected to every other node, so 2 is the center.</code></li>
-</ul>
-<p><strong>Example 2:</strong></p>
-<ul>
-<li>Input: <code>edges = [[1,2],[5,1],[1,3],[1,4]]</code></li>
-<li>Output: <code>1</code></li>
-</ul>
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><code>3 &lt;= n &lt;= 10<sup>5</sup></code></li>
-<li><code>edges.length == n - 1</code></li>
-<li><code>edges[i].length == 2</code></li>
-<li><code>1 &lt;= u<sub>i</sub>, v<sub>i</sub> &lt;= n</code></li>
-<li><code>u<sub>i</sub> != v<sub>i</sub></code></li>
-<li><code>The given edges represent a valid star graph.</code></li>
-</ul>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition"></a>Intuition</h3><p>In a star ⭐️ graph, the center node will appear in each of the edges which means every node will contain the center node. So, we just need to find the common node in the first two edges. ✨</p>
-<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><ol>
-<li>Check if the first node of the first edge is equal to the first node of the second edge or the second node of the second edge. If true, return the first node of the first edge.</li>
-<li>Otherwise, return the second node of the first edge.</li>
-</ol>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><ul>
-<li>Time complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2041 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mn" transform="translate(1152,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(1652,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></li>
-<li>Space complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2041 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mn" transform="translate(1152,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(1652,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></li>
-</ul>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findCenter</span><span class="params">(edges [][]<span class="type">int</span>)</span></span> <span class="type">int</span> {</span><br><span class="line">	<span class="keyword">if</span> edges[<span class="number">0</span>][<span class="number">0</span>] == edges[<span class="number">1</span>][<span class="number">0</span>] || edges[<span class="number">0</span>][<span class="number">0</span>] == edges[<span class="number">1</span>][<span class="number">1</span>] {</span><br><span class="line">		<span class="keyword">return</span> edges[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> edges[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>Leetcode</tag>
-        <tag>Graph</tag>
       </tags>
   </entry>
   <entry>
