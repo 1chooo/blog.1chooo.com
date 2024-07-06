@@ -7,7 +7,7 @@ tags:
 - Leetcode
 - Array
 - Prefix Sum
-cover: /images/cover/leetcode/1550-three-consecutive-odds.png
+cover: /images/cover/leetcode/1480-running-sum-of-1d-array.png
 mathjax: true
 ---
 
