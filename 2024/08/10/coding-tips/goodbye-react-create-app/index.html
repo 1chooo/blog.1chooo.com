@@ -25,12 +25,15 @@
 <meta property="og:site_name" content="Hugo&#39;s Blog">
 <meta property="og:description" content="在最近這個暑假中，我幾乎都在為了我的個人網站 – 1chooo.com  做開發，把一些過去想加上卻沒時間更新的技術債補回去，過去我採用的是 React  搭配 TypeScript  來開發，不過最近有遇到了一些問題，其中一個就是「我無法將 Typescript 升級到 ^5 的版本」，會出現以下的錯誤訊息： 1234567891011121314151617181920npm error co">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/goodbye-react-create-app/create-react-app-v-5-0-1.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/coding-tips/goodbye-react-create-app/start-a-new-react-project.png">
 <meta property="article:published_time" content="2024-08-09T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-08-10T12:29:01.331Z">
+<meta property="article:modified_time" content="2024-08-10T12:34:53.329Z">
 <meta property="article:author" content="Hugo ChunHo Lin (1chooo)">
 <meta property="article:tag" content="React">
 <meta property="article:tag" content="Typescript">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.1chooo.com/images/post/coding-tips/goodbye-react-create-app/create-react-app-v-5-0-1.png">
     
     
     <!--- Icon Part-->
@@ -636,8 +639,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-08-10 20:29:01</span>
-            <span class="mobile">2024-08-10 20:29:01</span>
+            <span class="desktop">2024-08-10 20:34:53</span>
+            <span class="mobile">2024-08-10 20:34:53</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -679,7 +682,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.2k Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.3k Words</span>
         </span>
     
     
@@ -706,9 +709,21 @@
             <p>在最近這個暑假中，我幾乎都在為了我的個人網站 – <a class="link"   target="_blank" rel="noopener" href="https://1chooo.com/" >1chooo.com <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 做開發，把一些過去想加上卻沒時間更新的技術債補回去，過去我採用的是 <a class="link"   target="_blank" rel="noopener" href="https://react.dev/" >React <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 搭配 <a class="link"   target="_blank" rel="noopener" href="https://www.typescriptlang.org/" >TypeScript <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來開發，不過最近有遇到了一些問題，其中一個就是「<a target="_blank" rel="noopener" href="https://github.com/1chooo/1chooo.com/pull/76">我無法將 Typescript 升級到 <code>^5</code> 的版本</a>」，會出現以下的錯誤訊息：</p>
 <div class="highlight-container" data-rel="Typescript"><figure class="iseeu highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">npm error code <span class="variable constant_">ERESOLVE</span></span><br><span class="line">npm error <span class="variable constant_">ERESOLVE</span> could not resolve</span><br><span class="line">npm error</span><br><span class="line">npm error <span class="title class_">While</span> <span class="attr">resolving</span>: react-scripts@<span class="number">5.0</span><span class="number">.1</span></span><br><span class="line">npm error <span class="title class_">Found</span>: typescript@<span class="number">5.5</span><span class="number">.4</span></span><br><span class="line">npm error node_modules/typescript</span><br><span class="line">npm error   typescript@<span class="string">&quot;^5.5.4&quot;</span> <span class="keyword">from</span> the root project</span><br><span class="line">npm error   peer typescript@<span class="string">&quot;&gt;= 2.7&quot;</span> <span class="keyword">from</span> fork-ts-checker-webpack-plugin@<span class="number">6.5</span><span class="number">.3</span></span><br><span class="line">npm error   node_modules/fork-ts-checker-webpack-plugin</span><br><span class="line">npm error     fork-ts-checker-webpack-plugin@<span class="string">&quot;^6.5.0&quot;</span> <span class="keyword">from</span> react-dev-utils@<span class="number">12.0</span><span class="number">.1</span></span><br><span class="line">npm error     node_modules/react-dev-utils</span><br><span class="line">npm error       react-dev-utils@<span class="string">&quot;^12.0.1&quot;</span> <span class="keyword">from</span> react-scripts@<span class="number">5.0</span><span class="number">.1</span></span><br><span class="line">npm error       node_modules/react-scripts</span><br><span class="line">npm error         react-scripts@<span class="string">&quot;5.0.1&quot;</span> <span class="keyword">from</span> the root project</span><br><span class="line">npm error   <span class="number">1</span> more (tsutils)</span><br><span class="line">npm error</span><br><span class="line">npm error <span class="title class_">Could</span> not resolve <span class="attr">dependency</span>:</span><br><span class="line">npm error peerOptional typescript@<span class="string">&quot;^3.2.1 || ^4&quot;</span> <span class="keyword">from</span> react-scripts@<span class="number">5.0</span><span class="number">.1</span></span><br><span class="line">npm error node_modules/react-scripts</span><br><span class="line">npm error   react-scripts@<span class="string">&quot;5.0.1&quot;</span> <span class="keyword">from</span> the root project</span><br></pre></td></tr></table></figure></div>
 
-<p>因此想透過本篇想紀錄的解決過程，以及相關脈絡資訊，如果電腦需要安裝 <a class="link"   target="_blank" rel="noopener" href="https://nodejs.org/" >Node.js, npm <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 的話，可以參考我過去的文章 – <a class="link"   target="_blank" rel="noopener" href="https://medium.com/@1chooo/%E5%A6%82%E4%BD%95%E5%9C%A8-mac-%E5%AE%89%E8%A3%9D-node-js-npm-3d7101d998f4" >如何在 Mac 安裝 Node.js &amp; NPM <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來安裝。</p>
+<p>因此想透過本篇想紀錄的解決過程，以及相關脈絡資訊，如果電腦需要安裝 <a class="link"   target="_blank" rel="noopener" href="https://nodejs.org/" >Node.js, npm <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 的話，可以參考我過去的文章 – <a href="/2024/01/03/dev-env/mac-install-nodejs-npm/">如何在 Mac 安裝 Node.js &amp; NPM</a> 來安裝。</p>
 <p>過去我建立 React 專案的方式是透過 <a target="_blank" rel="noopener" href="https://github.com/facebook/create-react-app"><code>create-react-app</code> (CRA)</a> 來建立，不過在這次升級的過程中，我發現 <a target="_blank" rel="noopener" href="https://github.com/facebook/create-react-app"><code>create-react-app</code></a> 似乎只支援到 <a target="_blank" rel="noopener" href="https://github.com/facebook/create-react-app/releases/tag/v5.0.1"><code>v5.0.1</code></a> 的版本，並且可以從 Facebook 的 GitHub Repo 中發現，目前 CRA 已經沒有人在維護了，上次更新已經是 2022 年了，所以想當然爾，現在的 CRA 沒有支援 TypeScript <code>5.x</code> 的版本，只能支援到 <code>4.x</code> 的版本，這也是為什麼我目前無法升級 TypeScript 到 <code>5.x</code> 的原因。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/goodbye-react-create-app/create-react-app-v-5-0-1.png"
+                      alt="create-react-app v5.0.1"
+                ><figcaption>create-react-app v5.0.1</figcaption></figure></p>
 <p>因此我就開始在網路上搜尋為什麼 CRA 不再維護，以及有沒有其他的替代方案，首先我從 <a class="link"   target="_blank" rel="noopener" href="https://react.dev/" >React <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 的官方文件中就寫明了建立 React App 的方式沒有 <code>create-react-app</code> 這個方式，反倒是建議使用像是 <a class="link"   target="_blank" rel="noopener" href="https://react.dev/learn/start-a-new-react-project" >Next.js, Remix, Gatsby, Expo (for native apps), etc. <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 這些框架來建立 React App，我想這也是為什麼 CRA 不再維護的原因之一。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/coding-tips/goodbye-react-create-app/start-a-new-react-project.png"
+                      alt="Start a New React Project"
+                ><figcaption>Start a New React Project</figcaption></figure></p>
 <p>我在 <a class="link"   target="_blank" rel="noopener" href="https://dev.to/ag2byte/create-react-app-is-officially-dead-h7o" >Goodbye create-react-app <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 這篇文章中找到了一些 CRA 不再維護的原因，其中提到 CRA 這個專案已經被 Facebook 官方放棄了，主要是因為效能的關係，對於現行的方法而言太慢了，初始化的階段會花費太多時間，另外 CRA 也有一些因為過時所產生的警告，這些問題已經困擾開發者很久了，然而對於初學者來說也很難解決這些問題，因此 CRA 這個方式已經不再是最佳的選擇了。</p>
 <p>另外我也在 <a target="_blank" rel="noopener" href="https://github.com/facebook/create-react-app"><code>create-react-app</code> (CRA)</a> 的 <a class="link"   target="_blank" rel="noopener" href="https://github.com/facebook/create-react-app/issues/12628" >Issues <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 中找到一個別再用 CRA 的理由以及其他合適的建立 App 方法，總之挖掘資訊到現在，發現 CRA 基本上是被詬病已久的舊時代產物了，也是時候要更新。</p>
 <p>不過身為軟體工程師，還是想要把問題解決，畢竟只是更新一個 Dependencies 而已，總會有解法讓我繼續使用 CRA 並且又能夠升級 TypeScript 到 <code>5.x</code> 的版本吧！於是我就找到了一個在 <a target="_blank" rel="noopener" href="https://github.com/facebook/create-react-app"><code>create-react-app</code></a> 的 PR – <a class="link"   target="_blank" rel="noopener" href="https://github.com/facebook/create-react-app/issues/13080" >(react-scripts) Support for TypeScript 5.x #13080 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，這個 PR 也是關於 Typescript 升級不到 <code>5.x</code> 的問題，同時也有解決方法在裡面，其實只要在 <code>package.json</code> 中加入以下的 <a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v8/configuring-npm/package-json#overrides"><code>overrides</code></a> 就可以解決這個問題：</p>
