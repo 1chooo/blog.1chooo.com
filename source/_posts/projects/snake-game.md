@@ -1,5 +1,5 @@
 ---
-title: 做個小貪吃蛇來玩吧！
+title: 程式小白對專案還沒想法嗎？來做貪吃蛇玩吧！
 categories: Project
 date: 2023-07-30 15:00:00
 tags:
