@@ -1,11 +1,11 @@
 ---
 title: 讓老舊的 Create React App (CRA) 支援 TypeScript 5.x 吧！
-categories: CodingTips
+categories: Frontend
 date: 2024-08-10 00:00:00
 tags: 
 - React
 - Typescript
-cover: /images/cover/coding-tips/goodbye-react-create-app.png
+cover: /images/cover/frontend/goodbye-react-create-app.png
 ---
 
 在最近這個暑假中，我幾乎都在為了我的個人網站 -- [1chooo.com](https://1chooo.com) 做開發，把一些過去想加上卻沒時間更新的技術債補回去，過去我採用的是 [React](https://react.dev/) 搭配 [TypeScript](https://www.typescriptlang.org/) 來開發，不過最近有遇到了一些問題，其中一個就是「[我無法將 Typescript 升級到 `^5` 的版本](https://github.com/1chooo/1chooo.com/pull/76)」，會出現以下的錯誤訊息：
@@ -37,11 +37,11 @@ npm error   react-scripts@"5.0.1" from the root project
 
 過去我建立 React 專案的方式是透過 [`create-react-app` (CRA)](https://github.com/facebook/create-react-app) 來建立，不過在這次升級的過程中，我發現 [`create-react-app`](https://github.com/facebook/create-react-app) 似乎只支援到 [`v5.0.1`](https://github.com/facebook/create-react-app/releases/tag/v5.0.1) 的版本，並且可以從 Facebook 的 GitHub Repo 中發現，目前 CRA 已經沒有人在維護了，上次更新已經是 2022 年了，所以想當然爾，現在的 CRA 沒有支援 TypeScript `5.x` 的版本，只能支援到 `4.x` 的版本，這也是為什麼我目前無法升級 TypeScript 到 `5.x` 的原因。
 
-![create-react-app v5.0.1](/images/post/coding-tips/goodbye-react-create-app/create-react-app-v-5-0-1.png)
+![create-react-app v5.0.1](/images/post/frontend/goodbye-react-create-app/create-react-app-v-5-0-1.png)
 
 因此我就開始在網路上搜尋為什麼 CRA 不再維護，以及有沒有其他的替代方案，首先我從 [React](https://react.dev/) 的官方文件中就寫明了建立 React App 的方式沒有 `create-react-app` 這個方式，反倒是建議使用像是 [Next.js, Remix, Gatsby, Expo (for native apps), etc.](https://react.dev/learn/start-a-new-react-project) 這些框架來建立 React App，我想這也是為什麼 CRA 不再維護的原因之一。
 
-![Start a New React Project](/images/post/coding-tips/goodbye-react-create-app/start-a-new-react-project.png)
+![Start a New React Project](/images/post/frontend/goodbye-react-create-app/start-a-new-react-project.png)
 
 我在 [Goodbye create-react-app](https://dev.to/ag2byte/create-react-app-is-officially-dead-h7o) 這篇文章中找到了一些 CRA 不再維護的原因，其中提到 CRA 這個專案已經被 Facebook 官方放棄了，主要是因為效能的關係，對於現行的方法而言太慢了，初始化的階段會花費太多時間，另外 CRA 也有一些因為過時所產生的警告，這些問題已經困擾開發者很久了，然而對於初學者來說也很難解決這些問題，因此 CRA 這個方式已經不再是最佳的選擇了。
 
