@@ -13,26 +13,26 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://blog.1chooo.com/2024/06/20/leetcode/1052-grumpy-bookstore-owner/"/>
+    <link rel="canonical" href="https://blog.1chooo.com/2024/08/17/frontend/refactor-portfolio-projects-components/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="Link 👉🏻 1052. Grumpy Bookstore Owner  DescriptionThere is a bookstore owner that has a store open for n minutes. Every minute, some number of customers enter the store. You are given an integer arra">
+        <meta name="description" content="在我的網頁中 1chooo.com  有一個展示我所有作品集的頁面 – Hugo’s Portfolio ，過去我把所有的功能都寫在同一個 component – Projects  之中，但是我發現這頁面中的有些元素我會重複使用，因此就造成了 copy-paste programming 的情況，這樣會讓程式碼變得雜亂，也更不容易維護，因此我決定把這個 component 劃分成更小的 comp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[✅ Beats 💯] LeetCode 1052. Grumpy Bookstore Owner - Easy Solution | Go">
-<meta property="og:url" content="https://blog.1chooo.com/2024/06/20/leetcode/1052-grumpy-bookstore-owner/index.html">
+<meta property="og:title" content="拆分與重構 React Component：優化 Projects 頁面組件結構">
+<meta property="og:url" content="https://blog.1chooo.com/2024/08/17/frontend/refactor-portfolio-projects-components/index.html">
 <meta property="og:site_name" content="Hugo&#39;s Blog">
-<meta property="og:description" content="Link 👉🏻 1052. Grumpy Bookstore Owner  DescriptionThere is a bookstore owner that has a store open for n minutes. Every minute, some number of customers enter the store. You are given an integer arra">
+<meta property="og:description" content="在我的網頁中 1chooo.com  有一個展示我所有作品集的頁面 – Hugo’s Portfolio ，過去我把所有的功能都寫在同一個 component – Projects  之中，但是我發現這頁面中的有些元素我會重複使用，因此就造成了 copy-paste programming 的情況，這樣會讓程式碼變得雜亂，也更不容易維護，因此我決定把這個 component 劃分成更小的 comp">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-06-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-06-25T08:45:46.889Z">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/frontend/refactor-portfolio-projects-components/projects-demo.png">
+<meta property="article:published_time" content="2024-08-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-08-18T09:24:22.198Z">
 <meta property="article:author" content="Hugo ChunHo Lin (1chooo)">
-<meta property="article:tag" content="Go">
-<meta property="article:tag" content="Leetcode">
-<meta property="article:tag" content="Array">
-<meta property="article:tag" content="Sliding Window">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="Typescript">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.1chooo.com/images/post/frontend/refactor-portfolio-projects-components/projects-demo.png">
     
     
     <!--- Icon Part-->
@@ -44,7 +44,7 @@
     
     <title>
         
-            [✅ Beats 💯] LeetCode 1052. Grumpy Bookstore Owner - Easy Solution | Go -
+            拆分與重構 React Component：優化 Projects 頁面組件結構 -
         
         Hugo&#39;s Blog
     </title>
@@ -108,119 +108,7 @@
     
     
     
-<meta name="generator" content="Hexo 7.2.0"><style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
-
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
-
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
-
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style></head>
+<meta name="generator" content="Hexo 7.2.0"></head>
 
 
 <body>
@@ -719,10 +607,10 @@ mjx-container[display="true"] + br {
             
                 
                 
-                <img src="/images/cover/leetcode/1052-grumpy-bookstore-owner.png" alt="[✅ Beats 💯] LeetCode 1052. Grumpy Bookstore Owner - Easy Solution | Go" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                <img src="/images/cover/frontend/refactor-portfolio-projects-components.png" alt="拆分與重構 React Component：優化 Projects 頁面組件結構" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
                 
                 <div class="w-full flex items-center absolute bottom-0 justify-start">
-                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-semibold backdrop-blur-lg rounded-xl border border-border-color ">[✅ Beats 💯] LeetCode 1052. Grumpy Bookstore Owner - Easy Solution | Go</h1>
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-semibold backdrop-blur-lg rounded-xl border border-border-color ">拆分與重構 React Component：優化 Projects 頁面組件結構</h1>
                 </div>
             
             </div>
@@ -743,15 +631,15 @@ mjx-container[display="true"] + br {
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-06-20</span>
-        <span class="mobile">2024-06-20</span>
+        <span class="desktop">2024-08-17</span>
+        <span class="mobile">2024-08-17</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-06-25 16:45:46</span>
-            <span class="mobile">2024-06-25 16:45:46</span>
+            <span class="desktop">2024-08-18 17:24:22</span>
+            <span class="mobile">2024-08-18 17:24:22</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -765,7 +653,7 @@ mjx-container[display="true"] + br {
                     
                         
                         <li>
-                            <a href="/categories/Leetcode/">Leetcode</a>&nbsp;
+                            <a href="/categories/Frontend/">Frontend</a>&nbsp;
                         </li>
                     
                     
@@ -779,19 +667,11 @@ mjx-container[display="true"] + br {
             <ul>
                 
                     <li>
-                        <a href="/tags/Go/">Go</a>&nbsp;
+                        <a href="/tags/React/">React</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/Leetcode/">Leetcode</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/Array/">Array</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/Sliding-Window/">Sliding Window</a>&nbsp;
+                        | <a href="/tags/Typescript/">Typescript</a>&nbsp;
                     </li>
                 
             </ul>
@@ -801,12 +681,12 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>425 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.1k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>5 Mins</span>
         </span>
     
     
@@ -825,47 +705,30 @@ mjx-container[display="true"] + br {
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <p>Link 👉🏻 <a class="link" target="_blank" rel="noopener" href="https://leetcode.com/problems/grumpy-bookstore-owner/">1052. Grumpy Bookstore Owner <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>There is a bookstore owner that has a store open for <code>n</code> minutes. Every minute, some number of customers enter the store. You are given an integer array <code>customers</code> of length <code>n</code> where <code>customers[i]</code> is the number of the customer that enters the store at the start of the <code>i<sup>th</sup></code> minute and all those customers leave after the end of that minute.</p>
-<p>On some minutes, the bookstore owner is grumpy. You are given a binary array grumpy where <code>grumpy[i]</code> is <code>1</code> if the bookstore owner is grumpy during the <code>i<sup>th</sup></code> minute, and is <code>0</code> otherwise.</p>
-<p>When the bookstore owner is grumpy, the customers of that minute are not satisfied, otherwise, they are satisfied.</p>
-<p>The bookstore owner knows a secret technique to keep themselves not grumpy for <code>minutes</code> consecutive minutes, but can only use it once.</p>
-<p>Return the maximum number of customers that can be satisfied throughout the day.</p>
-<p><strong>Example 1:</strong></p>
-<ul>
-<li>Input:<code> customers = [1,0,1,2,1,1,7,5], grumpy = [0,1,0,1,0,1,0,1], minutes = 3</code></li>
-<li>Output: <code>16</code></li>
-<li>Explanation: <code>The bookstore owner keeps themselves not grumpy for the last 3 minutes. The maximum number of customers that can be satisfied = 1 + 1 + 1 + 1 + 7 + 5 = 16.</code></li>
-</ul>
-<p><strong>Example 2:</strong></p>
-<ul>
-<li>Input: <code>customers = [1], grumpy = [0], minutes = 1</code></li>
-<li>Output: <code>1</code></li>
-</ul>
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><code>n == customers.length == grumpy.length</code></li>
-<li><code>1 &lt;= minutes &lt;= n &lt;= 2 * 10<sup>4</sup></code></li>
-<li><code>0 &lt;= customers[i] &lt;= 1000</code></li>
-<li><code>grumpy[i]</code> is either <code>0</code> or <code>1</code>.</li>
-</ul>
-<h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition"></a>Intuition</h3><p>Not grumpy for minutes consecutive minutes, we need to subtract the previous satisfaction if they were grumpy.</p>
-<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><ol>
-<li>Add the satisfaction from non-grumpy as the base satisfaction.</li>
-<li>Compute the grumpy satisfaction then we have to make sure we can find the maximum satisfaction in the consecutive minutes.</li>
-<li>If the current iteration is greater than the minutes and the previous iteration was grumpy, we need to subtract the previous satisfaction.</li>
-<li>Make sure the satisfaction with Secret Technique is the maximum satisfaction.</li>
-<li>Return the sum of the base satisfaction and the maximum satisfaction with Secret Technique.</li>
+            <p>在我的網頁中 <a class="link"   target="_blank" rel="noopener" href="https://1chooo.com/" >1chooo.com <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 有一個展示我所有作品集的頁面 – <a class="link"   target="_blank" rel="noopener" href="https://1chooo.com/portfolio" >Hugo’s Portfolio <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，過去我把所有的功能都寫在同一個 component – <a class="link"   target="_blank" rel="noopener" href="https://github.com/1chooo/1chooo.com/blob/56584061c5da4c92f25bea1a633b2693f47e0414/src/components/portfolio/projects.tsx" >Projects <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 之中，但是我發現這頁面中的有些元素我會重複使用，因此就造成了 copy-paste programming 的情況，這樣會讓程式碼變得雜亂，也更不容易維護，因此我決定把這個 component 劃分成更小的 components，並且以這篇文章記錄我的修改過程。</p>
+<p>首先我們可以先透過頁面的元素來分析我們該如何區分 component</p>
+<p><figure class="image-caption"><img src="/images/post/frontend/refactor-portfolio-projects-components/projects-demo.png" alt="https://1chooo.com/portfolio"><figcaption>https://1chooo.com/portfolio</figcaption></figure></p>
+<p>我們可以觀察到把這個 component 中的元素分成幾個部分：</p>
+<ol>
+<li>Filter: 可以用來選擇要顯示的作品類別</li>
+<li>Select: 一個下拉式選單，也可以用來選擇要顯示的作品類別，是在手機版時的顯示樣貌</li>
+<li>ProjectList: 用來顯示所有的作品</li>
 </ol>
-<div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> i &gt;= minutes &amp;&amp; grumpy[i-minutes] == <span class="number">1</span> {</span><br><span class="line">    satisfiedWithTech -= customers[i-minutes] </span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+<p>因此我們可以往這個方向去修改，我們把原本的 <code>Projects</code> component 分成三個 components，分別是 <code>FilterList</code>, <code>FilterSelectBox</code>, <code>ProjectItem</code>，這樣我們就可以把這些 components 獨立開來，並且可以更容易地維護。</p>
+<p>改寫好的 Source Code 如下：</p>
+<p><code>filter-list</code>:</p>
+<div class="highlight-container" data-rel="Tsx"><figure class="iseeu highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; projectTags &#125; <span class="keyword">from</span> <span class="string">&#x27;@/config/portfolio&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; handleItemClick &#125; <span class="keyword">from</span> <span class="string">&#x27;@/utils/filter-utils&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">FilterListProps</span> &#123;</span><br><span class="line">  <span class="attr">selectedValue</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">setSelectedValue</span>: <span class="title class_">React</span>.<span class="property">Dispatch</span>&lt;<span class="title class_">React</span>.<span class="property">SetStateAction</span>&lt;<span class="built_in">string</span>&gt;&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">FilterList</span>: <span class="title class_">React</span>.<span class="property">FC</span>&lt;<span class="title class_">FilterListProps</span>&gt; = <span class="function">(<span class="params">&#123; selectedValue, setSelectedValue &#125;</span>) =&gt;</span> (</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">className</span>=<span class="string">&quot;filter-list&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    &#123;projectTags.map((tag) =&gt; (</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">li</span> <span class="attr">className</span>=<span class="string">&quot;filter-item&quot;</span> <span class="attr">key</span>=<span class="string">&#123;tag&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">className</span>=<span class="string">&#123;</span>`<span class="attr">filter-btn</span> $&#123;<span class="attr">selectedValue</span> === <span class="string">tag</span> ? &#x27;<span class="attr">active</span>&#x27; <span class="attr">:</span> &#x27;&#x27;&#125;`&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> handleItemClick(tag, setSelectedValue)&#125;</span></span><br><span class="line"><span class="language-xml">        &gt;</span></span><br><span class="line"><span class="language-xml">          &#123;tag&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    ))&#125;</span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">FilterList</span>;</span><br></pre></td></tr></table></figure></div>
 
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><ul>
-<li><p>Time complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.844ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2141 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1752,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
-</li>
-<li><p>Space complexity: <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.844ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2141 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(1752,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
-</li>
-</ul>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><div class="highlight-container" data-rel="Go"><figure class="iseeu highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxSatisfied</span><span class="params">(customers []<span class="type">int</span>, grumpy []<span class="type">int</span>, minutes <span class="type">int</span>)</span></span> <span class="type">int</span> {</span><br><span class="line">	baseSatisfied        := <span class="number">0</span></span><br><span class="line">	satisfiedWithTech    := <span class="number">0</span></span><br><span class="line">	maxSatisfiedWithTech := <span class="number">0</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(customers); i++ {</span><br><span class="line">		<span class="keyword">if</span> grumpy[i] == <span class="number">1</span> {</span><br><span class="line">			satisfiedWithTech += customers[i]</span><br><span class="line">		} <span class="keyword">else</span> {</span><br><span class="line">			baseSatisfied += customers[i]</span><br><span class="line">		}</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> i &gt;= minutes &amp;&amp; grumpy[i-minutes] == <span class="number">1</span> {</span><br><span class="line">			satisfiedWithTech -= customers[i-minutes] <span class="comment">// because not grumpy for minutes consecutive minutes</span></span><br><span class="line">		}</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> satisfiedWithTech &gt; maxSatisfiedWithTech {</span><br><span class="line">			maxSatisfiedWithTech = satisfiedWithTech</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> baseSatisfied + maxSatisfiedWithTech</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+<p><code>filter-select-box</code>:</p>
+<div class="highlight-container" data-rel="Tsx"><figure class="iseeu highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">MdExpandMore</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react-icons/md&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; projectTags &#125; <span class="keyword">from</span> <span class="string">&#x27;@/config/portfolio&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; handleItemClick &#125; <span class="keyword">from</span> <span class="string">&#x27;@/utils/filter-utils&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">FilterSelectBoxProps</span> &#123;</span><br><span class="line">  <span class="attr">selectedValue</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">isSelectActive</span>: <span class="built_in">boolean</span>;</span><br><span class="line">  <span class="attr">setIsSelectActive</span>: <span class="title class_">React</span>.<span class="property">Dispatch</span>&lt;<span class="title class_">React</span>.<span class="property">SetStateAction</span>&lt;<span class="built_in">boolean</span>&gt;&gt;;</span><br><span class="line">  <span class="attr">setSelectedValue</span>: <span class="title class_">React</span>.<span class="property">Dispatch</span>&lt;<span class="title class_">React</span>.<span class="property">SetStateAction</span>&lt;<span class="built_in">string</span>&gt;&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">FilterSelectBox</span>: <span class="title class_">React</span>.<span class="property">FC</span>&lt;<span class="title class_">FilterSelectBoxProps</span>&gt; = <span class="function">(<span class="params">&#123;</span></span></span><br><span class="line"><span class="params"><span class="function">  selectedValue,</span></span></span><br><span class="line"><span class="params"><span class="function">  isSelectActive,</span></span></span><br><span class="line"><span class="params"><span class="function">  setIsSelectActive,</span></span></span><br><span class="line"><span class="params"><span class="function">  setSelectedValue,</span></span></span><br><span class="line"><span class="params"><span class="function">&#125;</span>) =&gt;</span> (</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;filter-select-box&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">className</span>=<span class="string">&#123;</span>`<span class="attr">filter-select</span> $&#123;<span class="attr">isSelectActive</span> ? &#x27;<span class="attr">active</span>&#x27; <span class="attr">:</span> &#x27;&#x27;&#125;`&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setIsSelectActive(!isSelectActive)&#125;</span></span><br><span class="line"><span class="language-xml">    &gt;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;select-value&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;selectedValue || &#x27;Select category&#x27;&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;select-icon&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">MdExpandMore</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    &#123;isSelectActive &amp;&amp; (</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">ul</span> <span class="attr">className</span>=<span class="string">&quot;select-list&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;projectTags.map((tag: string) =&gt; (</span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">li</span> <span class="attr">className</span>=<span class="string">&quot;select-item&quot;</span> <span class="attr">key</span>=<span class="string">&#123;tag&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">              <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-xml">                handleItemClick(tag, setSelectedValue);</span></span><br><span class="line"><span class="language-xml">                setIsSelectActive(false);</span></span><br><span class="line"><span class="language-xml">              &#125;&#125;</span></span><br><span class="line"><span class="language-xml">            &gt;</span></span><br><span class="line"><span class="language-xml">              &#123;tag&#125;</span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        ))&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    )&#125;</span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">FilterSelectBox</span>;</span><br></pre></td></tr></table></figure></div>
+
+<p><code>project-item</code>:</p>
+<div class="highlight-container" data-rel="Tsx"><figure class="iseeu highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">LuEye</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react-icons/lu&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Image</span> <span class="keyword">from</span> <span class="string">&#x27;next/image&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Project</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@/config/portfolio&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ProjectItemProps</span> &#123;</span><br><span class="line">  <span class="attr">project</span>: <span class="title class_">Project</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">ProjectItem</span>: <span class="title class_">React</span>.<span class="property">FC</span>&lt;<span class="title class_">ProjectItemProps</span>&gt; = <span class="function">(<span class="params">&#123; project &#125;</span>) =&gt;</span> (</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">className</span>=<span class="string">&quot;project-item active&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">data-filter-item</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">data-category</span>=<span class="string">&#123;project.category.toLowerCase()&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">  &gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">href</span>=<span class="string">&#123;project.link&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">rel</span>=<span class="string">&quot;noopener noreferrer&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    &gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">figure</span> <span class="attr">className</span>=<span class="string">&quot;project-img&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;project-item-icon-box&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">LuEye</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Image</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">src</span>=<span class="string">&#123;project.imageUrl&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">alt</span>=<span class="string">&#123;project.title&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">loading</span>=<span class="string">&quot;lazy&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h3</span> <span class="attr">className</span>=<span class="string">&quot;project-title&quot;</span>&gt;</span>&#123;project.title&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;project-category&quot;</span>&gt;</span>&#123;project.category&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">ProjectItem</span>;</span><br></pre></td></tr></table></figure></div>
+
+<p>最後我們把這些 components 組合到 <code>projects</code>（可見本次修改 <a class="link"   target="_blank" rel="noopener" href="https://github.com/1chooo/1chooo.com/commit/efdbee34c4a8d5f651f537f23f9811eaf4dbbb4d" >commit <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>）：</p>
+<div class="highlight-container" data-rel="Tsx"><figure class="iseeu highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useState, useEffect &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; projectsData &#125; <span class="keyword">from</span> <span class="string">&#x27;@/config/portfolio&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; filterCategory &#125; <span class="keyword">from</span> <span class="string">&#x27;@/utils/filter-utils&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FilterList</span> <span class="keyword">from</span> <span class="string">&#x27;./filter-list&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FilterSelectBox</span> <span class="keyword">from</span> <span class="string">&#x27;./filter-select-box&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ProjectItem</span> <span class="keyword">from</span> <span class="string">&#x27;./project-item&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Projects</span>: <span class="title class_">React</span>.<span class="property">FC</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [selectedValue, setSelectedValue] = <span class="title function_">useState</span>(<span class="string">&#x27;All&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> [isSelectActive, setIsSelectActive] = <span class="title function_">useState</span>(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">setSelectedValue</span>(<span class="string">&#x27;All&#x27;</span>);</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> filteredProjects = <span class="title function_">filterCategory</span>(selectedValue, projectsData);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">section</span> <span class="attr">className</span>=<span class="string">&quot;projects&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">FilterList</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">selectedValue</span>=<span class="string">&#123;selectedValue&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">setSelectedValue</span>=<span class="string">&#123;setSelectedValue&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">FilterSelectBox</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">selectedValue</span>=<span class="string">&#123;selectedValue&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">isSelectActive</span>=<span class="string">&#123;isSelectActive&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">setIsSelectActive</span>=<span class="string">&#123;setIsSelectActive&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">setSelectedValue</span>=<span class="string">&#123;setSelectedValue&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">ul</span> <span class="attr">className</span>=<span class="string">&quot;project-list&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;filteredProjects.map((project, index) =&gt; (</span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">ProjectItem</span> <span class="attr">project</span>=<span class="string">&#123;project&#125;</span> <span class="attr">key</span>=<span class="string">&#123;index&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        ))&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Projects</span>;</span><br></pre></td></tr></table></figure></div>
+
+<p>這樣我們就把原本的 <code>Projects</code> component 分成三個 components，這樣我們就可以更容易地維護這個 component 了。如果其他頁面需要類似風格的 Item 可以沿用，也可以繼續擴充 Portfolio 頁面的元素，例如加入頁碼功能，這樣如果 project 過多時，就可以分頁顯示，這樣就可以讓頁面更加的乾淨，也能有更好的 component 實踐！</p>
 
         </div>
 
@@ -875,19 +738,11 @@ mjx-container[display="true"] + br {
             <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/Go/">#Go</a>&nbsp;
+                        <a href="/tags/React/">#React</a>&nbsp;
                     </li>
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/Leetcode/">#Leetcode</a>&nbsp;
-                    </li>
-                
-                    <li class="tag-item mx-0.5">
-                        <a href="/tags/Array/">#Array</a>&nbsp;
-                    </li>
-                
-                    <li class="tag-item mx-0.5">
-                        <a href="/tags/Sliding-Window/">#Sliding Window</a>&nbsp;
+                        <a href="/tags/Typescript/">#Typescript</a>&nbsp;
                     </li>
                 
             </ul>
@@ -899,27 +754,27 @@ mjx-container[display="true"] + br {
     <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>Recommendation</span>
     </div>
-    <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/06/25/leetcode/0001-two-sum/" title="LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++" rel="bookmark">
-  <img src="/images/cover/leetcode/0001-two-sum.png" alt="LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++" class="!max-w-none">
-  <span class="title">LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++</span>
-</a><a class="recommended-article-item" href="/2024/07/02/leetcode/1550-three-consecutive-odds/" title="💯✅ LeetCode 1550. Three Consecutive Odds | Go" rel="bookmark">
-  <img src="/images/cover/leetcode/1550-three-consecutive-odds.png" alt="💯✅ LeetCode 1550. Three Consecutive Odds | Go" class="!max-w-none">
-  <span class="title">💯✅ LeetCode 1550. Three Consecutive Odds | Go</span>
-</a><a class="recommended-article-item" href="/2024/07/03/leetcode/1480-running-sum-of-1d-array/" title="💯✅ LeetCode 1480. Running Sum of 1d Array | Go" rel="bookmark">
-  <img src="/images/cover/leetcode/1480-running-sum-of-1d-array.png" alt="💯✅ LeetCode 1480. Running Sum of 1d Array | Go" class="!max-w-none">
-  <span class="title">💯✅ LeetCode 1480. Running Sum of 1d Array | Go</span>
+    <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/02/15/coding-tips/make-your-react-more-elegant-with-map/" title="如何透過 map() 讓你的 React TypeScript 專案更加優雅？" rel="bookmark">
+  <img src="/images/cover/coding-tips/make-your-react-more-elegant-with-map.png" alt="如何透過 map() 讓你的 React TypeScript 專案更加優雅？" class="!max-w-none">
+  <span class="title">如何透過 map() 讓你的 React TypeScript 專案更加優雅？</span>
+</a><a class="recommended-article-item" href="/2024/08/10/frontend/goodbye-react-create-app/" title="讓老舊的 Create React App (CRA) 支援 TypeScript 5.x 吧！" rel="bookmark">
+  <img src="/images/cover/frontend/goodbye-react-create-app.png" alt="讓老舊的 Create React App (CRA) 支援 TypeScript 5.x 吧！" class="!max-w-none">
+  <span class="title">讓老舊的 Create React App (CRA) 支援 TypeScript 5.x 吧！</span>
+</a><a class="recommended-article-item" href="/2024/03/16/coding-tips/python-5-tips/" title="五個 Python 好習慣" rel="bookmark">
+  <img src="/images/cover/coding-style/python-5-tips.png" alt="五個 Python 好習慣" class="!max-w-none">
+  <span class="title">五個 Python 好習慣</span>
 </a></div>
    </div>
    <div class="recommended-mobile">
    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>Recommendation</span>
    </div>
-   <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/06/25/leetcode/0001-two-sum/" title="LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++" rel="bookmark">
-  <img src="/images/cover/leetcode/0001-two-sum.png" alt="LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++" class="!max-w-none">
-  <span class="title">LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++</span>
-</a><a class="recommended-article-item" href="/2024/07/02/leetcode/1550-three-consecutive-odds/" title="💯✅ LeetCode 1550. Three Consecutive Odds | Go" rel="bookmark">
-  <img src="/images/cover/leetcode/1550-three-consecutive-odds.png" alt="💯✅ LeetCode 1550. Three Consecutive Odds | Go" class="!max-w-none">
-  <span class="title">💯✅ LeetCode 1550. Three Consecutive Odds | Go</span>
+   <div class="recommended-article-group"><a class="recommended-article-item" href="/2024/02/15/coding-tips/make-your-react-more-elegant-with-map/" title="如何透過 map() 讓你的 React TypeScript 專案更加優雅？" rel="bookmark">
+  <img src="/images/cover/coding-tips/make-your-react-more-elegant-with-map.png" alt="如何透過 map() 讓你的 React TypeScript 專案更加優雅？" class="!max-w-none">
+  <span class="title">如何透過 map() 讓你的 React TypeScript 專案更加優雅？</span>
+</a><a class="recommended-article-item" href="/2024/08/10/frontend/goodbye-react-create-app/" title="讓老舊的 Create React App (CRA) 支援 TypeScript 5.x 吧！" rel="bookmark">
+  <img src="/images/cover/frontend/goodbye-react-create-app.png" alt="讓老舊的 Create React App (CRA) 支援 TypeScript 5.x 吧！" class="!max-w-none">
+  <span class="title">讓老舊的 Create React App (CRA) 支援 TypeScript 5.x 吧！</span>
 </a></div>
    </div>
   </div>
@@ -927,29 +782,14 @@ mjx-container[display="true"] + br {
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/06/25/leetcode/0001-two-sum/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">LeetCode 0001. Two Sum - Hash Map Solution | Go, Python, C++</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/06/06/coding-tips/your-life-need-to-be-md/"
+                        href="/2024/08/10/frontend/goodbye-react-create-app/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">Your life need to be MARKDOWNED: Essential Tips for Exceptional GitHub Writing</span>
+                                <span class="post-nav-title-item">讓老舊的 Create React App (CRA) 支援 TypeScript 5.x 吧！</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -1024,8 +864,8 @@ mjx-container[display="true"] + br {
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">[✅ Beats 💯] LeetCode 1052. Grumpy Bookstore Owner - Easy Solution | Go</div>
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intuition"><span class="nav-text">Intuition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach"><span class="nav-text">Approach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Complexity"><span class="nav-text">Complexity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-text">Code</span></a></li></ol>
+        <div class="page-title">拆分與重構 React Component：優化 Projects 頁面組件結構</div>
+        
 
     </div>
 </div>
