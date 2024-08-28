@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hugo,Hugo ChunHo Lin,Hugo Lin,1chooo,林群賀">
+    
+    <meta name="author" content="Hugo ChunHo Lin (1chooo)">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://blog.1chooo.com/2024/08/28/frontend/500-commits-milestone/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="一個 500 commits 的 Side Project 是如何誕生的，跟著 Hugo 一起看下去吧！  嘿大家！我是 Hugo！現在的我剛從中央大學剛畢業，開始了我的 Gap Year，我有了很多時間維護我的 Side Project，撰寫文章、自我成長的時間，今天我想跟各位分享一個對我來說很重要的里程碑：「我的個人網頁 – 1chooo.com  的 GitHub Repository">
+<meta property="og:type" content="article">
+<meta property="og:title" content="打造 500 commits 的 GitHub Repository：10 個不可或缺的步驟">
+<meta property="og:url" content="https://blog.1chooo.com/2024/08/28/frontend/500-commits-milestone/index.html">
+<meta property="og:site_name" content="Hugo&#39;s Blog">
+<meta property="og:description" content="一個 500 commits 的 Side Project 是如何誕生的，跟著 Hugo 一起看下去吧！  嘿大家！我是 Hugo！現在的我剛從中央大學剛畢業，開始了我的 Gap Year，我有了很多時間維護我的 Side Project，撰寫文章、自我成長的時間，今天我想跟各位分享一個對我來說很重要的里程碑：「我的個人網頁 – 1chooo.com  的 GitHub Repository">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/frontend/500-commits-milestone/about.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/frontend/500-commits-milestone/resume.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/frontend/500-commits-milestone/portfolio.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/frontend/500-commits-milestone/blog.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/frontend/500-commits-milestone/contact.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/frontend/500-commits-milestone/500-commit-achieving.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/frontend/500-commits-milestone/well-commits.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/frontend/500-commits-milestone/milestone.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/frontend/500-commits-milestone/tag.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/frontend/500-commits-milestone/ga.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/frontend/500-commits-milestone/dependabot.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/frontend/500-commits-milestone/readme.png">
+<meta property="og:image" content="https://blog.1chooo.com/images/post/frontend/500-commits-milestone/tests.png">
+<meta property="article:published_time" content="2024-08-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-08-28T07:54:39.889Z">
+<meta property="article:author" content="Hugo ChunHo Lin (1chooo)">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="Typescript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.1chooo.com/images/post/frontend/500-commits-milestone/about.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <!--- Page Info-->
+    
+    <title>
+        
+            打造 500 commits 的 GitHub Repository：10 個不可或缺的步驟 -
+        
+        Hugo&#39;s Blog
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+    
+        
+<script src="/js/libs/anime.min.js"></script>
+
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"blog.1chooo.com","root":"/","language":"en","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":["Day ONE ⚡️"]},"code_block":{"copy":true,"style":"simple","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":false,"lazyload":true,"recommendation":{"enable":true,"title":"Recommendation","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":"Roboto","url":"https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"}},"content_max_width":"1200px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null},"busuanzi_counter":{"enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"pjax":true},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/campus_girl.jpg","dark":"/images/dark_mac.jpg"},"title":"Hugo's Blog","subtitle":{"text":["This is Hugo ChunHo Lin (1chooo)","The one who eagers to CS Field"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/1chooo","instagram":null,"zhihu":null,"twitter":"https://twitter.com/1chooo___","email":"hugo970217@gmail.com","linkedin":"https://www.linkedin.com/in/1chooo/","medium":"https://medium.com/@1chooo"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":true,"version":"9.3.0"}},"version":"2.6.4","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"icon":"fa-solid fa-archive","path":"/archives/"},"Categories":{"icon":"fa-solid fa-folder","path":"/categories/"},"Link":{"icon":"fa-regular fa-link","submenus":{"About":"/about","GitHub":"https://github.com/1chooo","Linkedin":"https://www.linkedin.com/in/1chooo/","Portfolio":"https://1chooo.com"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"Software Engineering | B.S. in ATM, NCU | Ex AWS Educate, Pegatron, eCloudValley","show_on_mobile":true,"links":{"About":{"path":"/about","icon":"fa-regular fa-user"},"Portfolio":{"path":"https://1chooo.com","icon":"fa-regular fa-link"},"Github":{"path":"https://github.com/1chooo","icon":"fa-brands fa-github"},"Linkedin":{"path":"https://www.linkedin.com/in/1chooo/","icon":"fa-brands fa-linkedin"}}},"article_date_format":"MMM D, YYYY","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2023/2/10 05:20:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":true};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+
+    <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    <h2 class="ml13">
+        Hugo&#39;s Blog
+    </h2>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+        var animation = anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [40,0],
+                translateZ: 0,
+                opacity: [0,1],
+                filter: ['blur(5px)', 'blur(0px)'], // Starting from blurred to unblurred
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i,
+            }).add({
+                targets: '.ml13 .letter',
+                translateY: [0,-40],
+                opacity: [1,0],
+                filter: ['blur(0px)', 'blur(5px)'], // Ending from unblurred to blurred
+                easing: "easeInExpo",
+                duration: 1200,
+                delay: (el, i) => 100 + 30 * i,
+                complete: function() {
+                    hidePreloader(); // Call hidePreloader after the animation completes
+                }
+            });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(hidePreloader, 5000); // Call hidePreloader after 5000 milliseconds if not already called by animation
+        });
+
+        function hidePreloader() {
+            var preloader = document.querySelector('.preloader');
+            preloader.style.opacity = '0';
+            setTimeout(function () {
+                preloader.style.display = 'none';
+            }, 200);
+        }
+    </script>
+</div>
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/favicon.ico">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                Hugo&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives/"
+                                        >
+                                    <i class="fa-solid fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/"
+                                        >
+                                    <i class="fa-solid fa-folder fa-fw"></i>
+                                    CATEGORIES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    LINK
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ABOUT
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/1chooo">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/1chooo/">
+                                                    LINKEDIN
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://1chooo.com">
+                                                    PORTFOLIO
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives/"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-solid fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/"
+                        >
+                            <span>
+                                CATEGORIES
+                            </span>
+                            
+                                <i class="fa-solid fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-Link"
+                        >
+                            <span>
+                                LINK
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-Link">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ABOUT</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/1chooo">GITHUB</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://www.linkedin.com/in/1chooo/">LINKEDIN</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://1chooo.com">PORTFOLIO</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/about"
+                        >
+                            <span>About</span>
+                            <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           target="_blank" rel="noopener" href="https://1chooo.com"
+                        >
+                            <span>Portfolio</span>
+                            <i class="fa-regular fa-link fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           target="_blank" rel="noopener" href="https://github.com/1chooo"
+                        >
+                            <span>Github</span>
+                            <i class="fa-brands fa-github fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           target="_blank" rel="noopener" href="https://www.linkedin.com/in/1chooo/"
+                        >
+                            <span>Linkedin</span>
+                            <i class="fa-brands fa-linkedin fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">64</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">30</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                
+                
+                <img src="/images/cover/frontend/500-commits-milestone.png" alt="打造 500 commits 的 GitHub Repository：10 個不可或缺的步驟" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-semibold backdrop-blur-lg rounded-xl border border-border-color ">打造 500 commits 的 GitHub Repository：10 個不可或缺的步驟</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/profile.jpg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Hugo ChunHo Lin (1chooo)</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Day ONE ⚡️</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-08-28</span>
+        <span class="mobile">2024-08-28</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-08-28 15:54:39</span>
+            <span class="mobile">2024-08-28 15:54:39</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/Frontend/">Frontend</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/React/">React</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Typescript/">Typescript</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>3.2k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>11 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <blockquote>
+<p>一個 500 commits 的 Side Project 是如何誕生的，跟著 Hugo 一起看下去吧！</p>
+</blockquote>
+<p>嘿大家！我是 Hugo！現在的我剛從中央大學剛畢業，開始了我的 Gap Year，我有了很多時間維護我的 Side Project，撰寫文章、自我成長的時間，今天我想跟各位分享一個對我來說很重要的里程碑：「我的個人網頁 – <a class="link"   target="_blank" rel="noopener" href="https://1chooo.com/" >1chooo.com <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 的 <a class="link"   target="_blank" rel="noopener" href="https://github.com/1chooo/1chooo.com" >GitHub Repository <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 達到 <a class="link"   target="_blank" rel="noopener" href="https://github.com/1chooo/1chooo.com/commit/b01a0417642b3679ec87427f0c783bcaafe5e7c1" >500 個 commits <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 啦 🥳」這 500 個 commits 以大型專案來說無比尋常，甚至是小巫見大巫，不過對於我的個人 side project 是一大挑戰，畢竟要持續有新功能、新的專案目標、技術債，我才能繼續更新這個 project，因此我想透過這篇文章來分享我們做了哪些努力，並且又從中學到了什麼樣的寶貴經驗以及教訓。</p>
+<p>在進入今天的分享前，先帶大家看看我專案的成果，這個專案原先的發想就是是我想打造自己的網頁，過去我也曾經試過很多次的個人網頁架設，但是對於我想要的需求就是差了那麼一點，於是我開始透過 portfolio、personal website 的關鍵字在 GitHub 找尋符合我需求的設計，有點偷懶，不過我想這就是 Open Source 最重要的一環吧！於是我找到了符合我想要功能的個人網頁 – <a class="link"   target="_blank" rel="noopener" href="https://codewithsadee.github.io/vcard-personal-portfolio/" >vcard-personal-portfolio <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，這邊要特別感謝原作者 <a class="link"   target="_blank" rel="noopener" href="https://github.com/codewithsadee" >Sadee <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 無私分享自己的專案成果，讓我可以在此基礎上進行修改。</p>
+<p>在我的網頁上有五大頁面，分別是：<strong>About, Resume, Portfolio, Blog, Contact</strong>，也是我想要有的功能。</p>
+<h3 id="About"><a href="#About" class="headerlink" title="About"></a>About</h3><p>呈現我自己給大家認識，並且目標給予大家良好的第一印象。</p>
+<p><figure class="image-caption"><img src="/images/post/frontend/500-commits-milestone/about.png" alt="1chooo.com/about"><figcaption>1chooo.com/about</figcaption></figure></p>
+<h3 id="Resume"><a href="#Resume" class="headerlink" title="Resume"></a>Resume</h3><p>呈現我的專業能力，在這裡可以看到我過往的學歷、工作經驗、參加競賽的經驗。</p>
+<p><figure class="image-caption"><img src="/images/post/frontend/500-commits-milestone/resume.png" alt="1chooo.com/resume"><figcaption>1chooo.com/resume</figcaption></figure></p>
+<h3 id="Portfolio"><a href="#Portfolio" class="headerlink" title="Portfolio"></a>Portfolio</h3><p>我會在這裡放置我過去的作品，包含了各種類型的專案，例如：網頁、App、資料分析等等。</p>
+<p><figure class="image-caption"><img src="/images/post/frontend/500-commits-milestone/portfolio.png" alt="1chooo.com/portfolio"><figcaption>1chooo.com/portfolio</figcaption></figure></p>
+<h3 id="Blog"><a href="#Blog" class="headerlink" title="Blog"></a>Blog</h3><p>我會在這裡分享我的文章，囊括了技術文章、刷題經驗等等，總之就是想寫什麼就會寫什麼。</p>
+<p><figure class="image-caption"><img src="/images/post/frontend/500-commits-milestone/blog.png" alt="1chooo.com/blog"><figcaption>1chooo.com/blog</figcaption></figure></p>
+<h3 id="Contact"><a href="#Contact" class="headerlink" title="Contact"></a>Contact</h3><p>提供一個想聯絡我的管道，如果有任何問題請教或是討論都可以在這裡找到我。</p>
+<p><figure class="image-caption"><img src="/images/post/frontend/500-commits-milestone/contact.png" alt="1chooo.com/contact"><figcaption>1chooo.com/contact</figcaption></figure></p>
+<p>在看完我的網頁介紹後，我們可以開始進入正題前，想先以數據呈現來聊聊我做了哪些改動，我們可以條列出我有做過的十大 Feature：</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/frontend/500-commits-milestone/500-commit-achieving.png"
+                      alt="1chooo.com — 500 commits achieving 🥳"
+                ><figcaption>1chooo.com — 500 commits achieving 🥳</figcaption></figure></p>
+<ol>
+<li>重構原始碼，將原本單純的 HTML、CSS、JS，改成使用 <a class="link"   target="_blank" rel="noopener" href="https://react.dev/" >React <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 前端框架來撰寫，並使用 <a class="link"   target="_blank" rel="noopener" href="https://vercel.com/" >Vercel <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來部署我的網頁。</li>
+<li>把共用的 Component，拉出來重寫，避免 Copy-Paste Programming 的情形發生。</li>
+<li>整齊易讀的 Commit Message – <a class="link"   target="_blank" rel="noopener" href="https://www.conventionalcommits.org/en/v1.0.0/" >Conventional Commits <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。</li>
+<li>用 Issues 來追蹤專案的改動，並且加上 Milestone 來追蹤專案的進度。</li>
+<li>加入 Tag 管理版本不同版本的 Release。</li>
+<li>加入 Google Analytics 來追蹤使用者行為。</li>
+<li>引入 GitHub Dependency Bot 來追蹤我的專案的依賴套件是否需要升級以及是否有安全漏洞。</li>
+<li>透過 <a class="link"   target="_blank" rel="noopener" href="https://nextjs.org/" >Next.js <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來更新老舊 Create-React-App 的依賴。</li>
+<li>美觀的 README，以及 Document 的撰寫，讓未來的開發者可以快速上手。</li>
+<li>Component 的 Unit Test，確保每個 Component 都有正確的運作。</li>
+</ol>
+<h3 id="重構程式碼"><a href="#重構程式碼" class="headerlink" title="重構程式碼"></a>重構程式碼</h3><p>在原本作者 <a class="link"   target="_blank" rel="noopener" href="https://github.com/codewithsadee" >Sadee <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 的專案中，是一頁式的網站設計，也就是說所有的內容都寫在同個 HTML 裡面，包含了頁面切換，如果要快速改動，其實只要直接做更改 HTML 的內容就好，不過這時候我就遇到了一些問題，每當我要做出改動的時候，我就要在上千行的原始碼裡面找我要調整的部分、另外載入畫面時所有的內容都會一起被載入，畢竟都寫在同個 HTML 裡面，並沒有任何頁面 Router 的切換，因此我便下定決心要整個改寫，否則以後我想加新功能、新頁面的時候，我會很被限制住、也處在整個專案的被動方。</p>
+<p>這時候我想到了前端三大框架：<a class="link"   target="_blank" rel="noopener" href="https://react.dev/" >React <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://vuejs.org/" >Vue <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://laravel.com/" >Laravel <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，我選擇了 <a class="link"   target="_blank" rel="noopener" href="https://react.dev/" >React <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 並且搭配 <a class="link"   target="_blank" rel="noopener" href="https://www.typescriptlang.org/" >TypeScript <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，因為這是我之前有開發經驗的前端框架，同時也找得到很多前人的經驗，因此就選擇了 React，因此我便開始了大量地改寫之旅，最首要的就是讀懂原始碼，並且把原本的 HTML、CSS、JS 都拆開，並且使用 React 的 Components 來撰寫，在初期是非常有挑戰性的，需要耗費大量的時間去理解，有些 Code 甚至需要耗費幾個星期才能完成改寫。</p>
+<p>因為我之前有使用過，也覺得 React 的生態系很完整，有很多的套件可以使用，於是我便開始了我的改寫之旅，我把原本的 HTML、CSS、JS 都拆開，並且使用 React 來撰寫，這樣我就可以把每個頁面都拆開，並且使用 React Router 來做頁面的切換，這樣我就可以更方便的做出改動，也可以更方便的加入新功能，因此現在畫面上看到的內容都是透過 React Component 來呈現的，我也保有更多的修改空間，不會受限於原作者的設計。</p>
+<h3 id="Shared-Component"><a href="#Shared-Component" class="headerlink" title="Shared Component"></a>Shared Component</h3><p>改寫完了是一回事，但我其實是第一次碰到前端工程的部分，我的 Components 基本上就是 return 出來的 HTML Code。於是我在自己 Code Review 的時候我就發現許多 Components 可以獨立出來，甚至是可以共用同樣的 Style，也就是說我發現了很多 Copy-Paste Programming 的情形在我的程式碼之中，其中我學到了 <code>map()</code> 的寫法，可以用傳入的參數來決定要 render 出來的 Component，這樣我就可以把重複的部分刪掉，詳細介紹可以看這篇文章 👉🏻 <a class="link"   target="_blank" rel="noopener" href="https://medium.com/@1chooo/%E5%A6%82%E4%BD%95%E9%80%8F%E9%81%8E-map-%E8%AE%93%E4%BD%A0%E7%9A%84-react-typescript-%E5%B0%88%E6%A1%88%E6%9B%B4%E5%8A%A0%E5%84%AA%E9%9B%85-f1e5bdca1710" >如何透過 map()讓你的 React TypeScript 專案更加優雅？ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。</p>
+<h3 id="Commit-Message"><a href="#Commit-Message" class="headerlink" title="Commit Message"></a>Commit Message</h3><p>因為我常常使用 GitHub，幾乎是我每天的日常了，因此我開始對一些細節特別在意，像是 Commit Message，常常可以看到很多 Commit Message 都是：「Update、test、Upload 等字樣」也就是說看不出這次改動的痕跡，這樣的 Commit Message 對於未來的開發者來說是非常不友善的，因此我開始學習 <a class="link"   target="_blank" rel="noopener" href="https://www.conventionalcommits.org/en/v1.0.0/" >Conventional Commits <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，這是一個 Commit Message 的規範，提升了 Commit 的可讀性，也比較工整，想看更多細節可以看看這篇文章，我介紹了如何撰寫優美的 Commit Message 👉🏻 <a class="link"   target="_blank" rel="noopener" href="https://medium.com/@1chooo/git-commit-message-%E5%88%B0%E5%BA%95%E6%80%8E%E9%BA%BC%E5%AF%AB%E6%89%8D%E5%84%AA%E7%BE%8E-5b789157b549" >Git Commit Message 到底怎麼寫才優美？ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/frontend/500-commits-milestone/well-commits.png"
+                      alt="Well Commit Message in 1chooo.com!!!"
+                ><figcaption>Well Commit Message in 1chooo.com!!!</figcaption></figure></p>
+<h3 id="Issues-Milestone"><a href="#Issues-Milestone" class="headerlink" title="Issues &amp; Milestone"></a>Issues &amp; Milestone</h3><p>在專案的後期，我發現當 Commits 變多了，有些 Commit 是缺少文件做紀錄的，因此我開始透過 Issues 的形式來管理我要做出的改動，算是 Agile 的一種實踐，透過 Issues 我可以清楚的知道我要做什麼，也可以詳細預估我需要的工時，以及所需的技術（雖然我有時候還是直接 Push 到 Main Branch 哈哈！）。後來我還發現了 GitHub 還有一個 Milestone 的管理，我可以把要做的目標放在一起管理，這是在我對 Microsoft VSCode Docs 提交 PRs 時發現的，因此我立馬學起來，主要是透過日其月份去管理 Milestones，像是 August, 2024，這樣我就可以清楚的知道我這個月想要做什麼事情，就可以更有效率的管理我的專案。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/frontend/500-commits-milestone/milestone.png"
+                      alt="1chooo.com — August, 2024 Milestones"
+                ><figcaption>1chooo.com — August, 2024 Milestones</figcaption></figure></p>
+<h3 id="Tag"><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h3><p>因為每次開發都有想做的不同事情，因此我也會照著 Agile 的形式去快速迭代我的產品，因此當我達成了一些我想完成的功能時，我就會 Release 新的版本編號，這樣我就可以知道我這個版本做了哪些事情，也可以知道這個版本的功能有哪些，我是遵照 <code>vx.x.x</code> 的形式去命名，分成大功能、小功能、Bug 修復等。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/frontend/500-commits-milestone/tag.png"
+                      alt="1chooo.com — Releases"
+                ><figcaption>1chooo.com — Releases</figcaption></figure></p>
+<h3 id="Google-Analytics"><a href="#Google-Analytics" class="headerlink" title="Google Analytics"></a>Google Analytics</h3><p>有時候我會滿好奇這個網頁到底有沒有人在看，還是就我自己一個人點爽的，因此我就加入了 Google Analytics 來追蹤使用者的行為，有趣的是我發現有些使用者會從美國來、有些會從印度來呢！</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/frontend/500-commits-milestone/ga.png"
+                      alt="1chooo.com — GA"
+                ><figcaption>1chooo.com — GA</figcaption></figure></p>
+<h3 id="GitHub-Dependency-Bot"><a href="#GitHub-Dependency-Bot" class="headerlink" title="GitHub Dependency Bot"></a>GitHub Dependency Bot</h3><p>這是我開發到中期才發現可以加入的功能，起初只是覺得好酷怎麼別人的專案會有 Dependency Bot，後來我才發現原來這是 GitHub 提供的功能，可以幫助我追蹤我的專案的依賴套件是否需要升級以及是否有安全漏洞，每週可以定期幫我檢查 Package 的更新，避免過時的 Package 的依賴。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/frontend/500-commits-milestone/dependabot.png"
+                      alt="Dependencies"
+                ><figcaption>Dependencies</figcaption></figure></p>
+<h3 id="Next-js"><a href="#Next-js" class="headerlink" title="Next.js"></a>Next.js</h3><p>會有 Next.js 的升級，就是因為 GitHub Dependency Bot 的幫助，他讓我發現了要升級 TypeScript 時會部署不成功，詳情可以看看這篇 👉🏻 <a class="link"   target="_blank" rel="noopener" href="https://medium.com/@1chooo/%E8%AE%93%E8%80%81%E8%88%8A%E7%9A%84-create-react-app-cra-%E4%BE%86%E6%94%AF%E6%8F%B4-typescript-5-x-ab8dbff5ac92" >讓老舊的 Create React App (CRA) 支援 TypeScript 5.x 吧！ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>因此我又一次大改我的專案，把 React 的 Router 全部改成 Next.js 的 AppRouter，這也是一大工程，畢竟 React 都還沒摸熟，又來了一個新的框架，不過我還是克服啦！本以為需要花個一兩個月，其實肝了一個週末就全部寫完了！</p>
+<h3 id="README-Document"><a href="#README-Document" class="headerlink" title="README &amp; Document"></a>README &amp; Document</h3><p>放在 GitHub 的 Project 就有一種「想讓別人看起來很專業的感覺」因此我花了很多時間去 用 <a class="link"   target="_blank" rel="noopener" href="https://www.canva.com/" >Canva <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 去 Design 我的 Cover 同時也花了時間撰寫 Contributing Guideline，希望對這專案有興趣的人可以一同參與，把開源精神發揮出來，跟著大家一起成長。另外我也會花費時間撰寫 Document，紀錄整個專案的 Code Walkthrough，以及一些開發中所遇到的情況，這樣未來的開發者就可以快速上手，我也比較不需要去通靈自己一個月前寫了什麼爛 Code。</p>
+<p><figure class="image-caption"><img src="/images/post/frontend/500-commits-milestone/readme.png" alt="1chooo.com/README"><figcaption>1chooo.com/README</figcaption></figure></p>
+<h3 id="Unit-Test"><a href="#Unit-Test" class="headerlink" title="Unit Test"></a>Unit Test</h3><p>最後一個 Feature 就是 Unit Test，我開始使用 <a class="link"   target="_blank" rel="noopener" href="https://jestjs.io/" >Jest <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 來寫 Unit Test，這是我第一次寫 Unit Test，因此我也花了很多時間去學習，目前的覆蓋率還不是很高，加上我又大改 Framework 變成 Next.js，很多的 Testing 都需要重新寫，因此這是我目前正在努力的一個部分，希望可以在短期內把覆蓋率提高。</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/post/frontend/500-commits-milestone/tests.png"
+                      alt="Unit Test in 1chooo.com"
+                ><figcaption>Unit Test in 1chooo.com</figcaption></figure></p>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>雖然到了 500 commits 這個里程碑，但是我其實還有很多想做的部分，像是完成 Blog 頁面的功能，目前仍然在償還這個技術債，因為一直想要以 Markdown 去 Render，但在一開始我完全沒有這部份的設計，如果要新增，我需要把 Components 做得更加彈性，這也是我正在努力的部分。同時還有 Render 文章數量的問題，要新增上一頁、下一頁的頁面切換。另外 Contact me 的寄信目前也還沒有完成，還在考量是不是直接串接一個 Lambda Function 還是真的寫一個 API 的 Auth 去做寄信的功能，這也是我目前正在思考的部分。</p>
+<p>要說這個專案感受最深的就是：我深刻感受到了軟體專案的 Myth，在開發的過程中，有時候會感受到吃力，比如說要加一個新的 Feature 的時候，完全受到過去寫法的制約，這時候我常常需要花很多時間去想哪裡可以調整，又或者說有沒有更好的實踐方式。再者有很多功能到底該不該加，加了我需要很多時間，但明明現在就能用啊！有時候都需要做內心拉扯，現階段情況就是無法做到完美，要想完美就需要花更多時間，但是現有時間下，又希望要做到最好，不要失去對自我的要求，這是一個很大的挑戰，也是我在這個專案中學到的最大的一點。</p>
+<p>未來我將持續更新以及維護這個專案，畢竟這代表我的個人形象展現，是我對於技術的一種實踐，更涵蓋了我對技術的自我要求，未來也還會有更多個 500 commits 的里程碑，大家可以持續關注我，我將繼續分享遇到的困難以及我是如何化解問題的！</p>
+<p>大家可以點擊 Follow 關注我追蹤我的最新動態，也可以到 GitHub Repo – <a class="link"   target="_blank" rel="noopener" href="https://github.com/1chooo/1chooo.com" >1chooo.com <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 點擊 Star ⭐️ 來支持我，謝謝大家！我們下次見！👋🏻</p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/React/">#React</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Typescript/">#Typescript</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+  <div class="recommended-article px-2 sm:px-6 md:px-8">
+   <div class="recommended-desktop">
+    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
+     <i aria-hidden="true"></i><span>Recommendation</span>
+    </div>
+    <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/07/30/talks/freshman-pick-up-ipad/" title="剛上大學的我如何挑到適合我的平板！？" rel="bookmark">
+  <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*f2BkDSANBT2XUGEzR-1_gw.jpeg" alt="剛上大學的我如何挑到適合我的平板！？" class="!max-w-none">
+  <span class="title">剛上大學的我如何挑到適合我的平板！？</span>
+</a><a class="recommended-article-item" href="/2024/08/10/frontend/goodbye-react-create-app/" title="讓老舊的 Create React App (CRA) 支援 TypeScript 5.x 吧！" rel="bookmark">
+  <img src="/images/cover/frontend/goodbye-react-create-app.png" alt="讓老舊的 Create React App (CRA) 支援 TypeScript 5.x 吧！" class="!max-w-none">
+  <span class="title">讓老舊的 Create React App (CRA) 支援 TypeScript 5.x 吧！</span>
+</a><a class="recommended-article-item" href="/2024/08/20/frontend/move-shared-components-to-global-layout/" title="提升 Next.js 效能：把重複載入的元件放入 global layout" rel="bookmark">
+  <img src="/images/cover/frontend/move-shared-components-to-global-layout.png" alt="提升 Next.js 效能：把重複載入的元件放入 global layout" class="!max-w-none">
+  <span class="title">提升 Next.js 效能：把重複載入的元件放入 global layout</span>
+</a></div>
+   </div>
+   <div class="recommended-mobile">
+   <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
+     <i aria-hidden="true"></i><span>Recommendation</span>
+   </div>
+   <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/07/30/talks/freshman-pick-up-ipad/" title="剛上大學的我如何挑到適合我的平板！？" rel="bookmark">
+  <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*f2BkDSANBT2XUGEzR-1_gw.jpeg" alt="剛上大學的我如何挑到適合我的平板！？" class="!max-w-none">
+  <span class="title">剛上大學的我如何挑到適合我的平板！？</span>
+</a><a class="recommended-article-item" href="/2024/08/10/frontend/goodbye-react-create-app/" title="讓老舊的 Create React App (CRA) 支援 TypeScript 5.x 吧！" rel="bookmark">
+  <img src="/images/cover/frontend/goodbye-react-create-app.png" alt="讓老舊的 Create React App (CRA) 支援 TypeScript 5.x 吧！" class="!max-w-none">
+  <span class="title">讓老舊的 Create React App (CRA) 支援 TypeScript 5.x 吧！</span>
+</a></div>
+   </div>
+  </div>
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/08/20/frontend/move-shared-components-to-global-layout/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">提升 Next.js 效能：把重複載入的元件放入 global layout</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="giscus-container"></div>
+    <script data-swup-reload-script defer>
+        async function loadGiscus() {
+            const giscusConfig = {
+                'src': 'https://giscus.app/client.js',
+                'data-repo': '1chooo/blog.1chooo.com',
+                'data-repo-id': 'R_kgDOKBJLkQ',
+                'data-category': 'Announcements',
+                'data-category-id': 'DIC_kwDOKBJLkc4CYNpa',
+                'data-mapping': 'title',
+                'data-strict': '0',
+                'data-reactions-enabled': '1',
+                'data-emit-metadata': '1',
+                'data-theme': 'preferred_color_scheme',
+                'data-lang': 'en',
+                'data-input-position': 'bottom',
+                'data-loading': 'lazy',
+                'crossorigin': 'anonymous',
+                'async': true
+            }
+            const giscusScript = document.createElement('script');
+            for (const key in giscusConfig) {
+                giscusScript.setAttribute(key, giscusConfig[key]);
+            }
+            document.getElementById('giscus-container').appendChild(giscusScript);
+        }
+        if ('true') {
+            let loadGiscusTimeout = setTimeout(() => {
+                loadGiscus();
+                clearTimeout(loadGiscusTimeout);
+            }, 1000);
+        } else {
+            document.addEventListener('DOMContentLoaded', loadGiscus);
+        }
+    </script>
+
+
+        
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">打造 500 commits 的 GitHub Repository：10 個不可或缺的步驟</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#About"><span class="nav-text">About</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resume"><span class="nav-text">Resume</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Portfolio"><span class="nav-text">Portfolio</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Blog"><span class="nav-text">Blog</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Contact"><span class="nav-text">Contact</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E6%A7%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-text">重構程式碼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shared-Component"><span class="nav-text">Shared Component</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Commit-Message"><span class="nav-text">Commit Message</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Issues-Milestone"><span class="nav-text">Issues &amp; Milestone</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tag"><span class="nav-text">Tag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Google-Analytics"><span class="nav-text">Google Analytics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub-Dependency-Bot"><span class="nav-text">GitHub Dependency Bot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Next-js"><span class="nav-text">Next.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#README-Document"><span class="nav-text">README &amp; Document</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unit-Test"><span class="nav-text">Unit Test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-text">結語</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2023</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Hugo ChunHo Lin (1chooo)</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        30 posts in total
+                    </span>
+                    
+                        <span>
+                            32.2k words in total
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.4</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/libs/mermaid.min.js"></script>
+
+    
+<script src="/js/plugins/mermaid.js"></script>
+
+
+
+
+    
+<script src="/js/libs/minimasonry.min.js"></script>
+
+    
+<script src="/js/plugins/masonry.js" type="module"></script>
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>
